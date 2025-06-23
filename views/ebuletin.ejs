@@ -1,0 +1,326 @@
+<!DOCTYPE html> 
+<html lang="id">
+	
+<head>
+	
+		<!-- Meta Tags -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="E-Buletin Baitul Jannah Islamic School berisi informasi terkini, artikel pendidikan, dan kegiatan sekolah dalam format digital yang dapat diunduh.">
+		<meta name="keywords" content="E-Buletin, Majalah Digital, Publikasi Sekolah, Baitul Jannah Islamic School, Sekolah Islam Bandar Lampung">
+		<meta name="author" content="Baitul Jannah Islamic School">
+		<meta name="robots" content="index, follow">
+		
+		<title><%= title || 'E-Buletin - Baitul Jannah Islamic School' %></title>
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="assets/img/favicon.png"> 
+		<link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+
+		<!-- Theme Settings Js -->
+		<script src="assets/js/theme-script.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+		<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+
+		<!-- Owl Carousel CSS -->
+		<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+		<link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+
+		<!-- isax css -->
+		 <link rel="stylesheet" href="assets/css/iconsax.css">
+		
+		<!-- Slick CSS -->
+		<link rel="stylesheet" href="assets/plugins/slick/slick.css">
+		<link rel="stylesheet" href="assets/plugins/slick/slick-theme.css">
+		
+		<!-- Select2 CSS -->
+		<link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
+		
+		<!-- Aos CSS -->
+		<link rel="stylesheet" href="assets/plugins/aos/aos.css">
+
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="assets/css/style.css">
+	
+	</head>
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+		
+			<div class="home-4">
+<%- include('partials/header2') %>
+
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar text-center">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-12">
+							<h2 class="breadcrumb-title mb-2">E-Buletin</h2>
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb justify-content-center mb-0">
+									<li class="breadcrumb-item"><a href="/">Home</a></li>
+									<li class="breadcrumb-item">Informasi</li>
+									<li class="breadcrumb-item active" aria-current="page">E-Buletin</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+
+            <!-- E-Buletin Content -->
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="section-header text-center mb-5">
+                                <div class="section-line"></div>
+                                <h2 class="section-title">E-Buletin Baitul Jannah</h2>
+                                <p>Publikasi digital berkala tentang kegiatan dan informasi sekolah</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filter Tahun -->
+                    <div class="row">
+                        <div class="col-lg-12 mb-4">
+                            <div class="year-filter d-flex justify-content-center flex-wrap">
+                                <button class="btn btn-outline-primary active me-2 mb-2" data-filter="*">Semua</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".tahun-2024">2024</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".tahun-2023">2023</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".tahun-2022">2022</button>
+                                <button class="btn btn-outline-primary mb-2" data-filter=".tahun-2021">2021</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- E-Buletin Items -->
+                    <div class="row">
+                        <!-- E-Buletin Item 1 -->
+                        <div class="col-md-6 col-lg-4 mb-4 tahun-2024">
+                            <div class="card ebuletin-card">
+                                <div class="ebuletin-img-container">
+                                    <img src="assets/img/ebuletin/ebuletin-01.jpg" class="card-img-top" alt="E-Buletin Januari 2024">
+                                    <div class="ebuletin-overlay">
+                                        <a href="#" class="btn btn-primary"><i class="fas fa-eye me-2"></i>Lihat</a>
+                                        <a href="#" class="btn btn-success"><i class="fas fa-download me-2"></i>Unduh</a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="badge bg-primary">Edisi Januari 2024</span>
+                                        <span class="text-muted"><i class="fas fa-calendar-alt me-1"></i> 15 Jan 2024</span>
+                                    </div>
+                                    <h5 class="card-title">Buletin Baitul Jannah Vol. 24</h5>
+                                    <p class="card-text">Membahas kegiatan awal semester genap, persiapan ujian tengah semester, dan prestasi siswa dalam olimpiade sains tingkat kota.</p>
+                                    <div class="ebuletin-info">
+                                        <span><i class="fas fa-file-pdf me-1"></i> PDF (2.5 MB)</span>
+                                        <span><i class="fas fa-download me-1"></i> 125 unduhan</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- E-Buletin Item 2 -->
+                        <div class="col-md-6 col-lg-4 mb-4 tahun-2023">
+                            <div class="card ebuletin-card">
+                                <div class="ebuletin-img-container">
+                                    <img src="assets/img/ebuletin/ebuletin-02.jpg" class="card-img-top" alt="E-Buletin Desember 2023">
+                                    <div class="ebuletin-overlay">
+                                        <a href="#" class="btn btn-primary"><i class="fas fa-eye me-2"></i>Lihat</a>
+                                        <a href="#" class="btn btn-success"><i class="fas fa-download me-2"></i>Unduh</a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="badge bg-primary">Edisi Desember 2023</span>
+                                        <span class="text-muted"><i class="fas fa-calendar-alt me-1"></i> 20 Des 2023</span>
+                                    </div>
+                                    <h5 class="card-title">Buletin Baitul Jannah Vol. 23</h5>
+                                    <p class="card-text">Liputan khusus perayaan Maulid Nabi Muhammad SAW, kegiatan akhir semester, dan persiapan liburan semester ganjil.</p>
+                                    <div class="ebuletin-info">
+                                        <span><i class="fas fa-file-pdf me-1"></i> PDF (3.2 MB)</span>
+                                        <span><i class="fas fa-download me-1"></i> 187 unduhan</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- E-Buletin Item 3 -->
+                        <div class="col-md-6 col-lg-4 mb-4 tahun-2023">
+                            <div class="card ebuletin-card">
+                                <div class="ebuletin-img-container">
+                                    <img src="assets/img/ebuletin/ebuletin-03.jpg" class="card-img-top" alt="E-Buletin November 2023">
+                                    <div class="ebuletin-overlay">
+                                        <a href="#" class="btn btn-primary"><i class="fas fa-eye me-2"></i>Lihat</a>
+                                        <a href="#" class="btn btn-success"><i class="fas fa-download me-2"></i>Unduh</a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="badge bg-primary">Edisi November 2023</span>
+                                        <span class="text-muted"><i class="fas fa-calendar-alt me-1"></i> 15 Nov 2023</span>
+                                    </div>
+                                    <h5 class="card-title">Buletin Baitul Jannah Vol. 22</h5>
+                                    <p class="card-text">Fokus pada kegiatan literasi sekolah, program tahfidz Al-Qur'an, dan persiapan ujian akhir semester ganjil.</p>
+                                    <div class="ebuletin-info">
+                                        <span><i class="fas fa-file-pdf me-1"></i> PDF (2.8 MB)</span>
+                                        <span><i class="fas fa-download me-1"></i> 156 unduhan</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- E-Buletin Item 4 -->
+                        <div class="col-md-6 col-lg-4 mb-4 tahun-2023">
+                            <div class="card ebuletin-card">
+                                <div class="ebuletin-img-container">
+                                    <img src="assets/img/ebuletin/ebuletin-04.jpg" class="card-img-top" alt="E-Buletin Oktober 2023">
+                                    <div class="ebuletin-overlay">
+                                        <a href="#" class="btn btn-primary"><i class="fas fa-eye me-2"></i>Lihat</a>
+                                        <a href="#" class="btn btn-success"><i class="fas fa-download me-2"></i>Unduh</a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="badge bg-primary">Edisi Oktober 2023</span>
+                                        <span class="text-muted"><i class="fas fa-calendar-alt me-1"></i> 10 Okt 2023</span>
+                                    </div>
+                                    <h5 class="card-title">Buletin Baitul Jannah Vol. 21</h5>
+                                    <p class="card-text">Membahas peringatan Sumpah Pemuda, program ekstrakurikuler, dan kunjungan studi ke museum sejarah.</p>
+                                    <div class="ebuletin-info">
+                                        <span><i class="fas fa-file-pdf me-1"></i> PDF (2.6 MB)</span>
+                                        <span><i class="fas fa-download me-1"></i> 142 unduhan</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- E-Buletin Item 5 -->
+                        <div class="col-md-6 col-lg-4 mb-4 tahun-2023">
+                            <div class="card ebuletin-card">
+                                <div class="ebuletin-img-container">
+                                    <img src="assets/img/ebuletin/ebuletin-05.jpg" class="card-img-top" alt="E-Buletin September 2023">
+                                    <div class="ebuletin-overlay">
+                                        <a href="#" class="btn btn-primary"><i class="fas fa-eye me-2"></i>Lihat</a>
+                                        <a href="#" class="btn btn-success"><i class="fas fa-download me-2"></i>Unduh</a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="badge bg-primary">Edisi September 2023</span>
+                                        <span class="text-muted"><i class="fas fa-calendar-alt me-1"></i> 15 Sep 2023</span>
+                                    </div>
+                                    <h5 class="card-title">Buletin Baitul Jannah Vol. 20</h5>
+                                    <p class="card-text">Liputan kegiatan Pekan Olahraga dan Seni (PORSENI), program bimbingan karir, dan hasil ujian tengah semester.</p>
+                                    <div class="ebuletin-info">
+                                        <span><i class="fas fa-file-pdf me-1"></i> PDF (3.0 MB)</span>
+                                        <span><i class="fas fa-download me-1"></i> 168 unduhan</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- E-Buletin Item 6 -->
+                        <div class="col-md-6 col-lg-4 mb-4 tahun-2022">
+                            <div class="card ebuletin-card">
+                                <div class="ebuletin-img-container">
+                                    <img src="assets/img/ebuletin/ebuletin-06.jpg" class="card-img-top" alt="E-Buletin Desember 2022">
+                                    <div class="ebuletin-overlay">
+                                        <a href="#" class="btn btn-primary"><i class="fas fa-eye me-2"></i>Lihat</a>
+                                        <a href="#" class="btn btn-success"><i class="fas fa-download me-2"></i>Unduh</a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="badge bg-primary">Edisi Desember 2022</span>
+                                        <span class="text-muted"><i class="fas fa-calendar-alt me-1"></i> 20 Des 2022</span>
+                                    </div>
+                                    <h5 class="card-title">Buletin Baitul Jannah Vol. 19</h5>
+                                    <p class="card-text">Edisi khusus akhir tahun 2022 dengan rangkuman prestasi sekolah, kegiatan sosial, dan rencana pengembangan 2023.</p>
+                                    <div class="ebuletin-info">
+                                        <span><i class="fas fa-file-pdf me-1"></i> PDF (3.5 MB)</span>
+                                        <span><i class="fas fa-download me-1"></i> 203 unduhan</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="pagination-block d-flex justify-content-center">
+                                <ul class="pagination">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-left"></i></a>
+                                    </li>
+                                    <li class="page-item active">
+                                        <a class="page-link" href="#">1</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">2</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">3</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"><i class="fas fa-angle-right"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /E-Buletin Content -->
+
+<%- include('partials/footer') %>
+
+			</div>
+		</div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+		<script src="assets/js/jquery-3.6.0.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="assets/js/bootstrap.bundle.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Owl Carousel JS -->
+		<script src="assets/js/owl.carousel.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Counterup JS -->
+		<script src="assets/js/jquery.waypoints.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		<script src="assets/js/jquery.counterup.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Aos JS -->
+		<script src="assets/plugins/aos/aos.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Slick JS -->
+		<script src="assets/js/slick.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Select2 JS -->
+		<script src="assets/plugins/select2/js/select2.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Feather Icon JS -->
+		<script src="assets/js/feather.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Swiper JS -->
+		<script src="assets/plugins/swiper/js/swiper.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Custom JS -->
+		<script src="assets/js/script.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<script src="assets/js/rocket-loader.min.js" data-cf-settings="cbba2d56f9728e00c99f173f-|49" defer=""></script>
+		
+	</body>
+</html>

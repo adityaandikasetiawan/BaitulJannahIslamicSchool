@@ -1,0 +1,386 @@
+<!DOCTYPE html> 
+<html lang="id">
+	
+<head>
+	
+		<!-- Meta Tags -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Galeri foto dan video kegiatan Baitul Jannah Islamic School yang menampilkan momen-momen penting dalam berbagai acara sekolah.">
+		<meta name="keywords" content="Galeri Foto, Galeri Video, Dokumentasi Kegiatan, Baitul Jannah Islamic School, Sekolah Islam Bandar Lampung">
+		<meta name="author" content="Baitul Jannah Islamic School">
+		<meta name="robots" content="index, follow">
+		
+		<title><%= title || 'Galeri - Baitul Jannah Islamic School' %></title>
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="assets/img/favicon.png"> 
+		<link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+
+		<!-- Theme Settings Js -->
+		<script src="assets/js/theme-script.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+		<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+
+		<!-- Owl Carousel CSS -->
+		<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+		<link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+
+		<!-- isax css -->
+		 <link rel="stylesheet" href="assets/css/iconsax.css">
+		
+		<!-- Slick CSS -->
+		<link rel="stylesheet" href="assets/plugins/slick/slick.css">
+		<link rel="stylesheet" href="assets/plugins/slick/slick-theme.css">
+		
+		<!-- Select2 CSS -->
+		<link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
+		
+		<!-- Aos CSS -->
+		<link rel="stylesheet" href="assets/plugins/aos/aos.css">
+
+		<!-- Lightbox CSS -->
+		<link rel="stylesheet" href="assets/plugins/lightbox/css/lightbox.min.css">
+
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="assets/css/style.css">
+	
+	</head>
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+		
+			<div class="home-4">
+<%- include('partials/header2') %>
+
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar text-center">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-12">
+							<h2 class="breadcrumb-title mb-2">Galeri</h2>
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb justify-content-center mb-0">
+									<li class="breadcrumb-item"><a href="/">Home</a></li>
+									<li class="breadcrumb-item">Informasi</li>
+									<li class="breadcrumb-item active" aria-current="page">Galeri</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+
+            <!-- Galeri Content -->
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="section-header text-center mb-5">
+                                <div class="section-line"></div>
+                                <h2 class="section-title">Galeri Kegiatan</h2>
+                                <p>Dokumentasi foto dan video kegiatan Baitul Jannah Islamic School</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filter Kategori -->
+                    <div class="row">
+                        <div class="col-lg-12 mb-4">
+                            <div class="gallery-filter d-flex justify-content-center flex-wrap">
+                                <button class="btn btn-outline-primary active me-2 mb-2" data-filter="*">Semua</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".akademik">Akademik</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".keagamaan">Keagamaan</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".ekstrakurikuler">Ekstrakurikuler</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".wisuda">Wisuda</button>
+                                <button class="btn btn-outline-primary mb-2" data-filter=".video">Video</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Galeri Items -->
+                    <div class="row gallery-container">
+                        <!-- Galeri Item 1 - Akademik -->
+                        <div class="col-md-6 col-lg-4 mb-4 gallery-item akademik">
+                            <div class="gallery-box">
+                                <div class="gallery-img">
+                                    <a href="assets/img/gallery/gallery-large-01.jpg" data-lightbox="gallery" data-title="Kegiatan Pembelajaran Aktif di Kelas">
+                                        <img src="assets/img/gallery/gallery-01.jpg" class="img-fluid" alt="Kegiatan Pembelajaran">
+                                        <div class="gallery-overlay">
+                                            <i class="fas fa-search-plus"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="gallery-info">
+                                    <h5>Kegiatan Pembelajaran Aktif di Kelas</h5>
+                                    <p><i class="fas fa-calendar-alt me-1"></i> 15 Januari 2024</p>
+                                    <span class="badge bg-primary">Akademik</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Galeri Item 2 - Keagamaan -->
+                        <div class="col-md-6 col-lg-4 mb-4 gallery-item keagamaan">
+                            <div class="gallery-box">
+                                <div class="gallery-img">
+                                    <a href="assets/img/gallery/gallery-large-02.jpg" data-lightbox="gallery" data-title="Program Tahfidz Al-Qur'an">
+                                        <img src="assets/img/gallery/gallery-02.jpg" class="img-fluid" alt="Program Tahfidz">
+                                        <div class="gallery-overlay">
+                                            <i class="fas fa-search-plus"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="gallery-info">
+                                    <h5>Program Tahfidz Al-Qur'an</h5>
+                                    <p><i class="fas fa-calendar-alt me-1"></i> 20 Februari 2024</p>
+                                    <span class="badge bg-success">Keagamaan</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Galeri Item 3 - Ekstrakurikuler -->
+                        <div class="col-md-6 col-lg-4 mb-4 gallery-item ekstrakurikuler">
+                            <div class="gallery-box">
+                                <div class="gallery-img">
+                                    <a href="assets/img/gallery/gallery-large-03.jpg" data-lightbox="gallery" data-title="Latihan Pramuka">
+                                        <img src="assets/img/gallery/gallery-03.jpg" class="img-fluid" alt="Latihan Pramuka">
+                                        <div class="gallery-overlay">
+                                            <i class="fas fa-search-plus"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="gallery-info">
+                                    <h5>Latihan Pramuka</h5>
+                                    <p><i class="fas fa-calendar-alt me-1"></i> 5 Maret 2024</p>
+                                    <span class="badge bg-warning">Ekstrakurikuler</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Galeri Item 4 - Wisuda -->
+                        <div class="col-md-6 col-lg-4 mb-4 gallery-item wisuda">
+                            <div class="gallery-box">
+                                <div class="gallery-img">
+                                    <a href="assets/img/gallery/gallery-large-04.jpg" data-lightbox="gallery" data-title="Wisuda Angkatan 2023">
+                                        <img src="assets/img/gallery/gallery-04.jpg" class="img-fluid" alt="Wisuda Angkatan 2023">
+                                        <div class="gallery-overlay">
+                                            <i class="fas fa-search-plus"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="gallery-info">
+                                    <h5>Wisuda Angkatan 2023</h5>
+                                    <p><i class="fas fa-calendar-alt me-1"></i> 15 Juni 2023</p>
+                                    <span class="badge bg-info">Wisuda</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Galeri Item 5 - Keagamaan -->
+                        <div class="col-md-6 col-lg-4 mb-4 gallery-item keagamaan">
+                            <div class="gallery-box">
+                                <div class="gallery-img">
+                                    <a href="assets/img/gallery/gallery-large-05.jpg" data-lightbox="gallery" data-title="Peringatan Maulid Nabi Muhammad SAW">
+                                        <img src="assets/img/gallery/gallery-05.jpg" class="img-fluid" alt="Maulid Nabi">
+                                        <div class="gallery-overlay">
+                                            <i class="fas fa-search-plus"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="gallery-info">
+                                    <h5>Peringatan Maulid Nabi Muhammad SAW</h5>
+                                    <p><i class="fas fa-calendar-alt me-1"></i> 10 Oktober 2023</p>
+                                    <span class="badge bg-success">Keagamaan</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Galeri Item 6 - Akademik -->
+                        <div class="col-md-6 col-lg-4 mb-4 gallery-item akademik">
+                            <div class="gallery-box">
+                                <div class="gallery-img">
+                                    <a href="assets/img/gallery/gallery-large-06.jpg" data-lightbox="gallery" data-title="Olimpiade Sains Tingkat Kota">
+                                        <img src="assets/img/gallery/gallery-06.jpg" class="img-fluid" alt="Olimpiade Sains">
+                                        <div class="gallery-overlay">
+                                            <i class="fas fa-search-plus"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="gallery-info">
+                                    <h5>Olimpiade Sains Tingkat Kota</h5>
+                                    <p><i class="fas fa-calendar-alt me-1"></i> 25 November 2023</p>
+                                    <span class="badge bg-primary">Akademik</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Galeri Item 7 - Video -->
+                        <div class="col-md-6 col-lg-4 mb-4 gallery-item video">
+                            <div class="gallery-box video-box">
+                                <div class="gallery-img">
+                                    <a href="#video-modal-1" data-bs-toggle="modal">
+                                        <img src="assets/img/gallery/video-thumb-01.jpg" class="img-fluid" alt="Video Profil Sekolah">
+                                        <div class="gallery-overlay">
+                                            <i class="fas fa-play-circle"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="gallery-info">
+                                    <h5>Video Profil Baitul Jannah Islamic School</h5>
+                                    <p><i class="fas fa-calendar-alt me-1"></i> 1 Januari 2024</p>
+                                    <span class="badge bg-danger">Video</span>
+                                </div>
+                            </div>
+                            <!-- Video Modal -->
+                            <div class="modal fade" id="video-modal-1" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Video Profil Baitul Jannah Islamic School</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="ratio ratio-16x9">
+                                                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video Profil" allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Galeri Item 8 - Video -->
+                        <div class="col-md-6 col-lg-4 mb-4 gallery-item video">
+                            <div class="gallery-box video-box">
+                                <div class="gallery-img">
+                                    <a href="#video-modal-2" data-bs-toggle="modal">
+                                        <img src="assets/img/gallery/video-thumb-02.jpg" class="img-fluid" alt="Video Kegiatan Wisuda">
+                                        <div class="gallery-overlay">
+                                            <i class="fas fa-play-circle"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="gallery-info">
+                                    <h5>Highlight Wisuda Angkatan 2023</h5>
+                                    <p><i class="fas fa-calendar-alt me-1"></i> 20 Juni 2023</p>
+                                    <span class="badge bg-danger">Video</span>
+                                </div>
+                            </div>
+                            <!-- Video Modal -->
+                            <div class="modal fade" id="video-modal-2" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Highlight Wisuda Angkatan 2023</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="ratio ratio-16x9">
+                                                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Highlight Wisuda" allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Galeri Item 9 - Ekstrakurikuler -->
+                        <div class="col-md-6 col-lg-4 mb-4 gallery-item ekstrakurikuler">
+                            <div class="gallery-box">
+                                <div class="gallery-img">
+                                    <a href="assets/img/gallery/gallery-large-09.jpg" data-lightbox="gallery" data-title="Pertandingan Futsal Antar Kelas">
+                                        <img src="assets/img/gallery/gallery-09.jpg" class="img-fluid" alt="Pertandingan Futsal">
+                                        <div class="gallery-overlay">
+                                            <i class="fas fa-search-plus"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="gallery-info">
+                                    <h5>Pertandingan Futsal Antar Kelas</h5>
+                                    <p><i class="fas fa-calendar-alt me-1"></i> 12 April 2024</p>
+                                    <span class="badge bg-warning">Ekstrakurikuler</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="pagination-block d-flex justify-content-center">
+                                <ul class="pagination">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-left"></i></a>
+                                    </li>
+                                    <li class="page-item active">
+                                        <a class="page-link" href="#">1</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">2</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">3</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"><i class="fas fa-angle-right"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Galeri Content -->
+
+<%- include('partials/footer') %>
+
+			</div>
+		</div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+		<script src="assets/js/jquery-3.6.0.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="assets/js/bootstrap.bundle.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Owl Carousel JS -->
+		<script src="assets/js/owl.carousel.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Counterup JS -->
+		<script src="assets/js/jquery.waypoints.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		<script src="assets/js/jquery.counterup.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Aos JS -->
+		<script src="assets/plugins/aos/aos.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Slick JS -->
+		<script src="assets/js/slick.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Select2 JS -->
+		<script src="assets/plugins/select2/js/select2.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Feather Icon JS -->
+		<script src="assets/js/feather.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Lightbox JS -->
+		<script src="assets/plugins/lightbox/js/lightbox.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Isotope JS -->
+		<script src="assets/plugins/isotope/isotope.pkgd.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Custom JS -->
+		<script src="assets/js/script.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<script src="assets/js/rocket-loader.min.js" data-cf-settings="cbba2d56f9728e00c99f173f-|49" defer=""></script>
+		
+	</body>
+</html>

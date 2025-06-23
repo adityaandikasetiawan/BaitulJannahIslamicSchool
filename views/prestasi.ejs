@@ -1,0 +1,342 @@
+<!DOCTYPE html> 
+<html lang="id">
+	
+<head>
+	
+		<!-- Meta Tags -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Prestasi dan penghargaan yang telah diraih oleh siswa dan lembaga Baitul Jannah Islamic School dalam berbagai bidang akademik dan non-akademik.">
+		<meta name="keywords" content="Prestasi, Penghargaan, Lomba, Kompetisi, Baitul Jannah Islamic School, Sekolah Islam Bandar Lampung">
+		<meta name="author" content="Baitul Jannah Islamic School">
+		<meta name="robots" content="index, follow">
+		
+		<title><%= title || 'Prestasi - Baitul Jannah Islamic School' %></title>
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="assets/img/favicon.png"> 
+		<link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+
+		<!-- Theme Settings Js -->
+		<script src="assets/js/theme-script.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+		<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+
+		<!-- Owl Carousel CSS -->
+		<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+		<link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+
+		<!-- isax css -->
+		 <link rel="stylesheet" href="assets/css/iconsax.css">
+		
+		<!-- Slick CSS -->
+		<link rel="stylesheet" href="assets/plugins/slick/slick.css">
+		<link rel="stylesheet" href="assets/plugins/slick/slick-theme.css">
+		
+		<!-- Select2 CSS -->
+		<link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
+		
+		<!-- Aos CSS -->
+		<link rel="stylesheet" href="assets/plugins/aos/aos.css">
+
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="assets/css/style.css">
+	
+	</head>
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+		
+			<div class="home-4">
+<%- include('partials/header2') %>
+
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar text-center">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-12">
+							<h2 class="breadcrumb-title mb-2">Prestasi</h2>
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb justify-content-center mb-0">
+									<li class="breadcrumb-item"><a href="/">Home</a></li>
+									<li class="breadcrumb-item">Informasi</li>
+									<li class="breadcrumb-item active" aria-current="page">Prestasi</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+
+            <!-- Prestasi Content -->
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="section-header text-center mb-5">
+                                <div class="section-line"></div>
+                                <h2 class="section-title">Prestasi Membanggakan</h2>
+                                <p>Berbagai prestasi dan penghargaan yang telah diraih oleh siswa dan lembaga Baitul Jannah Islamic School</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filter Kategori -->
+                    <div class="row">
+                        <div class="col-lg-12 mb-4">
+                            <div class="achievement-filter d-flex justify-content-center flex-wrap">
+                                <button class="btn btn-outline-primary active me-2 mb-2" data-filter="*">Semua</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".akademik">Akademik</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".olahraga">Olahraga</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".seni">Seni & Budaya</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".keagamaan">Keagamaan</button>
+                                <button class="btn btn-outline-primary mb-2" data-filter=".lembaga">Penghargaan Lembaga</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Prestasi Items -->
+                    <div class="row achievement-grid">
+                        <!-- Prestasi Akademik 1 -->
+                        <div class="col-lg-4 col-md-6 achievement-item akademik">
+                            <div class="card mb-4">
+                                <div class="achievement-img">
+                                    <img src="assets/img/prestasi/olimpiade-matematika.jpg" class="card-img-top" alt="Juara Olimpiade Matematika">
+                                    <div class="achievement-badge">Akademik</div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="achievement-date mb-2"><i class="fas fa-calendar-alt me-2"></i>15 Mei 2023</div>
+                                    <h5 class="card-title">Juara 1 Olimpiade Matematika Tingkat Provinsi</h5>
+                                    <p class="card-text">Tim SMAIT Baitul Jannah berhasil meraih juara pertama dalam Olimpiade Matematika tingkat Provinsi Lampung yang diselenggarakan oleh Dinas Pendidikan Provinsi.</p>
+                                    <div class="achievement-meta d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-user-graduate me-2"></i>SMAIT</span>
+                                        <a href="#" class="btn btn-sm btn-primary">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Prestasi Akademik 2 -->
+                        <div class="col-lg-4 col-md-6 achievement-item akademik">
+                            <div class="card mb-4">
+                                <div class="achievement-img">
+                                    <img src="assets/img/prestasi/kompetisi-sains.jpg" class="card-img-top" alt="Kompetisi Sains Nasional">
+                                    <div class="achievement-badge">Akademik</div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="achievement-date mb-2"><i class="fas fa-calendar-alt me-2"></i>20 Juli 2023</div>
+                                    <h5 class="card-title">Medali Perak Kompetisi Sains Nasional</h5>
+                                    <p class="card-text">Siswa SMPIT Baitul Jannah berhasil meraih medali perak dalam Kompetisi Sains Nasional bidang Fisika yang diselenggarakan oleh Kementerian Pendidikan dan Kebudayaan.</p>
+                                    <div class="achievement-meta d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-user-graduate me-2"></i>SMPIT</span>
+                                        <a href="#" class="btn btn-sm btn-primary">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Prestasi Olahraga 1 -->
+                        <div class="col-lg-4 col-md-6 achievement-item olahraga">
+                            <div class="card mb-4">
+                                <div class="achievement-img">
+                                    <img src="assets/img/prestasi/futsal.jpg" class="card-img-top" alt="Juara Futsal">
+                                    <div class="achievement-badge">Olahraga</div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="achievement-date mb-2"><i class="fas fa-calendar-alt me-2"></i>10 April 2023</div>
+                                    <h5 class="card-title">Juara 2 Turnamen Futsal Antar SMA se-Bandar Lampung</h5>
+                                    <p class="card-text">Tim Futsal SMAIT Baitul Jannah berhasil meraih juara 2 dalam turnamen futsal antar SMA se-Bandar Lampung yang diselenggarakan oleh KONI Kota Bandar Lampung.</p>
+                                    <div class="achievement-meta d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-user-graduate me-2"></i>SMAIT</span>
+                                        <a href="#" class="btn btn-sm btn-primary">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Prestasi Keagamaan 1 -->
+                        <div class="col-lg-4 col-md-6 achievement-item keagamaan">
+                            <div class="card mb-4">
+                                <div class="achievement-img">
+                                    <img src="assets/img/prestasi/tahfidz.jpg" class="card-img-top" alt="Lomba Tahfidz">
+                                    <div class="achievement-badge">Keagamaan</div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="achievement-date mb-2"><i class="fas fa-calendar-alt me-2"></i>5 Maret 2023</div>
+                                    <h5 class="card-title">Juara 1 Lomba Tahfidz Qur'an Tingkat Provinsi</h5>
+                                    <p class="card-text">Siswa SDIT Baitul Jannah berhasil meraih juara 1 dalam Lomba Tahfidz Qur'an kategori 5 juz tingkat Provinsi Lampung yang diselenggarakan oleh Kanwil Kemenag Provinsi Lampung.</p>
+                                    <div class="achievement-meta d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-user-graduate me-2"></i>SDIT</span>
+                                        <a href="#" class="btn btn-sm btn-primary">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Prestasi Seni 1 -->
+                        <div class="col-lg-4 col-md-6 achievement-item seni">
+                            <div class="card mb-4">
+                                <div class="achievement-img">
+                                    <img src="assets/img/prestasi/kaligrafi.jpg" class="card-img-top" alt="Lomba Kaligrafi">
+                                    <div class="achievement-badge">Seni & Budaya</div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="achievement-date mb-2"><i class="fas fa-calendar-alt me-2"></i>12 Juni 2023</div>
+                                    <h5 class="card-title">Juara 1 Lomba Kaligrafi Tingkat Nasional</h5>
+                                    <p class="card-text">Siswa SMPIT Baitul Jannah berhasil meraih juara 1 dalam Lomba Kaligrafi Islam tingkat Nasional yang diselenggarakan oleh Kementerian Agama RI.</p>
+                                    <div class="achievement-meta d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-user-graduate me-2"></i>SMPIT</span>
+                                        <a href="#" class="btn btn-sm btn-primary">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Prestasi Lembaga 1 -->
+                        <div class="col-lg-4 col-md-6 achievement-item lembaga">
+                            <div class="card mb-4">
+                                <div class="achievement-img">
+                                    <img src="assets/img/prestasi/adiwiyata.jpg" class="card-img-top" alt="Penghargaan Adiwiyata">
+                                    <div class="achievement-badge">Penghargaan Lembaga</div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="achievement-date mb-2"><i class="fas fa-calendar-alt me-2"></i>22 April 2023</div>
+                                    <h5 class="card-title">Penghargaan Sekolah Adiwiyata Tingkat Nasional</h5>
+                                    <p class="card-text">Baitul Jannah Islamic School menerima penghargaan sebagai Sekolah Adiwiyata tingkat Nasional dari Kementerian Lingkungan Hidup dan Kehutanan RI.</p>
+                                    <div class="achievement-meta d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-award me-2"></i>Lembaga</span>
+                                        <a href="#" class="btn btn-sm btn-primary">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Prestasi Akademik 3 -->
+                        <div class="col-lg-4 col-md-6 achievement-item akademik">
+                            <div class="card mb-4">
+                                <div class="achievement-img">
+                                    <img src="assets/img/prestasi/robotik.jpg" class="card-img-top" alt="Kompetisi Robotik">
+                                    <div class="achievement-badge">Akademik</div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="achievement-date mb-2"><i class="fas fa-calendar-alt me-2"></i>8 Agustus 2023</div>
+                                    <h5 class="card-title">Juara 2 Kompetisi Robotik Tingkat Nasional</h5>
+                                    <p class="card-text">Tim Robotik SMAIT Baitul Jannah berhasil meraih juara 2 dalam Kompetisi Robotik Tingkat Nasional yang diselenggarakan oleh Institut Teknologi Bandung.</p>
+                                    <div class="achievement-meta d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-user-graduate me-2"></i>SMAIT</span>
+                                        <a href="#" class="btn btn-sm btn-primary">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Prestasi Olahraga 2 -->
+                        <div class="col-lg-4 col-md-6 achievement-item olahraga">
+                            <div class="card mb-4">
+                                <div class="achievement-img">
+                                    <img src="assets/img/prestasi/renang.jpg" class="card-img-top" alt="Lomba Renang">
+                                    <div class="achievement-badge">Olahraga</div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="achievement-date mb-2"><i class="fas fa-calendar-alt me-2"></i>15 September 2023</div>
+                                    <h5 class="card-title">Medali Emas Lomba Renang Tingkat Provinsi</h5>
+                                    <p class="card-text">Siswa SDIT Baitul Jannah berhasil meraih medali emas dalam Lomba Renang kategori gaya bebas tingkat Provinsi Lampung yang diselenggarakan oleh KONI Provinsi Lampung.</p>
+                                    <div class="achievement-meta d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-user-graduate me-2"></i>SDIT</span>
+                                        <a href="#" class="btn btn-sm btn-primary">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Prestasi Keagamaan 2 -->
+                        <div class="col-lg-4 col-md-6 achievement-item keagamaan">
+                            <div class="card mb-4">
+                                <div class="achievement-img">
+                                    <img src="assets/img/prestasi/dai-cilik.jpg" class="card-img-top" alt="Lomba Da'i Cilik">
+                                    <div class="achievement-badge">Keagamaan</div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="achievement-date mb-2"><i class="fas fa-calendar-alt me-2"></i>20 Oktober 2023</div>
+                                    <h5 class="card-title">Juara 1 Lomba Da'i Cilik Tingkat Kota</h5>
+                                    <p class="card-text">Siswa SDIT Baitul Jannah berhasil meraih juara 1 dalam Lomba Da'i Cilik tingkat Kota Bandar Lampung yang diselenggarakan oleh MUI Kota Bandar Lampung.</p>
+                                    <div class="achievement-meta d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-user-graduate me-2"></i>SDIT</span>
+                                        <a href="#" class="btn btn-sm btn-primary">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="pagination-block d-flex justify-content-center">
+                                <ul class="pagination">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-left"></i></a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"><i class="fas fa-angle-right"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Prestasi Content -->
+
+<%- include('partials/footer') %>
+
+			</div>
+		</div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+		<script src="assets/js/jquery-3.6.0.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="assets/js/bootstrap.bundle.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Owl Carousel JS -->
+		<script src="assets/js/owl.carousel.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Counterup JS -->
+		<script src="assets/js/jquery.waypoints.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		<script src="assets/js/jquery.counterup.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Aos JS -->
+		<script src="assets/plugins/aos/aos.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Slick JS -->
+		<script src="assets/js/slick.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Select2 JS -->
+		<script src="assets/plugins/select2/js/select2.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Feather Icon JS -->
+		<script src="assets/js/feather.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Swiper JS -->
+		<script src="assets/plugins/swiper/js/swiper.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Custom JS -->
+		<script src="assets/js/script.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<script src="assets/js/rocket-loader.min.js" data-cf-settings="cbba2d56f9728e00c99f173f-|49" defer=""></script>
+		
+	</body>
+</html>
