@@ -135,6 +135,42 @@ router.get('/permohonankunjungan', (req, res) => {
   });
 });
 
+// Dauroh Qur'an Route
+router.get('/daurohquran', (req, res) => {
+  res.render('daurohquran', {
+    title: 'Dauroh Qur\'an - Baitul Jannah Islamic School',
+    description: 'Program Dauroh Qur\'an Baitul Jannah Islamic School',
+    user: req.user
+  });
+});
+
+// Student Project Assessment Route
+router.get('/studentproject', (req, res) => {
+  res.render('studentproject', {
+    title: 'Student Project Assessment - Baitul Jannah Islamic School',
+    description: 'Program Student Project Assessment Baitul Jannah Islamic School',
+    user: req.user
+  });
+});
+
+// Ekstrakurikuler Route
+router.get('/ekstrakurikuler', (req, res) => {
+  res.render('ekstrakurikuler', {
+    title: 'Ekstrakurikuler - Baitul Jannah Islamic School',
+    description: 'Program Ekstrakurikuler Baitul Jannah Islamic School',
+    user: req.user
+  });
+});
+
+// Alumni Route
+router.get('/alumni', (req, res) => {
+  res.render('alumni', {
+    title: 'Alumni - Baitul Jannah Islamic School',
+    description: 'Alumni Baitul Jannah Islamic School',
+    user: req.user
+  });
+});
+
 router.get('/permohonanpenelitian', (req, res) => {
   res.render('permohonanpenelitian', {
     title: 'Permohonan Penelitian - Baitul Jannah Islamic School',
