@@ -6,7 +6,7 @@ const { forwardAuthenticated } = require('../middleware/auth');
 
 // Halaman Login
 router.get('/login', forwardAuthenticated, (req, res) => {
-  res.render('login', {
+  res.render('auth/login', {
     title: 'Login - Baitul Jannah Islamic School',
     description: 'Login ke akun Anda'
   });
@@ -23,7 +23,7 @@ router.post('/login', (req, res, next) => {
 
 // Halaman Register
 router.get('/register', forwardAuthenticated, (req, res) => {
-  res.render('register', {
+  res.render('auth/register', {
     title: 'Register - Baitul Jannah Islamic School',
     description: 'Daftar akun baru'
   });
@@ -48,7 +48,7 @@ router.post('/register', async (req, res) => {
   }
 
   if (errors.length > 0) {
-    res.render('register', {
+    res.render('auth/register', {
       title: 'Register - Baitul Jannah Islamic School',
       description: 'Daftar akun baru',
       errors,
@@ -64,7 +64,7 @@ router.post('/register', async (req, res) => {
       
       if (existingUser) {
         errors.push({ msg: 'Email sudah terdaftar' });
-        res.render('register', {
+        res.render('auth/register', {
           title: 'Register - Baitul Jannah Islamic School',
           description: 'Daftar akun baru',
           errors,

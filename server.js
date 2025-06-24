@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const session = require('express-session');
 const passport = require('passport');
 const flash = require('connect-flash');
+const { admin, db } = require('./config/firebase');
 
 // Load environment variables
 dotenv.config();
@@ -75,7 +76,7 @@ app.get('/', (req, res) => {
 
 // Route untuk halaman kontak
 app.get('/kontak', (req, res) => {
-    res.render('kontak', {
+    res.render('informasi/kontak', {
         title: 'Hubungi Kami - Baitul Jannah Islamic School',
         description: 'Hubungi Baitul Jannah Islamic School untuk informasi lebih lanjut',
         user: req.user
@@ -83,7 +84,7 @@ app.get('/kontak', (req, res) => {
 }); 
 
 app.get('/sejarahyayasan', (req, res) => {
-    res.render('sejarahyayasan', {
+    res.render('tentangkami/sejarahyayasan', {
         title: 'Sejarah Yayasan - Baitul Jannah Islamic School',
         description: 'Sejarah dan perkembangan Yayasan Baitul Jannah Islamic School',
         user: req.user
@@ -91,7 +92,7 @@ app.get('/sejarahyayasan', (req, res) => {
 });
 
 app.get('/comingsoon', (req, res) => {
-    res.render('comingsoon', {
+    res.render('informasi/comingsoon', {
         title: 'Comingsoon - Baitul Jannah Islamic School',
         description: 'Hubungi Baitul Jannah Islamic School untuk informasi lebih lanjut',
         user: req.user
@@ -114,7 +115,7 @@ app.use((err, req, res, next) => {
     res.status(500).send('Terjadi kesalahan pada server');
 });
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 app.listen(PORT, () => {
     console.log(`Server berjalan di port ${PORT}`);
 });

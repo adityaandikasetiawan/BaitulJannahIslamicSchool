@@ -1,0 +1,154 @@
+<%- include('../partials/header') %>
+
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Edit Agenda</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/admin/agenda">Kelola Agenda</a></li>
+                        <li class="breadcrumb-item active">Edit Agenda</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+
+        <!-- Flash Messages -->
+        <% if(typeof errors != 'undefined' && errors.length > 0) { %>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <ul class="mb-0">
+                    <% errors.forEach(function(error) { %>
+                        <li><%= error.msg %></li>
+                    <% }); %>
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% } %>
+        <!-- /Flash Messages -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/admin/agenda/edit/<%= agenda._id %>" method="POST" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Judul Agenda <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="judul" value="<%= agenda.judul %>" required>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Deskripsi <span class="text-danger">*</span></label>
+                                        <textarea class="form-control" id="editor" name="deskripsi" rows="10" required><%= agenda.deskripsi %></textarea>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Lokasi <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="lokasi" value="<%= agenda.lokasi %>" required>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Penyelenggara <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="penyelenggara" value="<%= agenda.penyelenggara %>" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Tanggal <span class="text-danger">*</span></label>
+                                        <input type="date" class="form-control" name="tanggal" value="<%= agenda.tanggal.toISOString().split('T')[0] %>" required>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Waktu Mulai <span class="text-danger">*</span></label>
+                                        <input type="time" class="form-control" name="waktuMulai" value="<%= agenda.waktuMulai %>" required>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Waktu Selesai</label>
+                                        <input type="time" class="form-control" name="waktuSelesai" value="<%= agenda.waktuSelesai %>">
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Kategori <span class="text-danger">*</span></label>
+                                        <select class="form-select" name="kategori" required>
+                                            <option value="">Pilih Kategori</option>
+                                            <option value="akademik" <%= agenda.kategori === 'akademik' ? 'selected' : '' %>>Akademik</option>
+                                            <option value="keagamaan" <%= agenda.kategori === 'keagamaan' ? 'selected' : '' %>>Keagamaan</option>
+                                            <option value="ekstrakurikuler" <%= agenda.kategori === 'ekstrakurikuler' ? 'selected' : '' %>>Ekstrakurikuler</option>
+                                            <option value="rapat" <%= agenda.kategori === 'rapat' ? 'selected' : '' %>>Rapat</option>
+                                            <option value="peringatan" <%= agenda.kategori === 'peringatan' ? 'selected' : '' %>>Peringatan Hari Besar</option>
+                                            <option value="lainnya" <%= agenda.kategori === 'lainnya' ? 'selected' : '' %>>Lainnya</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Status <span class="text-danger">*</span></label>
+                                        <select class="form-select" name="status" required>
+                                            <option value="upcoming" <%= agenda.status === 'upcoming' ? 'selected' : '' %>>Akan Datang</option>
+                                            <option value="ongoing" <%= agenda.status === 'ongoing' ? 'selected' : '' %>>Sedang Berlangsung</option>
+                                            <option value="completed" <%= agenda.status === 'completed' ? 'selected' : '' %>>Selesai</option>
+                                            <option value="canceled" <%= agenda.status === 'canceled' ? 'selected' : '' %>>Dibatalkan</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Gambar Agenda</label>
+                                        <input type="file" class="form-control" name="gambar" accept="image/*">
+                                        <small class="text-muted">Format: JPG, JPEG, PNG. Maks: 2MB. Biarkan kosong jika tidak ingin mengubah gambar.</small>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Gambar Saat Ini</label>
+                                        <div class="image-preview mt-2" id="imagePreview">
+                                            <% if(agenda.gambar) { %>
+                                                <img src="/assets/img/agenda/<%= agenda.gambar %>" alt="Preview" class="img-fluid rounded">
+                                            <% } else { %>
+                                                <img src="/assets/img/placeholder.jpg" alt="Preview" class="img-fluid rounded">
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-end mt-4">
+                                <a href="/admin/agenda" class="btn btn-secondary me-2">Batal</a>
+                                <button type="submit" class="btn btn-primary">Perbarui Agenda</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Page Wrapper -->
+
+<%- include('../partials/footer') %>
+
+<script>
+    // Initialize CKEditor
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
+    
+    // Image preview
+    document.querySelector('input[name="gambar"]').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                document.querySelector('#imagePreview img').src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>

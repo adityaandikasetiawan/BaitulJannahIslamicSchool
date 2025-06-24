@@ -1,0 +1,193 @@
+<%- include('../partials/header') %>
+
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Pengguna</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Pengguna</li>
+                    </ul>
+                </div>
+                <div class="col-auto float-end ms-auto">
+                    <a href="/admin/users/tambah" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Pengguna</a>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+
+        <!-- Search Filter -->
+        <div class="row filter-row mb-4">
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <input type="text" id="search-input" class="form-control" placeholder="Cari nama atau email...">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <select id="role-filter" class="form-select">
+                        <option value="">Semua Role</option>
+                        <option value="admin">Admin</option>
+                        <option value="staff">Staff</option>
+                        <option value="user">User</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <button id="reset-filter" class="btn btn-secondary w-100">Reset</button>
+            </div>
+        </div>
+        <!-- /Search Filter -->
+
+        <% if(typeof success_msg !== 'undefined' && success_msg.length > 0) { %>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <%= success_msg %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% } %>
+
+        <% if(typeof error_msg !== 'undefined' && error_msg.length > 0) { %>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <%= error_msg %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% } %>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-center mb-0" id="users-table">
+                                <thead>
+                                    <tr>
+                                        <th>Nama</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Tanggal Bergabung</th>
+                                        <th class="text-end">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if(typeof users !== 'undefined' && users.length > 0) { %>
+                                        <% users.forEach(function(user) { %>
+                                            <tr>
+                                                <td>
+                                                    <h2 class="table-avatar">
+                                                        <a class="avatar avatar-sm me-2">
+                                                            <img class="avatar-img rounded-circle" src="/assets/img/profiles/avatar-placeholder.jpg" alt="User Image">
+                                                        </a>
+                                                        <a><%= user.name %></a>
+                                                    </h2>
+                                                </td>
+                                                <td><%= user.email %></td>
+                                                <td>
+                                                    <% if(user.role === 'admin') { %>
+                                                        <span class="badge bg-danger">Admin</span>
+                                                    <% } else if(user.role === 'staff') { %>
+                                                        <span class="badge bg-info">Staff</span>
+                                                    <% } else { %>
+                                                        <span class="badge bg-secondary">User</span>
+                                                    <% } %>
+                                                </td>
+                                                <td><%= new Date(user.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) %></td>
+                                                <td class="text-end">
+                                                    <div class="actions">
+                                                        <a href="/admin/users/edit/<%= user._id %>" class="btn btn-sm bg-success-light me-2">
+                                                            <i class="fas fa-pen"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-sm bg-danger-light delete-btn" data-id="<%= user._id %>" data-bs-toggle="modal" data-bs-target="#delete_modal">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <% }); %>
+                                    <% } else { %>
+                                        <tr>
+                                            <td colspan="5" class="text-center">Tidak ada data pengguna</td>
+                                        </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Page Wrapper -->
+
+<!-- Delete Modal -->
+<div class="modal fade" id="delete_modal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Apakah Anda yakin ingin menghapus pengguna ini?</p>
+                <p class="text-danger"><small>Tindakan ini tidak dapat dibatalkan.</small></p>
+            </div>
+            <div class="modal-footer">
+                <form id="delete-form" action="/admin/users/delete" method="POST">
+                    <input type="hidden" name="user_id" id="delete_user_id">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Delete Modal -->
+
+<%- include('../partials/footer') %>
+
+<script>
+    $(document).ready(function() {
+        // Set user ID for delete
+        $('.delete-btn').on('click', function() {
+            const userId = $(this).data('id');
+            $('#delete_user_id').val(userId);
+        });
+
+        // Search and filter functionality
+        $('#search-input, #role-filter').on('input change', function() {
+            filterTable();
+        });
+
+        // Reset filters
+        $('#reset-filter').on('click', function() {
+            $('#search-input').val('');
+            $('#role-filter').val('');
+            filterTable();
+        });
+
+        function filterTable() {
+            const searchTerm = $('#search-input').val().toLowerCase();
+            const roleFilter = $('#role-filter').val().toLowerCase();
+
+            $('#users-table tbody tr').each(function() {
+                const name = $(this).find('td:nth-child(1)').text().toLowerCase();
+                const email = $(this).find('td:nth-child(2)').text().toLowerCase();
+                const role = $(this).find('td:nth-child(3)').text().toLowerCase();
+
+                const nameMatch = name.includes(searchTerm);
+                const emailMatch = email.includes(searchTerm);
+                const roleMatch = roleFilter === '' || role.includes(roleFilter);
+
+                if ((nameMatch || emailMatch) && roleMatch) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        }
+    });
+</script>

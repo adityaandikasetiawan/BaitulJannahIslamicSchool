@@ -1,0 +1,197 @@
+<%- include('../partials/header') %>
+
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Kelola Galeri</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Kelola Galeri</li>
+                    </ul>
+                </div>
+                <div class="col-auto">
+                    <a href="/admin/galeri/tambah" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Tambah Galeri
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+
+        <!-- Flash Messages -->
+        <% if(success_msg != ''){ %>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <%= success_msg %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% } %>
+        
+        <% if(error_msg != ''){ %>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <%= error_msg %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% } %>
+        <!-- /Flash Messages -->
+
+        <!-- Filter Options -->
+        <div class="card">
+            <div class="card-body">
+                <form action="/admin/galeri" method="GET" class="row align-items-end">
+                    <div class="col-md-3 mb-2">
+                        <label class="form-label">Kategori</label>
+                        <select class="form-select" name="kategori">
+                            <option value="">Semua Kategori</option>
+                            <option value="kegiatan" <%= filter && filter.kategori === 'kegiatan' ? 'selected' : '' %>>Kegiatan</option>
+                            <option value="fasilitas" <%= filter && filter.kategori === 'fasilitas' ? 'selected' : '' %>>Fasilitas</option>
+                            <option value="prestasi" <%= filter && filter.kategori === 'prestasi' ? 'selected' : '' %>>Prestasi</option>
+                            <option value="lainnya" <%= filter && filter.kategori === 'lainnya' ? 'selected' : '' %>>Lainnya</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <label class="form-label">Status</label>
+                        <select class="form-select" name="status">
+                            <option value="">Semua Status</option>
+                            <option value="published" <%= filter && filter.status === 'published' ? 'selected' : '' %>>Dipublikasikan</option>
+                            <option value="draft" <%= filter && filter.status === 'draft' ? 'selected' : '' %>>Draft</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <label class="form-label">Cari</label>
+                        <input type="text" class="form-control" name="search" value="<%= filter && filter.search ? filter.search : '' %>" placeholder="Cari judul...">
+                    </div>
+                    <div class="col-md-2 mb-2 text-end">
+                        <button type="submit" class="btn btn-primary w-100">Filter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /Filter Options -->
+
+        <div class="row">
+            <% if(typeof galeri != 'undefined' && galeri.length > 0) { %>
+                <% galeri.forEach(function(item) { %>
+                    <div class="col-md-4 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-img-top">
+                                <img src="/assets/img/galeri/<%= item.gambar %>" class="img-fluid" alt="<%= item.judul %>">
+                                <div class="overlay-box">
+                                    <div class="overlay-content">
+                                        <a href="/assets/img/galeri/<%= item.gambar %>" class="image-popup btn btn-sm btn-light">
+                                            <i class="fas fa-search-plus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><%= item.judul %></h5>
+                                <p class="card-text text-muted small">
+                                    <i class="fas fa-calendar-alt me-1"></i> <%= new Date(item.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) %>
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <div>
+                                        <span class="badge bg-info me-1"><%= item.kategori %></span>
+                                        <% if(item.isPublished) { %>
+                                            <span class="badge bg-success">Dipublikasikan</span>
+                                        <% } else { %>
+                                            <span class="badge bg-warning">Draft</span>
+                                        <% } %>
+                                    </div>
+                                    <div class="actions">
+                                        <a href="/admin/galeri/edit/<%= item._id %>" class="btn btn-sm bg-success-light me-1">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-sm bg-danger-light" data-bs-toggle="modal" data-bs-target="#delete_modal_<%= item._id %>">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Delete Modal -->
+                    <div class="modal fade" id="delete_modal_<%= item._id %>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Apakah Anda yakin ingin menghapus galeri "<%= item.judul %>"?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                    <a href="/admin/galeri/hapus/<%= item._id %>" class="btn btn-danger">Hapus</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Delete Modal -->
+                <% }); %>
+            <% } else { %>
+                <div class="col-12">
+                    <div class="alert alert-info text-center">
+                        Tidak ada data galeri yang ditemukan.
+                    </div>
+                </div>
+            <% } %>
+        </div>
+        
+        <!-- Pagination -->
+        <% if(typeof pagination != 'undefined' && pagination.totalPages > 1) { %>
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center">
+                            <% if(pagination.currentPage > 1) { %>
+                                <li class="page-item">
+                                    <a class="page-link" href="/admin/galeri?page=<%= pagination.currentPage - 1 %><%= pagination.queryParams %>" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                            <% } %>
+                            
+                            <% for(let i = 1; i <= pagination.totalPages; i++) { %>
+                                <li class="page-item <%= pagination.currentPage === i ? 'active' : '' %>">
+                                    <a class="page-link" href="/admin/galeri?page=<%= i %><%= pagination.queryParams %>"><%= i %></a>
+                                </li>
+                            <% } %>
+                            
+                            <% if(pagination.currentPage < pagination.totalPages) { %>
+                                <li class="page-item">
+                                    <a class="page-link" href="/admin/galeri?page=<%= pagination.currentPage + 1 %><%= pagination.queryParams %>" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            <% } %>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        <% } %>
+        <!-- /Pagination -->
+    </div>
+</div>
+<!-- /Page Wrapper -->
+
+<%- include('../partials/footer') %>
+
+<script>
+    // Initialize Magnific Popup for image gallery
+    $(document).ready(function() {
+        $('.image-popup').magnificPopup({
+            type: 'image',
+            closeOnContentClick: true,
+            mainClass: 'mfp-img-mobile',
+            image: {
+                verticalFit: true
+            }
+        });
+    });
+</script>

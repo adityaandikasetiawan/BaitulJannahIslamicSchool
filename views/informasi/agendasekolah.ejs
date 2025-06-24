@@ -1,0 +1,558 @@
+<!DOCTYPE html> 
+<html lang="id">
+	
+<head>
+	
+		<!-- Meta Tags -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Agenda dan kegiatan yang akan diselenggarakan oleh Baitul Jannah Islamic School, termasuk kegiatan akademik, ekstrakurikuler, dan acara khusus.">
+		<meta name="keywords" content="Agenda Sekolah, Kalender Akademik, Kegiatan Sekolah, Baitul Jannah Islamic School, Sekolah Islam Bandar Lampung">
+		<meta name="author" content="Baitul Jannah Islamic School">
+		<meta name="robots" content="index, follow">
+		
+		<title><%= title || 'Agenda Sekolah - Baitul Jannah Islamic School' %></title>
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="assets/img/favicon.png"> 
+		<link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+
+		<!-- Theme Settings Js -->
+		<script src="assets/js/theme-script.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+		<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+
+		<!-- Owl Carousel CSS -->
+		<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+		<link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+
+		<!-- isax css -->
+		 <link rel="stylesheet" href="assets/css/iconsax.css">
+		
+		<!-- Slick CSS -->
+		<link rel="stylesheet" href="assets/plugins/slick/slick.css">
+		<link rel="stylesheet" href="assets/plugins/slick/slick-theme.css">
+		
+		<!-- Select2 CSS -->
+		<link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
+		
+		<!-- Aos CSS -->
+		<link rel="stylesheet" href="assets/plugins/aos/aos.css">
+
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="assets/css/style.css">
+	
+	</head>
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+		
+			<div class="home-4">
+<%- include('../partials/header2') %>
+
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar text-center">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-12">
+							<h2 class="breadcrumb-title mb-2">Agenda Sekolah</h2>
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb justify-content-center mb-0">
+									<li class="breadcrumb-item"><a href="/">Home</a></li>
+									<li class="breadcrumb-item">Informasi</li>
+									<li class="breadcrumb-item active" aria-current="page">Agenda Sekolah</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+
+            <!-- Agenda Sekolah Content -->
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="section-header text-center mb-5">
+                                <div class="section-line"></div>
+                                <h2 class="section-title">Kalender Kegiatan</h2>
+                                <p>Jadwal kegiatan dan agenda penting Baitul Jannah Islamic School</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filter Bulan -->
+                    <div class="row">
+                        <div class="col-lg-12 mb-4">
+                            <div class="month-filter d-flex justify-content-center flex-wrap">
+                                <button class="btn btn-outline-primary active me-2 mb-2" data-filter="*">Semua</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".januari">Januari</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".februari">Februari</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".maret">Maret</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".april">April</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".mei">Mei</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".juni">Juni</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".juli">Juli</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".agustus">Agustus</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".september">September</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".oktober">Oktober</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-filter=".november">November</button>
+                                <button class="btn btn-outline-primary mb-2" data-filter=".desember">Desember</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Agenda Timeline -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="agenda-timeline">
+                                <!-- Januari -->
+                                <div class="agenda-month januari">
+                                    <div class="month-header">
+                                        <h3><i class="fas fa-calendar-alt me-2"></i>Januari 2024</h3>
+                                    </div>
+                                    <div class="agenda-items">
+                                        <div class="agenda-item">
+                                            <div class="row">
+                                                <div class="col-md-2 col-sm-3">
+                                                    <div class="agenda-date">
+                                                        <span class="day">05</span>
+                                                        <span class="month">Jan</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-10 col-sm-9">
+                                                    <div class="card mb-4">
+                                                        <div class="card-body">
+                                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                                <h5 class="card-title mb-0">Pembukaan Semester Genap 2023/2024</h5>
+                                                                <span class="badge bg-primary">Akademik</span>
+                                                            </div>
+                                                            <p class="card-text">Pembukaan semester genap tahun ajaran 2023/2024 untuk seluruh jenjang pendidikan di Baitul Jannah Islamic School.</p>
+                                                            <div class="agenda-details">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <p><i class="fas fa-clock me-2"></i>07:30 - 10:00 WIB</p>
+                                                                        <p><i class="fas fa-map-marker-alt me-2"></i>Aula Utama</p>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <p><i class="fas fa-users me-2"></i>Seluruh Siswa dan Guru</p>
+                                                                        <p><i class="fas fa-user me-2"></i>Kepala Sekolah</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="agenda-item">
+                                            <div class="row">
+                                                <div class="col-md-2 col-sm-3">
+                                                    <div class="agenda-date">
+                                                        <span class="day">15</span>
+                                                        <span class="month">Jan</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-10 col-sm-9">
+                                                    <div class="card mb-4">
+                                                        <div class="card-body">
+                                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                                <h5 class="card-title mb-0">Rapat Orang Tua Siswa SDIT</h5>
+                                                                <span class="badge bg-info">Pertemuan</span>
+                                                            </div>
+                                                            <p class="card-text">Rapat koordinasi antara pihak sekolah dengan orang tua/wali siswa SDIT untuk membahas program semester genap dan evaluasi semester ganjil.</p>
+                                                            <div class="agenda-details">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <p><i class="fas fa-clock me-2"></i>13:00 - 15:00 WIB</p>
+                                                                        <p><i class="fas fa-map-marker-alt me-2"></i>Aula SDIT</p>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <p><i class="fas fa-users me-2"></i>Orang Tua Siswa SDIT</p>
+                                                                        <p><i class="fas fa-user me-2"></i>Kepala SDIT</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Februari -->
+                                <div class="agenda-month februari">
+                                    <div class="month-header">
+                                        <h3><i class="fas fa-calendar-alt me-2"></i>Februari 2024</h3>
+                                    </div>
+                                    <div class="agenda-items">
+                                        <div class="agenda-item">
+                                            <div class="row">
+                                                <div class="col-md-2 col-sm-3">
+                                                    <div class="agenda-date">
+                                                        <span class="day">10</span>
+                                                        <span class="month">Feb</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-10 col-sm-9">
+                                                    <div class="card mb-4">
+                                                        <div class="card-body">
+                                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                                <h5 class="card-title mb-0">Peringatan Isra Mi'raj</h5>
+                                                                <span class="badge bg-success">Keagamaan</span>
+                                                            </div>
+                                                            <p class="card-text">Peringatan Isra Mi'raj Nabi Muhammad SAW dengan rangkaian acara ceramah agama dan lomba-lomba islami untuk seluruh jenjang pendidikan.</p>
+                                                            <div class="agenda-details">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <p><i class="fas fa-clock me-2"></i>08:00 - 12:00 WIB</p>
+                                                                        <p><i class="fas fa-map-marker-alt me-2"></i>Masjid Kampus</p>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <p><i class="fas fa-users me-2"></i>Seluruh Siswa dan Guru</p>
+                                                                        <p><i class="fas fa-user me-2"></i>Ustadz Ahmad Fauzi</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="agenda-item">
+                                            <div class="row">
+                                                <div class="col-md-2 col-sm-3">
+                                                    <div class="agenda-date">
+                                                        <span class="day">20</span>
+                                                        <span class="month">Feb</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-10 col-sm-9">
+                                                    <div class="card mb-4">
+                                                        <div class="card-body">
+                                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                                <h5 class="card-title mb-0">Olimpiade Sains Internal</h5>
+                                                                <span class="badge bg-warning">Kompetisi</span>
+                                                            </div>
+                                                            <p class="card-text">Olimpiade Sains Internal untuk jenjang SDIT, SMPIT, dan SMAIT dengan mata pelajaran Matematika, IPA, dan IPS.</p>
+                                                            <div class="agenda-details">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <p><i class="fas fa-clock me-2"></i>08:00 - 15:00 WIB</p>
+                                                                        <p><i class="fas fa-map-marker-alt me-2"></i>Ruang Kelas</p>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <p><i class="fas fa-users me-2"></i>Siswa Terpilih</p>
+                                                                        <p><i class="fas fa-user me-2"></i>Tim Guru Sains</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Maret -->
+                                <div class="agenda-month maret">
+                                    <div class="month-header">
+                                        <h3><i class="fas fa-calendar-alt me-2"></i>Maret 2024</h3>
+                                    </div>
+                                    <div class="agenda-items">
+                                        <div class="agenda-item">
+                                            <div class="row">
+                                                <div class="col-md-2 col-sm-3">
+                                                    <div class="agenda-date">
+                                                        <span class="day">05</span>
+                                                        <span class="month">Mar</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-10 col-sm-9">
+                                                    <div class="card mb-4">
+                                                        <div class="card-body">
+                                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                                <h5 class="card-title mb-0">Ujian Tengah Semester</h5>
+                                                                <span class="badge bg-primary">Akademik</span>
+                                                            </div>
+                                                            <p class="card-text">Ujian Tengah Semester Genap untuk seluruh jenjang pendidikan di Baitul Jannah Islamic School.</p>
+                                                            <div class="agenda-details">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <p><i class="fas fa-clock me-2"></i>07:30 - 12:00 WIB</p>
+                                                                        <p><i class="fas fa-map-marker-alt me-2"></i>Ruang Kelas</p>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <p><i class="fas fa-users me-2"></i>Seluruh Siswa</p>
+                                                                        <p><i class="fas fa-user me-2"></i>Tim Akademik</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="agenda-item">
+                                            <div class="row">
+                                                <div class="col-md-2 col-sm-3">
+                                                    <div class="agenda-date">
+                                                        <span class="day">20</span>
+                                                        <span class="month">Mar</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-10 col-sm-9">
+                                                    <div class="card mb-4">
+                                                        <div class="card-body">
+                                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                                <h5 class="card-title mb-0">Pekan Olahraga dan Seni</h5>
+                                                                <span class="badge bg-danger">Ekstrakurikuler</span>
+                                                            </div>
+                                                            <p class="card-text">Pekan Olahraga dan Seni (PORSENI) internal Baitul Jannah Islamic School dengan berbagai cabang lomba olahraga dan seni.</p>
+                                                            <div class="agenda-details">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <p><i class="fas fa-clock me-2"></i>08:00 - 16:00 WIB</p>
+                                                                        <p><i class="fas fa-map-marker-alt me-2"></i>Lapangan dan Aula</p>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <p><i class="fas fa-users me-2"></i>Seluruh Siswa</p>
+                                                                        <p><i class="fas fa-user me-2"></i>Tim OSIS dan Guru</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- April -->
+                                <div class="agenda-month april">
+                                    <div class="month-header">
+                                        <h3><i class="fas fa-calendar-alt me-2"></i>April 2024</h3>
+                                    </div>
+                                    <div class="agenda-items">
+                                        <div class="agenda-item">
+                                            <div class="row">
+                                                <div class="col-md-2 col-sm-3">
+                                                    <div class="agenda-date">
+                                                        <span class="day">10</span>
+                                                        <span class="month">Apr</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-10 col-sm-9">
+                                                    <div class="card mb-4">
+                                                        <div class="card-body">
+                                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                                <h5 class="card-title mb-0">Peringatan Hari Kartini</h5>
+                                                                <span class="badge bg-info">Peringatan</span>
+                                                            </div>
+                                                            <p class="card-text">Peringatan Hari Kartini dengan berbagai kegiatan seperti lomba busana tradisional, lomba memasak, dan pentas seni budaya.</p>
+                                                            <div class="agenda-details">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <p><i class="fas fa-clock me-2"></i>08:00 - 14:00 WIB</p>
+                                                                        <p><i class="fas fa-map-marker-alt me-2"></i>Aula Utama</p>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <p><i class="fas fa-users me-2"></i>Seluruh Siswa dan Guru</p>
+                                                                        <p><i class="fas fa-user me-2"></i>Tim Kegiatan</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Mei -->
+                                <div class="agenda-month mei">
+                                    <div class="month-header">
+                                        <h3><i class="fas fa-calendar-alt me-2"></i>Mei 2024</h3>
+                                    </div>
+                                    <div class="agenda-items">
+                                        <div class="agenda-item">
+                                            <div class="row">
+                                                <div class="col-md-2 col-sm-3">
+                                                    <div class="agenda-date">
+                                                        <span class="day">15</span>
+                                                        <span class="month">Mei</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-10 col-sm-9">
+                                                    <div class="card mb-4">
+                                                        <div class="card-body">
+                                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                                <h5 class="card-title mb-0">Ujian Akhir Semester</h5>
+                                                                <span class="badge bg-primary">Akademik</span>
+                                                            </div>
+                                                            <p class="card-text">Ujian Akhir Semester Genap untuk seluruh jenjang pendidikan di Baitul Jannah Islamic School.</p>
+                                                            <div class="agenda-details">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <p><i class="fas fa-clock me-2"></i>07:30 - 12:00 WIB</p>
+                                                                        <p><i class="fas fa-map-marker-alt me-2"></i>Ruang Kelas</p>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <p><i class="fas fa-users me-2"></i>Seluruh Siswa</p>
+                                                                        <p><i class="fas fa-user me-2"></i>Tim Akademik</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Juni -->
+                                <div class="agenda-month juni">
+                                    <div class="month-header">
+                                        <h3><i class="fas fa-calendar-alt me-2"></i>Juni 2024</h3>
+                                    </div>
+                                    <div class="agenda-items">
+                                        <div class="agenda-item">
+                                            <div class="row">
+                                                <div class="col-md-2 col-sm-3">
+                                                    <div class="agenda-date">
+                                                        <span class="day">10</span>
+                                                        <span class="month">Jun</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-10 col-sm-9">
+                                                    <div class="card mb-4">
+                                                        <div class="card-body">
+                                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                                <h5 class="card-title mb-0">Pembagian Rapor Semester Genap</h5>
+                                                                <span class="badge bg-primary">Akademik</span>
+                                                            </div>
+                                                            <p class="card-text">Pembagian rapor semester genap tahun ajaran 2023/2024 untuk seluruh jenjang pendidikan di Baitul Jannah Islamic School.</p>
+                                                            <div class="agenda-details">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <p><i class="fas fa-clock me-2"></i>08:00 - 12:00 WIB</p>
+                                                                        <p><i class="fas fa-map-marker-alt me-2"></i>Ruang Kelas</p>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <p><i class="fas fa-users me-2"></i>Orang Tua dan Siswa</p>
+                                                                        <p><i class="fas fa-user me-2"></i>Wali Kelas</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="agenda-item">
+                                            <div class="row">
+                                                <div class="col-md-2 col-sm-3">
+                                                    <div class="agenda-date">
+                                                        <span class="day">15</span>
+                                                        <span class="month">Jun</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-10 col-sm-9">
+                                                    <div class="card mb-4">
+                                                        <div class="card-body">
+                                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                                <h5 class="card-title mb-0">Wisuda Siswa SMAIT</h5>
+                                                                <span class="badge bg-success">Seremonial</span>
+                                                            </div>
+                                                            <p class="card-text">Wisuda siswa SMAIT Baitul Jannah Islamic School angkatan 2023/2024.</p>
+                                                            <div class="agenda-details">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <p><i class="fas fa-clock me-2"></i>09:00 - 12:00 WIB</p>
+                                                                        <p><i class="fas fa-map-marker-alt me-2"></i>Aula Utama</p>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <p><i class="fas fa-users me-2"></i>Siswa SMAIT dan Orang Tua</p>
+                                                                        <p><i class="fas fa-user me-2"></i>Kepala SMAIT</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Download Kalender Akademik -->
+                    <div class="row mt-4">
+                        <div class="col-lg-12 text-center">
+                            <div class="download-calendar">
+                                <h4>Download Kalender Akademik</h4>
+                                <p>Unduh kalender akademik lengkap tahun ajaran 2023/2024 dalam format PDF.</p>
+                                <a href="#" class="btn btn-primary"><i class="fas fa-download me-2"></i>Download Kalender Akademik</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Agenda Sekolah Content -->
+
+<%- include('../partials/footer') %>
+
+			</div>
+		</div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+		<script src="assets/js/jquery-3.6.0.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="assets/js/bootstrap.bundle.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Owl Carousel JS -->
+		<script src="assets/js/owl.carousel.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Counterup JS -->
+		<script src="assets/js/jquery.waypoints.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		<script src="assets/js/jquery.counterup.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Aos JS -->
+		<script src="assets/plugins/aos/aos.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Slick JS -->
+		<script src="assets/js/slick.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Select2 JS -->
+		<script src="assets/plugins/select2/js/select2.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Feather Icon JS -->
+		<script src="assets/js/feather.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Swiper JS -->
+		<script src="assets/plugins/swiper/js/swiper.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Custom JS -->
+		<script src="assets/js/script.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<script src="assets/js/rocket-loader.min.js" data-cf-settings="cbba2d56f9728e00c99f173f-|49" defer=""></script>
+		
+	</body>
+</html>
