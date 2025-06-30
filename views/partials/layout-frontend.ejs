@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="<%= description %>">
+    
+    <title><%= title %></title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/assets/img/logo.png">
+    <link rel="apple-touch-icon" href="/assets/img/apple-icon.png">
+
+    <!-- Theme Settings Js -->
+    <script src="/assets/js/theme-script.js" type="text/javascript"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    
+    <!-- Vendor Prefixes CSS for Browser Compatibility -->
+    <link rel="stylesheet" href="/assets/css/vendor-prefixes.css">
+    
+    <!-- CSS Fixes for Browser Compatibility -->
+    <link rel="stylesheet" href="/assets/css/css-fixes.css">
+    
+    <!-- Additional CSS -->
+    <%- typeof additionalCSS !== 'undefined' ? additionalCSS : '' %>
+</head>
+
+<body>
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+        <%- body %>
+    </div>
+    <!-- /Main Wrapper -->
+    
+    <!-- jQuery -->
+    <script src="/assets/js/jquery-3.6.0.min.js"></script>
+    
+    <!-- Bootstrap Core JS -->
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="/assets/js/script.js"></script>
+    
+    <!-- Form Fixes JS -->
+    <script src="/assets/js/form-fixes.js"></script>
+    
+    <!-- Cache Busting JS -->
+    <script src="/assets/js/cache-busting.js"></script>
+    
+    <!-- Additional JS -->
+    <%- typeof additionalJS !== 'undefined' ? additionalJS : '' %>
+</body>
+
+</html>

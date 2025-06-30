@@ -1,781 +1,641 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs');
-const { ensureAuthenticated, ensureAdmin } = require('../middleware/auth');
-const User = require('../models/User');
-const Berita = require('../models/Berita');
-const Pengumuman = require('../models/Pengumuman');
+const { ensureAuthenticated, isAdmin } = require('../middleware/auth');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+const db = require('../config/database');
+
+// Models
+const Akademik = require('../models/Akademik');
+const Informasi = require('../models/Informasi');
+const Kegiatan = require('../models/Kegiatan');
+const TentangKami = require('../models/TentangKami');
 const Agenda = require('../models/Agenda');
+const Pengumuman = require('../models/Pengumuman');
+const Berita = require('../models/Berita');
 const Galeri = require('../models/Galeri');
 
-// Dashboard Admin
-router.get('/dashboard', ensureAdmin, async (req, res) => {
+// Set up multer for file uploads
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    const uploadDir = path.join(__dirname, '../public/uploads');
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+    cb(null, uploadDir);
+  },
+  filename: function(req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname.replace(/\s+/g, '-'));
+  }
+});
+
+const upload = multer({ 
+  storage: storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+  fileFilter: function(req, file, cb) {
+    const filetypes = /jpeg|jpg|png|gif|pdf|doc|docx|xls|xlsx|ppt|pptx/;
+    const mimetype = filetypes.test(file.mimetype);
+    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+    
+    if (mimetype && extname) {
+      return cb(null, true);
+    }
+    cb(new Error('Error: File upload only supports the following filetypes - ' + filetypes));
+  }
+});
+
+// Admin Dashboard
+router.get('/dashboard', ensureAuthenticated, isAdmin, async (req, res) => {
   try {
-    // Get counts
-    const userCount = await User.countDocuments();
-    const beritaCount = await Berita.countDocuments();
-    const pengumumanCount = await Pengumuman.countDocuments();
-    const agendaCount = await Agenda.countDocuments();
-    const galeriCount = await Galeri.countDocuments();
+    // Get counts for dashboard
+    const [siswaCount] = await db.query('SELECT COUNT(*) as count FROM siswa');
+    const [guruCount] = await db.query('SELECT COUNT(*) as count FROM guru');
+    const [matpelCount] = await db.query('SELECT COUNT(*) as count FROM mata_pelajaran');
+    const [kelasCount] = await db.query('SELECT COUNT(*) as count FROM kelas WHERE status = "aktif"');
     
-    // Get recent data
-    const recentBerita = await Berita.find().sort({ createdAt: -1 }).limit(5);
-    const upcomingAgenda = await Agenda.find({ 
-        status: { $in: ['upcoming', 'ongoing'] },
-        tanggal: { $gte: new Date() }
-    }).sort({ tanggal: 1 }).limit(5);
+    // Get latest agenda
+    const [agendas] = await db.query('SELECT * FROM agenda ORDER BY created_at DESC LIMIT 5');
     
-    const today = new Date();
-    const activePengumuman = await Pengumuman.find({
-        tanggalMulai: { $lte: today },
-        tanggalSelesai: { $gte: today },
-        status: 'published'
-    }).sort({ penting: -1 }).limit(5);
+    // Get latest pengumuman
+    const [pengumumans] = await db.query('SELECT * FROM pengumuman ORDER BY created_at DESC LIMIT 5');
     
-    const recentUsers = await User.find().sort({ date: -1 }).limit(5);
-    
-    res.render('admin/dashboard', {
-        title: 'Dashboard Admin - Baitul Jannah Islamic School',
-        description: 'Panel Admin Baitul Jannah Islamic School',
-        user: req.user,
-        counts: {
-            users: userCount,
-            berita: beritaCount,
-            pengumuman: pengumumanCount,
-            agenda: agendaCount,
-            galeri: galeriCount
-        },
-        recentBerita,
-        upcomingAgenda,
-        activePengumuman,
-        recentUsers
+    res.render('dashboard', {
+      title: 'Dashboard Admin - Baitul Jannah Islamic School',
+      description: 'Dashboard Admin Baitul Jannah Islamic School',
+      user: req.user,
+      siswaCount: siswaCount[0].count,
+      guruCount: guruCount[0].count,
+      matpelCount: matpelCount[0].count,
+      kelasCount: kelasCount[0].count,
+      agendas,
+      pengumumans
     });
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error('Dashboard Error:', error);
     req.flash('error_msg', 'Terjadi kesalahan saat memuat dashboard');
-    res.redirect('/admin/dashboard');
+    res.redirect('/');
   }
 });
 
-// ===== USER MANAGEMENT ROUTES =====
+// ===== AKADEMIK ROUTES =====
 
-// Get all users
-router.get('/users', ensureAdmin, async (req, res) => {
+// List Akademik
+router.get('/akademik', ensureAuthenticated, isAdmin, async (req, res) => {
   try {
-    const users = await User.find().sort({ date: -1 });
-    res.render('admin/users', {
-      title: 'Kelola Pengguna - Baitul Jannah Islamic School',
-      description: 'Kelola Pengguna Baitul Jannah Islamic School',
+    const akademik = await Akademik.findAll();
+    res.render('admin/akademik/index', {
+      title: 'Kelola Akademik - Baitul Jannah Islamic School',
+      description: 'Kelola data akademik Baitul Jannah Islamic School',
       user: req.user,
-      users,
-      success_msg: req.flash('success_msg'),
-      error_msg: req.flash('error_msg')
+      akademik
     });
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat memuat data pengguna');
-    res.redirect('/admin/dashboard');
+  } catch (error) {
+    console.error('Akademik Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat memuat data akademik');
+    res.redirect('/dashboard');
   }
 });
 
-// Show add user form
-router.get('/users/tambah', ensureAdmin, (req, res) => {
-  res.render('admin/users-tambah', {
-    title: 'Tambah Pengguna - Baitul Jannah Islamic School',
-    description: 'Tambah Pengguna Baru Baitul Jannah Islamic School',
-    user: req.user,
-    error_msg: req.flash('error_msg')
+// Create Akademik Form
+router.get('/akademik/tambah', ensureAuthenticated, isAdmin, (req, res) => {
+  res.render('admin/akademik/tambah', {
+    title: 'Tambah Akademik - Baitul Jannah Islamic School',
+    description: 'Tambah data akademik Baitul Jannah Islamic School',
+    user: req.user
   });
 });
 
-// Process add user
-router.post('/users/tambah', ensureAdmin, async (req, res) => {
-  const { name, email, password, password2, role, phone, address } = req.body;
-  let errors = [];
-
-  // Check required fields
-  if (!name || !email || !password || !password2 || !role) {
-    errors.push({ msg: 'Harap isi semua field yang wajib' });
-  }
-
-  // Check passwords match
-  if (password !== password2) {
-    errors.push({ msg: 'Password tidak cocok' });
-  }
-
-  // Check password length
-  if (password.length < 6) {
-    errors.push({ msg: 'Password harus minimal 6 karakter' });
-  }
-
-  if (errors.length > 0) {
-    res.render('admin/users-tambah', {
-      title: 'Tambah Pengguna - Baitul Jannah Islamic School',
-      description: 'Tambah Pengguna Baru Baitul Jannah Islamic School',
-      errors,
-      name,
-      email,
-      role,
-      phone,
-      address,
-      user: req.user
-    });
-  } else {
-    try {
-      // Check if email exists
-      const existingUser = await User.findOne({ email: email });
-      if (existingUser) {
-        errors.push({ msg: 'Email sudah terdaftar' });
-        res.render('admin/users-tambah', {
-          title: 'Tambah Pengguna - Baitul Jannah Islamic School',
-          description: 'Tambah Pengguna Baru Baitul Jannah Islamic School',
-          errors,
-          name,
-          email,
-          role,
-          phone,
-          address,
-          user: req.user
-        });
-      } else {
-        const newUser = new User({
-          name,
-          email,
-          password,
-          role,
-          phone,
-          address,
-          isActive: true
-        });
-
-        // Hash Password
-        const salt = await bcrypt.genSalt(10);
-        newUser.password = await bcrypt.hash(password, salt);
-        await newUser.save();
-
-        req.flash('success_msg', 'Pengguna baru berhasil ditambahkan');
-        res.redirect('/admin/users');
-      }
-    } catch (err) {
-      console.error(err);
-      req.flash('error_msg', 'Terjadi kesalahan saat menambahkan pengguna');
-      res.redirect('/admin/users/tambah');
-    }
+// Create Akademik Process
+router.post('/akademik/tambah', ensureAuthenticated, isAdmin, upload.single('gambar'), async (req, res) => {
+  try {
+    const { judul, deskripsi, jenis, status } = req.body;
+    const gambar = req.file ? '/uploads/' + req.file.filename : null;
+    
+    const akademikData = {
+      judul,
+      deskripsi,
+      jenis,
+      gambar,
+      status,
+      created_by: req.user.id
+    };
+    
+    await Akademik.create(akademikData);
+    req.flash('success_msg', 'Data akademik berhasil ditambahkan');
+    res.redirect('/admin/akademik');
+  } catch (error) {
+    console.error('Create Akademik Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat menambahkan data akademik');
+    res.redirect('/admin/akademik/tambah');
   }
 });
 
-// Show edit user form
-router.get('/users/edit/:id', ensureAdmin, async (req, res) => {
+// Edit Akademik Form
+router.get('/akademik/edit/:id', ensureAuthenticated, isAdmin, async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
-    if (!user) {
-      req.flash('error_msg', 'Pengguna tidak ditemukan');
-      return res.redirect('/admin/users');
+    const akademik = await Akademik.findById(req.params.id);
+    if (!akademik) {
+      req.flash('error_msg', 'Data akademik tidak ditemukan');
+      return res.redirect('/admin/akademik');
     }
-
-    res.render('admin/users-edit', {
-      title: 'Edit Pengguna - Baitul Jannah Islamic School',
-      description: 'Edit Pengguna Baitul Jannah Islamic School',
+    
+    res.render('admin/akademik/edit', {
+      title: 'Edit Akademik - Baitul Jannah Islamic School',
+      description: 'Edit data akademik Baitul Jannah Islamic School',
       user: req.user,
-      user: user, // The user to edit
-      success_msg: req.flash('success_msg'),
-      error_msg: req.flash('error_msg')
+      akademik
     });
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat memuat data pengguna');
-    res.redirect('/admin/users');
+  } catch (error) {
+    console.error('Edit Akademik Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat memuat data akademik');
+    res.redirect('/admin/akademik');
   }
 });
 
-// Process edit user
-router.post('/users/edit/:id', ensureAdmin, async (req, res) => {
-  const { name, email, password, password2, role, phone, address, isActive } = req.body;
-  let errors = [];
-
-  // Check required fields
-  if (!name || !email || !role) {
-    errors.push({ msg: 'Harap isi semua field yang wajib' });
-  }
-
-  // Check passwords match if provided
-  if (password && password !== password2) {
-    errors.push({ msg: 'Password tidak cocok' });
-  }
-
-  // Check password length if provided
-  if (password && password.length < 6) {
-    errors.push({ msg: 'Password harus minimal 6 karakter' });
-  }
-
+// Update Akademik Process
+router.post('/akademik/edit/:id', ensureAuthenticated, isAdmin, upload.single('gambar'), async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
-    if (!user) {
-      req.flash('error_msg', 'Pengguna tidak ditemukan');
-      return res.redirect('/admin/users');
+    const { judul, deskripsi, jenis, status } = req.body;
+    const akademik = await Akademik.findById(req.params.id);
+    
+    if (!akademik) {
+      req.flash('error_msg', 'Data akademik tidak ditemukan');
+      return res.redirect('/admin/akademik');
     }
+    
+    const gambar = req.file ? '/uploads/' + req.file.filename : akademik.gambar;
+    
+    const akademikData = {
+      judul,
+      deskripsi,
+      jenis,
+      gambar,
+      status
+    };
+    
+    await Akademik.update(req.params.id, akademikData);
+    req.flash('success_msg', 'Data akademik berhasil diperbarui');
+    res.redirect('/admin/akademik');
+  } catch (error) {
+    console.error('Update Akademik Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat memperbarui data akademik');
+    res.redirect(`/admin/akademik/edit/${req.params.id}`);
+  }
+});
 
-    if (errors.length > 0) {
-      return res.render('admin/users-edit', {
-        title: 'Edit Pengguna - Baitul Jannah Islamic School',
-        description: 'Edit Pengguna Baitul Jannah Islamic School',
-        errors,
-        user: req.user,
-        user: user
-      });
+// Delete Akademik
+router.post('/akademik/hapus/:id', ensureAuthenticated, isAdmin, async (req, res) => {
+  try {
+    const akademik = await Akademik.findById(req.params.id);
+    
+    if (!akademik) {
+      req.flash('error_msg', 'Data akademik tidak ditemukan');
+      return res.redirect('/admin/akademik');
     }
-
-    // Check if email exists and it's not the current user's email
-    if (email !== user.email) {
-      const existingUser = await User.findOne({ email: email });
-      if (existingUser) {
-        errors.push({ msg: 'Email sudah digunakan oleh pengguna lain' });
-        return res.render('admin/users-edit', {
-          title: 'Edit Pengguna - Baitul Jannah Islamic School',
-          description: 'Edit Pengguna Baitul Jannah Islamic School',
-          errors,
-          user: req.user,
-          user: user
-        });
+    
+    // Delete image file if exists
+    if (akademik.gambar) {
+      const imagePath = path.join(__dirname, '../public', akademik.gambar);
+      if (fs.existsSync(imagePath)) {
+        fs.unlinkSync(imagePath);
       }
     }
-
-    // Update user
-    user.name = name;
-    user.email = email;
-    user.role = role;
-    user.phone = phone;
-    user.address = address;
-    user.isActive = isActive === 'on' ? true : false;
-
-    // Update password if provided
-    if (password) {
-      const salt = await bcrypt.genSalt(10);
-      user.password = await bcrypt.hash(password, salt);
-    }
-
-    await user.save();
-    req.flash('success_msg', 'Data pengguna berhasil diperbarui');
-    res.redirect('/admin/users');
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat memperbarui data pengguna');
-    res.redirect(`/admin/users/edit/${req.params.id}`);
+    
+    await Akademik.delete(req.params.id);
+    req.flash('success_msg', 'Data akademik berhasil dihapus');
+    res.redirect('/admin/akademik');
+  } catch (error) {
+    console.error('Delete Akademik Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat menghapus data akademik');
+    res.redirect('/admin/akademik');
   }
 });
 
-// Delete user
-router.post('/users/delete', ensureAdmin, async (req, res) => {
-  try {
-    const { user_id } = req.body;
-    
-    // Prevent deleting self
-    if (user_id === req.user.id) {
-      req.flash('error_msg', 'Anda tidak dapat menghapus akun Anda sendiri');
-      return res.redirect('/admin/users');
-    }
-    
-    await User.findByIdAndDelete(user_id);
-    req.flash('success_msg', 'Pengguna berhasil dihapus');
-    res.redirect('/admin/users');
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat menghapus pengguna');
-    res.redirect('/admin/users');
-  }
-});
+// ===== INFORMASI ROUTES =====
 
-// Kelola Berita
-
-// Tampilkan semua berita
-router.get('/berita', ensureAdmin, async (req, res) => {
+// List Informasi
+router.get('/informasi', ensureAuthenticated, isAdmin, async (req, res) => {
   try {
-    const berita = await Berita.find().populate('penulis', 'name').sort({ createdAt: -1 });
-    
-    res.render('admin/berita', {
-      title: 'Kelola Berita - Baitul Jannah Islamic School',
-      description: 'Kelola Berita Baitul Jannah Islamic School',
+    const informasi = await Informasi.findAll();
+    res.render('admin/informasi/index', {
+      title: 'Kelola Informasi - Baitul Jannah Islamic School',
+      description: 'Kelola data informasi Baitul Jannah Islamic School',
       user: req.user,
-      berita
+      informasi
     });
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat mengambil data berita');
-    res.redirect('/admin/dashboard');
+  } catch (error) {
+    console.error('Informasi Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat memuat data informasi');
+    res.redirect('/dashboard');
   }
 });
 
-// Tampilkan form tambah berita
-router.get('/berita/tambah', ensureAdmin, (req, res) => {
-  res.render('admin/berita-form', {
-    title: 'Tambah Berita - Baitul Jannah Islamic School',
-    description: 'Tambah Berita Baru',
-    user: req.user,
-    berita: null,
-    action: '/admin/berita/tambah'
+// Create Informasi Form
+router.get('/informasi/tambah', ensureAuthenticated, isAdmin, (req, res) => {
+  res.render('admin/informasi/tambah', {
+    title: 'Tambah Informasi - Baitul Jannah Islamic School',
+    description: 'Tambah data informasi Baitul Jannah Islamic School',
+    user: req.user
   });
 });
 
-// Proses tambah berita
-router.post('/berita/tambah', ensureAdmin, async (req, res) => {
+// Create Informasi Process
+router.post('/informasi/tambah', ensureAuthenticated, isAdmin, upload.fields([
+  { name: 'gambar', maxCount: 1 },
+  { name: 'dokumen', maxCount: 1 }
+]), async (req, res) => {
   try {
-    const { judul, isi, kategori, status } = req.body;
-    let gambar = 'default-berita.jpg'; // Default gambar
+    const { judul, konten, jenis, status } = req.body;
+    const gambar = req.files.gambar ? '/uploads/' + req.files.gambar[0].filename : null;
+    const dokumen = req.files.dokumen ? '/uploads/' + req.files.dokumen[0].filename : null;
     
-    // TODO: Proses upload gambar
-    
-    const newBerita = new Berita({
+    const informasiData = {
       judul,
-      isi,
+      konten,
+      jenis,
       gambar,
-      kategori,
+      dokumen,
       status,
-      penulis: req.user.id
-    });
+      created_by: req.user.id
+    };
     
-    await newBerita.save();
-    req.flash('success_msg', 'Berita berhasil ditambahkan');
-    res.redirect('/admin/berita');
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat menambahkan berita');
-    res.redirect('/admin/berita/tambah');
+    await Informasi.create(informasiData);
+    req.flash('success_msg', 'Data informasi berhasil ditambahkan');
+    res.redirect('/admin/informasi');
+  } catch (error) {
+    console.error('Create Informasi Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat menambahkan data informasi');
+    res.redirect('/admin/informasi/tambah');
   }
 });
 
-// Tampilkan form edit berita
-router.get('/berita/edit/:id', ensureAdmin, async (req, res) => {
+// Edit Informasi Form
+router.get('/informasi/edit/:id', ensureAuthenticated, isAdmin, async (req, res) => {
   try {
-    const berita = await Berita.findById(req.params.id);
-    
-    if (!berita) {
-      req.flash('error_msg', 'Berita tidak ditemukan');
-      return res.redirect('/admin/berita');
+    const informasi = await Informasi.findById(req.params.id);
+    if (!informasi) {
+      req.flash('error_msg', 'Data informasi tidak ditemukan');
+      return res.redirect('/admin/informasi');
     }
     
-    res.render('admin/berita-form', {
-      title: 'Edit Berita - Baitul Jannah Islamic School',
-      description: 'Edit Berita',
+    res.render('admin/informasi/edit', {
+      title: 'Edit Informasi - Baitul Jannah Islamic School',
+      description: 'Edit data informasi Baitul Jannah Islamic School',
       user: req.user,
-      berita,
-      action: `/admin/berita/edit/${berita._id}`
+      informasi
     });
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat mengambil data berita');
-    res.redirect('/admin/berita');
+  } catch (error) {
+    console.error('Edit Informasi Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat memuat data informasi');
+    res.redirect('/admin/informasi');
   }
 });
 
-// Proses edit berita
-router.post('/berita/edit/:id', ensureAdmin, async (req, res) => {
+// Update Informasi Process
+router.post('/informasi/edit/:id', ensureAuthenticated, isAdmin, upload.fields([
+  { name: 'gambar', maxCount: 1 },
+  { name: 'dokumen', maxCount: 1 }
+]), async (req, res) => {
   try {
-    const { judul, isi, kategori, status } = req.body;
+    const { judul, konten, jenis, status } = req.body;
+    const informasi = await Informasi.findById(req.params.id);
     
-    // TODO: Proses upload gambar jika ada
+    if (!informasi) {
+      req.flash('error_msg', 'Data informasi tidak ditemukan');
+      return res.redirect('/admin/informasi');
+    }
     
-    await Berita.findByIdAndUpdate(req.params.id, {
+    const gambar = req.files.gambar ? '/uploads/' + req.files.gambar[0].filename : informasi.gambar;
+    const dokumen = req.files.dokumen ? '/uploads/' + req.files.dokumen[0].filename : informasi.dokumen;
+    
+    const informasiData = {
       judul,
-      isi,
-      kategori,
-      status,
-      updatedAt: Date.now()
-    });
+      konten,
+      jenis,
+      gambar,
+      dokumen,
+      status
+    };
     
-    req.flash('success_msg', 'Berita berhasil diperbarui');
-    res.redirect('/admin/berita');
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat memperbarui berita');
-    res.redirect(`/admin/berita/edit/${req.params.id}`);
+    await Informasi.update(req.params.id, informasiData);
+    req.flash('success_msg', 'Data informasi berhasil diperbarui');
+    res.redirect('/admin/informasi');
+  } catch (error) {
+    console.error('Update Informasi Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat memperbarui data informasi');
+    res.redirect(`/admin/informasi/edit/${req.params.id}`);
   }
 });
 
-// Hapus berita
-router.get('/berita/hapus/:id', ensureAdmin, async (req, res) => {
+// Delete Informasi
+router.post('/informasi/hapus/:id', ensureAuthenticated, isAdmin, async (req, res) => {
   try {
-    await Berita.findByIdAndDelete(req.params.id);
-    req.flash('success_msg', 'Berita berhasil dihapus');
-    res.redirect('/admin/berita');
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat menghapus berita');
-    res.redirect('/admin/berita');
+    const informasi = await Informasi.findById(req.params.id);
+    
+    if (!informasi) {
+      req.flash('error_msg', 'Data informasi tidak ditemukan');
+      return res.redirect('/admin/informasi');
+    }
+    
+    // Delete files if exist
+    if (informasi.gambar) {
+      const imagePath = path.join(__dirname, '../public', informasi.gambar);
+      if (fs.existsSync(imagePath)) {
+        fs.unlinkSync(imagePath);
+      }
+    }
+    
+    if (informasi.dokumen) {
+      const docPath = path.join(__dirname, '../public', informasi.dokumen);
+      if (fs.existsSync(docPath)) {
+        fs.unlinkSync(docPath);
+      }
+    }
+    
+    await Informasi.delete(req.params.id);
+    req.flash('success_msg', 'Data informasi berhasil dihapus');
+    res.redirect('/admin/informasi');
+  } catch (error) {
+    console.error('Delete Informasi Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat menghapus data informasi');
+    res.redirect('/admin/informasi');
   }
 });
 
-// Kelola Pengumuman
+// ===== KEGIATAN ROUTES =====
 
-// Tampilkan semua pengumuman
-router.get('/pengumuman', ensureAdmin, async (req, res) => {
+// List Kegiatan
+router.get('/kegiatan', ensureAuthenticated, isAdmin, async (req, res) => {
   try {
-    const pengumuman = await Pengumuman.find().populate('penulis', 'name').sort({ createdAt: -1 });
-    
-    res.render('admin/pengumuman', {
-      title: 'Kelola Pengumuman - Baitul Jannah Islamic School',
-      description: 'Kelola Pengumuman Baitul Jannah Islamic School',
+    const kegiatan = await Kegiatan.findAll();
+    res.render('admin/kegiatan/index', {
+      title: 'Kelola Kegiatan - Baitul Jannah Islamic School',
+      description: 'Kelola data kegiatan Baitul Jannah Islamic School',
       user: req.user,
-      pengumuman
+      kegiatan
     });
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat mengambil data pengumuman');
-    res.redirect('/admin/dashboard');
+  } catch (error) {
+    console.error('Kegiatan Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat memuat data kegiatan');
+    res.redirect('/dashboard');
   }
 });
 
-// Tampilkan form tambah pengumuman
-router.get('/pengumuman/tambah', ensureAdmin, (req, res) => {
-  res.render('admin/pengumuman-form', {
-    title: 'Tambah Pengumuman - Baitul Jannah Islamic School',
-    description: 'Tambah Pengumuman Baru',
-    user: req.user,
-    pengumuman: null,
-    action: '/admin/pengumuman/tambah'
+// Create Kegiatan Form
+router.get('/kegiatan/tambah', ensureAuthenticated, isAdmin, (req, res) => {
+  res.render('admin/kegiatan/tambah', {
+    title: 'Tambah Kegiatan - Baitul Jannah Islamic School',
+    description: 'Tambah data kegiatan Baitul Jannah Islamic School',
+    user: req.user
   });
 });
 
-// Proses tambah pengumuman
-router.post('/pengumuman/tambah', ensureAdmin, async (req, res) => {
+// Create Kegiatan Process
+router.post('/kegiatan/tambah', ensureAuthenticated, isAdmin, upload.single('gambar'), async (req, res) => {
   try {
-    const { judul, isi, tanggalMulai, tanggalSelesai, penting, untuk, status } = req.body;
-    let lampiran = null; // Default tidak ada lampiran
+    const { judul, deskripsi, tanggal, waktu_mulai, waktu_selesai, lokasi, jenis, status } = req.body;
+    const gambar = req.file ? '/uploads/' + req.file.filename : null;
     
-    // TODO: Proses upload lampiran jika ada
-    
-    const newPengumuman = new Pengumuman({
-      judul,
-      isi,
-      tanggalMulai,
-      tanggalSelesai,
-      penting: penting === 'on',
-      untuk,
-      lampiran,
-      status,
-      penulis: req.user.id
-    });
-    
-    await newPengumuman.save();
-    req.flash('success_msg', 'Pengumuman berhasil ditambahkan');
-    res.redirect('/admin/pengumuman');
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat menambahkan pengumuman');
-    res.redirect('/admin/pengumuman/tambah');
-  }
-});
-
-// Tampilkan form edit pengumuman
-router.get('/pengumuman/edit/:id', ensureAdmin, async (req, res) => {
-  try {
-    const pengumuman = await Pengumuman.findById(req.params.id);
-    
-    if (!pengumuman) {
-      req.flash('error_msg', 'Pengumuman tidak ditemukan');
-      return res.redirect('/admin/pengumuman');
-    }
-    
-    res.render('admin/pengumuman-form', {
-      title: 'Edit Pengumuman - Baitul Jannah Islamic School',
-      description: 'Edit Pengumuman',
-      user: req.user,
-      pengumuman,
-      action: `/admin/pengumuman/edit/${pengumuman._id}`
-    });
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat mengambil data pengumuman');
-    res.redirect('/admin/pengumuman');
-  }
-});
-
-// Proses edit pengumuman
-router.post('/pengumuman/edit/:id', ensureAdmin, async (req, res) => {
-  try {
-    const { judul, isi, tanggalMulai, tanggalSelesai, penting, untuk, status } = req.body;
-    
-    // TODO: Proses upload lampiran jika ada
-    
-    await Pengumuman.findByIdAndUpdate(req.params.id, {
-      judul,
-      isi,
-      tanggalMulai,
-      tanggalSelesai,
-      penting: penting === 'on',
-      untuk,
-      status,
-      updatedAt: Date.now()
-    });
-    
-    req.flash('success_msg', 'Pengumuman berhasil diperbarui');
-    res.redirect('/admin/pengumuman');
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat memperbarui pengumuman');
-    res.redirect(`/admin/pengumuman/edit/${req.params.id}`);
-  }
-});
-
-// Hapus pengumuman
-router.get('/pengumuman/hapus/:id', ensureAdmin, async (req, res) => {
-  try {
-    await Pengumuman.findByIdAndDelete(req.params.id);
-    req.flash('success_msg', 'Pengumuman berhasil dihapus');
-    res.redirect('/admin/pengumuman');
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat menghapus pengumuman');
-    res.redirect('/admin/pengumuman');
-  }
-});
-
-// Kelola Agenda
-
-// Tampilkan semua agenda
-router.get('/agenda', ensureAdmin, async (req, res) => {
-  try {
-    const agenda = await Agenda.find().populate('createdBy', 'name').sort({ tanggal: 1 });
-    
-    res.render('admin/agenda', {
-      title: 'Kelola Agenda - Baitul Jannah Islamic School',
-      description: 'Kelola Agenda Baitul Jannah Islamic School',
-      user: req.user,
-      agenda
-    });
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat mengambil data agenda');
-    res.redirect('/admin/dashboard');
-  }
-});
-
-// Tampilkan form tambah agenda
-router.get('/agenda/tambah', ensureAdmin, (req, res) => {
-  res.render('admin/agenda-form', {
-    title: 'Tambah Agenda - Baitul Jannah Islamic School',
-    description: 'Tambah Agenda Baru',
-    user: req.user,
-    agenda: null,
-    action: '/admin/agenda/tambah'
-  });
-});
-
-// Proses tambah agenda
-router.post('/agenda/tambah', ensureAdmin, async (req, res) => {
-  try {
-    const { judul, deskripsi, tanggal, waktuMulai, waktuSelesai, lokasi, penyelenggara, kategori, status } = req.body;
-    let gambar = null; // Default tidak ada gambar
-    
-    // TODO: Proses upload gambar jika ada
-    
-    const newAgenda = new Agenda({
+    const kegiatanData = {
       judul,
       deskripsi,
       tanggal,
-      waktuMulai,
-      waktuSelesai,
+      waktuMulai: waktu_mulai,
+      waktuSelesai: waktu_selesai,
       lokasi,
-      penyelenggara,
+      jenis,
       gambar,
-      kategori,
       status,
-      createdBy: req.user.id
-    });
+      created_by: req.user.id
+    };
     
-    await newAgenda.save();
-    req.flash('success_msg', 'Agenda berhasil ditambahkan');
-    res.redirect('/admin/agenda');
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat menambahkan agenda');
-    res.redirect('/admin/agenda/tambah');
+    await Kegiatan.create(kegiatanData);
+    req.flash('success_msg', 'Data kegiatan berhasil ditambahkan');
+    res.redirect('/admin/kegiatan');
+  } catch (error) {
+    console.error('Create Kegiatan Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat menambahkan data kegiatan');
+    res.redirect('/admin/kegiatan/tambah');
   }
 });
 
-// Tampilkan form edit agenda
-router.get('/agenda/edit/:id', ensureAdmin, async (req, res) => {
+// Edit Kegiatan Form
+router.get('/kegiatan/edit/:id', ensureAuthenticated, isAdmin, async (req, res) => {
   try {
-    const agenda = await Agenda.findById(req.params.id);
-    
-    if (!agenda) {
-      req.flash('error_msg', 'Agenda tidak ditemukan');
-      return res.redirect('/admin/agenda');
+    const kegiatan = await Kegiatan.findById(req.params.id);
+    if (!kegiatan) {
+      req.flash('error_msg', 'Data kegiatan tidak ditemukan');
+      return res.redirect('/admin/kegiatan');
     }
     
-    res.render('admin/agenda-form', {
-      title: 'Edit Agenda - Baitul Jannah Islamic School',
-      description: 'Edit Agenda',
+    res.render('admin/kegiatan/edit', {
+      title: 'Edit Kegiatan - Baitul Jannah Islamic School',
+      description: 'Edit data kegiatan Baitul Jannah Islamic School',
       user: req.user,
-      agenda,
-      action: `/admin/agenda/edit/${agenda._id}`
+      kegiatan
     });
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat mengambil data agenda');
-    res.redirect('/admin/agenda');
+  } catch (error) {
+    console.error('Edit Kegiatan Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat memuat data kegiatan');
+    res.redirect('/admin/kegiatan');
   }
 });
 
-// Proses edit agenda
-router.post('/agenda/edit/:id', ensureAdmin, async (req, res) => {
+// Update Kegiatan Process
+router.post('/kegiatan/edit/:id', ensureAuthenticated, isAdmin, upload.single('gambar'), async (req, res) => {
   try {
-    const { judul, deskripsi, tanggal, waktuMulai, waktuSelesai, lokasi, penyelenggara, kategori, status } = req.body;
+    const { judul, deskripsi, tanggal, waktu_mulai, waktu_selesai, lokasi, jenis, status } = req.body;
+    const kegiatan = await Kegiatan.findById(req.params.id);
     
-    // TODO: Proses upload gambar jika ada
+    if (!kegiatan) {
+      req.flash('error_msg', 'Data kegiatan tidak ditemukan');
+      return res.redirect('/admin/kegiatan');
+    }
     
-    await Agenda.findByIdAndUpdate(req.params.id, {
+    const gambar = req.file ? '/uploads/' + req.file.filename : kegiatan.gambar;
+    
+    const kegiatanData = {
       judul,
       deskripsi,
       tanggal,
-      waktuMulai,
-      waktuSelesai,
+      waktuMulai: waktu_mulai,
+      waktuSelesai: waktu_selesai,
       lokasi,
-      penyelenggara,
-      kategori,
-      status,
-      updatedAt: Date.now()
-    });
+      jenis,
+      gambar,
+      status
+    };
     
-    req.flash('success_msg', 'Agenda berhasil diperbarui');
-    res.redirect('/admin/agenda');
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat memperbarui agenda');
-    res.redirect(`/admin/agenda/edit/${req.params.id}`);
+    await Kegiatan.update(req.params.id, kegiatanData);
+    req.flash('success_msg', 'Data kegiatan berhasil diperbarui');
+    res.redirect('/admin/kegiatan');
+  } catch (error) {
+    console.error('Update Kegiatan Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat memperbarui data kegiatan');
+    res.redirect(`/admin/kegiatan/edit/${req.params.id}`);
   }
 });
 
-// Hapus agenda
-router.get('/agenda/hapus/:id', ensureAdmin, async (req, res) => {
+// Delete Kegiatan
+router.post('/kegiatan/hapus/:id', ensureAuthenticated, isAdmin, async (req, res) => {
   try {
-    await Agenda.findByIdAndDelete(req.params.id);
-    req.flash('success_msg', 'Agenda berhasil dihapus');
-    res.redirect('/admin/agenda');
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat menghapus agenda');
-    res.redirect('/admin/agenda');
+    const kegiatan = await Kegiatan.findById(req.params.id);
+    
+    if (!kegiatan) {
+      req.flash('error_msg', 'Data kegiatan tidak ditemukan');
+      return res.redirect('/admin/kegiatan');
+    }
+    
+    // Delete image file if exists
+    if (kegiatan.gambar) {
+      const imagePath = path.join(__dirname, '../public', kegiatan.gambar);
+      if (fs.existsSync(imagePath)) {
+        fs.unlinkSync(imagePath);
+      }
+    }
+    
+    await Kegiatan.delete(req.params.id);
+    req.flash('success_msg', 'Data kegiatan berhasil dihapus');
+    res.redirect('/admin/kegiatan');
+  } catch (error) {
+    console.error('Delete Kegiatan Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat menghapus data kegiatan');
+    res.redirect('/admin/kegiatan');
   }
 });
 
-// Kelola Galeri
+// ===== TENTANG KAMI ROUTES =====
 
-// Tampilkan semua galeri
-router.get('/galeri', ensureAdmin, async (req, res) => {
+// List Tentang Kami
+router.get('/tentangkami', ensureAuthenticated, isAdmin, async (req, res) => {
   try {
-    const galeri = await Galeri.find().populate('uploadedBy', 'name').sort({ createdAt: -1 });
-    
-    res.render('admin/galeri', {
-      title: 'Kelola Galeri - Baitul Jannah Islamic School',
-      description: 'Kelola Galeri Baitul Jannah Islamic School',
+    const tentangKami = await TentangKami.findAll();
+    res.render('admin/tentangkami/index', {
+      title: 'Kelola Tentang Kami - Baitul Jannah Islamic School',
+      description: 'Kelola data tentang kami Baitul Jannah Islamic School',
       user: req.user,
-      galeri
+      tentangKami
     });
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat mengambil data galeri');
-    res.redirect('/admin/dashboard');
+  } catch (error) {
+    console.error('Tentang Kami Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat memuat data tentang kami');
+    res.redirect('/dashboard');
   }
 });
 
-// Tampilkan form tambah galeri
-router.get('/galeri/tambah', ensureAdmin, (req, res) => {
-  res.render('admin/galeri-form', {
-    title: 'Tambah Galeri - Baitul Jannah Islamic School',
-    description: 'Tambah Galeri Baru',
-    user: req.user,
-    galeri: null,
-    action: '/admin/galeri/tambah'
+// Create Tentang Kami Form
+router.get('/tentangkami/tambah', ensureAuthenticated, isAdmin, (req, res) => {
+  res.render('admin/tentangkami/tambah', {
+    title: 'Tambah Tentang Kami - Baitul Jannah Islamic School',
+    description: 'Tambah data tentang kami Baitul Jannah Islamic School',
+    user: req.user
   });
 });
 
-// Proses tambah galeri
-router.post('/galeri/tambah', ensureAdmin, async (req, res) => {
+// Create Tentang Kami Process
+router.post('/tentangkami/tambah', ensureAuthenticated, isAdmin, upload.single('gambar'), async (req, res) => {
   try {
-    const { judul, deskripsi, kategori, tanggal, isPublished } = req.body;
-    let gambar = 'default-galeri.jpg'; // Default gambar
+    const { judul, konten, jenis, status } = req.body;
+    const gambar = req.file ? '/uploads/' + req.file.filename : null;
     
-    // TODO: Proses upload gambar
-    
-    const newGaleri = new Galeri({
+    const tentangKamiData = {
       judul,
-      deskripsi,
+      konten,
+      jenis,
       gambar,
-      kategori,
-      tanggal: tanggal || Date.now(),
-      isPublished: isPublished === 'on',
-      uploadedBy: req.user.id
-    });
+      status,
+      created_by: req.user.id
+    };
     
-    await newGaleri.save();
-    req.flash('success_msg', 'Galeri berhasil ditambahkan');
-    res.redirect('/admin/galeri');
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat menambahkan galeri');
-    res.redirect('/admin/galeri/tambah');
+    await TentangKami.create(tentangKamiData);
+    req.flash('success_msg', 'Data tentang kami berhasil ditambahkan');
+    res.redirect('/admin/tentangkami');
+  } catch (error) {
+    console.error('Create Tentang Kami Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat menambahkan data tentang kami');
+    res.redirect('/admin/tentangkami/tambah');
   }
 });
 
-// Tampilkan form edit galeri
-router.get('/galeri/edit/:id', ensureAdmin, async (req, res) => {
+// Edit Tentang Kami Form
+router.get('/tentangkami/edit/:id', ensureAuthenticated, isAdmin, async (req, res) => {
   try {
-    const galeri = await Galeri.findById(req.params.id);
-    
-    if (!galeri) {
-      req.flash('error_msg', 'Galeri tidak ditemukan');
-      return res.redirect('/admin/galeri');
+    const tentangKami = await TentangKami.findById(req.params.id);
+    if (!tentangKami) {
+      req.flash('error_msg', 'Data tentang kami tidak ditemukan');
+      return res.redirect('/admin/tentangkami');
     }
     
-    res.render('admin/galeri-form', {
-      title: 'Edit Galeri - Baitul Jannah Islamic School',
-      description: 'Edit Galeri',
+    res.render('admin/tentangkami/edit', {
+      title: 'Edit Tentang Kami - Baitul Jannah Islamic School',
+      description: 'Edit data tentang kami Baitul Jannah Islamic School',
       user: req.user,
-      galeri,
-      action: `/admin/galeri/edit/${galeri._id}`
+      tentangKami
     });
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat mengambil data galeri');
-    res.redirect('/admin/galeri');
+  } catch (error) {
+    console.error('Edit Tentang Kami Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat memuat data tentang kami');
+    res.redirect('/admin/tentangkami');
   }
 });
 
-// Proses edit galeri
-router.post('/galeri/edit/:id', ensureAdmin, async (req, res) => {
+// Update Tentang Kami Process
+router.post('/tentangkami/edit/:id', ensureAuthenticated, isAdmin, upload.single('gambar'), async (req, res) => {
   try {
-    const { judul, deskripsi, kategori, tanggal, isPublished } = req.body;
+    const { judul, konten, jenis, status } = req.body;
+    const tentangKami = await TentangKami.findById(req.params.id);
     
-    // TODO: Proses upload gambar jika ada
+    if (!tentangKami) {
+      req.flash('error_msg', 'Data tentang kami tidak ditemukan');
+      return res.redirect('/admin/tentangkami');
+    }
     
-    await Galeri.findByIdAndUpdate(req.params.id, {
+    const gambar = req.file ? '/uploads/' + req.file.filename : tentangKami.gambar;
+    
+    const tentangKamiData = {
       judul,
-      deskripsi,
-      kategori,
-      tanggal,
-      isPublished: isPublished === 'on',
-      updatedAt: Date.now()
-    });
+      konten,
+      jenis,
+      gambar,
+      status
+    };
     
-    req.flash('success_msg', 'Galeri berhasil diperbarui');
-    res.redirect('/admin/galeri');
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat memperbarui galeri');
-    res.redirect(`/admin/galeri/edit/${req.params.id}`);
+    await TentangKami.update(req.params.id, tentangKamiData);
+    req.flash('success_msg', 'Data tentang kami berhasil diperbarui');
+    res.redirect('/admin/tentangkami');
+  } catch (error) {
+    console.error('Update Tentang Kami Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat memperbarui data tentang kami');
+    res.redirect(`/admin/tentangkami/edit/${req.params.id}`);
   }
 });
 
-// Hapus galeri
-router.get('/galeri/hapus/:id', ensureAdmin, async (req, res) => {
+// Delete Tentang Kami
+router.post('/tentangkami/hapus/:id', ensureAuthenticated, isAdmin, async (req, res) => {
   try {
-    await Galeri.findByIdAndDelete(req.params.id);
-    req.flash('success_msg', 'Galeri berhasil dihapus');
-    res.redirect('/admin/galeri');
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Terjadi kesalahan saat menghapus galeri');
-    res.redirect('/admin/galeri');
+    const tentangKami = await TentangKami.findById(req.params.id);
+    
+    if (!tentangKami) {
+      req.flash('error_msg', 'Data tentang kami tidak ditemukan');
+      return res.redirect('/admin/tentangkami');
+    }
+    
+    // Delete image file if exists
+    if (tentangKami.gambar) {
+      const imagePath = path.join(__dirname, '../public', tentangKami.gambar);
+      if (fs.existsSync(imagePath)) {
+        fs.unlinkSync(imagePath);
+      }
+    }
+    
+    await TentangKami.delete(req.params.id);
+    req.flash('success_msg', 'Data tentang kami berhasil dihapus');
+    res.redirect('/admin/tentangkami');
+  } catch (error) {
+    console.error('Delete Tentang Kami Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat menghapus data tentang kami');
+    res.redirect('/admin/tentangkami');
   }
 });
 

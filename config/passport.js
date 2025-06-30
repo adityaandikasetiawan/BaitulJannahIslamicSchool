@@ -1,26 +1,33 @@
 const LocalStrategy = require('passport-local').Strategy;
-const mongoose = require('mongoose');
 const User = require('../models/User');
+const db = require('./database');
 
 module.exports = function(passport) {
   passport.use(
-    new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
+    new LocalStrategy({ usernameField: 'username' }, async (username, password, done) => {
       try {
-        // Cari user berdasarkan email
-        const user = await User.findOne({ email: email });
+        console.log('Attempting to authenticate user:', username);
+        // Match user
+        const user = await User.findByUsername(username);
         
         if (!user) {
-          return done(null, false, { message: 'Email tidak terdaftar' });
+          console.log('User not found:', username);
+          return done(null, false, { message: 'Username tidak terdaftar' });
         }
 
-        // Verifikasi password
-        const isMatch = await user.matchPassword(password);
-        if (!isMatch) {
+        console.log('User found, validating password');
+        // Match password
+        const isMatch = await User.validatePassword(password, user.password);
+        
+        if (isMatch) {
+          console.log('Password match, authentication successful');
+          return done(null, user);
+        } else {
+          console.log('Password mismatch');
           return done(null, false, { message: 'Password salah' });
         }
-
-        return done(null, user);
       } catch (err) {
+        console.error('Error in passport strategy:', err);
         return done(err);
       }
     })
@@ -32,10 +39,10 @@ module.exports = function(passport) {
 
   passport.deserializeUser(async (id, done) => {
     try {
-      const user = await User.findById(id);
-      done(null, user);
+      const [rows] = await db.query('SELECT * FROM users WHERE id = ?', [id]);
+      done(null, rows[0]);
     } catch (err) {
-      done(err);
+      done(err, null);
     }
   });
 };

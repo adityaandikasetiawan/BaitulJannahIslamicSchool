@@ -1,0 +1,101 @@
+<%- include('../../partials/header') %>
+
+<div class="main-wrapper">
+    <%- include('../../partials/header2') %>
+
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="page-title">Tambah Galeri</h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/galeri">Kelola Galeri</a></li>
+                            <li class="breadcrumb-item active">Tambah Galeri</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <% if(error_msg != ''){ %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <%= error_msg %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% } %>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="/admin/galeri/tambah" method="POST" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5 class="form-title"><span>Detail Galeri</span></h5>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Judul</label>
+                                            <input type="text" name="judul" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Kategori</label>
+                                            <select name="kategori" class="form-control" required>
+                                                <option value="">Pilih Kategori</option>
+                                                <option value="kegiatan_sekolah">Kegiatan Sekolah</option>
+                                                <option value="prestasi">Prestasi</option>
+                                                <option value="fasilitas">Fasilitas</option>
+                                                <option value="kegiatan_siswa">Kegiatan Siswa</option>
+                                                <option value="lainnya">Lainnya</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Deskripsi</label>
+                                            <textarea name="deskripsi" class="form-control" rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Tanggal</label>
+                                            <input type="date" name="tanggal" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Gambar</label>
+                                            <input type="file" name="gambar" class="form-control" required>
+                                            <small class="form-text text-muted">Format: JPG, JPEG, PNG, GIF. Maks: 5MB</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="is_published" id="is_published" checked>
+                                                <label class="form-check-label" for="is_published">
+                                                    Publikasikan
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                        <a href="/admin/galeri" class="btn btn-secondary">Batal</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../../partials/footer') %>

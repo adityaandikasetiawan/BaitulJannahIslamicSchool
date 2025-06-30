@@ -1,0 +1,100 @@
+<%- include('../../partials/header') %>
+
+<div class="main-wrapper">
+    <%- include('../../partials/header2') %>
+
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="page-title">Kelola Informasi</h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Kelola Informasi</li>
+                        </ul>
+                    </div>
+                    <div class="col-auto text-right float-right ml-auto">
+                        <a href="/admin/informasi/tambah" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Informasi</a>
+                    </div>
+                </div>
+            </div>
+
+            <% if(success_msg != ''){ %>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <%= success_msg %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% } %>
+
+            <% if(error_msg != ''){ %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <%= error_msg %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% } %>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card card-table">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-center mb-0 datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Judul</th>
+                                            <th>Jenis</th>
+                                            <th>Status</th>
+                                            <th class="text-right">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% if(informasi && informasi.length > 0) { %>
+                                            <% informasi.forEach((item, index) => { %>
+                                                <tr>
+                                                    <td><%= index + 1 %></td>
+                                                    <td><%= item.judul %></td>
+                                                    <td><%= item.jenis %></td>
+                                                    <td>
+                                                        <% if(item.status === 'aktif') { %>
+                                                            <span class="badge badge-success">Aktif</span>
+                                                        <% } else { %>
+                                                            <span class="badge badge-danger">Tidak Aktif</span>
+                                                        <% } %>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <div class="actions">
+                                                            <a href="/admin/informasi/edit/<%= item.id %>" class="btn btn-sm bg-success-light mr-2">
+                                                                <i class="fas fa-pen"></i>
+                                                            </a>
+                                                            <form action="/admin/informasi/hapus/<%= item.id %>" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                                                <button type="submit" class="btn btn-sm bg-danger-light">
+                                                                    <i class="fas fa-trash"></i>
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <% }) %>
+                                        <% } else { %>
+                                            <tr>
+                                                <td colspan="5" class="text-center">Tidak ada data</td>
+                                            </tr>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../../partials/footer') %>

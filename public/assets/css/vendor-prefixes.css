@@ -1,0 +1,124 @@
+/* Vendor Prefixes CSS - Browser Compatibility Fixes */
+
+/* Fix for -moz-appearance not supported by Chrome, Chrome Android, Edge, Safari */
+[style*="-moz-appearance"] {
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Fix for -webkit-text-size-adjust not supported by Chrome, Chrome Android, Edge 79+, Firefox, Safari */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* Fix for backdrop-filter not supported by Safari */
+[style*="backdrop-filter"] {
+    -webkit-backdrop-filter: inherit;
+    backdrop-filter: inherit;
+}
+
+/* Fix for text-align: -webkit-match-parent not supported by Safari */
+[style*="text-align: -webkit-match-parent"] {
+    text-align: -webkit-match-parent;
+    text-align: match-parent;
+}
+
+/* Fix for user-select not supported by Safari */
+[style*="user-select"] {
+    -webkit-user-select: inherit;
+    user-select: inherit;
+}
+
+/* Fix for color-adjust not supported by Chrome, Chrome Android, Edge */
+[style*="color-adjust"] {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+}
+
+/* Fix for min-height: auto not supported by Firefox 22+ */
+[style*="min-height: auto"] {
+    min-height: 0;
+}
+
+/* Fix for scrollbar-width not supported by Safari */
+[style*="scrollbar-width"] {
+    /* No direct equivalent in Safari, but can use -webkit-scrollbar for styling */
+    scrollbar-width: thin;
+}
+
+/* Fix for align-items order */
+[style*="align-items"] {
+    -webkit-align-items: inherit;
+    -ms-align-items: inherit;
+    align-items: inherit;
+}
+
+/* Fix for border-radius order */
+[style*="border-radius"] {
+    -moz-border-radius: inherit;
+    border-radius: inherit;
+}
+
+/* Fix for box-shadow order */
+[style*="box-shadow"] {
+    -webkit-box-shadow: inherit;
+    -moz-box-shadow: inherit;
+    -o-box-shadow: inherit;
+    box-shadow: inherit;
+}
+
+/* Fix for display: flex order */
+[style*="display: flex"] {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -ms-flex;
+    display: flex;
+}
+
+/* Fix for display: inline-flex order */
+[style*="display: inline-flex"] {
+    display: -webkit-inline-flex;
+    display: inline-flex;
+}
+
+/* Fix for flex-wrap order */
+[style*="flex-wrap"] {
+    -webkit-flex-wrap: inherit;
+    flex-wrap: inherit;
+}
+
+/* Fix for justify-content order */
+[style*="justify-content"] {
+    -webkit-justify-content: inherit;
+    -ms-justify-content: inherit;
+    justify-content: inherit;
+}
+
+/* Fix for transform-origin order */
+[style*="transform-origin"] {
+    -webkit-transform-origin: inherit;
+    -moz-transform-origin: inherit;
+    -ms-transform-origin: inherit;
+    -o-transform-origin: inherit;
+    transform-origin: inherit;
+}
+
+/* Fix for transform order */
+[style*="transform"] {
+    -webkit-transform: inherit;
+    -moz-transform: inherit;
+    -ms-transform: inherit;
+    -o-transform: inherit;
+    transform: inherit;
+}
+
+/* Fix for transition order */
+[style*="transition"] {
+    -webkit-transition: inherit;
+    -moz-transition: inherit;
+    -ms-transition: inherit;
+    -o-transition: inherit;
+    transition: inherit;
+}

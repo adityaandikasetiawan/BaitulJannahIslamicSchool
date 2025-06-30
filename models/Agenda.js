@@ -1,68 +1,104 @@
-const mongoose = require('mongoose');
+const db = require('../config/database');
 
-const AgendaSchema = new mongoose.Schema({
-  judul: {
-    type: String,
-    required: true
-  },
-  deskripsi: {
-    type: String,
-    required: true
-  },
-  tanggal: {
-    type: Date,
-    required: true
-  },
-  waktuMulai: {
-    type: String,
-    required: true
-  },
-  waktuSelesai: {
-    type: String,
-    required: true
-  },
-  lokasi: {
-    type: String,
-    required: true
-  },
-  penyelenggara: {
-    type: String,
-    required: true
-  },
-  gambar: {
-    type: String
-  },
-  kategori: {
-    type: String,
-    enum: ['Akademik', 'Keagamaan', 'Ekstrakurikuler', 'Rapat', 'Lainnya'],
-    default: 'Lainnya'
-  },
-  status: {
-    type: String,
-    enum: ['upcoming', 'ongoing', 'completed', 'canceled'],
-    default: 'upcoming'
-  },
-  createdBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now
+class Agenda {
+  static async findById(id) {
+    try {
+      const [agenda] = await db.query('SELECT * FROM agenda WHERE id = ?', [id]);
+      return agenda;
+    } catch (error) {
+      throw error;
+    }
   }
-});
 
-// Update timestamp sebelum menyimpan
-AgendaSchema.pre('save', function(next) {
-  this.updatedAt = Date.now();
-  next();
-});
+  static async create(agendaData) {
+    try {
+      const result = await db.query(
+        'INSERT INTO agenda (judul, deskripsi, tanggal, waktu_mulai, waktu_selesai, lokasi, penyelenggara, gambar, kategori, status, created_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+        [
+          agendaData.judul,
+          agendaData.deskripsi,
+          agendaData.tanggal,
+          agendaData.waktuMulai,
+          agendaData.waktuSelesai,
+          agendaData.lokasi,
+          agendaData.penyelenggara,
+          agendaData.gambar || null,
+          agendaData.kategori || 'Lainnya',
+          agendaData.status || 'upcoming',
+          agendaData.createdBy
+        ]
+      );
+      return result.insertId;
+    } catch (error) {
+      throw error;
+    }
+  }
 
-const Agenda = mongoose.model('Agenda', AgendaSchema);
+  static async update(id, agendaData) {
+    try {
+      const result = await db.query(
+        'UPDATE agenda SET judul = ?, deskripsi = ?, tanggal = ?, waktu_mulai = ?, waktu_selesai = ?, lokasi = ?, penyelenggara = ?, gambar = ?, kategori = ?, status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?',
+        [
+          agendaData.judul,
+          agendaData.deskripsi,
+          agendaData.tanggal,
+          agendaData.waktuMulai,
+          agendaData.waktuSelesai,
+          agendaData.lokasi,
+          agendaData.penyelenggara,
+          agendaData.gambar || null,
+          agendaData.kategori || 'Lainnya',
+          agendaData.status || 'upcoming',
+          id
+        ]
+      );
+      return result.affectedRows > 0;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async delete(id) {
+    try {
+      const result = await db.query('DELETE FROM agenda WHERE id = ?', [id]);
+      return result.affectedRows > 0;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async list(limit = 10, offset = 0) {
+    try {
+      const agendas = await db.query(
+        'SELECT a.*, u.name as creator_name FROM agenda a LEFT JOIN users u ON a.created_by = u.id ORDER BY a.tanggal DESC, a.waktu_mulai DESC LIMIT ? OFFSET ?',
+        [limit, offset]
+      );
+      return agendas;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async count() {
+    try {
+      const [result] = await db.query('SELECT COUNT(*) as total FROM agenda');
+      return result.total;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async findUpcoming(limit = 5) {
+    try {
+      const agendas = await db.query(
+        'SELECT a.*, u.name as creator_name FROM agenda a LEFT JOIN users u ON a.created_by = u.id WHERE a.tanggal >= CURDATE() AND a.status = "upcoming" ORDER BY a.tanggal ASC, a.waktu_mulai ASC LIMIT ?',
+        [limit]
+      );
+      return agendas;
+    } catch (error) {
+      throw error;
+    }
+  }
+}
 
 module.exports = Agenda;

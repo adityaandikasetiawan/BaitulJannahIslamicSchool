@@ -1,0 +1,303 @@
+/*
+ * UIFresh Login Form Style - Adapted for Baitul Jannah Islamic School
+ */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: linear-gradient(to right, #f12711, #f5af19);
+    padding: 15px;
+    margin: 0;
+}
+
+a {
+    color: #842029;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #5a1118;
+}
+
+.uf-form-signin {
+    width: 100%;
+    max-width: 350px;
+    padding: 35px 25px 25px 25px;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+}
+
+.uf-input-group .input-group-text {
+    background: #ffffff70;
+    color: #f8f9fa;
+    border: unset;
+    font-size: 18px;
+    padding: 15px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.uf-input-group .form-control {
+    border: unset;
+    border-left: 1px solid #ffffff05;
+    font-size: 16px;
+    background: #ffffff70;
+}
+
+.uf-input-group .form-control:focus {
+    box-shadow: unset;
+    background: #ffffff;
+}
+
+.uf-btn-primary {
+    background: #842029;
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.uf-btn-primary:hover {
+    background: #5a1118;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 576px) {
+    .uf-btn-primary {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
+
+.uf-form-check-input:checked {
+    background-color: #842029;
+    border-color: #842029;
+}
+
+/* Social Login Buttons */
+.btn-outline-light {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    background-color: #842029;
+    border-color: #842029;
+    transform: translateY(-3px);
+}
+
+.uf-social-login {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.uf-social-login .uf-social-ic + .uf-social-ic {
+    margin-left: 15px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 576px) {
+    .uf-form-signin {
+        padding: 20px 15px;
+    }
+    
+    .uf-form-signin img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .uf-form-signin h1.h3 {
+        font-size: 1.4rem;
+    }
+    
+    .alert {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+    }
+    
+    .alert .btn-close {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+    }
+    
+    .uf-input-group .input-group-text {
+        padding: 10px;
+        font-size: 16px;
+        width: 40px;
+    }
+    
+    .uf-input-group .form-control {
+        font-size: 14px;
+    }
+    
+    .d-flex.mb-3.justify-content-between {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn-outline-light {
+        width: 35px;
+        height: 35px;
+    }
+    
+    #toggle-password {
+        width: 40px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 320px) {
+    .uf-form-signin {
+        padding: 15px 10px;
+    }
+    
+    .uf-form-signin img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .uf-form-signin h1.h3 {
+        font-size: 1.2rem;
+    }
+    
+    .d-flex.justify-content-center.gap-3 {
+        gap: 0.5rem !important;
+    }
+    
+    .btn-outline-light {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .form-check-label, a.text-decoration-none {
+        font-size: 0.8rem;
+    }
+}
+
+.uf-social-ic {
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: all 0.3s ease;
+}
+
+.uf-social-ic:hover {
+    background: #0f723a;
+    transform: translateY(-3px);
+}
+
+.uf-social-ic:hover i {
+    color: #fff;
+}
+
+.login-or {
+    position: relative;
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.or-line {
+    display: block;
+    height: 1px;
+    background: #dee2e6;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+}
+
+.span-or {
+    display: inline-block;
+    position: relative;
+    background: #fff;
+    padding: 0 1rem;
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.img-logo {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.img-logo img {
+    max-width: 100px;
+    height: auto;
+}
+
+.alert {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}

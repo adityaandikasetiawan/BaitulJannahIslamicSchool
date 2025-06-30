@@ -1,0 +1,93 @@
+<%- include('../../partials/header') %>
+
+<div class="main-wrapper">
+    <%- include('../../partials/header2') %>
+
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="page-title">Tambah Akademik</h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/akademik">Kelola Akademik</a></li>
+                            <li class="breadcrumb-item active">Tambah Akademik</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <% if(error_msg != ''){ %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <%= error_msg %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% } %>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="/admin/akademik/tambah" method="POST" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5 class="form-title"><span>Detail Akademik</span></h5>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Judul</label>
+                                            <input type="text" name="judul" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Jenis</label>
+                                            <select name="jenis" class="form-control" required>
+                                                <option value="">Pilih Jenis</option>
+                                                <option value="kurikulum">Kurikulum</option>
+                                                <option value="program">Program</option>
+                                                <option value="prestasi">Prestasi</option>
+                                                <option value="kegiatan">Kegiatan Akademik</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Deskripsi</label>
+                                            <textarea name="deskripsi" class="form-control" rows="5" required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Gambar</label>
+                                            <input type="file" name="gambar" class="form-control">
+                                            <small class="form-text text-muted">Format: JPG, JPEG, PNG, GIF. Maks: 5MB</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            <select name="status" class="form-control" required>
+                                                <option value="aktif">Aktif</option>
+                                                <option value="tidak_aktif">Tidak Aktif</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                        <a href="/admin/akademik" class="btn btn-secondary">Batal</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../../partials/footer') %>

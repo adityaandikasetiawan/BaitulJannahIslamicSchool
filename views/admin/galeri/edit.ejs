@@ -1,0 +1,106 @@
+<%- include('../../partials/header') %>
+
+<div class="main-wrapper">
+    <%- include('../../partials/header2') %>
+
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="page-title">Edit Galeri</h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/galeri">Kelola Galeri</a></li>
+                            <li class="breadcrumb-item active">Edit Galeri</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <% if(error_msg != ''){ %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <%= error_msg %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% } %>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="/admin/galeri/edit/<%= galeri.id %>" method="POST" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5 class="form-title"><span>Detail Galeri</span></h5>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Judul</label>
+                                            <input type="text" name="judul" class="form-control" value="<%= galeri.judul %>" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Kategori</label>
+                                            <select name="kategori" class="form-control" required>
+                                                <option value="">Pilih Kategori</option>
+                                                <option value="kegiatan_sekolah" <%= galeri.kategori === 'kegiatan_sekolah' ? 'selected' : '' %>>Kegiatan Sekolah</option>
+                                                <option value="prestasi" <%= galeri.kategori === 'prestasi' ? 'selected' : '' %>>Prestasi</option>
+                                                <option value="fasilitas" <%= galeri.kategori === 'fasilitas' ? 'selected' : '' %>>Fasilitas</option>
+                                                <option value="kegiatan_siswa" <%= galeri.kategori === 'kegiatan_siswa' ? 'selected' : '' %>>Kegiatan Siswa</option>
+                                                <option value="lainnya" <%= galeri.kategori === 'lainnya' ? 'selected' : '' %>>Lainnya</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Deskripsi</label>
+                                            <textarea name="deskripsi" class="form-control" rows="4"><%= galeri.deskripsi %></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Tanggal</label>
+                                            <input type="date" name="tanggal" class="form-control" value="<%= galeri.tanggal ? new Date(galeri.tanggal).toISOString().split('T')[0] : '' %>" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Gambar</label>
+                                            <input type="file" name="gambar" class="form-control">
+                                            <small class="form-text text-muted">Format: JPG, JPEG, PNG, GIF. Maks: 5MB</small>
+                                            <% if(galeri.gambar) { %>
+                                                <div class="mt-2">
+                                                    <img src="<%= galeri.gambar %>" alt="<%= galeri.judul %>" style="max-width: 200px; max-height: 200px;">
+                                                </div>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="is_published" id="is_published" <%= galeri.is_published == 1 ? 'checked' : '' %>>
+                                                <label class="form-check-label" for="is_published">
+                                                    Publikasikan
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                        <a href="/admin/galeri" class="btn btn-secondary">Batal</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../../partials/footer') %>

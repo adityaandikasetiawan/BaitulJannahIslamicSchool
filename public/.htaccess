@@ -1,0 +1,51 @@
+# Enable GZIP compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json
+</IfModule>
+
+# Set proper MIME types
+<IfModule mod_mime.c>
+  AddType application/javascript .js
+  AddType text/css .css
+  AddType image/svg+xml .svg
+  AddType image/x-icon .ico
+  AddType image/png .png
+  AddType image/jpeg .jpg .jpeg
+  AddType image/webp .webp
+  AddType font/woff .woff
+  AddType font/woff2 .woff2
+</IfModule>
+
+# Cache control - use Cache-Control instead of Expires
+<IfModule mod_headers.c>
+  # Remove unnecessary headers
+  Header unset X-XSS-Protection
+  Header unset Content-Security-Policy
+  
+  # Use Content-Security-Policy instead of X-Frame-Options
+  Header set Content-Security-Policy "frame-ancestors 'self'"
+  Header unset X-Frame-Options
+  
+  # Cache busting for static assets
+  <FilesMatch "\.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2)$">
+    Header set Cache-Control "max-age=31536000, public"
+  </FilesMatch>
+  
+  # HTML, XML, and JSON files
+  <FilesMatch "\.(html|htm|xml|json|txt)$">
+    Header set Cache-Control "max-age=86400, public"
+  </FilesMatch>
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes
+
+# Redirect HTTP to HTTPS
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  
+  # Add version query string to CSS and JS files for cache busting
+  RewriteRule ^(.*)\.(css|js)$ $1.$2?v=1.0.0 [L]
+</IfModule>

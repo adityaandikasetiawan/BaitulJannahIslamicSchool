@@ -1,183 +1,103 @@
-<!DOCTYPE html> 
-<html lang="en">
-	
+<!DOCTYPE html>
+<html lang="id">
 <head>
-	
-	<!-- Meta Tags -->
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="<%= description %>">
-	
-	<title><%= title || 'Baitul Jannah Islamic School' %></title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0" />
+  <title>Login - Baitul Jannah Islamic School</title>
 
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="assets/img/logo.png"> 
-	<link rel="apple-touch-icon" href="assets/img/apple-icon.png">
-	
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	
-	<!-- Fontawesome CSS -->
-	<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
-	<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/assets/img/favicon.png" />
 
-	<!-- Select2 CSS -->
-	<link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
-	
-	<!-- Slick CSS -->
-	<link rel="stylesheet" href="assets/plugins/slick/slick.css">
-	<link rel="stylesheet" href="assets/plugins/slick/slick-theme.css">
-	
-	<!-- Feathericon CSS -->
-	<link rel="stylesheet" href="assets/plugins/feather/feather.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
 
-	<!-- Tabler Icon CSS -->
-	<link rel="stylesheet" href="assets/plugins/tabler-icons/tabler-icons.css">
+  <!-- Fontawesome CSS -->
+  <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css" />
 
-	<!-- Iconsax CSS -->
-	<link rel="stylesheet" href="assets/css/iconsax.css">
-
-	<!-- Main CSS -->
-	<link rel="stylesheet" href="assets/css/style.css">
-
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/uf-login.css" />
 </head>
+<body class="bg-light">
 
-<body>
-	<!-- Main Wrapper -->
-	<div class="main-wrapper">
-		<div class="login-content">
-			<div class="row">
-				<!-- Login Banner -->
-				<div class="col-md-6 login-bg d-none d-lg-flex">
-					<div class="login-carousel">
-						<div>
-							<div class="login-carousel-section mb-3">
-								<div class="login-banner">
-									<img src="assets/img/auth/auth-1.svg" class="img-fluid" alt="Logo">
-								</div>
-								<div class="mentor-course text-center">
-									<h3 class="mb-2">Selamat Datang di <br>Baitul Jannah<span class="text-secondary">Islamic School</span>.</h3>
-									<p>Platform pendidikan Islam terpadu yang mengintegrasikan kurikulum nasional dengan nilai-nilai Islam untuk membentuk generasi Qurani yang berakhlak mulia.</p>
-								</div>
-							</div>
-						</div>
-						<div>
-							<div class="login-carousel-section mb-3">
-								<div class="login-banner">
-									<img src="assets/img/auth/auth-1.svg" class="img-fluid" alt="Logo">
-								</div>
-								<div class="mentor-course text-center">
-									<h3 class="mb-2">Selamat Datang di <br>Baitul Jannah<span class="text-secondary">Islamic School</span>.</h3>
-									<p>Platform pendidikan Islam terpadu yang mengintegrasikan kurikulum nasional dengan nilai-nilai Islam untuk membentuk generasi Qurani yang berakhlak mulia.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- /Login Banner -->
-	
-				<div class="col-md-6 login-wrap-bg">
-					<!-- Login -->
-					<div class="login-wrapper">
-						<div class="loginbox">
-							<div class="w-100">
-								<div class="d-flex align-items-center justify-content-between login-header">
-									<img src="assets/img/logo.png" class="img-fluid" alt="Logo" style="max-width: 80px;">
-									<a href="/" class="link-1">Kembali ke Beranda</a>
-								</div>
-								<h1 class="fs-32 fw-bold topic">Masuk ke Akun Anda</h1>
-								
-								<div class="mb-3">
-									<% if(typeof errors != 'undefined'){ %>
-										<% errors.forEach(function(error) { %>
-											<div class="alert alert-danger alert-dismissible fade show" role="alert">
-												<%= error.msg %>
-												<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-											</div>
-										<% }); %>
-									<% } %>
-									
-									<% if(success_msg != ''){ %>
-										<div class="alert alert-success alert-dismissible fade show" role="alert">
-											<%= success_msg %>
-											<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-										</div>
-									<% } %>
-									
-									<% if(error_msg != ''){ %>
-										<div class="alert alert-danger alert-dismissible fade show" role="alert">
-											<%= error_msg %>
-											<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-										</div>
-									<% } %>
-									
-									<% if(error != ''){ %>
-										<div class="alert alert-danger alert-dismissible fade show" role="alert">
-											<%= error %>
-											<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-										</div>
-									<% } %>
-								</div>
-								
-							
-                            <form action="/login" method="POST">
-                                <div class="form-group">
-                                    <label class="form-control-label">Email</label>
-                                    <input type="email" name="email" class="form-control" placeholder="Email" required>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-control-label">Password</label>
-                                    <div class="pass-group">
-                                        <input type="password" name="password" class="form-control pass-input" placeholder="Password" required>
-                                        <span class="toggle-password feather-eye"></span>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="remember-me">
-                                            <label class="custom_check mr-2 mb-0 d-inline-flex remember-me"> Ingat saya
-                                                <input type="checkbox" name="remember">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 text-end">
-                                        <a class="forgot-link" href="/forgot-password">Lupa Password ?</a>
-                                    </div>
-                                </div>
-                                <div class="d-grid">
-                                    <button class="btn btn-primary btn-start" type="submit">Masuk</button>
-                                </div>
-                            </form>
-                            <div class="login-or">
-                                <span class="or-line"></span>
-                                <span class="span-or">atau</span>
-                            </div>
-                        <div class="social-login">
-                                <a href="#" class="btn btn-google w-100"><span class="me-2"><img src="assets/img/google.png" class="img-fluid" alt="Google"></span>Masuk dengan Google</a>
-                                <a href="#" class="btn btn-facebook w-100"><span class="me-2"><img src="assets/img/fb.png" class="img-fluid" alt="Facebook"></span>Masuk dengan Facebook</a>
-                            </div>
-                            <div class="text-center dont-have">Belum punya akun? <a href="/register">Daftar Sekarang</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- /Login -->
+  <div class="container d-flex align-items-center justify-content-center vh-100">
+    <div class="card shadow-lg p-4" style="max-width: 400px; width: 100%;">
+      <div class="text-center mb-4">
+        <a href="/"><img src="/assets/img/logo.png" alt="Baitul Jannah Islamic School" width="80" /></a>
+        <h4 class="mt-3">Login Admin</h4>
+      </div>
+
+      <!-- Alerts -->
+      <% if (typeof error_msg !== 'undefined' && error_msg.length > 0) { %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= error_msg %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
+      <% } %>
+      <% if (typeof success_msg !== 'undefined' && success_msg.length > 0) { %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= success_msg %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      <% } %>
+      <% if (typeof error !== 'undefined' && error.length > 0) { %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= error %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      <% } %>
+
+      <!-- Login Form -->
+      <form action="/login" method="POST">
+        <div class="mb-3">
+          <div class="input-group">
+            <span class="input-group-text"><i class="fa fa-user"></i></span>
+            <input type="text" name="username" class="form-control" placeholder="Username" required />
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="input-group">
+            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+            <input type="password" name="password" class="form-control" id="password" placeholder="Password" required />
+            <span class="input-group-text cursor-pointer" id="toggle-password"><i class="fa fa-eye"></i></span>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between mb-3">
+          <div class="form-check">
+            <input type="checkbox" name="remember" id="rememberMe" class="form-check-input" />
+            <label for="rememberMe" class="form-check-label">Remember Me</label>
+          </div>
+          <a href="#" class="text-decoration-none">Lupa Password?</a>
+        </div>
+        <div class="d-grid mb-3">
+          <button type="submit" class="btn btn-primary btn-lg">Login</button>
+        </div>
+      </form>
+
+      <!-- <div class="text-center">
+        <p class="mb-2">Login dengan</p>
+        <div class="d-flex justify-content-center gap-2">
+          <a href="#" class="btn btn-outline-secondary rounded-circle"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="btn btn-outline-secondary rounded-circle"><i class="fab fa-google"></i></a>
+          <a href="#" class="btn btn-outline-secondary rounded-circle"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div> -->
     </div>
-</div>
-    
-    <!-- jQuery -->
-    <script src="assets/js/jquery-3.7.1.min.js" type="text/javascript"></script>
+  </div>
 
-    <!-- Bootstrap Core JS -->
-    <script src="assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
-    
-    <!-- Slick Slider -->
-    <script src="assets/plugins/slick/slick.js" type="text/javascript"></script>
-
-    <!-- Custom JS -->
-    <script src="assets/js/script.js" type="text/javascript"></script>
+  <!-- JS -->
+  <script src="/assets/js/jquery-3.7.1.min.js"></script>
+  <script src="/assets/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#toggle-password').click(function () {
+        const input = $('#password');
+        const icon = $(this).find('i');
+        const type = input.attr('type') === 'password' ? 'text' : 'password';
+        input.attr('type', type);
+        icon.toggleClass('fa-eye fa-eye-slash');
+      });
+    });
+  </script>
 </body>
 </html>

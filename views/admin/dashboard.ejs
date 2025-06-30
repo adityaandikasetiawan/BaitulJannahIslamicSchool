@@ -1,317 +1,228 @@
-<%- include('../partials/header') %>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title><%= title %></title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/assets/img/favicon.png">
 
-<!-- Page Wrapper -->
-<div class="page-wrapper">
-    <div class="content container-fluid">
-        <!-- Page Header -->
-        <div class="page-header">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h3 class="page-title">Selamat Datang <%= user.name %>!</h3>
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item active">Dashboard</li>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+    
+    <!-- Feather CSS -->
+    <link rel="stylesheet" href="/assets/css/feather.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+        
+        <!-- Header -->
+        <div class="header">
+            <!-- Logo -->
+            <div class="header-left">
+                <a href="/dashboard" class="logo">
+                    <img src="/assets/img/logo.png" alt="Logo" style="max-height: 40px;">
+                </a>
+                <a href="/dashboard" class="logo logo-small">
+                    <img src="/assets/img/logo.png" alt="Logo" width="30" height="30">
+                </a>
+            </div>
+            <!-- /Logo -->
+            
+            <a href="javascript:void(0);" id="toggle_btn">
+                <i class="feather-menu"></i>
+            </a>
+            
+            <div class="top-nav-search">
+                <form>
+                    <input type="text" class="form-control" placeholder="Cari...">
+                    <button class="btn" type="submit"><i class="feather-search"></i></button>
+                </form>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <a class="mobile_btn" id="mobile_btn">
+                <i class="feather-menu"></i>
+            </a>
+            <!-- /Mobile Menu Toggle -->
+            
+            <!-- Header Right Menu -->
+            <ul class="nav user-menu">
+                <!-- User Menu -->
+                <li class="nav-item dropdown has-arrow">
+                    <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                        <span class="user-img">
+                            <i class="feather-user"></i>
+                        </span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="user-header">
+                            <div class="user-text">
+                                <h6><%= user.name %></h6>
+                                <p class="text-muted mb-0"><%= user.role %></p>
+                            </div>
+                        </div>
+                        <a class="dropdown-item" href="/profile">Profil Saya</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                    </div>
+                </li>
+                <!-- /User Menu -->
+            </ul>
+            <!-- /Header Right Menu -->
+        </div>
+        <!-- /Header -->
+        
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">
+                            <span>Main</span>
+                        </li>
+                        <li class="active">
+                            <a href="/dashboard"><i class="feather-grid"></i> <span>Dashboard</span></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="feather-file-text"></i> <span>Berita</span></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="feather-calendar"></i> <span>Agenda</span></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="feather-bell"></i> <span>Pengumuman</span></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="feather-image"></i> <span>Galeri</span></a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <!-- /Page Header -->
-
-        <!-- Overview Section -->
-        <div class="row">
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card bg-one">
-                    <div class="card-body">
-                        <div class="db-widgets d-flex justify-content-between align-items-center">
-                            <div class="db-icon">
-                                <i class="fas fa-users"></i>
+        <!-- /Sidebar -->
+        
+        <!-- Page Wrapper -->
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+                
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="page-title">Dashboard</h3>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Home</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Page Header -->
+                
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="dash-widget-header">
+                                    <span class="dash-widget-icon bg-primary">
+                                        <i class="feather-file-text"></i>
+                                    </span>
+                                    <div class="dash-widget-info">
+                                        <h3>0</h3>
+                                        <h6 class="text-muted">Berita</h6>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="db-info">
-                                <h3><%= counts.users %></h3>
-                                <h6>Pengguna</h6>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="dash-widget-header">
+                                    <span class="dash-widget-icon bg-info">
+                                        <i class="feather-calendar"></i>
+                                    </span>
+                                    <div class="dash-widget-info">
+                                        <h3>0</h3>
+                                        <h6 class="text-muted">Agenda</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="dash-widget-header">
+                                    <span class="dash-widget-icon bg-warning">
+                                        <i class="feather-bell"></i>
+                                    </span>
+                                    <div class="dash-widget-info">
+                                        <h3>0</h3>
+                                        <h6 class="text-muted">Pengumuman</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="dash-widget-header">
+                                    <span class="dash-widget-icon bg-danger">
+                                        <i class="feather-image"></i>
+                                    </span>
+                                    <div class="dash-widget-info">
+                                        <h3>0</h3>
+                                        <h6 class="text-muted">Galeri</h6>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card bg-two">
-                    <div class="card-body">
-                        <div class="db-widgets d-flex justify-content-between align-items-center">
-                            <div class="db-icon">
-                                <i class="fas fa-newspaper"></i>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Selamat Datang</h5>
                             </div>
-                            <div class="db-info">
-                                <h3><%= counts.berita %></h3>
-                                <h6>Berita</h6>
+                            <div class="card-body">
+                                <p>Selamat datang di Dashboard Admin Baitul Jannah Islamic School.</p>
+                                <p>Gunakan menu di sebelah kiri untuk mengelola konten website.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card bg-three">
-                    <div class="card-body">
-                        <div class="db-widgets d-flex justify-content-between align-items-center">
-                            <div class="db-icon">
-                                <i class="fas fa-bullhorn"></i>
-                            </div>
-                            <div class="db-info">
-                                <h3><%= counts.pengumuman %></h3>
-                                <h6>Pengumuman</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card bg-four">
-                    <div class="card-body">
-                        <div class="db-widgets d-flex justify-content-between align-items-center">
-                            <div class="db-icon">
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                            <div class="db-info">
-                                <h3><%= counts.agenda %></h3>
-                                <h6>Agenda</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
-        <!-- /Overview Section -->
-
-        <div class="row">
-            <!-- Recent News Section -->
-            <div class="col-md-6 d-flex">
-                <div class="card card-table flex-fill">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0">Berita Terbaru</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-center mb-0">
-                                <thead>
-                                    <tr>
-                                        <th>Judul</th>
-                                        <th>Kategori</th>
-                                        <th>Tanggal</th>
-                                        <th class="text-end">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <% if(typeof recentBerita != 'undefined' && recentBerita.length > 0) { %>
-                                        <% recentBerita.forEach(function(item) { %>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a class="avatar avatar-sm me-2">
-                                                            <img class="avatar-img rounded-circle" src="/assets/img/berita/<%= item.gambar %>" alt="Berita">
-                                                        </a>
-                                                        <a><%= item.judul.length > 30 ? item.judul.substring(0, 30) + '...' : item.judul %></a>
-                                                    </h2>
-                                                </td>
-                                                <td><%= item.kategori %></td>
-                                                <td><%= new Date(item.createdAt).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) %></td>
-                                                <td class="text-end">
-                                                    <a href="/admin/berita/edit/<%= item._id %>" class="btn btn-sm bg-success-light me-2">
-                                                        <i class="fas fa-pen"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        <% }); %>
-                                    <% } else { %>
-                                        <tr>
-                                            <td colspan="4" class="text-center">Tidak ada data berita</td>
-                                        </tr>
-                                    <% } %>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="/admin/berita" class="btn btn-primary btn-sm">Lihat Semua</a>
-                    </div>
-                </div>
-            </div>
-            <!-- /Recent News Section -->
-
-            <!-- Upcoming Events Section -->
-            <div class="col-md-6 d-flex">
-                <div class="card card-table flex-fill">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0">Agenda Mendatang</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-center mb-0">
-                                <thead>
-                                    <tr>
-                                        <th>Judul</th>
-                                        <th>Tanggal</th>
-                                        <th>Status</th>
-                                        <th class="text-end">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <% if(typeof upcomingAgenda != 'undefined' && upcomingAgenda.length > 0) { %>
-                                        <% upcomingAgenda.forEach(function(item) { %>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a><%= item.judul.length > 30 ? item.judul.substring(0, 30) + '...' : item.judul %></a>
-                                                    </h2>
-                                                </td>
-                                                <td><%= new Date(item.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) %></td>
-                                                <td>
-                                                    <% if(item.status === 'upcoming') { %>
-                                                        <span class="badge bg-warning">Akan Datang</span>
-                                                    <% } else if(item.status === 'ongoing') { %>
-                                                        <span class="badge bg-success">Berlangsung</span>
-                                                    <% } %>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="/admin/agenda/edit/<%= item._id %>" class="btn btn-sm bg-success-light me-2">
-                                                        <i class="fas fa-pen"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        <% }); %>
-                                    <% } else { %>
-                                        <tr>
-                                            <td colspan="4" class="text-center">Tidak ada agenda mendatang</td>
-                                        </tr>
-                                    <% } %>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="/admin/agenda" class="btn btn-primary btn-sm">Lihat Semua</a>
-                    </div>
-                </div>
-            </div>
-            <!-- /Upcoming Events Section -->
-        </div>
-
-        <div class="row">
-            <!-- Active Announcements Section -->
-            <div class="col-md-6 d-flex">
-                <div class="card card-table flex-fill">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0">Pengumuman Aktif</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-center mb-0">
-                                <thead>
-                                    <tr>
-                                        <th>Judul</th>
-                                        <th>Untuk</th>
-                                        <th>Penting</th>
-                                        <th class="text-end">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <% if(typeof activePengumuman != 'undefined' && activePengumuman.length > 0) { %>
-                                        <% activePengumuman.forEach(function(item) { %>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a><%= item.judul.length > 30 ? item.judul.substring(0, 30) + '...' : item.judul %></a>
-                                                    </h2>
-                                                </td>
-                                                <td><%= item.untuk %></td>
-                                                <td>
-                                                    <% if(item.penting) { %>
-                                                        <span class="badge bg-danger">Penting</span>
-                                                    <% } else { %>
-                                                        <span class="badge bg-secondary">Biasa</span>
-                                                    <% } %>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="/admin/pengumuman/edit/<%= item._id %>" class="btn btn-sm bg-success-light me-2">
-                                                        <i class="fas fa-pen"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        <% }); %>
-                                    <% } else { %>
-                                        <tr>
-                                            <td colspan="4" class="text-center">Tidak ada pengumuman aktif</td>
-                                        </tr>
-                                    <% } %>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="/admin/pengumuman" class="btn btn-primary btn-sm">Lihat Semua</a>
-                    </div>
-                </div>
-            </div>
-            <!-- /Active Announcements Section -->
-
-            <!-- Recent Users Section -->
-            <div class="col-md-6 d-flex">
-                <div class="card card-table flex-fill">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0">Pengguna Terbaru</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-center mb-0">
-                                <thead>
-                                    <tr>
-                                        <th>Nama</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
-                                        <th class="text-end">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <% if(typeof recentUsers != 'undefined' && recentUsers.length > 0) { %>
-                                        <% recentUsers.forEach(function(user) { %>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a class="avatar avatar-sm me-2">
-                                                            <img class="avatar-img rounded-circle" src="/assets/img/profiles/avatar-placeholder.jpg" alt="User Image">
-                                                        </a>
-                                                        <a><%= user.name %></a>
-                                                    </h2>
-                                                </td>
-                                                <td><%= user.email %></td>
-                                                <td><span class="badge bg-info"><%= user.role %></span></td>
-                                                <td class="text-end">
-                                                    <a href="/admin/users/edit/<%= user._id %>" class="btn btn-sm bg-success-light me-2">
-                                                        <i class="fas fa-pen"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        <% }); %>
-                                    <% } else { %>
-                                        <tr>
-                                            <td colspan="4" class="text-center">Tidak ada data pengguna terbaru</td>
-                                        </tr>
-                                    <% } %>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="/admin/users" class="btn btn-primary btn-sm">Lihat Semua</a>
-                    </div>
-                </div>
-            </div>
-            <!-- /Recent Users Section -->
-        </div>
-
+        <!-- /Page Wrapper -->
+        
     </div>
-</div>
-<!-- /Page Wrapper -->
-
-<%- include('../partials/footer') %>
+    <!-- /Main Wrapper -->
+    
+    <!-- jQuery -->
+    <script src="/assets/js/jquery-3.7.1.min.js"></script>
+    
+    <!-- Bootstrap Core JS -->
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Slimscroll JS -->
+    <script src="/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

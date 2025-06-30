@@ -1,0 +1,345 @@
+/* Admin Styles */
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 240px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+.sidebar-inner {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.sidebar.opened {
+    left: 0;
+}
+
+.sidebar-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-menu li {
+    position: relative;
+}
+
+.sidebar-menu li a {
+    color: #333;
+    display: block;
+    font-size: 15px;
+    height: auto;
+    padding: 12px 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.sidebar-menu li a:hover {
+    color: #20c0f3;
+    background-color: #f5f5f5;
+}
+
+.sidebar-menu li a i {
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 10px;
+    min-width: 20px;
+}
+
+.sidebar-menu li.active a {
+    color: #20c0f3;
+    background-color: #f5f5f5;
+}
+
+.sidebar-menu li.menu-title {
+    color: #999;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 15px 20px;
+    text-transform: uppercase;
+}
+
+.sidebar-menu li.submenu > a {
+    position: relative;
+}
+
+.sidebar-menu li.submenu > a:after {
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-menu li.submenu.active > a:after {
+    transform: rotate(180deg);
+}
+
+.sidebar-menu li.submenu ul {
+    background-color: #f5f5f5;
+    display: none;
+}
+
+.sidebar-menu li.submenu.active ul {
+    display: block;
+}
+
+.sidebar-menu li.submenu ul li a {
+    padding-left: 50px;
+}
+
+.sidebar-menu li.submenu ul li a:hover {
+    color: #20c0f3;
+}
+
+.menu-arrow {
+    display: inline-block;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-left: 5px;
+}
+
+/* Header Admin */
+.header-admin {
+    background-color: #fff;
+    border-bottom: 1px solid #e3e3e3;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+    height: 60px;
+}
+
+.header-admin .navbar-header {
+    width: 240px;
+    padding: 0 15px;
+    float: left;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.header-admin .navbar-logo {
+    display: inline-block;
+    line-height: 60px;
+}
+
+.header-admin .main-menu-wrapper {
+    width: calc(100% - 240px);
+    float: left;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.header-admin .header-btn {
+    margin-left: auto;
+    padding-right: 15px;
+}
+
+/* Page Wrapper */
+.page-wrapper {
+    margin-left: 240px;
+    padding-top: 60px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.page-wrapper .content {
+    padding: 30px;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .sidebar {
+        left: -240px;
+    }
+    .page-wrapper {
+        margin-left: 0;
+    }
+    .sidebar.opened {
+        left: 0;
+    }
+}
+
+/* Card Styles */
+.card {
+    border: 1px solid #e3e3e3;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.card-title {
+    margin-bottom: 0;
+    color: #333;
+}
+
+/* Table Styles */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table {
+    color: #333;
+}
+
+.table th {
+    font-weight: 600;
+    color: #333;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+.table-center th,
+.table-center td {
+    vertical-align: middle;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #20c0f3;
+    border-color: #20c0f3;
+}
+
+.btn-primary:hover {
+    background-color: #0eaad6;
+    border-color: #0eaad6;
+}
+
+.btn-success-light {
+    background-color: rgba(15, 183, 107, 0.12);
+    color: #26af48;
+}
+
+.btn-success-light:hover {
+    background-color: rgba(15, 183, 107, 0.2);
+    color: #26af48;
+}
+
+.btn-danger-light {
+    background-color: rgba(242, 17, 54, 0.12);
+    color: #e63c3c;
+}
+
+.btn-danger-light:hover {
+    background-color: rgba(242, 17, 54, 0.2);
+    color: #e63c3c;
+}
+
+/* Avatar */
+.avatar {
+    position: relative;
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1rem;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-sm {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 0.83333rem;
+}
+
+/* Badge */
+.badge {
+    font-weight: 500;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    background-color: transparent;
+    margin-bottom: 1.5rem;
+}
+
+/* Page Header */
+.page-header {
+    margin-bottom: 1.875rem;
+}
+
+.page-header .breadcrumb {
+    margin-bottom: 0;
+}
+
+/* Overview Cards */
+.bg-one {
+    background-color: rgba(33, 150, 243, 0.1);
+}
+
+.bg-two {
+    background-color: rgba(255, 152, 0, 0.1);
+}
+
+.bg-three {
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.bg-four {
+    background-color: rgba(233, 30, 99, 0.1);
+}
+
+.db-widgets {
+    padding: 1rem;
+}
+
+.db-icon {
+    background-color: #fff;
+    border-radius: 100%;
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    width: 50px;
+}
+
+.bg-one .db-icon {
+    color: #2196f3;
+}
+
+.bg-two .db-icon {
+    color: #ff9800;
+}
+
+.bg-three .db-icon {
+    color: #4caf50;
+}
+
+.bg-four .db-icon {
+    color: #e91e63;
+}
+
+.db-info h3 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.db-info h6 {
+    color: #777;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 0;
+}

@@ -1,0 +1,160 @@
+<%- include('../../partials/header') %>
+
+<div class="main-wrapper">
+    <%- include('../../partials/header2') %>
+
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="page-title">Kelola Galeri</h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Kelola Galeri</li>
+                        </ul>
+                    </div>
+                    <div class="col-auto text-right float-right ml-auto">
+                        <a href="/admin/galeri/tambah" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Galeri</a>
+                    </div>
+                </div>
+            </div>
+
+            <% if(success_msg != ''){ %>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <%= success_msg %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% } %>
+
+            <% if(error_msg != ''){ %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <%= error_msg %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% } %>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card card-table">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-center mb-0 datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Judul</th>
+                                            <th>Gambar</th>
+                                            <th>Kategori</th>
+                                            <th>Tanggal</th>
+                                            <th>Status</th>
+                                            <th class="text-right">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% if(galeri.length > 0) { %>
+                                            <% galeri.forEach((item, index) => { %>
+                                                <tr>
+                                                    <td><%= index + 1 %></td>
+                                                    <td><%= item.judul %></td>
+                                                    <td>
+                                                        <% if(item.gambar) { %>
+                                                            <img src="<%= item.gambar %>" alt="<%= item.judul %>" style="width: 100px; height: auto;">
+                                                        <% } else { %>
+                                                            <span class="badge badge-warning">Tidak ada gambar</span>
+                                                        <% } %>
+                                                    </td>
+                                                    <td><%= item.kategori %></td>
+                                                    <td><%= new Date(item.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) %></td>
+                                                    <td>
+                                                        <% if(item.is_published == 1) { %>
+                                                            <span class="badge badge-success">Dipublikasikan</span>
+                                                        <% } else { %>
+                                                            <span class="badge badge-danger">Draft</span>
+                                                        <% } %>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <div class="actions">
+                                                            <a href="/admin/galeri/edit/<%= item.id %>" class="btn btn-sm bg-success-light mr-2">
+                                                                <i class="fas fa-pen"></i>
+                                                            </a>
+                                                            <a href="#" class="btn btn-sm bg-danger-light delete-galeri" data-id="<%= item.id %>">
+                                                                <i class="fas fa-trash"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <% }) %>
+                                        <% } else { %>
+                                            <tr>
+                                                <td colspan="7" class="text-center">Tidak ada data galeri</td>
+                                            </tr>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Apakah Anda yakin ingin menghapus data galeri ini?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete">Hapus</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../../partials/footer') %>
+
+<script>
+    $(document).ready(function() {
+        let deleteId;
+
+        $('.delete-galeri').on('click', function(e) {
+            e.preventDefault();
+            deleteId = $(this).data('id');
+            $('#deleteModal').modal('show');
+        });
+
+        $('#confirmDelete').on('click', function() {
+            $.ajax({
+                url: `/admin/galeri/delete/${deleteId}`,
+                type: 'DELETE',
+                success: function(result) {
+                    if (result.success) {
+                        $('#deleteModal').modal('hide');
+                        location.reload();
+                    } else {
+                        alert(result.message);
+                    }
+                },
+                error: function(err) {
+                    console.error(err);
+                    alert('Terjadi kesalahan saat menghapus data');
+                }
+            });
+        });
+    });
+</script>

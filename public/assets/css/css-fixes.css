@@ -1,0 +1,144 @@
+/* CSS Fixes for Browser Compatibility Issues */
+
+/* Fix for -moz-appearance */
+input[type="number"],
+input[type="search"],
+select {
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Fix for -webkit-text-size-adjust */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* Fix for backdrop-filter */
+.blur-bg,
+.modal-backdrop,
+.dropdown-menu {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+/* Fix for text-align: -webkit-match-parent */
+li {
+    text-align: -webkit-match-parent;
+    text-align: match-parent;
+}
+
+/* Fix for user-select */
+.no-select,
+.btn,
+.nav-link {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Fix for color-adjust */
+@media print {
+    .print-color {
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+}
+
+/* Fix for min-height: auto */
+.auto-height {
+    min-height: 0;
+}
+
+/* Fix for scrollbar-width */
+.thin-scrollbar {
+    scrollbar-width: thin;
+}
+
+/* Fix for align-items order */
+.flex-center {
+    -webkit-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+}
+
+/* Fix for border-radius order */
+.rounded-custom {
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+
+/* Fix for box-shadow order */
+.shadow-custom {
+    -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Fix for display: flex order */
+.d-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -ms-flex;
+    display: flex;
+}
+
+/* Fix for display: inline-flex order */
+.d-inline-flex {
+    display: -webkit-inline-flex;
+    display: inline-flex;
+}
+
+/* Fix for flex-wrap order */
+.flex-wrap {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+/* Fix for justify-content order */
+.justify-content-center {
+    -webkit-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+}
+
+/* Fix for transform-origin order */
+.transform-origin-center {
+    -webkit-transform-origin: center;
+    -moz-transform-origin: center;
+    -ms-transform-origin: center;
+    -o-transform-origin: center;
+    transform-origin: center;
+}
+
+/* Fix for transform order */
+.rotate-45 {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* Fix for transition order */
+.transition-all {
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+/* Fix for autocomplete attribute */
+input:not([autocomplete]),
+textarea:not([autocomplete]),
+select:not([autocomplete]) {
+    autocomplete: off;
+}
+
+/* Fix for inline styles */
+.no-inline-style {
+    /* This is a reminder class to avoid inline styles */
+    /* Move all inline styles to external CSS files */
+}

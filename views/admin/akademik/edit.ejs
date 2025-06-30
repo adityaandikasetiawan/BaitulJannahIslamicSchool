@@ -1,0 +1,98 @@
+<%- include('../../partials/header') %>
+
+<div class="main-wrapper">
+    <%- include('../../partials/header2') %>
+
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="page-title">Edit Akademik</h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/akademik">Kelola Akademik</a></li>
+                            <li class="breadcrumb-item active">Edit Akademik</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <% if(error_msg != ''){ %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <%= error_msg %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% } %>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="/admin/akademik/edit/<%= akademik.id %>" method="POST" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5 class="form-title"><span>Detail Akademik</span></h5>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Judul</label>
+                                            <input type="text" name="judul" class="form-control" value="<%= akademik.judul %>" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Jenis</label>
+                                            <select name="jenis" class="form-control" required>
+                                                <option value="">Pilih Jenis</option>
+                                                <option value="kurikulum" <%= akademik.jenis === 'kurikulum' ? 'selected' : '' %>>Kurikulum</option>
+                                                <option value="program" <%= akademik.jenis === 'program' ? 'selected' : '' %>>Program</option>
+                                                <option value="prestasi" <%= akademik.jenis === 'prestasi' ? 'selected' : '' %>>Prestasi</option>
+                                                <option value="kegiatan" <%= akademik.jenis === 'kegiatan' ? 'selected' : '' %>>Kegiatan Akademik</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Deskripsi</label>
+                                            <textarea name="deskripsi" class="form-control" rows="5" required><%= akademik.deskripsi %></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Gambar</label>
+                                            <input type="file" name="gambar" class="form-control">
+                                            <small class="form-text text-muted">Format: JPG, JPEG, PNG, GIF. Maks: 5MB</small>
+                                            <% if(akademik.gambar) { %>
+                                                <div class="mt-2">
+                                                    <img src="<%= akademik.gambar %>" alt="<%= akademik.judul %>" style="max-width: 200px; max-height: 200px;">
+                                                </div>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            <select name="status" class="form-control" required>
+                                                <option value="aktif" <%= akademik.status === 'aktif' ? 'selected' : '' %>>Aktif</option>
+                                                <option value="tidak_aktif" <%= akademik.status === 'tidak_aktif' ? 'selected' : '' %>>Tidak Aktif</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                        <a href="/admin/akademik" class="btn btn-secondary">Batal</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../../partials/footer') %>

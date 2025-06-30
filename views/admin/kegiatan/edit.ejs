@@ -1,0 +1,123 @@
+<%- include('../../partials/header') %>
+
+<div class="main-wrapper">
+    <%- include('../../partials/header2') %>
+
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="page-title">Edit Kegiatan</h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/kegiatan">Kelola Kegiatan</a></li>
+                            <li class="breadcrumb-item active">Edit Kegiatan</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <% if(error_msg != ''){ %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <%= error_msg %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% } %>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="/admin/kegiatan/edit/<%= kegiatan.id %>" method="POST" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5 class="form-title"><span>Detail Kegiatan</span></h5>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Judul</label>
+                                            <input type="text" name="judul" class="form-control" value="<%= kegiatan.judul %>" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Jenis</label>
+                                            <select name="jenis" class="form-control" required>
+                                                <option value="">Pilih Jenis</option>
+                                                <option value="ekstrakurikuler" <%= kegiatan.jenis === 'ekstrakurikuler' ? 'selected' : '' %>>Ekstrakurikuler</option>
+                                                <option value="lomba" <%= kegiatan.jenis === 'lomba' ? 'selected' : '' %>>Lomba</option>
+                                                <option value="seminar" <%= kegiatan.jenis === 'seminar' ? 'selected' : '' %>>Seminar</option>
+                                                <option value="workshop" <%= kegiatan.jenis === 'workshop' ? 'selected' : '' %>>Workshop</option>
+                                                <option value="lainnya" <%= kegiatan.jenis === 'lainnya' ? 'selected' : '' %>>Lainnya</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Deskripsi</label>
+                                            <textarea name="deskripsi" class="form-control" rows="5" required><%= kegiatan.deskripsi %></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Tanggal</label>
+                                            <input type="date" name="tanggal" class="form-control" value="<%= kegiatan.tanggal ? new Date(kegiatan.tanggal).toISOString().split('T')[0] : '' %>" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-3">
+                                        <div class="form-group">
+                                            <label>Waktu Mulai</label>
+                                            <input type="time" name="waktu_mulai" class="form-control" value="<%= kegiatan.waktuMulai %>" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-3">
+                                        <div class="form-group">
+                                            <label>Waktu Selesai</label>
+                                            <input type="time" name="waktu_selesai" class="form-control" value="<%= kegiatan.waktuSelesai %>" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Lokasi</label>
+                                            <input type="text" name="lokasi" class="form-control" value="<%= kegiatan.lokasi %>" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Gambar</label>
+                                            <input type="file" name="gambar" class="form-control">
+                                            <small class="form-text text-muted">Format: JPG, JPEG, PNG, GIF. Maks: 5MB</small>
+                                            <% if(kegiatan.gambar) { %>
+                                                <div class="mt-2">
+                                                    <img src="<%= kegiatan.gambar %>" alt="<%= kegiatan.judul %>" style="max-width: 200px; max-height: 200px;">
+                                                </div>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            <select name="status" class="form-control" required>
+                                                <option value="aktif" <%= kegiatan.status === 'aktif' ? 'selected' : '' %>>Aktif</option>
+                                                <option value="tidak_aktif" <%= kegiatan.status === 'tidak_aktif' ? 'selected' : '' %>>Tidak Aktif</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                        <a href="/admin/kegiatan" class="btn btn-secondary">Batal</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../../partials/footer') %>

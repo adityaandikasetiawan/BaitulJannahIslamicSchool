@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="Baitul Jannah Islamic School - Sistem Manajemen Sekolah Islam">
+    <title><%= title %></title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/img/apple-icon.png">
+
+    <!-- Theme Settings Js -->
+    <script src="/assets/js/theme-script.js"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+    
+    <!-- Feather CSS -->
+    <link rel="stylesheet" href="/assets/css/feather.css">
+
+    <!-- Daterangepicker CSS -->
+    <link rel="stylesheet" href="/assets/plugins/daterangepicker/daterangepicker.css">
+
+    <!-- Iconsax CSS -->
+    <link rel="stylesheet" href="/assets/css/iconsax.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+        
+        <!-- Header Topbar-->
+        <div class="header-topbar text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="d-flex align-items-center justify-content-center justify-content-lg-start">
+                            <p class="d-flex align-items-center fw-medium fs-14 mb-2 me-3"><i class="isax isax-location5 me-2"></i>Jl. Baitul Jannah, Kota Bandar Lampung</p>
+                            <p class="d-flex align-items-center fw-medium fs-14 mb-2"><i class="isax isax-call-calling5 me-2"></i>+62 721 123456</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="d-flex align-items-center justify-content-center justify-content-lg-end">
+                            <ul class="social-icon d-flex align-items-center mb-2">
+                                <li class="me-2">
+                                    <a href="javascript:void(0);"><i class="fa-brands fa-facebook-f"></i></a>
+                                </li>
+                                <li class="me-2">
+                                    <a href="javascript:void(0);"><i class="fa-brands fa-instagram"></i></a>
+                                </li>
+                                <li class="me-2">
+                                    <a href="javascript:void(0);"><i class="fa-brands fa-x-twitter"></i></a>
+                                </li>
+                                <li class="me-2">
+                                    <a href="javascript:void(0);"><i class="fa-brands fa-youtube"></i></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);"><i class="fa-brands fa-linkedin"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Header Topbar-->
+        
+        <!-- Header -->
+        <header class="header-two">
+            <div class="container">
+                <div class="header-nav">
+                    <div class="navbar-header">
+                        <a id="mobile_btn" href="javascript:void(0);">
+                            <span class="bar-icon">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </a>
+                        <div class="navbar-logo">
+                            <a class="logo-white header-logo" href="/">
+                                <img src="/assets/img/logo.png" class="logo" alt="Logo" style="max-height: 40px;">
+                            </a>
+                            <a class="logo-dark header-logo" href="/">
+                                <img src="/assets/img/logo.png" class="logo" alt="Logo" style="max-height: 40px;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="main-menu-wrapper">                                
+                        <div class="menu-header">
+                            <a href="/" class="menu-logo">
+                                <img src="/assets/img/logo.png" class="img-fluid" alt="Logo" style="max-height: 40px;">
+                            </a>
+                            <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </div>
+                        <ul class="main-nav">
+                            <li class="active">
+                                <a href="/dashboard">Dashboard</a>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">Siswa <i class="isax isax-add"></i></a>
+                                <ul class="submenu">
+                                    <li><a href="#">Daftar Siswa</a></li>
+                                    <li><a href="#">Tambah Siswa</a></li>
+
+                                    <li><a href="#">Nilai</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">Guru <i class="isax isax-add"></i></a>
+                                <ul class="submenu">
+                                    <li><a href="#">Daftar Guru</a></li>
+                                    <li><a href="#">Tambah Guru</a></li>
+                                    <li><a href="#">Jadwal Mengajar</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">Akademik <i class="isax isax-add"></i></a>
+                                <ul class="submenu">
+                                    <li><a href="#">Mata Pelajaran</a></li>
+                                    <li><a href="#">Jadwal Pelajaran</a></li>
+                                    <li><a href="#">Ujian</a></li>
+                                    <li><a href="#">Rapor</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Agenda</a>
+                            </li>
+                            <li>
+                                <a href="#">Pengumuman</a>
+                            </li>
+                            <li>
+                                <a href="#">Berita</a>
+                            </li>
+                            <li>
+                                <a href="#">Galeri</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header-btn d-flex align-items-center">
+                        <div class="icon-btn me-2">
+                            <a href="javascript:void(0);" id="dark-mode-toggle" class="theme-toggle activate">
+                                <i class="isax isax-sun-15"></i>
+                            </a>
+                            <a href="javascript:void(0);" id="light-mode-toggle" class="theme-toggle">
+                                <i class="isax isax-moon"></i>
+                            </a>
+                        </div>
+                        <div class="dropdown profile-dropdown">
+                            <a href="javascript:void(0);" class="d-flex align-items-center" data-bs-toggle="dropdown">
+                                <span class="avatar">
+                                    <img src="/assets/img/user/user-01.jpg" alt="Img" class="img-fluid rounded-circle">
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <div class="profile-header d-flex align-items-center">
+                                    <div class="avatar">
+                                        <img src="/assets/img/user/user-01.jpg" alt="Img" class="img-fluid rounded-circle">
+                                    </div>
+                                    <div>
+                                        <h6><%= user.name %></h6>
+                                        <p><%= user.role %></p>
+                                    </div>
+                                </div>
+                                <ul class="profile-body">
+                                    <li>
+                                        <a class="dropdown-item d-inline-flex align-items-center rounded fw-medium" href="/profile"><i class="isax isax-security-user me-2"></i>Profil Saya</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item d-inline-flex align-items-center rounded fw-medium" href="/settings"><i class="isax isax-setting-2 me-2"></i>Pengaturan</a>
+                                    </li>                                    
+                                </ul>
+                                <div class="profile-footer">
+                                    <a href="/logout" class="btn btn-secondary d-inline-flex align-items-center justify-content-center w-100"><i class="isax isax-logout me-2"></i>Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- /Header -->
+        
+        <!-- Breadcrumb -->
+        <div class="breadcrumb-bar text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-12">
+                        <h2 class="breadcrumb-title mb-2">Dashboard</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center mb-0">
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Breadcrumb -->
+
+        <div class="content">
+            <div class="container">
+                <div class="instructor-profile">
+                    <div class="instructor-profile-bg">
+                        <img src="/assets/img/bg/card-bg-01.png" class="instructor-profile-bg-1" alt="">
+                    </div>
+                    <div class="row align-items-center row-gap-3">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center">
+                                <span class="avatar flex-shrink-0 avatar-xxl avatar-rounded me-3 border border-white border-3 position-relative">
+                                    <img src="/assets/img/user/user-01.jpg" alt="img">
+                                    <span class="verify-tick"><i class="isax isax-verify5"></i></span>
+                                </span>
+                                <div>
+                                    <h5 class="mb-1 text-white d-inline-flex align-items-center"><%= user.name %><a href="/profile" class="link-light fs-16 ms-2"><i class="isax isax-edit-2"></i></a></h5>
+                                    <p class="text-light"><%= user.role %></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center flex-wrap gap-3 justify-content-md-end">
+                                <a href="#" class="btn btn-white rounded-pill">Tambah Siswa</a>
+                                <a href="#" class="btn btn-secondary rounded-pill">Lihat Profil</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <!-- Sidebar -->
+                    <div class="col-lg-3 theiaStickySidebar">
+                        <div class="settings-sidebar mb-lg-0">
+                            <div>
+                                <h6 class="mb-3">Menu Utama</h6>
+                                <ul class="mb-3 pb-1">
+                                    <li>
+                                        <a href="/dashboard" class="d-inline-flex align-items-center active"><i class="isax isax-grid-35 me-2"></i>Dashboard</a>
+                                    </li>
+                                    <li>
+                                        <a href="/profile" class="d-inline-flex align-items-center"><i class="fa-solid fa-user me-2"></i>Profil Saya</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-inline-flex align-items-center"><i class="isax isax-profile-2user5 me-2"></i>Siswa</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-inline-flex align-items-center"><i class="isax isax-teacher5 me-2"></i>Guru</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-inline-flex align-items-center"><i class="isax isax-book5 me-2"></i>Mata Pelajaran</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-inline-flex align-items-center"><i class="isax isax-calendar5 me-2"></i>Jadwal</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-inline-flex align-items-center"><i class="isax isax-clipboard-text5 me-2"></i>Ujian</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-inline-flex align-items-center"><i class="isax isax-note-215 me-2"></i>Rapor</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-inline-flex align-items-center"><i class="isax isax-volume-high5 me-2"></i>Pengumuman</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-inline-flex align-items-center"><i class="isax isax-messages-35 me-2"></i>Pesan</a>
+                                    </li>
+                                </ul>
+                                <hr>
+                                <h6 class="mb-3">Pengaturan Akun</h6>
+                                <ul>
+                                    <li>
+                                        <a href="/settings" class="d-inline-flex align-items-center"><i class="isax isax-setting-25 me-2"></i>Pengaturan</a>
+                                    </li>
+                                    <li>
+                                        <a href="/logout" class="d-inline-flex align-items-center"><i class="isax isax-logout5 me-2"></i>Logout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Sidebar -->
+
+                    <div class="col-lg-9">
+                        <div class="row">
+                            <div class="col-md-6 col-xl-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <span class="icon-box bg-primary-transparent me-2 me-xxl-3 flex-shrink-0">
+                                                <img src="/assets/img/icon/graduation.svg" alt="">
+                                            </span>
+                                            <div>
+                                                <span class="d-block">Total Siswa</span>
+                                                <h4 class="fs-24 mt-1">17</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <span class="icon-box bg-secondary-transparent me-2 me-xxl-3 flex-shrink-0">
+                                                <img src="/assets/img/icon/book.svg" alt="">
+                                            </span>
+                                            <div>
+                                                <span class="d-block">Total Guru</span>
+                                                <h4 class="fs-24 mt-1">11</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <span class="icon-box bg-success-transparent me-2 me-xxl-3 flex-shrink-0">
+                                                <img src="/assets/img/icon/bookmark.svg" alt="">
+                                            </span>
+                                            <div>
+                                                <span class="d-block">Mata Pelajaran</span>
+                                                <h4 class="fs-24 mt-1">15</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-xl-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <span class="icon-box bg-blue-transparent me-2 me-xxl-3 flex-shrink-0">
+                                                <img src="/assets/img/icon/book-2.svg" alt="">
+                                            </span>
+                                            <div>
+                                                <span class="d-block">Kelas Aktif</span>
+                                                <h4 class="fs-24 mt-1">6</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <span class="icon-box bg-purple-transparent me-2 me-xxl-3 flex-shrink-0">
+                                                <img src="/assets/img/icon/money-add.svg" alt="">
+                                            </span>
+                                            <div>
+                                                <span class="d-block">Pembayaran Bulan Ini</span>
+                                                <h4 class="fs-24 mt-1">Rp 25jt</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="card-title">Agenda Mendatang</h5>
+                                <a href="#" class="btn btn-primary btn-sm">Lihat Semua</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-center mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Tanggal</th>
+                                                <th>Acara</th>
+                                                <th>Lokasi</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>12 Jun 2023</td>
+                                                <td>Upacara Bendera</td>
+                                                <td>Lapangan Sekolah</td>
+                                                <td><span class="badge bg-info-light text-info">Akan Datang</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>15 Jun 2023</td>
+                                                <td>Rapat Orang Tua</td>
+                                                <td>Aula Sekolah</td>
+                                                <td><span class="badge bg-info-light text-info">Akan Datang</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>20 Jun 2023</td>
+                                                <td>Ujian Tengah Semester</td>
+                                                <td>Ruang Kelas</td>
+                                                <td><span class="badge bg-info-light text-info">Akan Datang</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="card-title">Pengumuman Terbaru</h5>
+                                <a href="#" class="btn btn-primary btn-sm">Lihat Semua</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-center mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Tanggal</th>
+                                                <th>Judul</th>
+                                                <th>Kategori</th>
+                                                <th>Status</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>10 Jun 2023</td>
+                                                <td>Jadwal Ujian Tengah Semester</td>
+                                                <td>Akademik</td>
+                                                <td><span class="badge bg-success-light text-success">Aktif</span></td>
+                                                <td>
+                                                    <div class="actions">
+                                                        <a href="#" class="btn btn-sm btn-outline-primary rounded-pill me-1">
+                                                            <i class="isax isax-eye me-1"></i> Lihat
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>08 Jun 2023</td>
+                                                <td>Perubahan Jadwal Pelajaran</td>
+                                                <td>Akademik</td>
+                                                <td><span class="badge bg-success-light text-success">Aktif</span></td>
+                                                <td>
+                                                    <div class="actions">
+                                                        <a href="#" class="btn btn-sm btn-outline-primary rounded-pill me-1">
+                                                            <i class="isax isax-eye me-1"></i> Lihat
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>05 Jun 2023</td>
+                                                <td>Pembayaran SPP Bulan Juni</td>
+                                                <td>Keuangan</td>
+                                                <td><span class="badge bg-success-light text-success">Aktif</span></td>
+                                                <td>
+                                                    <div class="actions">
+                                                        <a href="#" class="btn btn-sm btn-outline-primary rounded-pill me-1">
+                                                            <i class="isax isax-eye me-1"></i> Lihat
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Main Wrapper -->
+    
+    <!-- jQuery -->
+    <script src="/assets/js/jquery-3.7.1.min.js"></script>
+    
+    <!-- Bootstrap Core JS -->
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Sticky Sidebar JS -->
+    <script src="/assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+    <script src="/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+    
+    <!-- Daterangepicker JS -->
+    <script src="/assets/js/moment.min.js"></script>
+    <script src="/assets/plugins/daterangepicker/daterangepicker.js"></script>
+    
+    <!-- Apexchart JS -->
+    <script src="/assets/plugins/apexchart/apexcharts.min.js"></script>
+    <script src="/assets/plugins/apexchart/chart-data.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="/assets/js/script.js"></script>
+    
+    <script>
+        // Dashboard scripts
+    </script>
+</body>
+</html>
