@@ -1,0 +1,367 @@
+<!DOCTYPE html> 
+<html lang="id">
+	
+<head>
+	
+		<!-- Meta Tags -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Formulir pendaftaran Seleksi Penerimaan Mahasiswa Baru (SPMB) di Baitul Jannah Islamic School untuk semua jenjang pendidikan.">
+		<meta name="keywords" content="Daftar SPMB, Pendaftaran Siswa Baru, PPDB, Baitul Jannah Islamic School, Sekolah Islam Bandar Lampung">
+		<meta name="author" content="Baitul Jannah Islamic School">
+		<meta name="robots" content="index, follow">
+		
+		<title><%= title || 'Daftar SPMB - Baitul Jannah Islamic School' %></title>
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="/assets/img/logo.png"> 
+		<link rel="apple-touch-icon" href="/assets/img/apple-icon.png">
+
+		<!-- Theme Settings Js -->
+		<script src="/assets/js/theme-script.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+		<link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+
+		<!-- Owl Carousel CSS -->
+		<link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+		<link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
+
+		<!-- isax css -->
+		 <link rel="stylesheet" href="/assets/css/iconsax.css">
+		
+		<!-- Slick CSS -->
+		<link rel="stylesheet" href="/assets/plugins/slick/slick.css">
+		<link rel="stylesheet" href="/assets/plugins/slick/slick-theme.css">
+		
+		<!-- Select2 CSS -->
+		<link rel="stylesheet" href="/assets/plugins/select2/css/select2.min.css">
+		
+		<!-- Aos CSS -->
+		<link rel="stylesheet" href="/assets/plugins/aos/aos.css">
+
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="/assets/css/style.css">
+	
+	</head>
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+		
+			<div class="home-4">
+<%- include('../partials/header2') %>
+
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar text-center">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-12">
+							<h2 class="breadcrumb-title mb-2">Daftar SPMB</h2>
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb justify-content-center mb-0">
+									<li class="breadcrumb-item"><a href="/">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Daftar SPMB</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+
+            <!-- Daftar SPMB -->
+           <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="text-center mb-4">Formulir Pendaftaran SPMB</h2>
+                                <p class="text-center mb-4">Silakan isi formulir pendaftaran di bawah ini dengan lengkap dan benar.</p>
+                                
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle me-2"></i> Periode pendaftaran gelombang 2 dibuka dari tanggal 1 Maret 2024 hingga 30 April 2024.
+                                </div>
+                                
+                                <form action="/daftarspmb" method="post" class="registration-form mt-4" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="col-md-12 mb-4">
+                                            <h4 class="form-section-title">Data Pribadi Calon Siswa</h4>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="nama_lengkap" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Jenis Kelamin <span class="text-danger">*</span></label>
+                                                <select class="form-select" name="jenis_kelamin" required>
+                                                    <option value="">Pilih Jenis Kelamin</option>
+                                                    <option value="Laki-laki">Laki-laki</option>
+                                                    <option value="Perempuan">Perempuan</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Tempat Lahir <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="tempat_lahir" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Tanggal Lahir <span class="text-danger">*</span></label>
+                                                <input type="date" class="form-control" name="tanggal_lahir" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">NIK <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="nik" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Agama <span class="text-danger">*</span></label>
+                                                <select class="form-select" name="agama" required>
+                                                    <option value="">Pilih Agama</option>
+                                                    <option value="Islam">Islam</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-12 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Alamat Lengkap <span class="text-danger">*</span></label>
+                                                <textarea class="form-control" name="alamat" rows="3" required></textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Nomor Telepon <span class="text-danger">*</span></label>
+                                                <input type="tel" class="form-control" name="nomor_telepon" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Email <span class="text-danger">*</span></label>
+                                                <input type="email" class="form-control" name="email" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-12 mb-4">
+                                            <h4 class="form-section-title mt-4">Data Orang Tua/Wali</h4>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Nama Ayah <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="nama_ayah" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Pekerjaan Ayah <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="pekerjaan_ayah" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Nama Ibu <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="nama_ibu" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Pekerjaan Ibu <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="pekerjaan_ibu" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Nomor Telepon Ayah <span class="text-danger">*</span></label>
+                                                <input type="tel" class="form-control" name="nomor_telepon_ayah" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Nomor Telepon Ibu <span class="text-danger">*</span></label>
+                                                <input type="tel" class="form-control" name="nomor_telepon_ibu" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Nama Wali (Jika Ada)</label>
+                                                <input type="text" class="form-control" name="nama_wali">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Hubungan Wali</label>
+                                                <input type="text" class="form-control" name="hubungan_wali">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-12 mb-4">
+                                            <h4 class="form-section-title mt-4">Data Pendidikan</h4>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Jenjang Pendidikan yang Dituju <span class="text-danger">*</span></label>
+                                                <select class="form-select" name="jenjang" required>
+                                                    <option value="">Pilih Jenjang</option>
+                                                    <option value="PGIT-TKIT">PGIT-TKIT</option>
+                                                    <option value="SDIT">SDIT</option>
+                                                    <option value="SMPIT">SMPIT</option>
+                                                    <option value="SMAIT">SMAIT</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Asal Sekolah <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="asal_sekolah" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Tahun Lulus <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="tahun_lulus" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-12 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Prestasi (Jika Ada)</label>
+                                                <textarea class="form-control" name="prestasi" rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-12 mb-4">
+                                            <h4 class="form-section-title mt-4">Dokumen Pendukung</h4>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Pas Foto (3x4) <span class="text-danger">*</span></label>
+                                                <input type="file" class="form-control" name="pas_foto" accept="image/*" required>
+                                                <small class="text-muted">Format: JPG/PNG, Maks: 2MB</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Scan Akta Kelahiran <span class="text-danger">*</span></label>
+                                                <input type="file" class="form-control" name="akta_kelahiran" accept="application/pdf,image/*" required>
+                                                <small class="text-muted">Format: PDF/JPG/PNG, Maks: 2MB</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Scan Kartu Keluarga <span class="text-danger">*</span></label>
+                                                <input type="file" class="form-control" name="kartu_keluarga" accept="application/pdf,image/*" required>
+                                                <small class="text-muted">Format: PDF/JPG/PNG, Maks: 2MB</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <label class="form-label">Scan Rapor Terakhir <span class="text-danger">*</span></label>
+                                                <input type="file" class="form-control" name="rapor" accept="application/pdf,image/*" required>
+                                                <small class="text-muted">Format: PDF/JPG/PNG, Maks: 5MB</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-12 mb-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="persetujuan" id="persetujuan" required>
+                                                <label class="form-check-label" for="persetujuan">
+                                                    Saya menyatakan bahwa data yang saya isi adalah benar dan saya bersedia mengikuti seluruh proses seleksi sesuai ketentuan yang berlaku.
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-12 text-center mt-4">
+                                            <button type="submit" class="btn btn-primary btn-lg">Kirim Pendaftaran</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                
+                                <div class="registration-info mt-5">
+                                    <h4>Informasi Penting:</h4>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Pastikan semua data yang diisi sudah benar dan lengkap.</li>
+                                        <li class="list-group-item">Setelah mengirim formulir, Anda akan mendapatkan email konfirmasi pendaftaran.</li>
+                                        <li class="list-group-item">Biaya pendaftaran dapat dibayarkan melalui transfer bank ke rekening resmi sekolah.</li>
+                                        <li class="list-group-item">Informasi jadwal tes seleksi akan dikirimkan melalui email dan WhatsApp.</li>
+                                        <li class="list-group-item">Untuk informasi lebih lanjut, silakan hubungi (0721) 123456 atau email ke info@baituljannahislamicschool.sch.id</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </div>
+           <!-- /Daftar SPMB -->
+
+			</div>
+			
+			<!-- Footer -->
+<%- include('../partials/footer') %>
+			<!-- /Footer -->
+			
+		</div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+		<script src="/assets/js/jquery-3.6.0.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="/assets/js/bootstrap.bundle.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Owl Carousel JS -->
+		<script src="/assets/js/owl.carousel.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Slick JS -->
+		<script src="/assets/plugins/slick/slick.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Select2 JS -->
+		<script src="/assets/plugins/select2/js/select2.min.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Aos JS -->
+		<script src="/assets/plugins/aos/aos.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		
+		<!-- Custom JS -->
+		<script src="/assets/js/script.js" type="cbba2d56f9728e00c99f173f-text/javascript"></script>
+		<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="cbba2d56f9728e00c99f173f-|49" defer=""></script>
+		
+	</body>
+</html>

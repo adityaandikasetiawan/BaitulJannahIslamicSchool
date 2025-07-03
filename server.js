@@ -67,6 +67,7 @@ app.use((req, res, next) => {
 
 // Serve static files
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Middleware untuk parsing body requests
 app.use(express.json());

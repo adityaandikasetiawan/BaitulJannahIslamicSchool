@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="Baitul Jannah Islamic School - Sistem Manajemen Sekolah Islam">
+    <title><%= title %></title>
+    
+    <!-- logo.png -->
+    <link rel="shortcut icon" href="/assets/img/logo.png">
+    <link rel="apple-touch-icon" href="/assets/img/apple-icon.png">
+
+    <!-- Theme Settings Js -->
+    <script src="/assets/js/theme-script.js"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+    
+    <!-- Feather CSS -->
+    <link rel="stylesheet" href="/assets/css/feather.css">
+
+    <!-- Daterangepicker CSS -->
+    <link rel="stylesheet" href="/assets/plugins/daterangepicker/daterangepicker.css">
+
+    <!-- Datetimepicker CSS -->
+    <link rel="stylesheet" href="/assets/css/bootstrap-datetimepicker.min.css">
+
+    <!-- Select2 CSS -->
+    <link rel="stylesheet" href="/assets/plugins/select2/css/select2.min.css">
+
+    <!-- Iconsax CSS -->
+    <link rel="stylesheet" href="/assets/css/iconsax.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+        
+        <!-- Header Topbar-->
+        <div class="header-topbar text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="d-flex align-items-center justify-content-center justify-content-lg-start">
+                            <p class="d-flex align-items-center fw-medium fs-14 mb-2 me-3"><i class="isax isax-location5 me-2"></i>Jl. Baitul Jannah, Kota Bandar Lampung</p>
+                            <p class="d-flex align-items-center fw-medium fs-14 mb-2"><i class="isax isax-call-calling5 me-2"></i>+62 721 123456</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="d-flex align-items-center justify-content-center justify-content-lg-end">
+                            <ul class="social-icon d-flex align-items-center mb-2">
+                                <li class="me-2">
+                                    <a href="javascript:void(0);"><i class="fa-brands fa-facebook-f"></i></a>
+                                </li>
+                                <li class="me-2">
+                                    <a href="javascript:void(0);"><i class="fa-brands fa-instagram"></i></a>
+                                </li>
+                                <li class="me-2">
+                                    <a href="javascript:void(0);"><i class="fa-brands fa-x-twitter"></i></a>
+                                </li>
+                                <li class="me-2">
+                                    <a href="javascript:void(0);"><i class="fa-brands fa-youtube"></i></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);"><i class="fa-brands fa-linkedin"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Header Topbar-->
+        
+        <!-- Header -->
+        <header class="header-two">
+            <div class="container">
+                <div class="header-nav">
+                    <div class="navbar-header">
+                        <a id="mobile_btn" href="javascript:void(0);">
+                            <span class="bar-icon">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </a>
+                        <div class="navbar-logo">
+                            <a class="logo-white header-logo" href="/">
+                                <img src="/assets/img/logo.png" class="logo" alt="Logo" style="max-height: 40px;">
+                            </a>
+                            <a class="logo-dark header-logo" href="/">
+                                <img src="/assets/img/logo.png" class="logo" alt="Logo" style="max-height: 40px;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="main-menu-wrapper">                                
+                        <div class="menu-header">
+                            <a href="/" class="menu-logo">
+                                <img src="/assets/img/logo.png" class="img-fluid" alt="Logo" style="max-height: 40px;">
+                            </a>
+                            <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </div>
+                        <ul class="main-nav">
+                            <li><a href="/">Beranda</a></li>
+                            <li><a href="/dashboard">Dashboard</a></li>
+                        </ul>
+                    </div>
+                    <div class="header-btn d-flex align-items-center">
+                        <div class="icon-btn me-2">
+                            <a href="javascript:void(0);" id="dark-mode-toggle" class="theme-toggle activate">
+                                <i class="isax isax-sun-15"></i>
+                            </a>
+                            <a href="javascript:void(0);" id="light-mode-toggle" class="theme-toggle">
+                                <i class="isax isax-moon"></i>
+                            </a>
+                        </div>
+                        <div class="dropdown profile-dropdown">
+                            <a href="javascript:void(0);" class="d-flex align-items-center" data-bs-toggle="dropdown">
+                                <span class="avatar">
+                                    <img src="<%= user.avatar || '/assets/img/profiles/avatar-01.jpg' %>" alt="Img" class="img-fluid rounded-circle">
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <div class="profile-header d-flex align-items-center">
+                                    <div class="avatar">
+                                        <img src="<%= user.avatar || '/assets/img/profiles/avatar-01.jpg' %>" alt="Img" class="img-fluid rounded-circle">
+                                    </div>
+                                    <div>
+                                        <h6><%= user.username %></h6>
+                                        <p><%= user.email %></p>
+                                    </div>
+                                </div>
+                                <ul class="profile-body">
+                                    <li>
+                                        <a class="dropdown-item d-inline-flex align-items-center rounded fw-medium" href="/dashboard"><i class="isax isax-security-user me-2"></i>Dashboard</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item d-inline-flex align-items-center rounded fw-medium" href="/settings"><i class="isax isax-setting-2 me-2"></i>Settings</a>
+                                    </li>                                    
+                                </ul>
+                                <div class="profile-footer">
+                                    <a href="/logout" class="btn btn-secondary d-inline-flex align-items-center justify-content-center w-100"><i class="isax isax-logout me-2"></i>Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- /Header -->
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb-bar text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-12">
+                        <h2 class="breadcrumb-title mb-2">Settings</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center mb-0">
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Settings</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Breadcrumb -->
+
+        <div class="content">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Sidebar -->
+                    <div class="col-lg-3 theiaStickySidebar">
+                        <div class="settings-sidebar mb-lg-0">
+                            <div>
+                                <h6 class="mb-3">Main Menu</h6>
+                                <ul class="mb-3 pb-1">
+                                    <li>
+                                        <a href="/dashboard" class="d-inline-flex align-items-center"><i class="isax isax-grid-35 me-2"></i>Dashboard</a>
+                                    </li>
+                                    <li>
+                                        <a href="/profile" class="d-inline-flex align-items-center"><i class="fa-solid fa-user me-2"></i>My Profile</a>
+                                    </li>
+                                </ul>
+                                <hr>
+                                <h6 class="mb-3">Account Settings</h6>
+                                <ul>
+                                    <li>
+                                        <a href="/settings" class="d-inline-flex align-items-center active"><i class="isax isax-setting-2 me-2"></i>Settings</a>
+                                    </li>
+                                    <li>
+                                        <a href="/logout" class="d-inline-flex align-items-center"><i class="isax isax-logout me-2"></i>Logout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Sidebar -->
+
+                    <div class="col-lg-9">
+                        <div class="mb-3">
+                            <h5>Settings</h5>
+                        </div>
+                        
+                        <!-- Flash Messages -->
+                        <% if(typeof messages != 'undefined') { %>
+                            <% if(messages.success_msg) { %>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <%= messages.success_msg %>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            <% } %>
+                            <% if(messages.error_msg) { %>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <%= messages.error_msg %>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            <% } %>
+                            <% if(messages.info_msg) { %>
+                                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                    <%= messages.info_msg %>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            <% } %>
+                        <% } %>
+                        <!-- End Flash Messages -->                
+                        <ul class="settings-nav d-flex align-items-center flex-wrap border bg-light-900 rounded">
+                            <li><a href="/settings" class="active">Profile</a></li>
+                            <li><a href="/settings/security">Security</a></li>
+                        </ul>
+                        <form action="/settings/update" method="POST" enctype="multipart/form-data">
+                            <div class="card">
+                                <div class="card-body">                                    
+                                    <div class="profile-upload-group">                                    
+                                        <div class="d-flex align-items-center">
+                                            <a href="/profile" class="avatar flex-shrink-0 avatar-xxxl avatar-rounded border me-3">
+                                                <img src="<%= user.avatar || '/assets/img/profiles/avatar-01.jpg' %>" alt="Img" class="img-fluid">
+                                            </a>
+                                            <div class="profile-upload-head">
+                                                <h6><a href="/profile">Your Avatar</a></h6>
+                                                <p class="fs-14 mb-0">PNG or JPG no bigger than 800px width and height</p>
+                                                <div class="new-employee-field">
+                                                    <div class="d-flex align-items-center mt-2">
+                                                        <div class="image-upload position-relative mb-0 me-2">
+                                                            <input type="file" name="avatar" id="avatar-upload">
+                                                            <label for="avatar-upload" class="btn bg-gray-100 btn-sm rounded-pill image-uploads">Upload</label>
+                                                        </div>
+                                                        <div class="img-delete">
+                                                            <button type="button" id="delete-avatar" class="btn btn-secondary btn-sm rounded-pill">Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>                                            
+                                    </div>
+                                    <div>
+                                        <div class="edit-profile-info mb-3">
+                                            <h5 class="mb-1 fs-18">Personal Details</h5>
+                                            <p>Edit your personal information</p>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">First Name <span class="text-danger"> *</span></label>
+                                                    <input type="text" class="form-control" name="firstName" value="<%= user.firstName || '' %>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Last Name <span class="text-danger"> *</span></label>
+                                                    <input type="text" class="form-control" name="lastName" value="<%= user.lastName || '' %>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">User Name <span class="text-danger"> *</span></label>
+                                                    <input type="text" class="form-control" name="username" value="<%= user.username %>" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Phone Number <span class="text-danger"> *</span></label>
+                                                    <input type="text" class="form-control" name="phone" value="<%= user.phone || '' %>">
+                                                </div>
+                                            </div>
+                                    
+                                            <div class="col-md-12">
+                                                <div class="mb-4">
+                                                    <label class="form-label">Bio <span class="text-danger"> *</span></label>
+                                                    <textarea rows="4" class="form-control" name="bio"><%= user.bio || '' %></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <button class="btn btn-secondary rounded-pill" type="submit">Update Profile</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row row-gap-4">
+                        <div class="col-lg-4">
+                            <div class="footer-about">
+                                <div class="footer-logo">
+                                    <img src="/assets/img/logo.png" alt="" style="max-height: 40px;">
+                                </div>
+                                <p>Baitul Jannah Islamic School - Platform pendidikan Islam terpadu untuk membantu organisasi, pendidik, dan pelajar mengelola kegiatan pembelajaran dan pelatihan.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row row-gap-4">
+                                <div class="col-lg-4">
+                                    <div class="footer-widget footer-menu">
+                                        <h5 class="footer-title">Tentang Kami</h5>
+                                        <ul>
+                                            <li><a href="/tentangkami/sejarahyayasan">Sejarah Yayasan</a></li>
+                                            <li><a href="/tentangkami/visimisi">Visi & Misi</a></li>
+                                            <li><a href="/tentangkami/kepengurusan">Kepengurusan</a></li>
+                                            <li><a href="/tentangkami/fasilitas">Fasilitas</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="footer-widget footer-menu">
+                                        <h5 class="footer-title">Akademik</h5>
+                                        <ul>
+                                            <li><a href="/akademik/pgit-tkit">PGIT-TKIT</a></li>
+                                            <li><a href="/akademik/sdit">SDIT</a></li>
+                                            <li><a href="/akademik/smpit">SMPIT</a></li>
+                                            <li><a href="/akademik/smait">SMAIT</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="footer-widget footer-contact">
+                                        <h5 class="footer-title">Kontak Kami</h5>
+                                        <div class="footer-contact-info">
+                                            <div class="footer-contact-item">
+                                                <i class="isax isax-call"></i>
+                                                <p>+62 721 123456</p>
+                                            </div>
+                                            <div class="footer-contact-item">
+                                                <i class="isax isax-sms"></i>
+                                                <p>info@baituljannahislamicschool.com</p>
+                                            </div>
+                                            <div class="footer-contact-item">
+                                                <i class="isax isax-location"></i>
+                                                <p>Jl. Baitul Jannah, Kota Bandar Lampung</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="d-flex align-items-center justify-content-center flex-wrap gap-2">
+                        <div class="copyright-text">
+                            <p>&copy; 2023 Baitul Jannah Islamic School. All Rights Reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- /Footer -->
+
+    </div>
+    <!-- /Main Wrapper -->
+
+    <!-- jQuery -->
+    <script src="/assets/js/jquery-3.7.1.min.js"></script>
+
+    <!-- Bootstrap Core JS -->
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Sticky Sidebar JS -->
+    <script src="/assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+    <script src="/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+
+    <!-- Datepicker Core JS -->
+    <script src="/assets/js/moment.min.js"></script>
+    <script src="/assets/js/bootstrap-datetimepicker.min.js"></script>
+
+    <!-- Daterangepicker JS -->
+    <script src="/assets/plugins/daterangepicker/daterangepicker.js"></script>
+
+    <!-- Select2 JS -->
+    <script src="/assets/plugins/select2/js/select2.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="/assets/js/script.js"></script>
+
+    <!-- Avatar Upload Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle delete avatar button
+            const deleteAvatarBtn = document.getElementById('delete-avatar');
+            if (deleteAvatarBtn) {
+                deleteAvatarBtn.addEventListener('click', function() {
+                    const avatarInput = document.getElementById('avatar-upload');
+                    if (avatarInput) {
+                        avatarInput.value = ''; // Clear the file input
+                        
+                        // Create a hidden input to signal avatar deletion
+                        let deleteInput = document.getElementById('delete-avatar-flag');
+                        if (!deleteInput) {
+                            deleteInput = document.createElement('input');
+                            deleteInput.type = 'hidden';
+                            deleteInput.id = 'delete-avatar-flag';
+                            deleteInput.name = 'deleteAvatar';
+                            deleteInput.value = 'true';
+                            document.querySelector('form').appendChild(deleteInput);
+                        }
+                        
+                        // Update the preview image to default
+                        const avatarImg = document.querySelector('.avatar img');
+                        if (avatarImg) {
+                            avatarImg.src = '/assets/img/profiles/avatar-01.jpg';
+                        }
+                    }
+                });
+            }
+            
+            // Preview uploaded avatar
+            const avatarInput = document.getElementById('avatar-upload');
+            if (avatarInput) {
+                avatarInput.addEventListener('change', function() {
+                    if (this.files && this.files[0]) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const avatarImg = document.querySelector('.avatar img');
+                            if (avatarImg) {
+                                avatarImg.src = e.target.result;
+                            }
+                            
+                            // Remove delete flag if it exists
+                            const deleteInput = document.getElementById('delete-avatar-flag');
+                            if (deleteInput) {
+                                deleteInput.remove();
+                            }
+                        }
+                        reader.readAsDataURL(this.files[0]);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

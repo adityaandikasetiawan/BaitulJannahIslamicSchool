@@ -1,5 +1,38 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+const Pendaftaran = require('../models/Pendaftaran');
+
+// Set up multer for file uploads
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    const uploadDir = path.join(__dirname, '../public/uploads');
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+    cb(null, uploadDir);
+  },
+  filename: function(req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname.replace(/\s+/g, '-'));
+  }
+});
+
+const upload = multer({ 
+  storage: storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+  fileFilter: function(req, file, cb) {
+    const filetypes = /jpeg|jpg|png|gif|pdf|doc|docx|xls|xlsx|ppt|pptx/;
+    const mimetype = filetypes.test(file.mimetype);
+    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+    
+    if (mimetype && extname) {
+      return cb(null, true);
+    }
+    cb(new Error('Error: File upload only supports the following filetypes - ' + filetypes));
+  }
+});
 
 // Tentang Kami Routes
 router.get('/visimisi', (req, res) => {
@@ -24,6 +57,79 @@ router.get('/fasilitas', (req, res) => {
 });
 
 // Daftar SPMB Routes
+router.get('/daftarspmb', (req, res) => {
+  res.render('akademik/daftarspmb', {
+    title: 'Daftar SPMB - Baitul Jannah Islamic School',
+    description: 'Formulir Pendaftaran SPMB Baitul Jannah Islamic School',
+      });
+});
+
+// Proses pendaftaran SPMB
+router.post('/daftarspmb', upload.fields([
+  { name: 'pas_foto', maxCount: 1 },
+  { name: 'akta_kelahiran', maxCount: 1 },
+  { name: 'kartu_keluarga', maxCount: 1 },
+  { name: 'rapor', maxCount: 1 }
+]), async (req, res) => {
+  try {
+    const pendaftaranData = {
+      nama_lengkap: req.body.nama_lengkap,
+      jenis_kelamin: req.body.jenis_kelamin,
+      tempat_lahir: req.body.tempat_lahir,
+      tanggal_lahir: req.body.tanggal_lahir,
+      nik: req.body.nik,
+      agama: req.body.agama,
+      alamat: req.body.alamat,
+      nomor_telepon: req.body.nomor_telepon,
+      email: req.body.email,
+      nama_ayah: req.body.nama_ayah,
+      pekerjaan_ayah: req.body.pekerjaan_ayah,
+      nomor_telepon_ayah: req.body.nomor_telepon_ayah,
+      nama_ibu: req.body.nama_ibu,
+      pekerjaan_ibu: req.body.pekerjaan_ibu,
+      nomor_telepon_ibu: req.body.nomor_telepon_ibu,
+      nama_wali: req.body.nama_wali || null,
+      hubungan_wali: req.body.hubungan_wali || null,
+      jenjang: req.body.jenjang,
+      asal_sekolah: req.body.asal_sekolah,
+      tahun_lulus: req.body.tahun_lulus || '',
+      prestasi: req.body.prestasi || '',
+      status: 'pending'
+    };
+    
+    // Handle file uploads
+    if (req.files) {
+      if (req.files.pas_foto) {
+        pendaftaranData.pas_foto = '/uploads/' + req.files.pas_foto[0].filename;
+      }
+      if (req.files.akta_kelahiran) {
+        pendaftaranData.akta_kelahiran = '/uploads/' + req.files.akta_kelahiran[0].filename;
+      }
+      if (req.files.kartu_keluarga) {
+        pendaftaranData.kartu_keluarga = '/uploads/' + req.files.kartu_keluarga[0].filename;
+      }
+      if (req.files.rapor) {
+        pendaftaranData.rapor = '/uploads/' + req.files.rapor[0].filename;
+      }
+    }
+    
+    // Simpan data pendaftaran ke database
+    const pendaftaranId = await Pendaftaran.create(pendaftaranData);
+    
+    if (pendaftaranId) {
+      req.flash('success_msg', 'Pendaftaran berhasil dikirim. Silakan tunggu informasi selanjutnya.');
+      res.redirect('/admin/pendaftaran/daftar');
+    } else {
+      req.flash('error_msg', 'Terjadi kesalahan saat mengirim pendaftaran');
+      res.redirect('/daftarspmb');
+    }
+  } catch (error) {
+    console.error('Pendaftaran Error:', error);
+    req.flash('error_msg', 'Terjadi kesalahan saat mengirim pendaftaran');
+    res.redirect('/daftarspmb');
+  }
+});
+
 router.get('/syaratpendaftaran', (req, res) => {
   res.render('akademik/syaratpendaftaran', {
     title: 'Syarat Pendaftaran - Baitul Jannah Islamic School',

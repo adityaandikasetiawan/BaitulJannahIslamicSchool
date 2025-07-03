@@ -7,8 +7,8 @@
     <meta name="description" content="Baitul Jannah Islamic School - Sistem Manajemen Sekolah Islam">
     <title><%= title %></title>
     
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="/assets/img/favicon.png">
+    <!-- logo.png -->
+    <link rel="shortcut icon" href="/assets/img/logo.png">
     <link rel="apple-touch-icon" href="/assets/img/apple-icon.png">
 
     <!-- Theme Settings Js -->
@@ -108,7 +108,7 @@
                             <li class="active">
                                 <a href="/dashboard">Dashboard</a>
                             </li>
-                            <li class="has-submenu">
+                            <!-- <li class="has-submenu">
                                 <a href="#">Siswa <i class="isax isax-add"></i></a>
                                 <ul class="submenu">
                                     <li><a href="#">Daftar Siswa</a></li>
@@ -145,7 +145,7 @@
                             </li>
                             <li>
                                 <a href="#">Galeri</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                     <div class="header-btn d-flex align-items-center">
@@ -160,13 +160,13 @@
                         <div class="dropdown profile-dropdown">
                             <a href="javascript:void(0);" class="d-flex align-items-center" data-bs-toggle="dropdown">
                                 <span class="avatar">
-                                    <img src="/assets/img/user/user-01.jpg" alt="Img" class="img-fluid rounded-circle">
+                                    <img src="<%= user.avatar || '/assets/img/user/user-01.jpg' %>" alt="Img" class="img-fluid rounded-circle">
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <div class="profile-header d-flex align-items-center">
                                     <div class="avatar">
-                                        <img src="/assets/img/user/user-01.jpg" alt="Img" class="img-fluid rounded-circle">
+                                        <img src="<%= user.avatar || '/assets/img/user/user-01.jpg' %>" alt="Img" class="img-fluid rounded-circle">
                                     </div>
                                     <div>
                                         <h6><%= user.name %></h6>
@@ -175,7 +175,7 @@
                                 </div>
                                 <ul class="profile-body">
                                     <li>
-                                        <a class="dropdown-item d-inline-flex align-items-center rounded fw-medium" href="/profile"><i class="isax isax-security-user me-2"></i>Profil Saya</a>
+                                        <!-- <a class="dropdown-item d-inline-flex align-items-center rounded fw-medium" href="/profile"><i class="isax isax-security-user me-2"></i>Profil Saya</a> -->
                                     </li>
                                     <li>
                                         <a class="dropdown-item d-inline-flex align-items-center rounded fw-medium" href="/settings"><i class="isax isax-setting-2 me-2"></i>Pengaturan</a>
@@ -193,7 +193,7 @@
         <!-- /Header -->
         
         <!-- Breadcrumb -->
-        <div class="breadcrumb-bar text-center">
+        <!-- <div class="breadcrumb-bar text-center">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-12">
@@ -207,7 +207,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- /Breadcrumb -->
 
         <div class="content">
@@ -248,42 +248,124 @@
                                     <li>
                                         <a href="/dashboard" class="d-inline-flex align-items-center active"><i class="isax isax-grid-35 me-2"></i>Dashboard</a>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <a href="/profile" class="d-inline-flex align-items-center"><i class="fa-solid fa-user me-2"></i>Profil Saya</a>
+                                    </li> -->
+                                    
+                                    <!-- Menu CRUD Beranda -->
+                                    <li>
+                                        <a href="/admin/beranda" class="d-inline-flex align-items-center"><i class="isax isax-home5 me-2"></i>Beranda</a>
+                                    </li>
+                                    
+                                    <!-- Menu CRUD Tentang Kami dengan submenu -->
+                                    <li>
+                                        <a href="#tentangKamiSubmenu" data-bs-toggle="collapse" class="d-inline-flex align-items-center dropdown-toggle">
+                                            <i class="isax isax-info-circle5 me-2"></i>Tentang Kami
+                                        </a>
+                                        <ul class="collapse list-unstyled ms-4" id="tentangKamiSubmenu">
+                                            <li>
+                                                <a href="/admin/tentangkami/sejarah" class="d-inline-flex align-items-center"><i class="isax isax-clock5 me-2"></i>Sejarah</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/tentangkami/visimisi" class="d-inline-flex align-items-center"><i class="isax isax-eye5 me-2"></i>Visi Misi</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/tentangkami/kepengurusan" class="d-inline-flex align-items-center"><i class="isax isax-people5 me-2"></i>Kepengurusan</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/tentangkami/fasilitas" class="d-inline-flex align-items-center"><i class="isax isax-building5 me-2"></i>Fasilitas</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                     <li>
-                                        <a href="#" class="d-inline-flex align-items-center"><i class="isax isax-profile-2user5 me-2"></i>Siswa</a>
+                                        <a href="#pendaftaranSubmenu" data-bs-toggle="collapse" class="d-inline-flex align-items-center dropdown-toggle">
+                                            <i class="isax isax-clipboard-text5 me-2"></i>Pendaftaran SPMB
+                                        </a>
+                                        <ul class="collapse list-unstyled ms-4" id="pendaftaranSubmenu">
+                                            <li>
+                                                <a href="/admin/pendaftaran/daftar" class="d-inline-flex align-items-center"><i class="isax isax-document-upload5 me-2"></i>Daftar SPMB</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/pendaftaran/syarat" class="d-inline-flex align-items-center"><i class="isax isax-document-text5 me-2"></i>Syarat Pendaftaran</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/pendaftaran/pengumuman" class="d-inline-flex align-items-center"><i class="isax isax-notification5 me-2"></i>Pengumuman</a>
+                                            </li>
+                                        </ul>
                                     </li>
+                                    
+                                    <!-- Menu Profile -->
                                     <li>
-                                        <a href="#" class="d-inline-flex align-items-center"><i class="isax isax-teacher5 me-2"></i>Guru</a>
+                                        <a href="#profileSubmenu" data-bs-toggle="collapse" class="d-inline-flex align-items-center dropdown-toggle">
+                                            <i class="isax isax-user me-2"></i>Profile
+                                        </a>
+                                        <ul class="collapse list-unstyled ms-4" id="profileSubmenu">
+                                            <li>
+                                                <a href="/admin/profile/sekolah" class="d-inline-flex align-items-center"><i class="isax isax isax-medal5 me-2"></i>Profile PGIT-TKIT</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/profile/guru" class="d-inline-flex align-items-center"><i class="isax isax isax-medal5 me-2"></i>SDIT</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/profile/prestasi" class="d-inline-flex align-items-center"><i class="isax isax-medal5 me-2"></i>SMPIT</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/profile/prestasi" class="d-inline-flex align-items-center"><i class="isax isax-medal5 me-2"></i>SMAIT</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/profile/prestasi" class="d-inline-flex align-items-center"><i class="isax isax-medal5 me-2"></i>SMAIT</a>
+                                            </li>
+                                        </ul>
                                     </li>
+                                    
+                                    <!-- Menu Informasi -->
                                     <li>
-                                        <a href="#" class="d-inline-flex align-items-center"><i class="isax isax-book5 me-2"></i>Mata Pelajaran</a>
+                                        <a href="#informasiSubmenu" data-bs-toggle="collapse" class="d-inline-flex align-items-center dropdown-toggle">
+                                            <i class="isax isax-info-circle5 me-2"></i>Informasi
+                                        </a>
+                                        <ul class="collapse list-unstyled ms-4" id="informasiSubmenu">
+                                            <li>
+                                                <a href="/admin/informasi/berita" class="d-inline-flex align-items-center"><i class="isax isax-document5 me-2"></i>Berita</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/informasi/pengumuman" class="d-inline-flex align-items-center"><i class="isax isax-notification5 me-2"></i>Pengumuman</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/informasi/agenda" class="d-inline-flex align-items-center"><i class="isax isax-calendar5 me-2"></i>Agenda</a>
+                                            </li>
+                                        </ul>
                                     </li>
+                                    
+                                    <!-- Menu Kontak -->
                                     <li>
-                                        <a href="#" class="d-inline-flex align-items-center"><i class="isax isax-calendar5 me-2"></i>Jadwal</a>
+                                        <a href="#kontakSubmenu" data-bs-toggle="collapse" class="d-inline-flex align-items-center dropdown-toggle">
+                                            <i class="isax isax-call5 me-2"></i>Kontak
+                                        </a>
+                                        <ul class="collapse list-unstyled ms-4" id="kontakSubmenu">
+                                            <li>
+                                                <a href="/admin/kontak/kami" class="d-inline-flex align-items-center"><i class="isax isax-message-question5 me-2"></i>Kontak Kami</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/kontak/kunjungan" class="d-inline-flex align-items-center"><i class="isax isax-building5 me-2"></i>Permohonan Kunjungan</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/kontak/penelitian" class="d-inline-flex align-items-center"><i class="isax isax-document-text5 me-2"></i>Permohonan Penelitian</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/kontak/faq" class="d-inline-flex align-items-center"><i class="isax isax-message-question5 me-2"></i>FAQ</a>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li>
-                                        <a href="#" class="d-inline-flex align-items-center"><i class="isax isax-clipboard-text5 me-2"></i>Ujian</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-inline-flex align-items-center"><i class="isax isax-note-215 me-2"></i>Rapor</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-inline-flex align-items-center"><i class="isax isax-volume-high5 me-2"></i>Pengumuman</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-inline-flex align-items-center"><i class="isax isax-messages-35 me-2"></i>Pesan</a>
-                                    </li>
+
                                 </ul>
                                 <hr>
                                 <h6 class="mb-3">Pengaturan Akun</h6>
                                 <ul>
                                     <li>
-                                        <a href="/settings" class="d-inline-flex align-items-center"><i class="isax isax-setting-25 me-2"></i>Pengaturan</a>
+                                        <a href="/settings" class="d-inline-flex align-items-center"><i class="isax isax-setting-2 me-2"></i>Settings</a>
                                     </li>
                                     <li>
-                                        <a href="/logout" class="d-inline-flex align-items-center"><i class="isax isax-logout5 me-2"></i>Logout</a>
+                                        <a href="/logout" class="d-inline-flex align-items-center"><i class="isax isax-logout me-2"></i>Logout</a>
                                     </li>
                                 </ul>
                             </div>
