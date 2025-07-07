@@ -7,25 +7,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="<%= description %>">
+    <meta name="keywords" content="ekstrakurikuler, kegiatan siswa, bakat minat, olahraga, seni, akademik, keagamaan, keterampilan, Baitul Jannah Islamic School">
+    <meta name="author" content="Baitul Jannah Islamic School">
     
     <title><%= title %></title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/img/logo.png">
-    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" href="/assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/img/apple-icon.png">
 
     <!-- Theme Settings Js -->
-    <script src="assets/js/theme-script.js" type="text/javascript"></script>
+    <script src="/assets/js/theme-script.js" type="text/javascript"></script>
     
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     
     <!-- Fontawesome CSS -->
-    <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
-    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+    
+    <!-- Feather CSS -->
+    <link rel="stylesheet" href="/assets/css/feather.css">
+    
+    <!-- Iconsax CSS -->
+    <link rel="stylesheet" href="/assets/css/iconsax.css">
+    
+    <!-- AOS Animation CSS -->
+    <link rel="stylesheet" href="/assets/plugins/aos/aos.css">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <!-- Main CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
 <body>
@@ -35,11 +51,15 @@
         <%- include('../partials/header2') %>
         
         <!-- Breadcrumb -->
-        <div class="breadcrumb-bar">
+        <div class="breadcrumb-bar breadcrumb-modern" data-aos="fade-down">
             <div class="container">
                 <div class="row align-items-center text-center">
                     <div class="col-md-12 col-12">
+                        <div class="breadcrumb-icon mb-3">
+                            <i class="fas fa-running" style="font-size: 3rem; color: #28a745;"></i>
+                        </div>
                         <h2 class="breadcrumb-title">Ekstrakurikuler</h2>
+                        <p class="breadcrumb-subtitle">Mengembangkan Bakat dan Minat Siswa</p>
                         <nav aria-label="breadcrumb" class="page-breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/">Beranda</a></li>
@@ -54,81 +74,219 @@
         <!-- Page Content -->
         <div class="page-content">
             <div class="container">
-                <div class="row">
+                <!-- Overview Section -->
+                <div class="row mb-5">
                     <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="about-title">
-                                            <h2>Program Ekstrakurikuler</h2>
+                        <div class="card overview-card" data-aos="fade-up">
+                            <div class="card-body text-center">
+                                <div class="overview-icon mb-4">
+                    <i class="fas fa-award"></i>
+                    <span class="overview-icon-decoration"></span>
+                </div>
+                                <h2 class="overview-title mb-4">Program Ekstrakurikuler</h2>
+                                <p class="overview-description">Program Ekstrakurikuler di Baitul Jannah Islamic School dirancang untuk mengembangkan bakat, minat, dan potensi siswa di luar kegiatan akademik reguler. Melalui berbagai kegiatan ekstrakurikuler, siswa dapat mengeksplorasi dan mengembangkan keterampilan tambahan yang mendukung perkembangan mereka secara holistik.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Objectives Section -->
+                <div class="row mb-5">
+                    <div class="col-lg-12">
+                        <div class="section-header text-center mb-5" data-aos="fade-up">
+                            <h2 class="section-title">Tujuan Program</h2>
+                            <p class="section-subtitle">Mengembangkan potensi siswa secara holistik</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                                <div class="objective-item">
+                                    <div class="objective-icon">
+                                        <i class="fas fa-seedling"></i>
+                                    </div>
+                                    <div class="objective-content">
+                                        <h5>Mengembangkan Bakat dan Minat</h5>
+                                        <p>Mengembangkan bakat dan minat siswa dalam berbagai bidang.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                                <div class="objective-item">
+                                    <div class="objective-icon">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div class="objective-content">
+                                        <h5>Membangun Karakter Kepemimpinan</h5>
+                                        <p>Membangun karakter kepemimpinan dan kerja sama tim.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                                <div class="objective-item">
+                                    <div class="objective-icon">
+                                        <i class="fas fa-comments"></i>
+                                    </div>
+                                    <div class="objective-content">
+                                        <h5>Meningkatkan Keterampilan Sosial</h5>
+                                        <p>Meningkatkan keterampilan sosial dan komunikasi.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                                <div class="objective-item">
+                                    <div class="objective-icon">
+                                        <i class="fas fa-lightbulb"></i>
+                                    </div>
+                                    <div class="objective-content">
+                                        <h5>Aplikasi Pengetahuan Praktis</h5>
+                                        <p>Memberikan kesempatan untuk mengaplikasikan pengetahuan dalam konteks praktis.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 mb-4" data-aos="fade-up" data-aos-delay="500">
+                                <div class="objective-item">
+                                    <div class="objective-icon">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                    <div class="objective-content">
+                                        <h5>Persiapan Kompetisi</h5>
+                                        <p>Mempersiapkan siswa untuk kompetisi di tingkat lokal, nasional, dan internasional.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Extracurricular Categories Section -->
+                <div class="row mb-5">
+                    <div class="col-lg-12">
+                        <div class="section-header text-center mb-5" data-aos="fade-up">
+                            <h2 class="section-title">Jenis Ekstrakurikuler</h2>
+                            <p class="section-subtitle">Beragam pilihan kegiatan untuk mengembangkan potensi siswa</p>
+                        </div>
+                        <div class="row">
+                            <!-- Religious Category -->
+                            <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                                <div class="category-card">
+                                    <div class="category-header">
+                                        <div class="category-icon">
+                                            <i class="fas fa-mosque"></i>
                                         </div>
-                                        <div class="about-content">
-                                            <p class="mb-4">Program Ekstrakurikuler di Baitul Jannah Islamic School dirancang untuk mengembangkan bakat, minat, dan potensi siswa di luar kegiatan akademik reguler. Melalui berbagai kegiatan ekstrakurikuler, siswa dapat mengeksplorasi dan mengembangkan keterampilan tambahan yang mendukung perkembangan mereka secara holistik.</p>
+                                        <h4 class="category-title">Bidang Keagamaan</h4>
+                                    </div>
+                                    <div class="category-content">
+                                        <ul class="category-list">
+                                            <li><i class="fas fa-check"></i> Tahfidz Al-Qur'an</li>
+                                            <li><i class="fas fa-check"></i> Qira'ah</li>
+                                            <li><i class="fas fa-check"></i> Kaligrafi</li>
+                                            <li><i class="fas fa-check"></i> Da'i Cilik</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sports Category -->
+                            <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                                <div class="category-card">
+                                    <div class="category-header">
+                                        <div class="category-icon">
+                                            <i class="fas fa-futbol"></i>
                                         </div>
-                                        
-                                        <div class="about-title mt-5">
-                                            <h2>Tujuan Program</h2>
+                                        <h4 class="category-title">Bidang Olahraga</h4>
+                                    </div>
+                                    <div class="category-content">
+                                        <ul class="category-list">
+                                            <li><i class="fas fa-check"></i> Futsal</li>
+                                            <li><i class="fas fa-check"></i> Basket</li>
+                                            <li><i class="fas fa-check"></i> Beladiri (Karate, Pencak Silat)</li>
+                                            <li><i class="fas fa-check"></i> Panahan</li>
+                                            <li><i class="fas fa-check"></i> Renang</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Arts and Culture Category -->
+                            <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                                <div class="category-card">
+                                    <div class="category-header">
+                                        <div class="category-icon">
+                                            <i class="fas fa-palette"></i>
                                         </div>
-                                        <div class="about-content">
-                                            <ol class="mb-4">
-                                                <li class="mb-3">Mengembangkan bakat dan minat siswa dalam berbagai bidang.</li>
-                                                <li class="mb-3">Membangun karakter kepemimpinan dan kerja sama tim.</li>
-                                                <li class="mb-3">Meningkatkan keterampilan sosial dan komunikasi.</li>
-                                                <li class="mb-3">Memberikan kesempatan untuk mengaplikasikan pengetahuan dalam konteks praktis.</li>
-                                                <li class="mb-3">Mempersiapkan siswa untuk kompetisi di tingkat lokal, nasional, dan internasional.</li>
-                                            </ol>
+                                        <h4 class="category-title">Bidang Seni dan Budaya</h4>
+                                    </div>
+                                    <div class="category-content">
+                                        <ul class="category-list">
+                                            <li><i class="fas fa-check"></i> Seni Musik Islami</li>
+                                            <li><i class="fas fa-check"></i> Teater</li>
+                                            <li><i class="fas fa-check"></i> Tari Tradisional</li>
+                                            <li><i class="fas fa-check"></i> Seni Rupa</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Academic Category -->
+                            <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                                <div class="category-card">
+                                    <div class="category-header">
+                                        <div class="category-icon">
+                                            <i class="fas fa-graduation-cap"></i>
                                         </div>
-                                        
-                                        <div class="about-title mt-5">
-                                            <h2>Jenis Ekstrakurikuler</h2>
+                                        <h4 class="category-title">Bidang Akademik</h4>
+                                    </div>
+                                    <div class="category-content">
+                                        <ul class="category-list">
+                                            <li><i class="fas fa-check"></i> Klub Sains</li>
+                                            <li><i class="fas fa-check"></i> Robotika</li>
+                                            <li><i class="fas fa-check"></i> Debat Bahasa Inggris dan Arab</li>
+                                            <li><i class="fas fa-check"></i> Jurnalistik</li>
+                                            <li><i class="fas fa-check"></i> Matematika</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Skills Category -->
+                            <div class="col-lg-12 col-md-12 mb-4" data-aos="fade-up" data-aos-delay="500">
+                                <div class="category-card">
+                                    <div class="category-header">
+                                        <div class="category-icon">
+                                            <i class="fas fa-tools"></i>
                                         </div>
-                                        <div class="about-content">
-                                            <h4 class="mt-4">Bidang Keagamaan</h4>
-                                            <ul class="mb-4">
-                                                <li class="mb-2">Tahfidz Al-Qur'an</li>
-                                                <li class="mb-2">Qira'ah</li>
-                                                <li class="mb-2">Kaligrafi</li>
-                                                <li class="mb-2">Da'i Cilik</li>
-                                            </ul>
-                                            
-                                            <h4 class="mt-4">Bidang Olahraga</h4>
-                                            <ul class="mb-4">
-                                                <li class="mb-2">Futsal</li>
-                                                <li class="mb-2">Basket</li>
-                                                <li class="mb-2">Beladiri (Karate, Pencak Silat)</li>
-                                                <li class="mb-2">Panahan</li>
-                                                <li class="mb-2">Renang</li>
-                                            </ul>
-                                            
-                                            <h4 class="mt-4">Bidang Seni dan Budaya</h4>
-                                            <ul class="mb-4">
-                                                <li class="mb-2">Seni Musik Islami</li>
-                                                <li class="mb-2">Teater</li>
-                                                <li class="mb-2">Tari Tradisional</li>
-                                                <li class="mb-2">Seni Rupa</li>
-                                            </ul>
-                                            
-                                            <h4 class="mt-4">Bidang Akademik</h4>
-                                            <ul class="mb-4">
-                                                <li class="mb-2">Klub Sains</li>
-                                                <li class="mb-2">Robotika</li>
-                                                <li class="mb-2">Debat Bahasa Inggris dan Arab</li>
-                                                <li class="mb-2">Jurnalistik</li>
-                                                <li class="mb-2">Matematika</li>
-                                            </ul>
-                                            
-                                            <h4 class="mt-4">Bidang Keterampilan</h4>
-                                            <ul class="mb-4">
-                                                <li class="mb-2">Pramuka</li>
-                                                <li class="mb-2">PMR (Palang Merah Remaja)</li>
-                                                <li class="mb-2">Kewirausahaan</li>
-                                                <li class="mb-2">Fotografi</li>
-                                                <li class="mb-2">Desain Grafis</li>
-                                            </ul>
+                                        <h4 class="category-title">Bidang Keterampilan</h4>
+                                    </div>
+                                    <div class="category-content">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <ul class="category-list">
+                                                    <li><i class="fas fa-check"></i> Pramuka</li>
+                                                    <li><i class="fas fa-check"></i> PMR (Palang Merah Remaja)</li>
+                                                    <li><i class="fas fa-check"></i> Kewirausahaan</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <ul class="category-list">
+                                                    <li><i class="fas fa-check"></i> Fotografi</li>
+                                                    <li><i class="fas fa-check"></i> Desain Grafis</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action Section -->
+                <div class="row mb-5">
+                    <div class="col-lg-12">
+                        <div class="cta-section text-center" data-aos="fade-up">
+                            <div class="cta-content">
+                                <h3 class="cta-title">Bergabunglah dengan Ekstrakurikuler Kami!</h3>
+                                <p class="cta-description">Kembangkan bakat dan minat Anda bersama kami. Daftarkan diri Anda sekarang!</p>
+                                <button class="btn btn-primary cta-button" onclick="showRegistrationInfo()">Daftar Sekarang</button>
                             </div>
                         </div>
                     </div>
@@ -141,12 +299,771 @@
     </div>
     
     <!-- jQuery -->
-    <script src="assets/js/jquery-3.7.1.min.js" type="text/javascript"></script>
+    <script src="/assets/js/jquery-3.7.1.min.js" type="text/javascript"></script>
 
     <!-- Bootstrap Core JS -->
-    <script src="assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    
+    <!-- AOS Animation JS -->
+    <script src="/assets/plugins/aos/aos.js" type="text/javascript"></script>
 
     <!-- Custom JS -->
-    <script src="assets/js/script.js" type="text/javascript"></script>
+    <script src="/assets/js/script.js" type="text/javascript"></script>
+    
+    <!-- Page Specific JavaScript -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+        
+        // Page loading animation
+        $(document).ready(function() {
+            $('body').addClass('loaded');
+        });
+        
+        // Objective items hover effect
+        $('.objective-item').hover(
+            function() {
+                $(this).addClass('hovered');
+            },
+            function() {
+                $(this).removeClass('hovered');
+            }
+        );
+        
+        // Category cards hover effect
+        $('.category-card').hover(
+            function() {
+                $(this).addClass('hovered');
+            },
+            function() {
+                $(this).removeClass('hovered');
+            }
+        );
+        
+        // CTA button interaction
+        function showRegistrationInfo() {
+            alert('Untuk informasi pendaftaran ekstrakurikuler, silakan hubungi bagian kesiswaan atau kunjungi kantor sekolah.');
+        }
+        
+        // Smooth scrolling for internal links
+        $('a[href^="#"]').on('click', function(event) {
+            var target = $(this.getAttribute('href'));
+            if( target.length ) {
+                event.preventDefault();
+                $('html, body').stop().animate({
+                    scrollTop: target.offset().top - 100
+                }, 1000);
+            }
+        });
+    </script>
+    
+    <!-- Custom CSS -->
+    <style>
+        /* Loading Animation */
+        body {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        body.loaded {
+            opacity: 1;
+        }
+        
+        /* Breadcrumb Enhancements */
+        .breadcrumb-modern {
+            background: linear-gradient(135deg, #1a2a6c 0%, #3f51b5 50%, #4a69bd 100%);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .breadcrumb-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/assets/img/shapes/pattern-1.png');
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .breadcrumb-modern .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .breadcrumb-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            opacity: 0.95;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .breadcrumb-subtitle::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.6);
+        }
+        
+        .breadcrumb-icon {
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .breadcrumb-icon::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 15px;
+            background: radial-gradient(ellipse at center, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        /* Overview Card */
+        .overview-card {
+            border: none;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-radius: 20px;
+            padding: 60px 30px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            margin-top: -50px;
+            z-index: 10;
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        .overview-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15), 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: rgba(26, 42, 108, 0.2);
+        }
+        
+        .overview-icon {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .overview-icon i {
+            font-size: 5rem;
+            background: linear-gradient(135deg, #1a2a6c 0%, #3f51b5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            position: relative;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+        
+        .overview-icon:hover i {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, #3f51b5 30%, #1a2a6c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 8px rgba(63, 81, 181, 0.5));
+            animation: shimmer 2s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { filter: drop-shadow(0 0 5px rgba(63, 81, 181, 0.3)); }
+            50% { filter: drop-shadow(0 0 12px rgba(63, 81, 181, 0.6)); }
+            100% { filter: drop-shadow(0 0 5px rgba(63, 81, 181, 0.3)); }
+        }
+        
+        .overview-icon:hover .overview-icon-decoration {
+            animation-duration: 15s;
+            border-color: rgba(63, 81, 181, 0.5);
+            box-shadow: 0 0 15px rgba(63, 81, 181, 0.2);
+        }
+        
+        .overview-icon:hover .overview-icon-decoration::before {
+            border-color: rgba(26, 42, 108, 0.4);
+            animation-duration: 10s;
+            width: 90px;
+            height: 90px;
+        }
+        
+        .overview-icon:hover .overview-icon-decoration::after {
+            border-color: rgba(63, 81, 181, 0.3);
+            animation-duration: 2s;
+            width: 170px;
+            height: 170px;
+        }
+        
+        .objective-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 42, 108, 0.1) 0%, rgba(63, 81, 181, 0.1) 100%);
+            z-index: -1;
+            transition: all 0.5s ease;
+        }
+        
+        .overview-card:hover::before {
+            background: linear-gradient(135deg, rgba(26, 42, 108, 0.05) 0%, rgba(63, 81, 181, 0.05) 100%);
+            opacity: 1;
+        }
+        
+        .objective-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 42, 108, 0.03) 0%, rgba(63, 81, 181, 0.03) 100%);
+            opacity: 0;
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+        
+        .category-header {
+            background: linear-gradient(135deg, #1a2a6c 0%, #3f51b5 100%);
+            color: white;
+            padding: 40px 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.5s ease;
+        }
+        
+        .category-card:hover .category-header::before,
+        .category-card.hovered .category-header::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .category-icon {
+            width: 90px;
+            height: 90px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            transition: all 0.5s ease;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .category-icon::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 25px;
+            z-index: -1;
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+        
+        .category-card:hover .category-icon,
+        .category-card.hovered .category-icon {
+            background: rgba(255,255,255,0.25);
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .category-card:hover .category-icon::before,
+        .category-card.hovered .category-icon::before {
+            opacity: 1;
+        }
+        
+        .category-icon i {
+            font-size: 2.5rem;
+            color: white;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+            transition: all 0.5s ease;
+        }
+        
+        .category-card:hover .category-icon i,
+        .category-card.hovered .category-icon i {
+            transform: scale(1.1);
+        }
+        
+        .category-title {
+            margin: 0;
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: rgba(255,255,255,0.5);
+            transition: all 0.5s ease;
+        }
+        
+        .category-card:hover .category-title::after,
+        .category-card.hovered .category-title::after {
+            width: 80px;
+        }
+        
+        .category-content {
+            padding: 35px 30px;
+            position: relative;
+        }
+        
+        .category-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .category-list li {
+            padding: 12px 0;
+            color: #4a5568;
+            display: flex;
+            align-items: center;
+            transition: all 0.4s ease;
+            position: relative;
+            border-bottom: 1px dashed rgba(236, 240, 241, 0.8);
+        }
+        
+        .category-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .category-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #1a2a6c, #3f51b5);
+            transition: all 0.4s ease;
+            opacity: 0;
+        }
+        
+        .category-list li i {
+            color: #3f51b5;
+            margin-right: 12px;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+            background: linear-gradient(135deg, #1a2a6c, #3f51b5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .category-list li:hover::before {
+            width: 100%;
+            opacity: 1;
+        }
+        
+        .category-list li:hover {
+            color: #1a2a6c;
+            transform: translateX(8px);
+            font-weight: 500;
+        }
+        
+        .category-list li i {
+            color: #fdbb2d;
+            margin-right: 12px;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+            background: linear-gradient(135deg, #fdbb2d, #b21f1f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .category-list li:hover i {
+            transform: scale(1.2);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1a2a6c 0%, #3f51b5 50%, #4a69bd 100%);
+            color: white;
+            padding: 80px 50px;
+            border-radius: 30px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/assets/img/shapes/pattern-1.png');
+            opacity: 0.05;
+            z-index: -1;
+        }
+        
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+            z-index: -1;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            letter-spacing: -0.5px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .cta-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: rgba(255,255,255,0.5);
+        }
+        
+        .cta-description {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+        
+        .cta-button {
+            background: rgba(255,255,255,0.9);
+            color: #1a2a6c;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            letter-spacing: 0.5px;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #fdbb2d, #b21f1f);
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            z-index: -1;
+            opacity: 0.8;
+        }
+        
+        .cta-button:hover {
+            color: white;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+        
+        .cta-button:hover::before {
+            width: 100%;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .overview-card {
+                margin-top: -30px;
+            }
+            
+            .overview-title {
+                font-size: 2.5rem;
+            }
+            
+            .category-icon {
+                width: 80px;
+                height: 80px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .breadcrumb-modern {
+                padding: 80px 0;
+            }
+            
+            .overview-card {
+                margin-top: -20px;
+                padding: 50px 25px;
+            }
+            
+            .overview-title {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .cta-section {
+                padding: 60px 40px;
+            }
+            
+            .cta-title {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .breadcrumb-modern {
+                padding: 60px 0;
+            }
+            
+            .overview-card {
+                margin-top: 0;
+                padding: 40px 20px;
+            }
+            
+            .overview-title {
+                font-size: 2rem;
+            }
+            
+            .overview-description {
+                font-size: 1.1rem;
+                line-height: 1.7;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .objective-item {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px 20px;
+            }
+            
+            .objective-icon {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .category-header {
+                padding: 30px 20px;
+            }
+            
+            .category-content {
+                padding: 25px 20px;
+            }
+            
+            .cta-section {
+                padding: 50px 30px;
+                border-radius: 20px;
+            }
+            
+            .cta-title {
+                font-size: 1.8rem;
+            }
+            
+            .cta-description {
+                font-size: 1.1rem;
+                margin-bottom: 30px;
+            }
+            
+            .cta-button {
+                padding: 15px 40px;
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .breadcrumb-modern {
+                padding: 50px 0;
+            }
+            
+            .breadcrumb-title {
+                font-size: 1.8rem;
+            }
+            
+            .breadcrumb-subtitle {
+                font-size: 1rem;
+            }
+            
+            .overview-icon i {
+                font-size: 4rem;
+            }
+            
+            .overview-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .objective-content h5 {
+                font-size: 1.2rem;
+            }
+            
+            .category-title {
+                font-size: 1.3rem;
+            }
+            
+            .cta-title {
+                font-size: 1.6rem;
+            }
+            
+            .cta-description {
+                font-size: 1rem;
+            }
+            
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Color Scheme */
+        :root {
+            --primary-color: #1a2a6c;
+            --secondary-color: #b21f1f;
+            --accent-color: #fdbb2d;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --text-primary: #1a2a6c;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --background-light: #f8f9fa;
+            --border-color: rgba(236, 240, 241, 0.8);
+        }
+        
+        /* Typography */
+        .page-content {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-primary);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Additional Elegant Styles */
+        ::selection {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .page-content a {
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .page-content a:hover {
+            color: var(--secondary-color);
+        }
+    </style>
 </body>
 </html>
+
+.category-card:hover,
+.category-card.hovered {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+    border-color: rgba(26, 42, 108, 0.2);
+}
+
+.category-card:hover::after,
+.category-card.hovered::after {
+    opacity: 1;
+}

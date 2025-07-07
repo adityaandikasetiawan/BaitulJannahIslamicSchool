@@ -46,10 +46,30 @@ router.get('/login', forwardAuthenticated, (req, res) => {
 
 // Login Process
 router.post('/login', (req, res, next) => {
-  passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/login',
-    failureFlash: true
+  console.log('Login attempt with username:', req.body.username);
+  
+  passport.authenticate('local', (err, user, info) => {
+    if (err) { 
+      console.error('Authentication error:', err);
+      return next(err); 
+    }
+    
+    if (!user) {
+      console.log('Authentication failed:', info.message);
+      req.flash('error_msg', info.message);
+      return res.redirect('/login');
+    }
+    
+    req.logIn(user, (err) => {
+      if (err) { 
+        console.error('Login error:', err);
+        return next(err); 
+      }
+      
+      console.log('Login successful for user:', user.username, 'with role:', user.role);
+      console.log('Redirecting to /dashboard');
+      return res.redirect('/dashboard');
+    });
   })(req, res, next);
 });
 

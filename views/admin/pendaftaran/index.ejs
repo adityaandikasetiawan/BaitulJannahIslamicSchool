@@ -1,127 +1,484 @@
-<%- include('../../partials/header') %>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="Baitul Jannah Islamic School - Sistem Manajemen Sekolah Islam">
+    <title><%= title %></title>
+    
+    <!-- logo.png -->
+    <link rel="shortcut icon" href="/assets/img/logo.png">
+    <link rel="apple-touch-icon" href="/assets/img/apple-icon.png">
 
-<div class="main-wrapper">
-    <%- include('../../partials/header2') %>
+    <!-- Theme Settings Js -->
+    <script src="/assets/js/theme-script.js"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+    
+    <!-- Feather CSS -->
+    <link rel="stylesheet" href="/assets/css/feather.css">
 
-    <div class="page-wrapper">
-        <div class="content container-fluid">
-            <div class="page-header">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <h3 class="page-title">Kelola Pendaftaran SPMB</h3>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Kelola Pendaftaran SPMB</li>
-                        </ul>
+    <!-- Daterangepicker CSS -->
+    <link rel="stylesheet" href="/assets/plugins/daterangepicker/daterangepicker.css">
+
+    <!-- Iconsax CSS -->
+    <link rel="stylesheet" href="/assets/css/iconsax.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+        
+        <!-- Header Topbar-->
+        <div class="header-topbar text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="d-flex align-items-center justify-content-center justify-content-lg-start">
+                            <p class="d-flex align-items-center fw-medium fs-14 mb-2 me-3"><i class="isax isax-location5 me-2"></i>Jl. Baitul Jannah, Kota Bandar Lampung</p>
+                            <p class="d-flex align-items-center fw-medium fs-14 mb-2"><i class="isax isax-call-calling5 me-2"></i>+62 721 123456</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="d-flex align-items-center justify-content-center justify-content-lg-end">
+                            <ul class="social-icon d-flex align-items-center mb-2">
+                                <li class="me-2">
+                                    <a href="javascript:void(0);"><i class="fa-brands fa-facebook-f"></i></a>
+                                </li>
+                                <li class="me-2">
+                                    <a href="javascript:void(0);"><i class="fa-brands fa-instagram"></i></a>
+                                </li>
+                                <li class="me-2">
+                                    <a href="javascript:void(0);"><i class="fa-brands fa-x-twitter"></i></a>
+                                </li>
+                                <li class="me-2">
+                                    <a href="javascript:void(0);"><i class="fa-brands fa-youtube"></i></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);"><i class="fa-brands fa-linkedin"></i></a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <% if(success_msg != ''){ %>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <%= success_msg %>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            <% } %>
-
-            <% if(error_msg != ''){ %>
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <%= error_msg %>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            <% } %>
-
-            <div class="row mb-3">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title">Filter Pendaftaran</h5>
+        </div>
+        <!-- /Header Topbar-->
+        
+        <!-- Header -->
+        <header class="header-two">
+            <div class="container">
+                <div class="header-nav">
+                    <div class="navbar-header">
+                        <a id="mobile_btn" href="javascript:void(0);">
+                            <span class="bar-icon">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </a>
+                        <div class="navbar-logo">
+                            <a class="logo-white header-logo" href="/">
+                                <img src="/assets/img/logo.png" class="logo" alt="Logo" style="max-height: 40px;">
+                            </a>
+                            <a class="logo-dark header-logo" href="/">
+                                <img src="/assets/img/logo.png" class="logo" alt="Logo" style="max-height: 40px;">
+                            </a>
                         </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h6>Filter berdasarkan Jenjang:</h6>
-                                    <div class="btn-group mb-3">
-                                        <a href="/admin/pendaftaran/daftar" class="btn <%= typeof jenjangFilter === 'undefined' ? 'btn-primary' : 'btn-outline-primary' %>">Semua</a>
-                                        <a href="/admin/pendaftaran/filter/jenjang/PGIT-TKIT" class="btn <%= jenjangFilter === 'PGIT-TKIT' ? 'btn-primary' : 'btn-outline-primary' %>">PGIT-TKIT</a>
-                                        <a href="/admin/pendaftaran/filter/jenjang/SDIT" class="btn <%= jenjangFilter === 'SDIT' ? 'btn-primary' : 'btn-outline-primary' %>">SDIT</a>
-                                        <a href="/admin/pendaftaran/filter/jenjang/SMPIT" class="btn <%= jenjangFilter === 'SMPIT' ? 'btn-primary' : 'btn-outline-primary' %>">SMPIT</a>
-                                        <a href="/admin/pendaftaran/filter/jenjang/SMAIT" class="btn <%= jenjangFilter === 'SMAIT' ? 'btn-primary' : 'btn-outline-primary' %>">SMAIT</a>
+                    </div>
+                    <div class="main-menu-wrapper">                                
+                        <div class="menu-header">
+                            <a href="/" class="menu-logo">
+                                <img src="/assets/img/logo.png" class="img-fluid" alt="Logo" style="max-height: 40px;">
+                            </a>
+                            <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </div>
+                        <ul class="main-nav">
+                            <li class="active">
+                                <a href="/dashboard">Dashboard</a>
+                            </li>
+                            <!-- <li class="has-submenu">
+                                <a href="#">Siswa <i class="isax isax-add"></i></a>
+                                <ul class="submenu">
+                                    <li><a href="#">Daftar Siswa</a></li>
+                                    <li><a href="#">Tambah Siswa</a></li>
+
+                                    <li><a href="#">Nilai</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">Guru <i class="isax isax-add"></i></a>
+                                <ul class="submenu">
+                                    <li><a href="#">Daftar Guru</a></li>
+                                    <li><a href="#">Tambah Guru</a></li>
+                                    <li><a href="#">Jadwal Mengajar</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">Akademik <i class="isax isax-add"></i></a>
+                                <ul class="submenu">
+                                    <li><a href="#">Mata Pelajaran</a></li>
+                                    <li><a href="#">Jadwal Pelajaran</a></li>
+                                    <li><a href="#">Ujian</a></li>
+                                    <li><a href="#">Rapor</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Agenda</a>
+                            </li>
+                            <li>
+                                <a href="#">Pengumuman</a>
+                            </li>
+                            <li>
+                                <a href="#">Berita</a>
+                            </li>
+                            <li>
+                                <a href="#">Galeri</a>
+                            </li> -->
+                        </ul>
+                    </div>
+                    <div class="header-btn d-flex align-items-center">
+                        <div class="icon-btn me-2">
+                            <a href="javascript:void(0);" id="dark-mode-toggle" class="theme-toggle activate">
+                                <i class="isax isax-sun-15"></i>
+                            </a>
+                            <a href="javascript:void(0);" id="light-mode-toggle" class="theme-toggle">
+                                <i class="isax isax-moon"></i>
+                            </a>
+                        </div>
+                        <div class="dropdown profile-dropdown">
+                            <a href="javascript:void(0);" class="d-flex align-items-center" data-bs-toggle="dropdown">
+                                <span class="avatar">
+                                    <img src="<%= user.avatar || '/assets/img/user/user-01.jpg' %>" alt="Img" class="img-fluid rounded-circle">
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <div class="profile-header d-flex align-items-center">
+                                    <div class="avatar">
+                                        <img src="<%= user.avatar || '/assets/img/user/user-01.jpg' %>" alt="Img" class="img-fluid rounded-circle">
+                                    </div>
+                                    <div>
+                                        <h6><%= user.name %></h6>
+                                        <p><%= user.role %></p>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <h6>Filter berdasarkan Status:</h6>
-                                    <div class="btn-group">
-                                        <a href="/admin/pendaftaran/daftar" class="btn <%= typeof statusFilter === 'undefined' ? 'btn-primary' : 'btn-outline-primary' %>">Semua</a>
-                                        <a href="/admin/pendaftaran/filter/status/pending" class="btn <%= statusFilter === 'pending' ? 'btn-primary' : 'btn-outline-primary' %>">Pending</a>
-                                        <a href="/admin/pendaftaran/filter/status/diterima" class="btn <%= statusFilter === 'diterima' ? 'btn-primary' : 'btn-outline-primary' %>">Diterima</a>
-                                        <a href="/admin/pendaftaran/filter/status/ditolak" class="btn <%= statusFilter === 'ditolak' ? 'btn-primary' : 'btn-outline-primary' %>">Ditolak</a>
-                                    </div>
+                                <ul class="profile-body">
+                                    <li>
+                                        <!-- <a class="dropdown-item d-inline-flex align-items-center rounded fw-medium" href="/profile"><i class="isax isax-security-user me-2"></i>Profil Saya</a> -->
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item d-inline-flex align-items-center rounded fw-medium" href="/settings"><i class="isax isax-setting-2 me-2"></i>Pengaturan</a>
+                                    </li>                                    
+                                </ul>
+                                <div class="profile-footer">
+                                    <a href="/logout" class="btn btn-secondary d-inline-flex align-items-center justify-content-center w-100"><i class="isax isax-logout me-2"></i>Logout</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </header>
+        <!-- /Header -->
+        
+        <!-- Breadcrumb -->
+        <!-- <div class="breadcrumb-bar text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-12">
+                        <h2 class="breadcrumb-title mb-2">Dashboard</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center mb-0">
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- /Breadcrumb -->
 
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="card card-table">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-hover table-center mb-0 datatable">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Lengkap</th>
-                                            <th>Jenjang</th>
-                                            <th>Tanggal Daftar</th>
-                                            <th>Status</th>
-                                            <th class="text-right">Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% if(pendaftaran && pendaftaran.length > 0) { %>
-                                            <% pendaftaran.forEach((item, index) => { %>
-                                                <tr>
-                                                    <td><%= index + 1 %></td>
-                                                    <td><%= item.nama_lengkap %></td>
-                                                    <td><%= item.jenjang %></td>
-                                                    <td><%= new Date(item.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) %></td>
-                                                    <td>
-                                                        <% if(item.status === 'pending') { %>
-                                                            <span class="badge badge-warning">Pending</span>
-                                                        <% } else if(item.status === 'diterima') { %>
-                                                            <span class="badge badge-success">Diterima</span>
-                                                        <% } else { %>
-                                                            <span class="badge badge-danger">Ditolak</span>
-                                                        <% } %>
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <div class="actions">
-                                                            <a href="/admin/pendaftaran/detail/<%= item.id %>" class="btn btn-sm bg-info-light mr-2">
-                                                                <i class="fas fa-eye"></i>
-                                                            </a>
-                                                            <form action="/admin/pendaftaran/hapus/<%= item.id %>" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                                                <button type="submit" class="btn btn-sm bg-danger-light">
-                                                                    <i class="fas fa-trash"></i>
-                                                                </button>
-                                                            </form>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            <% }) %>
-                                        <% } else { %>
+        <div class="content">
+            <div class="container">
+                <div class="instructor-profile">
+                    <div class="instructor-profile-bg">
+                        <img src="/assets/img/bg/card-bg-01.png" class="instructor-profile-bg-1" alt="">
+                    </div>
+                    <div class="row align-items-center row-gap-3">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center">
+                                <span class="avatar flex-shrink-0 avatar-xxl avatar-rounded me-3 border border-white border-3 position-relative">
+                                    <img src="/assets/img/user/user-01.jpg" alt="img">
+                                    <span class="verify-tick"><i class="isax isax-verify5"></i></span>
+                                </span>
+                                <div>
+                                    <h5 class="mb-1 text-white d-inline-flex align-items-center"><%= user.name %><a href="/profile" class="link-light fs-16 ms-2"><i class="isax isax-edit-2"></i></a></h5>
+                                    <p class="text-light"><%= user.role %></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center flex-wrap gap-3 justify-content-md-end">
+                                <a href="#" class="btn btn-white rounded-pill">Tambah Siswa</a>
+                                <a href="#" class="btn btn-secondary rounded-pill">Lihat Profil</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <!-- Sidebar -->
+                    <div class="col-lg-3 theiaStickySidebar">
+                        <div class="settings-sidebar mb-lg-0">
+                            <div>
+                                <h6 class="mb-3">Menu Utama</h6>
+                                <ul class="mb-3 pb-1">
+                                    <li>
+                                        <a href="/dashboard" class="d-inline-flex align-items-center active"><i class="isax isax-grid-35 me-2"></i>Dashboard</a>
+                                    </li>
+                                    <!-- <li>
+                                        <a href="/profile" class="d-inline-flex align-items-center"><i class="fa-solid fa-user me-2"></i>Profil Saya</a>
+                                    </li> -->
+                                    
+                                    <!-- Menu CRUD Beranda -->
+                                    <li>
+                                        <a href="/admin/beranda" class="d-inline-flex align-items-center"><i class="isax isax-home5 me-2"></i>Beranda</a>
+                                    </li>
+                                    
+                                    <!-- Menu CRUD Tentang Kami dengan submenu -->
+                                    <li>
+                                        <a href="#tentangKamiSubmenu" data-bs-toggle="collapse" class="d-inline-flex align-items-center dropdown-toggle">
+                                            <i class="isax isax-info-circle5 me-2"></i>Tentang Kami
+                                        </a>
+                                        <ul class="collapse list-unstyled ms-4" id="tentangKamiSubmenu">
+                                            <li>
+                                                <a href="/admin/tentangkami/sejarah" class="d-inline-flex align-items-center"><i class="isax isax-clock5 me-2"></i>Sejarah</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/tentangkami/visimisi" class="d-inline-flex align-items-center"><i class="isax isax-eye5 me-2"></i>Visi Misi</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/tentangkami/kepengurusan" class="d-inline-flex align-items-center"><i class="isax isax-people5 me-2"></i>Kepengurusan</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/tentangkami/fasilitas" class="d-inline-flex align-items-center"><i class="isax isax-building5 me-2"></i>Fasilitas</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#pendaftaranSubmenu" data-bs-toggle="collapse" class="d-inline-flex align-items-center dropdown-toggle">
+                                            <i class="isax isax-clipboard-text5 me-2"></i>Pendaftaran SPMB
+                                        </a>
+                                        <ul class="collapse list-unstyled ms-4" id="pendaftaranSubmenu">
+                                            <li>
+                                                <a href="/admin/pendaftaran/daftar" class="d-inline-flex align-items-center"><i class="isax isax-document-upload5 me-2"></i>Daftar SPMB</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/pendaftaran/syarat" class="d-inline-flex align-items-center"><i class="isax isax-document-text5 me-2"></i>Syarat Pendaftaran</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/pendaftaran/pengumuman" class="d-inline-flex align-items-center"><i class="isax isax-notification5 me-2"></i>Pengumuman</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    
+                                    <!-- Menu Profile -->
+                                    <li>
+                                        <a href="#profileSubmenu" data-bs-toggle="collapse" class="d-inline-flex align-items-center dropdown-toggle">
+                                            <i class="isax isax-user me-2"></i>Profile
+                                        </a>
+                                        <ul class="collapse list-unstyled ms-4" id="profileSubmenu">
+                                            <li>
+                                                <a href="/admin/profile/pgit" class="d-inline-flex align-items-center"><i class="isax isax isax-medal5 me-2"></i>Profile PGIT-TKIT</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/profile/sdit" class="d-inline-flex align-items-center"><i class="isax isax isax-medal5 me-2"></i>SDIT</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/profile/smpit" class="d-inline-flex align-items-center"><i class="isax isax-medal5 me-2"></i>SMPIT</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/profile/smait" class="d-inline-flex align-items-center"><i class="isax isax-medal5 me-2"></i>SMAIT</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/profile/slbit" class="d-inline-flex align-items-center"><i class="isax isax-medal5 me-2"></i>SLBIT</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    
+                                    <!-- Menu Informasi -->
+                                    <li>
+                                        <a href="#informasiSubmenu" data-bs-toggle="collapse" class="d-inline-flex align-items-center dropdown-toggle">
+                                            <i class="isax isax-info-circle5 me-2"></i>Informasi
+                                        </a>
+                                        <ul class="collapse list-unstyled ms-4" id="informasiSubmenu">
+                                            <li>
+                                                <a href="/admin/informasi/berita" class="d-inline-flex align-items-center"><i class="isax isax-document5 me-2"></i>Berita</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/informasi/pengumuman" class="d-inline-flex align-items-center"><i class="isax isax-notification5 me-2"></i>Pengumuman</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/informasi/agenda" class="d-inline-flex align-items-center"><i class="isax isax-calendar5 me-2"></i>Agenda</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    
+                                    <!-- Menu Kontak -->
+                                    <li>
+                                        <a href="#kontakSubmenu" data-bs-toggle="collapse" class="d-inline-flex align-items-center dropdown-toggle">
+                                            <i class="isax isax-call5 me-2"></i>Kontak
+                                        </a>
+                                        <ul class="collapse list-unstyled ms-4" id="kontakSubmenu">
+                                            <li>
+                                                <a href="/admin/kontak/kami" class="d-inline-flex align-items-center"><i class="isax isax-message-question5 me-2"></i>Kontak Kami</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/kontak/kunjungan" class="d-inline-flex align-items-center"><i class="isax isax-building5 me-2"></i>Permohonan Kunjungan</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/kontak/penelitian" class="d-inline-flex align-items-center"><i class="isax isax-document-text5 me-2"></i>Permohonan Penelitian</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/kontak/faq" class="d-inline-flex align-items-center"><i class="isax isax-message-question5 me-2"></i>FAQ</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                                <hr>
+                                <h6 class="mb-3">Pengaturan Akun</h6>
+                                <ul>
+                                    <li>
+                                        <a href="/settings" class="d-inline-flex align-items-center"><i class="isax isax-setting-2 me-2"></i>Settings</a>
+                                    </li>
+                                    <li>
+                                        <a href="/logout" class="d-inline-flex align-items-center"><i class="isax isax-logout me-2"></i>Logout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Sidebar -->
+
+                    <div class="col-lg-9">
+              
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="card-title">Daftar Pendaftaran Siswa Baru</h5>
+                                <div>
+                                    <a href="/admin/pendaftaran/filter/status/pending" class="btn btn-outline-warning btn-sm me-2">Pending</a>
+                                    <a href="/admin/pendaftaran/filter/status/diterima" class="btn btn-outline-success btn-sm me-2">Diterima</a>
+                                    <a href="/admin/pendaftaran/filter/status/ditolak" class="btn btn-outline-danger btn-sm me-2">Ditolak</a>
+                                    <a href="/admin/pendaftaran/daftar" class="btn btn-outline-primary btn-sm">Semua</a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <% if(success_msg != ''){ %>
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <%= success_msg %>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                <% } %>
+
+                                <% if(error_msg != ''){ %>
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <%= error_msg %>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                <% } %>
+                                
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Filter Jenjang</label>
+                                            <select class="form-control" id="jenjangFilter" onchange="filterByJenjang()">
+                                                <option value="">Semua Jenjang</option>
+                                                <option value="PGIT-TKIT" <%= jenjangFilter === 'PGIT-TKIT' ? 'selected' : '' %>>PGIT-TKIT</option>
+                                                <option value="SDIT" <%= jenjangFilter === 'SDIT' ? 'selected' : '' %>>SDIT</option>
+                                                <option value="SMPIT" <%= jenjangFilter === 'SMPIT' ? 'selected' : '' %>>SMPIT</option>
+                                                <option value="SMAIT" <%= jenjangFilter === 'SMAIT' ? 'selected' : '' %>>SMAIT</option>
+                                                <option value="SLBIT" <%= jenjangFilter === 'SLBIT' ? 'selected' : '' %>>SLBIT</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Cari Pendaftar</label>
+                                            <input type="text" class="form-control" id="searchInput" placeholder="Cari nama atau email..." onkeyup="searchTable()">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-center mb-0" id="pendaftaranTable">
+                                        <thead>
                                             <tr>
-                                                <td colspan="6" class="text-center">Tidak ada data pendaftaran</td>
+                                                <th>No.</th>
+                                                <th>Nama Lengkap</th>
+                                                <th>Jenjang</th>
+                                                <th>Tanggal Daftar</th>
+                                                <th>Status</th>
+                                                <th>Aksi</th>
                                             </tr>
-                                        <% } %>
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            <% if(pendaftaran && pendaftaran.length > 0) { %>
+                                                <% pendaftaran.forEach((item, index) => { %>
+                                                    <tr>
+                                                        <td><%= index + 1 %></td>
+                                                        <td><%= item.nama_lengkap %></td>
+                                                        <td><%= item.jenjang %></td>
+                                                        <td><%= new Date(item.created_at).toLocaleDateString('id-ID', {day: '2-digit', month: 'short', year: 'numeric'}) %></td>
+                                                        <td>
+                                                            <% if(item.status === 'pending') { %>
+                                                                <span class="badge bg-warning-light text-warning">Pending</span>
+                                                            <% } else if(item.status === 'diterima') { %>
+                                                                <span class="badge bg-success-light text-success">Diterima</span>
+                                                            <% } else if(item.status === 'ditolak') { %>
+                                                                <span class="badge bg-danger-light text-danger">Ditolak</span>
+                                                            <% } %>
+                                                        </td>
+                                                        <td>
+                                                            <div class="actions">
+                                                                <a href="/admin/pendaftaran/detail/<%= item.id %>" class="btn btn-sm btn-outline-primary rounded-pill me-1">
+                                                                    <i class="isax isax-eye me-1"></i> Detail
+                                                                </a>
+                                                                <form action="/admin/pendaftaran/hapus/<%= item.id %>" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                                                    <button type="submit" class="btn btn-sm btn-outline-danger rounded-pill">
+                                                                        <i class="isax isax-trash me-1"></i> Hapus
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                <% }); %>
+                                            <% } else { %>
+                                                <tr>
+                                                    <td colspan="6" class="text-center">Tidak ada data pendaftaran</td>
+                                                </tr>
+                                            <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -129,6 +486,59 @@
             </div>
         </div>
     </div>
-</div>
+    <!-- /Main Wrapper -->
+    
+    <!-- jQuery -->
+    <script src="/assets/js/jquery-3.7.1.min.js"></script>
+    
+    <!-- Bootstrap Core JS -->
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Sticky Sidebar JS -->
+    <script src="/assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+    <script src="/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+    
+    <!-- Daterangepicker JS -->
+    <script src="/assets/js/moment.min.js"></script>
+    <script src="/assets/plugins/daterangepicker/daterangepicker.js"></script>
+    
+    <!-- Apexchart JS -->
+    <script src="/assets/plugins/apexchart/apexcharts.min.js"></script>
+    <script src="/assets/plugins/apexchart/chart-data.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="/assets/js/script.js"></script>
+    
+    <script>
+        // Fungsi untuk filter berdasarkan jenjang
+        function filterByJenjang() {
+            const jenjang = document.getElementById('jenjangFilter').value;
+            if (jenjang) {
+                window.location.href = `/admin/pendaftaran/filter/jenjang/${jenjang}`;
+            } else {
+                window.location.href = '/admin/pendaftaran/daftar';
+            }
+        }
 
-<%- include('../../partials/footer') %>
+        // Fungsi untuk pencarian di tabel
+        function searchTable() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toUpperCase();
+            const table = document.getElementById('pendaftaranTable');
+            const tr = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < tr.length; i++) { // Mulai dari 1 untuk melewati header
+                const tdNama = tr[i].getElementsByTagName('td')[1]; // Kolom nama
+                if (tdNama) {
+                    const txtValue = tdNama.textContent || tdNama.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = '';
+                    } else {
+                        tr[i].style.display = 'none';
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

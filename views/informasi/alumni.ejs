@@ -7,11 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="<%= description %>">
+    <meta name="keywords" content="alumni, baitul jannah, islamic school, jejaring alumni, prestasi alumni, program alumni, mentorship, career development">
+    <meta name="author" content="Baitul Jannah Islamic School">
     
     <title><%= title %></title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/assets/img/logo.png">
+    <link rel="shortcut icon" href="/assets/img/favicon.png">
     <link rel="apple-touch-icon" href="/assets/img/apple-icon.png">
 
     <!-- Theme Settings Js -->
@@ -23,6 +25,15 @@
     <!-- Fontawesome CSS -->
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+    
+    <!-- Feather Icons -->
+    <link rel="stylesheet" href="/assets/css/feather.css">
+    
+    <!-- Iconsax Icons -->
+    <link rel="stylesheet" href="/assets/css/iconsax.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -35,79 +46,108 @@
         <%- include('../partials/header2') %>
         
         <!-- Breadcrumb -->
-        <div class="breadcrumb-bar">
+        <div class="breadcrumb-bar bg-gradient-primary">
             <div class="container">
                 <div class="row align-items-center text-center">
                     <div class="col-md-12 col-12">
-                        <h2 class="breadcrumb-title">Alumni</h2>
-                        <nav aria-label="breadcrumb" class="page-breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/">Beranda</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Alumni</li>
-                            </ol>
-                        </nav>
+                        <div class="breadcrumb-content" data-aos="fade-up" data-aos-duration="1000">
+                            <div class="breadcrumb-icon mb-3">
+                                <i class="fas fa-user-graduate fa-3x text-white"></i>
+                            </div>
+                            <h2 class="breadcrumb-title text-white mb-2">Alumni</h2>
+                            <p class="breadcrumb-subtitle text-white-50 mb-3">Jejaring Alumni Baitul Jannah Islamic School</p>
+                            <nav aria-label="breadcrumb" class="page-breadcrumb">
+                                <ol class="breadcrumb justify-content-center bg-transparent">
+                                    <li class="breadcrumb-item"><a href="/" class="text-white-75">Beranda</a></li>
+                                    <li class="breadcrumb-item active text-white" aria-current="page">Alumni</li>
+                                </ol>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         
         <!-- Page Content -->
-        <div class="page-content">
+        <section class="page-content alumni-content py-5">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
+                <!-- Alumni Overview -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="alumni-overview text-center" data-aos="fade-up" data-aos-duration="1000">
+                            <div class="section-header mb-4">
+                                <span class="badge bg-primary-light text-primary mb-2">Komunitas Alumni</span>
+                                <h2 class="section-title">Alumni Baitul Jannah Islamic School</h2>
+                                <p class="section-subtitle text-muted">
+                                    Alumni Baitul Jannah Islamic School adalah bagian penting dari komunitas sekolah kami. 
+                                    Mereka adalah duta sekolah yang membawa nilai-nilai dan pembelajaran yang diperoleh di Baitul Jannah Islamic School 
+                                    ke masyarakat luas. Kami bangga dengan prestasi dan kontribusi alumni kami dalam berbagai bidang kehidupan.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alumni Network -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="card shadow-sm" data-aos="fade-up" data-aos-duration="1000">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-4">
+                                    <div class="icon-box bg-success-light text-success me-3">
+                                        <i class="fas fa-network-wired"></i>
+                                    </div>
+                                    <h3 class="card-title mb-0">Jejaring Alumni</h3>
+                                </div>
+                                <p class="text-muted mb-4">Baitul Jannah Islamic School memiliki jejaring alumni yang kuat dan aktif. Jejaring ini bertujuan untuk:</p>
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="about-title">
-                                            <h2>Alumni Baitul Jannah Islamic School</h2>
+                                    <div class="col-md-6">
+                                        <div class="network-item d-flex align-items-start mb-3">
+                                            <div class="network-icon me-3">
+                                                <i class="fas fa-comments text-success"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Komunikasi & Kolaborasi</h6>
+                                                <p class="text-muted small mb-0">Memfasilitasi komunikasi dan kolaborasi antar alumni</p>
+                                            </div>
                                         </div>
-                                        <div class="about-content">
-                                            <p class="mb-4">Alumni Baitul Jannah Islamic School adalah bagian penting dari komunitas sekolah kami. Mereka adalah duta sekolah yang membawa nilai-nilai dan pembelajaran yang diperoleh di Baitul Jannah Islamic School ke masyarakat luas. Kami bangga dengan prestasi dan kontribusi alumni kami dalam berbagai bidang kehidupan.</p>
+                                        <div class="network-item d-flex align-items-start mb-3">
+                                            <div class="network-icon me-3">
+                                                <i class="fas fa-briefcase text-success"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Pengembangan Karir</h6>
+                                                <p class="text-muted small mb-0">Memberikan dukungan bagi pengembangan karir dan profesional alumni</p>
+                                            </div>
                                         </div>
-                                        
-                                        <div class="about-title mt-5">
-                                            <h2>Jejaring Alumni</h2>
+                                        <div class="network-item d-flex align-items-start mb-3">
+                                            <div class="network-icon me-3">
+                                                <i class="fas fa-school text-success"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Pengembangan Program</h6>
+                                                <p class="text-muted small mb-0">Melibatkan alumni dalam pengembangan program sekolah</p>
+                                            </div>
                                         </div>
-                                        <div class="about-content">
-                                            <p class="mb-4">Baitul Jannah Islamic School memiliki jejaring alumni yang kuat dan aktif. Jejaring ini bertujuan untuk:</p>
-                                            <ol class="mb-4">
-                                                <li class="mb-3">Memfasilitasi komunikasi dan kolaborasi antar alumni.</li>
-                                                <li class="mb-3">Memberikan dukungan bagi pengembangan karir dan profesional alumni.</li>
-                                                <li class="mb-3">Melibatkan alumni dalam pengembangan program sekolah.</li>
-                                                <li class="mb-3">Menginspirasi siswa saat ini melalui pengalaman dan pencapaian alumni.</li>
-                                                <li class="mb-3">Memperkuat identitas dan kebanggaan sebagai bagian dari keluarga besar Baitul Jannah Islamic School.</li>
-                                            </ol>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="network-item d-flex align-items-start mb-3">
+                                            <div class="network-icon me-3">
+                                                <i class="fas fa-lightbulb text-success"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Inspirasi Siswa</h6>
+                                                <p class="text-muted small mb-0">Menginspirasi siswa saat ini melalui pengalaman dan pencapaian alumni</p>
+                                            </div>
                                         </div>
-                                        
-                                        <div class="about-title mt-5">
-                                            <h2>Program Alumni</h2>
-                                        </div>
-                                        <div class="about-content">
-                                            <ol class="mb-4">
-                                                <li class="mb-3">Reuni Tahunan: Acara tahunan untuk mempertemukan alumni dari berbagai angkatan.</li>
-                                                <li class="mb-3">Mentorship Program: Program di mana alumni berbagi pengalaman dan memberikan bimbingan kepada siswa saat ini.</li>
-                                                <li class="mb-3">Career Day: Acara di mana alumni berbagi pengalaman karir mereka dengan siswa.</li>
-                                                <li class="mb-3">Alumni Talk Series: Seri diskusi dan seminar yang dipimpin oleh alumni tentang berbagai topik.</li>
-                                                <li class="mb-3">Alumni Scholarship Fund: Dana beasiswa yang didukung oleh alumni untuk siswa berprestasi.</li>
-                                                <li class="mb-3">Community Service Projects: Proyek layanan masyarakat yang melibatkan alumni dan siswa saat ini.</li>
-                                            </ol>
-                                        </div>
-                                        
-                                        <div class="about-title mt-5">
-                                            <h2>Prestasi Alumni</h2>
-                                        </div>
-                                        <div class="about-content">
-                                            <p class="mb-4">Alumni Baitul Jannah Islamic School telah mencapai kesuksesan di berbagai bidang, termasuk:</p>
-                                            <ul class="mb-4">
-                                                <li class="mb-2">Pendidikan: Melanjutkan studi di universitas terkemuka di dalam dan luar negeri.</li>
-                                                <li class="mb-2">Bisnis dan Kewirausahaan: Mendirikan dan mengembangkan usaha yang sukses.</li>
-                                                <li class="mb-2">Sains dan Teknologi: Berkontribusi dalam penelitian dan inovasi.</li>
-                                                <li class="mb-2">Seni dan Budaya: Berkarya dalam bidang seni dan melestarikan budaya.</li>
-                                                <li class="mb-2">Sosial dan Kemanusiaan: Aktif dalam kegiatan sosial dan kemanusiaan.</li>
-                                                <li class="mb-2">Kepemimpinan: Menjadi pemimpin di berbagai organisasi dan institusi.</li>
-                                            </ul>
+                                        <div class="network-item d-flex align-items-start mb-3">
+                                            <div class="network-icon me-3">
+                                                <i class="fas fa-heart text-success"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Identitas & Kebanggaan</h6>
+                                                <p class="text-muted small mb-0">Memperkuat identitas dan kebanggaan sebagai bagian dari keluarga besar Baitul Jannah</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -115,8 +155,197 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Alumni Programs -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="text-center mb-4" data-aos="fade-up" data-aos-duration="1000">
+                            <h3 class="section-title">Program Alumni</h3>
+                            <p class="text-muted">Berbagai program untuk mempererat hubungan dan mengembangkan potensi alumni</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Reunion Program -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="program-card card shadow-sm h-100" data-aos="fade-up" data-aos-duration="1000">
+                            <div class="card-body p-4 text-center">
+                                <div class="program-icon mb-3">
+                                    <i class="fas fa-calendar-alt fa-3x text-primary"></i>
+                                </div>
+                                <h5 class="card-title mb-3">Reuni Tahunan</h5>
+                                <p class="text-muted">Acara tahunan untuk mempertemukan alumni dari berbagai angkatan dan mempererat silaturahmi.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mentorship Program -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="program-card card shadow-sm h-100" data-aos="fade-up" data-aos-duration="1200">
+                            <div class="card-body p-4 text-center">
+                                <div class="program-icon mb-3">
+                                    <i class="fas fa-user-tie fa-3x text-success"></i>
+                                </div>
+                                <h5 class="card-title mb-3">Mentorship Program</h5>
+                                <p class="text-muted">Program di mana alumni berbagi pengalaman dan memberikan bimbingan kepada siswa saat ini.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Career Day -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="program-card card shadow-sm h-100" data-aos="fade-up" data-aos-duration="1400">
+                            <div class="card-body p-4 text-center">
+                                <div class="program-icon mb-3">
+                                    <i class="fas fa-briefcase fa-3x text-warning"></i>
+                                </div>
+                                <h5 class="card-title mb-3">Career Day</h5>
+                                <p class="text-muted">Acara di mana alumni berbagi pengalaman karir mereka dengan siswa untuk inspirasi masa depan.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Alumni Talk Series -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="program-card card shadow-sm h-100" data-aos="fade-up" data-aos-duration="1600">
+                            <div class="card-body p-4 text-center">
+                                <div class="program-icon mb-3">
+                                    <i class="fas fa-microphone fa-3x text-info"></i>
+                                </div>
+                                <h5 class="card-title mb-3">Alumni Talk Series</h5>
+                                <p class="text-muted">Seri diskusi dan seminar yang dipimpin oleh alumni tentang berbagai topik menarik.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scholarship Fund -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="program-card card shadow-sm h-100" data-aos="fade-up" data-aos-duration="1800">
+                            <div class="card-body p-4 text-center">
+                                <div class="program-icon mb-3">
+                                    <i class="fas fa-graduation-cap fa-3x text-secondary"></i>
+                                </div>
+                                <h5 class="card-title mb-3">Alumni Scholarship Fund</h5>
+                                <p class="text-muted">Dana beasiswa yang didukung oleh alumni untuk siswa berprestasi yang membutuhkan.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Community Service -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="program-card card shadow-sm h-100" data-aos="fade-up" data-aos-duration="2000">
+                            <div class="card-body p-4 text-center">
+                                <div class="program-icon mb-3">
+                                    <i class="fas fa-hands-helping fa-3x text-danger"></i>
+                                </div>
+                                <h5 class="card-title mb-3">Community Service</h5>
+                                <p class="text-muted">Proyek layanan masyarakat yang melibatkan alumni dan siswa saat ini untuk berbagi kebaikan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alumni Achievements -->
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="card shadow-sm" data-aos="fade-up" data-aos-duration="1000">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-4">
+                                    <div class="icon-box bg-warning-light text-warning me-3">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                    <h3 class="card-title mb-0">Prestasi Alumni</h3>
+                                </div>
+                                <p class="text-muted mb-4">Alumni Baitul Jannah Islamic School telah mencapai kesuksesan di berbagai bidang, termasuk:</p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="achievement-item d-flex align-items-start mb-3">
+                                            <div class="achievement-icon me-3">
+                                                <i class="fas fa-university text-warning"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Pendidikan</h6>
+                                                <p class="text-muted small mb-0">Melanjutkan studi di universitas terkemuka di dalam dan luar negeri</p>
+                                            </div>
+                                        </div>
+                                        <div class="achievement-item d-flex align-items-start mb-3">
+                                            <div class="achievement-icon me-3">
+                                                <i class="fas fa-chart-line text-warning"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Bisnis & Kewirausahaan</h6>
+                                                <p class="text-muted small mb-0">Mendirikan dan mengembangkan usaha yang sukses</p>
+                                            </div>
+                                        </div>
+                                        <div class="achievement-item d-flex align-items-start mb-3">
+                                            <div class="achievement-icon me-3">
+                                                <i class="fas fa-flask text-warning"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Sains & Teknologi</h6>
+                                                <p class="text-muted small mb-0">Berkontribusi dalam penelitian dan inovasi teknologi</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="achievement-item d-flex align-items-start mb-3">
+                                            <div class="achievement-icon me-3">
+                                                <i class="fas fa-palette text-warning"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Seni & Budaya</h6>
+                                                <p class="text-muted small mb-0">Berkarya dalam bidang seni dan melestarikan budaya</p>
+                                            </div>
+                                        </div>
+                                        <div class="achievement-item d-flex align-items-start mb-3">
+                                            <div class="achievement-icon me-3">
+                                                <i class="fas fa-heart text-warning"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Sosial & Kemanusiaan</h6>
+                                                <p class="text-muted small mb-0">Aktif dalam kegiatan sosial dan kemanusiaan</p>
+                                            </div>
+                                        </div>
+                                        <div class="achievement-item d-flex align-items-start mb-3">
+                                            <div class="achievement-icon me-3">
+                                                <i class="fas fa-crown text-warning"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Kepemimpinan</h6>
+                                                <p class="text-muted small mb-0">Menjadi pemimpin di berbagai organisasi dan institusi</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="cta-section text-center" data-aos="fade-up" data-aos-duration="2000">
+                            <div class="card bg-primary text-white">
+                                <div class="card-body p-5">
+                                    <h3 class="text-white mb-3">Bergabunglah dengan Jejaring Alumni Kami!</h3>
+                                    <p class="text-white-50 mb-4">Tetap terhubung dengan keluarga besar Baitul Jannah Islamic School dan berkontribusi untuk kemajuan bersama</p>
+                                    <div class="cta-buttons">
+                                        <a href="#" class="btn btn-light btn-lg me-3">
+                                            <i class="fas fa-user-plus me-2"></i>Daftar Alumni
+                                        </a>
+                                        <a href="#" class="btn btn-outline-light btn-lg">
+                                            <i class="fas fa-envelope me-2"></i>Hubungi Kami
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
         
         <!-- Footer -->
         <%- include('../partials/footer') %>
@@ -130,5 +359,236 @@
 
     <!-- Custom JS -->
     <script src="/assets/js/script.js" type="text/javascript"></script>
+    
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Page Specific JavaScript -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
+        // Program card hover effects
+        document.querySelectorAll('.program-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+                this.style.transition = 'all 0.3s ease';
+                this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            });
+        });
+
+        // Network item hover effects
+        document.querySelectorAll('.network-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = '#f8f9fa';
+                this.style.borderRadius = '8px';
+                this.style.padding = '10px';
+                this.style.transition = 'all 0.3s ease';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = 'transparent';
+                this.style.padding = '0';
+            });
+        });
+
+        // Achievement item hover effects
+        document.querySelectorAll('.achievement-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = '#fff8e1';
+                this.style.borderRadius = '8px';
+                this.style.padding = '10px';
+                this.style.transition = 'all 0.3s ease';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = 'transparent';
+                this.style.padding = '0';
+            });
+        });
+
+        // CTA button interactions
+        document.querySelectorAll('.cta-buttons .btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (this.textContent.includes('Daftar Alumni')) {
+                    alert('Fitur pendaftaran alumni akan segera tersedia! Silakan hubungi admin sekolah untuk informasi lebih lanjut.');
+                } else {
+                    alert('Silakan hubungi kami melalui kontak yang tersedia di website atau datang langsung ke sekolah.');
+                }
+            });
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Page loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+    
+    <!-- Custom CSS -->
+    <style>
+        /* Icon Box Styling */
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .bg-primary-light {
+            background-color: rgba(13, 110, 253, 0.1);
+        }
+        
+        .bg-success-light {
+            background-color: rgba(25, 135, 84, 0.1);
+        }
+        
+        .bg-warning-light {
+            background-color: rgba(255, 193, 7, 0.1);
+        }
+
+        /* Section Styling */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Program Card Styling */
+        .program-card {
+            border: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .program-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .program-card:hover .program-icon {
+            transform: scale(1.1);
+        }
+
+        /* Network and Achievement Items */
+        .network-item, .achievement-item {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .network-icon, .achievement-icon {
+            width: 30px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        /* CTA Section */
+        .cta-section .card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+        }
+        
+        .cta-buttons .btn {
+            transition: all 0.3s ease;
+            border-radius: 25px;
+            padding: 12px 30px;
+            font-weight: 600;
+        }
+        
+        .cta-buttons .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .icon-box {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .program-icon i {
+                font-size: 2rem !important;
+            }
+            
+            .cta-buttons .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .cta-buttons .btn.me-3 {
+                margin-right: 0 !important;
+            }
+        }
+
+        /* Color Scheme */
+        .text-primary { color: #667eea !important; }
+        .text-success { color: #28a745 !important; }
+        .text-warning { color: #ffc107 !important; }
+        .text-info { color: #17a2b8 !important; }
+        .text-secondary { color: #6c757d !important; }
+        .text-danger { color: #dc3545 !important; }
+
+        /* Typography */
+        .alumni-content h1, .alumni-content h2, .alumni-content h3,
+        .alumni-content h4, .alumni-content h5, .alumni-content h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .alumni-content p {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+        }
+    </style>
 </body>
 </html>

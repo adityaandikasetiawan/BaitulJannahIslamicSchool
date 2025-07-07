@@ -1,5 +1,30 @@
 @charset "UTF-8";
 /****** Utils ******/
+
+/* Quick Links Styles */
+.top-nav-links {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.top-nav-links .btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+.top-nav-links .btn i {
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .top-nav-links {
+        display: none;
+    }
+}
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;display=swap");
 :root {
   --white: #fff;

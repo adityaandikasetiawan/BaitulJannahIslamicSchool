@@ -1,0 +1,48 @@
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+                <li class="menu-title">
+                    <span>Menu Utama</span>
+                </li>
+                <li class="<%= path === '/admin/dashboard' ? 'active' : '' %>">
+                    <a href="/admin/dashboard"><i class="isax isax-element-3"></i> <span>Dashboard</span></a>
+                </li>
+                <li class="<%= path.includes('/admin/beranda') ? 'active' : '' %>">
+                    <a href="/admin/beranda"><i class="isax isax-home"></i> <span>Beranda</span></a>
+                </li>
+                <li class="<%= path.includes('/admin/tentangkami') ? 'active' : '' %>">
+                    <a href="/admin/tentangkami"><i class="isax isax-info-circle"></i> <span>Tentang Kami</span></a>
+                </li>
+                <li class="<%= path.includes('/admin/akademik') ? 'active' : '' %>">
+                    <a href="/admin/akademik"><i class="isax isax-book-1"></i> <span>Akademik</span></a>
+                </li>
+                <li class="<%= path.includes('/admin/kegiatan') ? 'active' : '' %>">
+                    <a href="/admin/kegiatan"><i class="isax isax-calendar-1"></i> <span>Kegiatan</span></a>
+                </li>
+                <li class="<%= path.includes('/admin/informasi') ? 'active' : '' %>">
+                    <a href="/admin/informasi"><i class="isax isax-info-circle"></i> <span>Informasi</span></a>
+                </li>
+                <li class="<%= path.includes('/admin/galeri') ? 'active' : '' %>">
+                    <a href="/admin/galeri"><i class="isax isax-gallery"></i> <span>Galeri</span></a>
+                </li>
+                <li class="<%= path.includes('/admin/pendaftaran') ? 'active' : '' %> submenu">\n                    <a href="#"><i class="isax isax-profile-2user"></i> <span>Pendaftaran</span> <span class="menu-arrow"></span></a>\n                    <ul>\n                        <li><a class="<%= path === '/admin/pendaftaran' ? 'active' : '' %>" href="/admin/pendaftaran/daftar">Daftar SPMB</a></li>\n                        <li><a class="<%= path === '/admin/pendaftaran/syarat' ? 'active' : '' %>" href="/admin/pendaftaran/syarat">Syarat Pendaftaran</a></li>\n                    </ul>\n                </li>
+                <li class="<%= path.includes('/admin/kontak') ? 'active' : '' %>">
+                    <a href="/admin/kontak"><i class="isax isax-user-add"></i> <span>Kontak</span></a>
+                </li>
+                
+                <li class="menu-title">
+                    <span>Pengaturan</span>
+                </li>
+                <li class="<%= path.includes('/admin/settings') ? 'active' : '' %>">
+                    <a href="/admin/settings"><i class="isax isax-setting-2"></i> <span>Pengaturan Sistem</span></a>
+                </li>
+                <li class="<%= path.includes('/admin/profile') ? 'active' : '' %>">
+                    <a href="/admin/profile"><i class="isax isax-security-user"></i> <span>Profil Admin</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /Sidebar -->

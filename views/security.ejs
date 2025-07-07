@@ -404,6 +404,22 @@
                     this.classList.toggle('feather-eye-off');
                 });
             });
+            
+            // Security Alert for Password Change Success
+            <% if(typeof messages != 'undefined' && messages.success_msg && messages.success_msg.includes('Password berhasil diubah')) { %>
+                // Show security alert
+                setTimeout(function() {
+                    if (confirm('🔒 PERINGATAN KEAMANAN\n\nPassword Anda telah berhasil diubah!\n\nJika Anda tidak melakukan perubahan ini, segera hubungi administrator atau ubah password Anda kembali.\n\nKlik OK untuk melanjutkan atau Cancel untuk logout.')) {
+                        // User clicked OK, do nothing
+                        console.log('Password change acknowledged by user');
+                    } else {
+                        // User clicked Cancel, logout for security
+                        if (confirm('Apakah Anda yakin ingin logout untuk keamanan akun?')) {
+                            window.location.href = '/logout';
+                        }
+                    }
+                }, 500);
+            <% } %>
         });
     </script>
 </body>

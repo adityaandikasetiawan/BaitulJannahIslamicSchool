@@ -1,0 +1,111 @@
+<%- include('../../../partials/admin-header') %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%- include('../../../partials/admin-sidebar') %>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Update Banner Carousel</h1>
+      </div>
+
+      <%- include('../../../partials/messages') %>
+
+      <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Daftar Carousel Banner</h5>
+          <a href="/admin/beranda/carousel/tambah" class="btn btn-sm btn-primary">Tambah Carousel</a>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Gambar</th>
+                  <th>Judul</th>
+                  <th>Subjudul</th>
+                  <th>Urutan</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if (carousels && carousels.length > 0) { %>
+                  <% carousels.forEach((carousel, index) => { %>
+                    <tr>
+                      <td><%= index + 1 %></td>
+                      <td>
+                        <% if (carousel.gambar) { %>
+                          <img src="<%= carousel.gambar %>" alt="<%= carousel.judul %>" width="100">
+                        <% } else { %>
+                          <span class="text-muted">Tidak ada gambar</span>
+                        <% } %>
+                      </td>
+                      <td><%= carousel.judul %></td>
+                      <td><%= carousel.subjudul %></td>
+                      <td><%= carousel.urutan %></td>
+                      <td>
+                        <a href="/admin/beranda/carousel/edit/<%= carousel.id %>" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="/admin/beranda/carousel/hapus/<%= carousel.id %>" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus carousel ini?')">
+                          <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                        </form>
+                      </td>
+                    </tr>
+                  <% }); %>
+                <% } else { %>
+                  <tr>
+                    <td colspan="6" class="text-center">Tidak ada data carousel</td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="mb-0">Pengaturan Tampilan Banner Carousel</h5>
+        </div>
+        <div class="card-body">
+          <form action="/admin/beranda/carousel/settings" method="POST">
+            <div class="mb-3">
+              <label for="autoplay" class="form-label">Autoplay</label>
+              <select class="form-select" id="autoplay" name="autoplay">
+                <option value="true" <%= settings && settings.autoplay ? 'selected' : '' %>>Ya</option>
+                <option value="false" <%= settings && !settings.autoplay ? 'selected' : '' %>>Tidak</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="interval" class="form-label">Interval (ms)</label>
+              <input type="number" class="form-control" id="interval" name="interval" value="<%= settings ? settings.interval : 5000 %>" min="1000" step="500">
+              <small class="text-muted">Waktu pergantian slide dalam milidetik (1000 ms = 1 detik)</small>
+            </div>
+            <div class="mb-3">
+              <label for="showIndicators" class="form-label">Tampilkan Indikator</label>
+              <select class="form-select" id="showIndicators" name="showIndicators">
+                <option value="true" <%= settings && settings.showIndicators ? 'selected' : '' %>>Ya</option>
+                <option value="false" <%= settings && !settings.showIndicators ? 'selected' : '' %>>Tidak</option>
+              </select>
+              <small class="text-muted">Indikator adalah titik-titik navigasi di bagian bawah carousel</small>
+            </div>
+            <div class="mb-3">
+              <label for="showControls" class="form-label">Tampilkan Kontrol</label>
+              <select class="form-select" id="showControls" name="showControls">
+                <option value="true" <%= settings && settings.showControls ? 'selected' : '' %>>Ya</option>
+                <option value="false" <%= settings && !settings.showControls ? 'selected' : '' %>>Tidak</option>
+              </select>
+              <small class="text-muted">Kontrol adalah tombol panah kiri dan kanan untuk navigasi</small>
+            </div>
+            <div class="d-flex justify-content-between">
+              <a href="/admin/beranda" class="btn btn-secondary">Kembali</a>
+              <button type="submit" class="btn btn-primary">Simpan Pengaturan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<%- include('../../../partials/admin-footer') %>

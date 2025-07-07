@@ -1,0 +1,235 @@
+<%- include('../../../partials/admin-header') %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%- include('../../../partials/admin-sidebar') %>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Update Beranda</h1>
+      </div>
+
+      <%- include('../../../partials/messages') %>
+
+      <!-- Carousel Section -->
+      <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Carousel Banner</h5>
+          <div>
+            <a href="/admin/beranda/carousel/update" class="btn btn-sm btn-info me-2">Pengaturan Carousel</a>
+            <a href="/admin/beranda/carousel/tambah" class="btn btn-sm btn-primary">Tambah Carousel</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Gambar</th>
+                  <th>Judul</th>
+                  <th>Subjudul</th>
+                  <th>Urutan</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if (carousels && carousels.length > 0) { %>
+                  <% carousels.forEach((carousel, index) => { %>
+                    <tr>
+                      <td><%= index + 1 %></td>
+                      <td>
+                        <% if (carousel.gambar) { %>
+                          <img src="<%= carousel.gambar %>" alt="<%= carousel.judul %>" width="100">
+                        <% } else { %>
+                          <span class="text-muted">Tidak ada gambar</span>
+                        <% } %>
+                      </td>
+                      <td><%= carousel.judul %></td>
+                      <td><%= carousel.subjudul %></td>
+                      <td><%= carousel.urutan %></td>
+                      <td>
+                        <a href="/admin/beranda/carousel/edit/<%= carousel.id %>" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="/admin/beranda/carousel/hapus/<%= carousel.id %>" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus carousel ini?')">
+                          <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                        </form>
+                      </td>
+                    </tr>
+                  <% }); %>
+                <% } else { %>
+                  <tr>
+                    <td colspan="6" class="text-center">Tidak ada data carousel</td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vision Section -->
+      <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Vision Section</h5>
+          <a href="/admin/beranda/vision/tambah" class="btn btn-sm btn-primary">Tambah Vision</a>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Icon</th>
+                  <th>Judul</th>
+                  <th>Link</th>
+                  <th>Urutan</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if (visions && visions.length > 0) { %>
+                  <% visions.forEach((vision, index) => { %>
+                    <tr>
+                      <td><%= index + 1 %></td>
+                      <td>
+                        <% if (vision.icon) { %>
+                          <img src="<%= vision.icon %>" alt="<%= vision.judul %>" width="50">
+                        <% } else { %>
+                          <span class="text-muted">Tidak ada icon</span>
+                        <% } %>
+                      </td>
+                      <td><%= vision.judul %></td>
+                      <td><%= vision.link %></td>
+                      <td><%= vision.urutan %></td>
+                      <td>
+                        <a href="/admin/beranda/vision/edit/<%= vision.id %>" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="/admin/beranda/vision/hapus/<%= vision.id %>" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus vision ini?')">
+                          <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                        </form>
+                      </td>
+                    </tr>
+                  <% }); %>
+                <% } else { %>
+                  <tr>
+                    <td colspan="6" class="text-center">Tidak ada data vision</td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Section -->
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="mb-0">About Section</h5>
+        </div>
+        <div class="card-body">
+          <form action="/admin/beranda/about/edit" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="judul" class="form-label">Judul</label>
+              <input type="text" class="form-control" id="judul" name="judul" value="<%= about ? about.judul : '' %>" required>
+            </div>
+            <div class="mb-3">
+              <label for="subjudul" class="form-label">Subjudul</label>
+              <input type="text" class="form-control" id="subjudul" name="subjudul" value="<%= about ? about.subjudul : '' %>">
+            </div>
+            <div class="mb-3">
+              <label for="deskripsi" class="form-label">Deskripsi</label>
+              <textarea class="form-control" id="deskripsi" name="deskripsi" rows="5"><%= about ? about.deskripsi : '' %></textarea>
+            </div>
+            
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label for="gambar1" class="form-label">Gambar 1</label>
+                <% if (about && about.gambar1) { %>
+                  <div class="mb-2">
+                    <img src="<%= about.gambar1 %>" alt="Gambar 1" class="img-thumbnail" style="max-height: 150px;">
+                  </div>
+                <% } %>
+                <input type="file" class="form-control" id="gambar1" name="gambar1" accept="image/*">
+              </div>
+              <div class="col-md-4">
+                <label for="gambar2" class="form-label">Gambar 2</label>
+                <% if (about && about.gambar2) { %>
+                  <div class="mb-2">
+                    <img src="<%= about.gambar2 %>" alt="Gambar 2" class="img-thumbnail" style="max-height: 150px;">
+                  </div>
+                <% } %>
+                <input type="file" class="form-control" id="gambar2" name="gambar2" accept="image/*">
+              </div>
+              <div class="col-md-4">
+                <label for="gambar3" class="form-label">Gambar 3</label>
+                <% if (about && about.gambar3) { %>
+                  <div class="mb-2">
+                    <img src="<%= about.gambar3 %>" alt="Gambar 3" class="img-thumbnail" style="max-height: 150px;">
+                  </div>
+                <% } %>
+                <input type="file" class="form-control" id="gambar3" name="gambar3" accept="image/*">
+              </div>
+            </div>
+            <small class="text-muted mb-3 d-block">Ukuran gambar yang direkomendasikan: 600x400 piksel. Biarkan kosong jika tidak ingin mengubah gambar.</small>
+            
+            <div class="d-flex justify-content-end mb-4">
+              <button type="submit" class="btn btn-primary">Simpan Perubahan About</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Stats Section -->
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="mb-0">Statistik</h5>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Icon</th>
+                  <th>Judul</th>
+                  <th>Nilai</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if (stats && stats.length > 0) { %>
+                  <% stats.forEach((stat, index) => { %>
+                    <tr>
+                      <td><%= index + 1 %></td>
+                      <td>
+                        <% if (stat.icon) { %>
+                          <img src="<%= stat.icon %>" alt="<%= stat.judul %>" width="50">
+                        <% } else { %>
+                          <span class="text-muted">Tidak ada icon</span>
+                        <% } %>
+                      </td>
+                      <td><%= stat.judul %></td>
+                      <td><%= stat.nilai %></td>
+                      <td>
+                        <a href="/admin/beranda/stats/edit/<%= stat.id %>" class="btn btn-sm btn-warning">Edit</a>
+                      </td>
+                    </tr>
+                  <% }); %>
+                <% } else { %>
+                  <tr>
+                    <td colspan="5" class="text-center">Tidak ada data statistik</td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between mb-4">
+        <a href="/admin/beranda" class="btn btn-secondary">Kembali</a>
+      </div>
+    </main>
+  </div>
+</div>
+
+<%- include('../../../partials/admin-footer') %>

@@ -17,6 +17,7 @@ module.exports = {
     if (!req.isAuthenticated()) {
       return next();
     }
+    // Redirect to dashboard regardless of role
     res.redirect('/dashboard');
   },
 

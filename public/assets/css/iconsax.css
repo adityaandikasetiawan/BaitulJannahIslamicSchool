@@ -1,0 +1,147 @@
+/**
+ * Iconsax CSS - Custom Icon Font for Instructor Dashboard
+ */
+
+@font-face {
+    font-family: 'Iconsax';
+    src: url('../fonts/iconsax.eot');
+    src: url('../fonts/iconsax.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/iconsax.woff2') format('woff2'),
+         url('../fonts/iconsax.woff') format('woff'),
+         url('../fonts/iconsax.ttf') format('truetype'),
+         url('../fonts/iconsax.svg#iconsax') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.isax {
+    font-family: 'Iconsax' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dashboard Icons */
+.isax-home:before {
+    content: "\e900";
+}
+
+.isax-profile-2user5:before {
+    content: "\e901";
+}
+
+.isax-book:before {
+    content: "\e902";
+}
+
+.isax-document-text:before {
+    content: "\e903";
+}
+
+.isax-clipboard-text:before {
+    content: "\e904";
+}
+
+.isax-notification:before {
+    content: "\e905";
+}
+
+.isax-award5:before {
+    content: "\e906";
+}
+
+.isax-medal-star5:before {
+    content: "\e907";
+}
+
+.isax-setting-2:before {
+    content: "\e908";
+}
+
+.isax-logout:before {
+    content: "\e909";
+}
+
+.isax-edit-2:before {
+    content: "\e90a";
+}
+
+.isax-user:before {
+    content: "\e90b";
+}
+
+.isax-calendar:before {
+    content: "\e90c";
+}
+
+.isax-message:before {
+    content: "\e90d";
+}
+
+.isax-chart:before {
+    content: "\e90e";
+}
+
+.isax-wallet:before {
+    content: "\e90f";
+}
+
+.isax-bookmark:before {
+    content: "\e910";
+}
+
+.isax-book-2:before {
+    content: "\e911";
+}
+
+/* Fallback for missing icons - use feather icons instead */
+[class^="isax-"]:not([class*=" "]):before,
+[class^="isax-"]:not([class*=" "]):after {
+    display: inline-block;
+    font-family: feather !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Map missing iconsax icons to feather icons */
+.isax-home:not([class*=" "]):before {
+    content: "\e800"; /* feather home icon */
+}
+
+.isax-profile-2user5:not([class*=" "]):before {
+    content: "\e801"; /* feather users icon */
+}
+
+.isax-document-text:not([class*=" "]):before {
+    content: "\e802"; /* feather file-text icon */
+}
+
+.isax-clipboard-text:not([class*=" "]):before {
+    content: "\e803"; /* feather clipboard icon */
+}
+
+.isax-notification:not([class*=" "]):before {
+    content: "\e804"; /* feather bell icon */
+}
+
+.isax-setting-2:not([class*=" "]):before {
+    content: "\e805"; /* feather settings icon */
+}
+
+.isax-logout:not([class*=" "]):before {
+    content: "\e806"; /* feather log-out icon */
+}
+
+.isax-edit-2:not([class*=" "]):before {
+    content: "\e807"; /* feather edit icon */
+}

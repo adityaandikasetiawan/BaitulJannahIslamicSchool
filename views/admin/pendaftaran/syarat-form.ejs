@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="Baitul Jannah Islamic School - Sistem Manajemen Sekolah Islam">
+    <title><%= title %></title>
+    
+    <!-- logo.png -->
+    <link rel="shortcut icon" href="/assets/img/logo.png">
+    <link rel="apple-touch-icon" href="/assets/img/apple-icon.png">
+
+    <!-- Theme Settings Js -->
+    <script src="/assets/js/theme-script.js"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+    
+    <!-- Feather CSS -->
+    <link rel="stylesheet" href="/assets/css/feather.css">
+
+    <!-- Daterangepicker CSS -->
+    <link rel="stylesheet" href="/assets/plugins/daterangepicker/daterangepicker.css">
+
+    <!-- Iconsax CSS -->
+    <link rel="stylesheet" href="/assets/css/iconsax.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <!-- Summernote CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+        
+        <!-- Header Topbar-->
+        <div class="header-topbar text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="d-flex align-items-center justify-content-center justify-content-lg-start">
+                            <p class="d-flex align-items-center fw-medium fs-14 mb-2 me-3"><i class="isax isax-location5 me-2"></i>Jl. Baitul Jannah, Kota Bandar Lampung</p>
+                            <p class="d-flex align-items-center fw-medium fs-14 mb-2"><i class="isax isax-call-calling5 me-2"></i>+62 721 123456</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="d-flex align-items-center justify-content-center justify-content-lg-end">
+                            <ul class="social-icon d-flex align-items-center mb-2">
+                                <li class="me-2">
+                                    <a href="javascript:void(0);"><i class="fa-brands fa-facebook-f"></i></a>
+                                </li>
+                                <li class="me-2">
+                                    <a href="javascript:void(0);"><i class="fa-brands fa-instagram"></i></a>
+                                </li>
+                                <li class="me-2">
+                                    <a href="javascript:void(0);"><i class="fa-brands fa-x-twitter"></i></a>
+                                </li>
+                                <li class="me-2">
+                                    <a href="javascript:void(0);"><i class="fa-brands fa-youtube"></i></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);"><i class="fa-brands fa-linkedin"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Header Topbar-->
+        
+        <!-- Header -->
+        <header class="header-two">
+            <div class="container">
+                <div class="header-nav">
+                    <div class="navbar-header">
+                        <a id="mobile_btn" href="javascript:void(0);">
+                            <span class="bar-icon">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </a>
+                        <div class="navbar-logo">
+                            <a class="logo-white header-logo" href="/">
+                                <img src="/assets/img/logo.png" class="logo" alt="Logo" style="max-height: 40px;">
+                            </a>
+                            <a class="logo-dark header-logo" href="/">
+                                <img src="/assets/img/logo.png" class="logo" alt="Logo" style="max-height: 40px;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="main-menu-wrapper">                                
+                        <div class="menu-header">
+                            <a href="/" class="menu-logo">
+                                <img src="/assets/img/logo.png" class="img-fluid" alt="Logo" style="max-height: 40px;">
+                            </a>
+                            <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </div>
+                        <ul class="main-nav">
+                            <li class="active">
+                                <a href="/dashboard">Dashboard</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header-btn d-flex align-items-center">
+                        <div class="icon-btn me-2">
+                            <a href="javascript:void(0);" id="dark-mode-toggle" class="theme-toggle activate">
+                                <i class="isax isax-sun-15"></i>
+                            </a>
+                            <a href="javascript:void(0);" id="light-mode-toggle" class="theme-toggle">
+                                <i class="isax isax-moon"></i>
+                            </a>
+                        </div>
+                        <div class="dropdown profile-dropdown">
+                            <a href="javascript:void(0);" class="d-flex align-items-center" data-bs-toggle="dropdown">
+                                <span class="avatar">
+                                    <img src="<%= user.avatar || '/assets/img/user/user-01.jpg' %>" alt="Img" class="img-fluid rounded-circle">
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <div class="profile-header d-flex align-items-center">
+                                    <div class="avatar">
+                                        <img src="<%= user.avatar || '/assets/img/user/user-01.jpg' %>" alt="Img" class="img-fluid rounded-circle">
+                                    </div>
+                                    <div>
+                                        <h6><%= user.name %></h6>
+                                        <p><%= user.role %></p>
+                                    </div>
+                                </div>
+                                <ul class="profile-body">
+                                    <li>
+                                        <!-- <a class="dropdown-item d-inline-flex align-items-center rounded fw-medium" href="/profile"><i class="isax isax-security-user me-2"></i>Profil Saya</a> -->
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item d-inline-flex align-items-center rounded fw-medium" href="/settings"><i class="isax isax-setting-2 me-2"></i>Pengaturan</a>
+                                    </li>                                    
+                                </ul>
+                                <div class="profile-footer">
+                                    <a href="/logout" class="btn btn-secondary d-inline-flex align-items-center justify-content-center w-100"><i class="isax isax-logout me-2"></i>Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- /Header -->
+
+        <div class="content">
+            <div class="container">
+                <div class="instructor-profile">
+                    <div class="instructor-profile-bg">
+                        <img src="/assets/img/bg/card-bg-01.png" class="instructor-profile-bg-1" alt="">
+                    </div>
+                    <div class="row align-items-center row-gap-3">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center">
+                                <span class="avatar flex-shrink-0 avatar-xxl avatar-rounded me-3 border border-white border-3 position-relative">
+                                    <img src="/assets/img/user/user-01.jpg" alt="img">
+                                    <span class="verify-tick"><i class="isax isax-verify5"></i></span>
+                                </span>
+                                <div>
+                                    <h5 class="mb-1 text-white d-inline-flex align-items-center"><%= user.name %><a href="/profile" class="link-light fs-16 ms-2"><i class="isax isax-edit-2"></i></a></h5>
+                                    <p class="text-light"><%= user.role %></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center flex-wrap gap-3 justify-content-md-end">
+                                <a href="/admin/pendaftaran/syarat" class="btn btn-white rounded-pill">Kembali</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <!-- Sidebar -->
+                    <div class="col-lg-3 theiaStickySidebar">
+                        <div class="settings-sidebar mb-lg-0">
+                            <div>
+                                <h6 class="mb-3">Menu Utama</h6>
+                                <ul class="mb-3 pb-1">
+                                    <li>
+                                        <a href="/dashboard" class="d-inline-flex align-items-center active"><i class="isax isax-grid-35 me-2"></i>Dashboard</a>
+                                    </li>
+                                    
+                                    <!-- Menu CRUD Beranda -->
+                                    <li>
+                                        <a href="/admin/beranda" class="d-inline-flex align-items-center"><i class="isax isax-home5 me-2"></i>Beranda</a>
+                                    </li>
+                                    
+                                    <!-- Menu CRUD Tentang Kami dengan submenu -->
+                                    <li>
+                                        <a href="#tentangKamiSubmenu" data-bs-toggle="collapse" class="d-inline-flex align-items-center dropdown-toggle">
+                                            <i class="isax isax-info-circle5 me-2"></i>Tentang Kami
+                                        </a>
+                                        <ul class="collapse list-unstyled ms-4" id="tentangKamiSubmenu">
+                                            <li>
+                                                <a href="/admin/tentangkami/sejarah" class="d-inline-flex align-items-center"><i class="isax isax-clock5 me-2"></i>Sejarah</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/tentangkami/visimisi" class="d-inline-flex align-items-center"><i class="isax isax-eye5 me-2"></i>Visi Misi</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/tentangkami/kepengurusan" class="d-inline-flex align-items-center"><i class="isax isax-people5 me-2"></i>Kepengurusan</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/tentangkami/fasilitas" class="d-inline-flex align-items-center"><i class="isax isax-building5 me-2"></i>Fasilitas</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#pendaftaranSubmenu" data-bs-toggle="collapse" class="d-inline-flex align-items-center dropdown-toggle">
+                                            <i class="isax isax-clipboard-text5 me-2"></i>Pendaftaran SPMB
+                                        </a>
+                                        <ul class="collapse list-unstyled ms-4" id="pendaftaranSubmenu">
+                                            <li>
+                                                <a href="/admin/pendaftaran/daftar" class="d-inline-flex align-items-center"><i class="isax isax-document-upload5 me-2"></i>Daftar SPMB</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/pendaftaran/syarat" class="d-inline-flex align-items-center"><i class="isax isax-document-text5 me-2"></i>Syarat Pendaftaran</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/pendaftaran/pengumuman" class="d-inline-flex align-items-center"><i class="isax isax-notification5 me-2"></i>Pengumuman</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    
+                                    <!-- Menu Profile -->
+                                    <li>
+                                        <a href="#profileSubmenu" data-bs-toggle="collapse" class="d-inline-flex align-items-center dropdown-toggle">
+                                            <i class="isax isax-user me-2"></i>Profile
+                                        </a>
+                                        <ul class="collapse list-unstyled ms-4" id="profileSubmenu">
+                                            <li>
+                                                <a href="/admin/profile/pgit" class="d-inline-flex align-items-center"><i class="isax isax isax-medal5 me-2"></i>Profile PGIT-TKIT</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/profile/sdit" class="d-inline-flex align-items-center"><i class="isax isax isax-medal5 me-2"></i>SDIT</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/profile/smpit" class="d-inline-flex align-items-center"><i class="isax isax-medal5 me-2"></i>SMPIT</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/profile/smait" class="d-inline-flex align-items-center"><i class="isax isax-medal5 me-2"></i>SMAIT</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/profile/slbit" class="d-inline-flex align-items-center"><i class="isax isax-medal5 me-2"></i>SLBIT</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    
+                                    <!-- Menu Informasi -->
+                                    <li>
+                                        <a href="#informasiSubmenu" data-bs-toggle="collapse" class="d-inline-flex align-items-center dropdown-toggle">
+                                            <i class="isax isax-info-circle5 me-2"></i>Informasi
+                                        </a>
+                                        <ul class="collapse list-unstyled ms-4" id="informasiSubmenu">
+                                            <li>
+                                                <a href="/admin/informasi/berita" class="d-inline-flex align-items-center"><i class="isax isax-document5 me-2"></i>Berita</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/informasi/pengumuman" class="d-inline-flex align-items-center"><i class="isax isax-notification5 me-2"></i>Pengumuman</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/informasi/agenda" class="d-inline-flex align-items-center"><i class="isax isax-calendar5 me-2"></i>Agenda</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    
+                                    <!-- Menu Kontak -->
+                                    <li>
+                                        <a href="#kontakSubmenu" data-bs-toggle="collapse" class="d-inline-flex align-items-center dropdown-toggle">
+                                            <i class="isax isax-call5 me-2"></i>Kontak
+                                        </a>
+                                        <ul class="collapse list-unstyled ms-4" id="kontakSubmenu">
+                                            <li>
+                                                <a href="/admin/kontak/kami" class="d-inline-flex align-items-center"><i class="isax isax-message-question5 me-2"></i>Kontak Kami</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/kontak/kunjungan" class="d-inline-flex align-items-center"><i class="isax isax-building5 me-2"></i>Permohonan Kunjungan</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/kontak/penelitian" class="d-inline-flex align-items-center"><i class="isax isax-document-text5 me-2"></i>Permohonan Penelitian</a>
+                                            </li>
+                                            <li>
+                                                <a href="/admin/kontak/faq" class="d-inline-flex align-items-center"><i class="isax isax-message-question5 me-2"></i>FAQ</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                                <hr>
+                                <h6 class="mb-3">Pengaturan Akun</h6>
+                                <ul>
+                                    <li>
+                                        <a href="/settings" class="d-inline-flex align-items-center"><i class="isax isax-setting-2 me-2"></i>Settings</a>
+                                    </li>
+                                    <li>
+                                        <a href="/logout" class="d-inline-flex align-items-center"><i class="isax isax-logout me-2"></i>Logout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Sidebar -->
+
+                    <div class="col-lg-9">
+              
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">
+                                    <% if(action === 'tambah') { %>
+                                        Tambah Syarat Pendaftaran
+                                    <% } else { %>
+                                        Edit Syarat Pendaftaran
+                                    <% } %>
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <% if(error_msg != ''){ %>
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <%= error_msg %>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                <% } %>
+                                
+                                <form method="POST" action="<% if(action === 'tambah') { %>/admin/pendaftaran/syarat/tambah<% } else { %>/admin/pendaftaran/syarat/edit/<%= syarat.id %><% } %>">
+                                    <div class="form-group mb-3">
+                                        <label for="jenjang">Jenjang Pendidikan <span class="text-danger">*</span></label>
+                                        <select class="form-control" id="jenjang" name="jenjang" required>
+                                            <option value="" disabled <% if(!syarat.jenjang) { %>selected<% } %>>Pilih Jenjang</option>
+                                            <option value="PGIT-TKIT" <% if(syarat.jenjang === 'PGIT-TKIT') { %>selected<% } %>>PGIT-TKIT</option>
+                                            <option value="SDIT" <% if(syarat.jenjang === 'SDIT') { %>selected<% } %>>SDIT</option>
+                                            <option value="SMPIT" <% if(syarat.jenjang === 'SMPIT') { %>selected<% } %>>SMPIT</option>
+                                            <option value="SMAIT" <% if(syarat.jenjang === 'SMAIT') { %>selected<% } %>>SMAIT</option>
+                                            <option value="SLBIT" <% if(syarat.jenjang === 'SLBIT') { %>selected<% } %>>SLBIT</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="persyaratan_umum">Persyaratan Umum <span class="text-danger">*</span></label>
+                                        <textarea class="form-control summernote" id="persyaratan_umum" name="persyaratan_umum" rows="5" required><%= syarat.persyaratan_umum || '' %></textarea>
+                                        <small class="form-text text-muted">Gunakan format list untuk persyaratan umum.</small>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="tahapan_seleksi">Tahapan Seleksi <span class="text-danger">*</span></label>
+                                        <textarea class="form-control summernote" id="tahapan_seleksi" name="tahapan_seleksi" rows="5" required><%= syarat.tahapan_seleksi || '' %></textarea>
+                                        <small class="form-text text-muted">Gunakan format list untuk tahapan seleksi.</small>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="biaya_pendaftaran">Biaya Pendaftaran <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="biaya_pendaftaran" name="biaya_pendaftaran" value="<%= syarat.biaya_pendaftaran || '' %>" required>
+                                        <small class="form-text text-muted">Contoh: Rp 300.000</small>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="informasi_tambahan">Informasi Tambahan</label>
+                                        <textarea class="form-control" id="informasi_tambahan" name="informasi_tambahan" rows="3"><%= syarat.informasi_tambahan || '' %></textarea>
+                                        <small class="form-text text-muted">Informasi tambahan seperti jadwal pendaftaran, kontak, dll.</small>
+                                    </div>
+                                    
+                                    <div class="mt-4">
+                                        <button type="submit" class="btn btn-primary">
+                                            <% if(action === 'tambah') { %>Tambah<% } else { %>Update<% } %> Syarat Pendaftaran
+                                        </button>
+                                        <a href="/admin/pendaftaran/syarat" class="btn btn-secondary ms-2">Batal</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Main Wrapper -->
+    
+    <!-- jQuery -->
+    <script src="/assets/js/jquery-3.7.1.min.js"></script>
+    
+    <!-- Bootstrap Core JS -->
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Sticky Sidebar JS -->
+    <script src="/assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+    <script src="/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+    
+    <!-- Daterangepicker JS -->
+    <script src="/assets/js/moment.min.js"></script>
+    <script src="/assets/plugins/daterangepicker/daterangepicker.js"></script>
+    
+    <!-- Apexchart JS -->
+    <script src="/assets/plugins/apexchart/apexcharts.min.js"></script>
+    <script src="/assets/plugins/apexchart/chart-data.js"></script>
+    
+    <!-- Summernote JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="/assets/js/script.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            $('.summernote').summernote({
+                height: 200,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+        });
+    </script>
+</body>
+</html>

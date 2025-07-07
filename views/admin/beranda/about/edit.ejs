@@ -1,0 +1,75 @@
+<%- include('../../../partials/admin-header') %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%- include('../../../partials/admin-sidebar') %>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Edit About Section</h1>
+      </div>
+
+      <%- include('../../../partials/messages') %>
+
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Form Edit About</h5>
+        </div>
+        <div class="card-body">
+          <form action="/admin/beranda/about/edit" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="judul" class="form-label">Judul</label>
+              <input type="text" class="form-control" id="judul" name="judul" value="<%= about ? about.judul : '' %>" required>
+            </div>
+            <div class="mb-3">
+              <label for="subjudul" class="form-label">Subjudul</label>
+              <input type="text" class="form-control" id="subjudul" name="subjudul" value="<%= about ? about.subjudul : '' %>">
+            </div>
+            <div class="mb-3">
+              <label for="deskripsi" class="form-label">Deskripsi</label>
+              <textarea class="form-control" id="deskripsi" name="deskripsi" rows="5"><%= about ? about.deskripsi : '' %></textarea>
+            </div>
+            
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label for="gambar1" class="form-label">Gambar 1</label>
+                <% if (about && about.gambar1) { %>
+                  <div class="mb-2">
+                    <img src="<%= about.gambar1 %>" alt="Gambar 1" class="img-thumbnail" style="max-height: 150px;">
+                  </div>
+                <% } %>
+                <input type="file" class="form-control" id="gambar1" name="gambar1" accept="image/*">
+              </div>
+              <div class="col-md-4">
+                <label for="gambar2" class="form-label">Gambar 2</label>
+                <% if (about && about.gambar2) { %>
+                  <div class="mb-2">
+                    <img src="<%= about.gambar2 %>" alt="Gambar 2" class="img-thumbnail" style="max-height: 150px;">
+                  </div>
+                <% } %>
+                <input type="file" class="form-control" id="gambar2" name="gambar2" accept="image/*">
+              </div>
+              <div class="col-md-4">
+                <label for="gambar3" class="form-label">Gambar 3</label>
+                <% if (about && about.gambar3) { %>
+                  <div class="mb-2">
+                    <img src="<%= about.gambar3 %>" alt="Gambar 3" class="img-thumbnail" style="max-height: 150px;">
+                  </div>
+                <% } %>
+                <input type="file" class="form-control" id="gambar3" name="gambar3" accept="image/*">
+              </div>
+            </div>
+            <small class="text-muted mb-3 d-block">Ukuran gambar yang direkomendasikan: 600x400 piksel. Biarkan kosong jika tidak ingin mengubah gambar.</small>
+            
+            <div class="d-flex justify-content-between">
+              <a href="/admin/beranda" class="btn btn-secondary">Kembali</a>
+              <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<%- include('../../../partials/admin-footer') %>

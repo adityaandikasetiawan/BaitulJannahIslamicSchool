@@ -1,0 +1,451 @@
+
+<%- include('../../partials/admin-header') %>
+
+<div class="main-wrapper">
+    <%- include('../../partials/admin-sidebar') %>
+
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h3 class="page-title">Pendaftaran SPMB</h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Pendaftaran SPMB</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 d-flex justify-content-md-end">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-outline-primary me-2"><i class="feather-download me-1"></i> Download</button>
+                            <button type="button" class="btn btn-primary"><i class="feather-printer me-1"></i> Print</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Instructor Dashboard -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="instructor-profile">
+                        <div class="instructor-dashboard-info">
+                            <div class="instructor-profile-text">
+                                <h3 class="instructor-name">Pendaftaran SPMB</h3>
+                                <p class="instructor-designation">Formulir Pendaftaran Siswa Baru</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <% if(typeof success_msg !== 'undefined' && success_msg != ''){ %>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <%= success_msg %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <% } %>
+
+            <% if(typeof error_msg !== 'undefined' && error_msg != ''){ %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <%= error_msg %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <% } %>
+
+            <!-- Row for content and sidebar -->
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-xl-3 col-lg-4 col-md-12 theiaStickySidebar">
+                    <div class="settings-widget dash-profile mb-3">
+                        <div class="settings-menu">
+                            <ul>
+                                <li class="nav-item active">
+                                    <a href="/admin/pendaftaran/daftar" class="nav-link">
+                                        <i class="feather-file-text"></i> <span>Daftar SPMB</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/pendaftaran/syarat" class="nav-link">
+                                        <i class="feather-clipboard"></i> <span>Syarat Pendaftaran</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/pendaftaran/pengumuman" class="nav-link">
+                                        <i class="feather-bell"></i> <span>Pengumuman</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/pendaftaran/data" class="nav-link">
+                                        <i class="feather-database"></i> <span>Data Pendaftar</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/pendaftaran/laporan" class="nav-link">
+                                        <i class="feather-bar-chart-2"></i> <span>Laporan</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Sidebar -->
+
+                <!-- Main Content Column -->
+                <div class="col-xl-9 col-lg-8 col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="settings-widget">
+                                <div class="settings-inner-blk p-0">
+                                    <div class="comman-space pb-0">
+                                        <div class="settings-widget-title">
+                                            <h4>Formulir Pendaftaran SPMB</h4>
+                                            <p>Silahkan isi formulir pendaftaran dengan data yang benar</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Form Content -->
+                    <div class="settings-widget">
+                        <div class="settings-inner-blk p-0">
+                            <div class="comman-space">
+                                <div class="card-body">
+                <form action="/admin/pendaftaran/daftar" method="post" class="registration-form" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-12 mb-4">
+                            <div class="form-group-title">
+                                <h4 class="form-section-title">Data Pribadi Calon Siswa</h4>
+                                <p>Informasi dasar tentang calon siswa</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="nama_lengkap" required>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Jenis Kelamin <span class="text-danger">*</span></label>
+                                <select class="form-select" name="jenis_kelamin" required>
+                                    <option value="">Pilih Jenis Kelamin</option>
+                                    <option value="Laki-laki">Laki-laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Tempat Lahir <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="tempat_lahir" required>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Tanggal Lahir <span class="text-danger">*</span></label>
+                                <input type="date" class="form-control" name="tanggal_lahir" required>
+                            </div>
+                        </div>
+                                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">NIK <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="nik" required>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Agama <span class="text-danger">*</span></label>
+                                <select class="form-select" name="agama" required>
+                                    <option value="">Pilih Agama</option>
+                                    <option value="Islam">Islam</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Alamat Lengkap <span class="text-danger">*</span></label>
+                                <textarea class="form-control" name="alamat" rows="3" required></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Nomor Telepon <span class="text-danger">*</span></label>
+                                <input type="tel" class="form-control" name="nomor_telepon" required>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Email <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12 mb-4">
+                            <div class="form-group-title">
+                                <h4 class="form-section-title mt-4">Data Orang Tua/Wali</h4>
+                                <p>Informasi tentang orang tua atau wali calon siswa</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Nama Ayah <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="nama_ayah" required>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Pekerjaan Ayah <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="pekerjaan_ayah" required>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Nama Ibu <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="nama_ibu" required>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Pekerjaan Ibu <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="pekerjaan_ibu" required>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Nomor Telepon Ayah <span class="text-danger">*</span></label>
+                                <input type="tel" class="form-control" name="nomor_telepon_ayah" required>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Nomor Telepon Ibu <span class="text-danger">*</span></label>
+                                <input type="tel" class="form-control" name="nomor_telepon_ibu" required>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Nama Wali (Jika Ada)</label>
+                                <input type="text" class="form-control" name="nama_wali">
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Hubungan Wali</label>
+                                <input type="text" class="form-control" name="hubungan_wali">
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12 mb-4">
+                            <div class="form-group-title">
+                                <h4 class="form-section-title mt-4">Data Pendidikan</h4>
+                                <p>Informasi tentang riwayat pendidikan calon siswa</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Jenjang Pendidikan yang Dituju <span class="text-danger">*</span></label>
+                                <select class="form-select" name="jenjang" required>
+                                    <option value="">Pilih Jenjang</option>
+                                    <option value="PGIT-TKIT">PGIT-TKIT</option>
+                                    <option value="SDIT">SDIT</option>
+                                    <option value="SMPIT">SMPIT</option>
+                                    <option value="SMAIT">SMAIT</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Asal Sekolah <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="asal_sekolah" required>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Tahun Lulus <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="tahun_lulus" required>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Prestasi (Jika Ada)</label>
+                                <textarea class="form-control" name="prestasi" rows="3"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12 mb-4">
+                            <div class="form-group-title">
+                                <h4 class="form-section-title mt-4">Dokumen Pendukung</h4>
+                                <p>Unggah dokumen yang diperlukan untuk pendaftaran</p>
+                            </div>
+                        </div>
+                                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Pas Foto (3x4) <span class="text-danger">*</span></label>
+                                <input type="file" class="form-control" name="pas_foto" accept="image/*" required>
+                                <small class="text-muted">Format: JPG/PNG, Maks: 2MB</small>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Scan Akta Kelahiran <span class="text-danger">*</span></label>
+                                <input type="file" class="form-control" name="akta_kelahiran" accept="application/pdf,image/*" required>
+                                <small class="text-muted">Format: PDF/JPG/PNG, Maks: 2MB</small>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Scan Kartu Keluarga <span class="text-danger">*</span></label>
+                                <input type="file" class="form-control" name="kartu_keluarga" accept="application/pdf,image/*" required>
+                                <small class="text-muted">Format: PDF/JPG/PNG, Maks: 2MB</small>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Scan Rapor Terakhir <span class="text-danger">*</span></label>
+                                <input type="file" class="form-control" name="rapor" accept="application/pdf,image/*" required>
+                                <small class="text-muted">Format: PDF/JPG/PNG, Maks: 5MB</small>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12 mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="persetujuan" id="persetujuan" required>
+                                <label class="form-check-label" for="persetujuan">
+                                    Saya menyatakan bahwa data yang saya isi adalah benar dan saya bersedia mengikuti seluruh proses seleksi sesuai ketentuan yang berlaku.
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12 mt-4">
+                            <div class="submit-section">
+                                <button type="submit" class="btn btn-primary submit-btn">Kirim Pendaftaran</button>
+                                <button type="reset" class="btn btn-outline-secondary submit-btn ms-2">Reset Form</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-bg">
+                <img src="/assets/img/bg/footer-bg-01.png" class="footer-bg-1" alt="">
+                <img src="/assets/img/bg/footer-bg-02.png" class="footer-bg-2" alt="">
+            </div>
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row row-gap-4">
+                        <div class="col-lg-4">
+                            <div class="footer-about">
+                                <div class="footer-logo">
+                                    <img src="/assets/img/logo.png" alt="" style="max-height: 40px;">
+                                </div>
+                                <p>Baitul Jannah Islamic School - Platform pendidikan Islam terpadu untuk membantu organisasi, pendidik, dan pelajar mengelola kegiatan pembelajaran dan pelatihan.</p>
+                                <div class="d-flex align-items-center">
+                                    <a href="#" class="me-2"><img src="/assets/img/icon/appstore.svg" alt=""></a>
+                                    <a href="#"><img src="/assets/img/icon/googleplay.svg" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row row-gap-4">
+                                <div class="col-lg-4">
+                                    <div class="footer-widget footer-menu">
+                                        <h5 class="footer-title">Tentang Kami</h5>
+                                        <ul>
+                                            <li><a href="/profil">Profil Sekolah</a></li>
+                                            <li><a href="/visi-misi">Visi & Misi</a></li>
+                                            <li><a href="/struktur-organisasi">Struktur Organisasi</a></li>
+                                            <li><a href="/fasilitas">Fasilitas</a></li>
+                                            <li><a href="/kontak">Kontak Kami</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="footer-widget footer-menu">
+                                        <h5 class="footer-title">Pendaftaran</h5>
+                                        <ul>
+                                            <li><a href="/pendaftaran">Daftar SPMB</a></li>
+                                            <li><a href="/syarat-pendaftaran">Syarat Pendaftaran</a></li>
+                                            <li><a href="/pengumuman">Pengumuman</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="footer-widget footer-contact">
+                                        <h5 class="footer-title">Hubungi Kami</h5>
+                                        <div class="footer-contact-info">
+                                            <div class="footer-address d-flex align-items-center">
+                                                <img src="/assets/img/icon/icon-20.svg" alt="Img" class="img-fluid me-2">
+                                                <p>Jl. Pendidikan No. 123, Kota Medan, Sumatera Utara</p>
+                                            </div>
+                                            <div class="footer-address d-flex align-items-center">
+                                                <img src="/assets/img/icon/icon-19.svg" alt="Img" class="img-fluid me-2">
+                                                <p><a href="mailto:info@baituljannahschool.com">info@baituljannahschool.com</a></p>
+                                            </div>
+                                            <div class="footer-address d-flex align-items-center">
+                                                <img src="/assets/img/icon/icon-21.svg" alt="Img" class="img-fluid me-2">
+                                                <p>+62 812 3456 7890</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row row-gap-2">
+                        <div class="col-md-6">
+                            <div class="text-center text-md-start">
+                                <p class="text-white">Copyright &copy; 2023 Baitul Jannah Islamic School. All rights reserved.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div>
+                                <ul class="d-flex align-items-center justify-content-center justify-content-md-end footer-link">
+                                    <li><a href="/terms">Syarat & Ketentuan</a></li>
+                                    <li><a href="/privacy">Kebijakan Privasi</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+<%- include('../../partials/admin-footer') %>

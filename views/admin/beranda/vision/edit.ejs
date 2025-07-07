@@ -1,0 +1,54 @@
+<%- include('../../../partials/admin-header') %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%- include('../../../partials/admin-sidebar') %>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Edit Vision</h1>
+      </div>
+
+      <%- include('../../../partials/messages') %>
+
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Form Edit Vision</h5>
+        </div>
+        <div class="card-body">
+          <form action="/admin/beranda/vision/edit/<%= vision.id %>" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="judul" class="form-label">Judul</label>
+              <input type="text" class="form-control" id="judul" name="judul" value="<%= vision.judul %>" required>
+            </div>
+            <div class="mb-3">
+              <label for="link" class="form-label">Link</label>
+              <input type="text" class="form-control" id="link" name="link" value="<%= vision.link || '' %>" placeholder="/akademik/studentproject">
+              <small class="text-muted">Masukkan URL relatif (contoh: /akademik/studentproject) atau URL lengkap</small>
+            </div>
+            <div class="mb-3">
+              <label for="icon" class="form-label">Icon</label>
+              <% if (vision.icon) { %>
+                <div class="mb-2">
+                  <img src="<%= vision.icon %>" alt="<%= vision.judul %>" class="img-thumbnail" style="max-height: 100px;">
+                </div>
+              <% } %>
+              <input type="file" class="form-control" id="icon" name="icon" accept="image/*">
+              <small class="text-muted">Ukuran icon yang direkomendasikan: 128x128 piksel. Biarkan kosong jika tidak ingin mengubah icon.</small>
+            </div>
+            <div class="mb-3">
+              <label for="urutan" class="form-label">Urutan</label>
+              <input type="number" class="form-control" id="urutan" name="urutan" min="1" value="<%= vision.urutan || 1 %>">
+            </div>
+            <div class="d-flex justify-content-between">
+              <a href="/admin/beranda" class="btn btn-secondary">Kembali</a>
+              <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<%- include('../../../partials/admin-footer') %>

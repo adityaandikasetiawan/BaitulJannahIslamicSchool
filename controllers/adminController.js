@@ -3,6 +3,7 @@ const Informasi = require('../models/Informasi');
 const Kegiatan = require('../models/Kegiatan');
 const TentangKami = require('../models/TentangKami');
 const Galeri = require('../models/Galeri');
+const Kontak = require('../models/Kontak');
 const fs = require('fs');
 const path = require('path');
 
@@ -1044,5 +1045,81 @@ exports.deleteGaleri = async (req, res) => {
     } catch (error) {
         console.error('Error in deleteGaleri:', error);
         res.status(500).json({ success: false, message: 'Terjadi kesalahan saat menghapus data galeri' });
+    }
+};
+
+// ===== KONTAK =====
+
+// Menampilkan daftar kontak
+exports.getKontak = async (req, res) => {
+    try {
+        const kontak = await Kontak.findAll();
+        res.render('admin/kontak/index', {
+            title: 'Kelola Kontak',
+            kontak,
+            user: req.user,
+            error_msg: req.flash('error'),
+            success_msg: req.flash('success')
+        });
+    } catch (error) {
+        console.error('Error in getKontak:', error);
+        req.flash('error', 'Terjadi kesalahan saat memuat data kontak');
+        res.redirect('/admin/dashboard');
+    }
+};
+
+// Menampilkan detail kontak
+exports.getDetailKontak = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const kontak = await Kontak.findById(id);
+        
+        if (!kontak) {
+            req.flash('error', 'Data kontak tidak ditemukan');
+            return res.redirect('/admin/kontak');
+        }
+        
+        res.render('admin/kontak/detail', {
+            title: 'Detail Kontak',
+            kontak,
+            user: req.user,
+            error_msg: req.flash('error')
+        });
+    } catch (error) {
+        console.error('Error in getDetailKontak:', error);
+        req.flash('error', 'Terjadi kesalahan saat memuat detail kontak');
+        res.redirect('/admin/kontak');
+    }
+};
+
+// Proses update status kontak
+exports.postUpdateKontak = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const { status, catatan } = req.body;
+        
+        await Kontak.update(id, { status, catatan });
+
+        req.flash('success', 'Status kontak berhasil diperbarui');
+        res.redirect('/admin/kontak');
+    } catch (error) {
+        console.error('Error in postUpdateKontak:', error);
+        req.flash('error', 'Terjadi kesalahan saat memperbarui status kontak');
+        res.redirect(`/admin/kontak/detail/${req.params.id}`);
+    }
+};
+
+// Proses hapus kontak
+exports.deleteKontak = async (req, res) => {
+    try {
+        const id = req.params.id;
+        
+        // Hapus data dari database
+        await Kontak.delete(id);
+        
+        res.json({ success: true, message: 'Data kontak berhasil dihapus' });
+    } catch (error) {
+        console.error('Error in deleteKontak:', error);
+        res.status(500).json({ success: false, message: 'Terjadi kesalahan saat menghapus data kontak' });
     }
 };

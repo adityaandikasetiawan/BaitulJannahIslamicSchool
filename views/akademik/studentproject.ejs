@@ -7,25 +7,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="<%= description %>">
+    <meta name="keywords" content="student project assessment, penilaian proyek siswa, evaluasi berbasis proyek, pendidikan islam, baitul jannah, pembelajaran kreatif">
+    <meta name="author" content="Baitul Jannah Islamic School">
     
     <title><%= title %></title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/img/logo.png">
-    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" href="/assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/img/apple-icon.png">
 
     <!-- Theme Settings Js -->
-    <script src="assets/js/theme-script.js" type="text/javascript"></script>
+    <script src="/assets/js/theme-script.js" type="text/javascript"></script>
     
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     
     <!-- Fontawesome CSS -->
-    <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
-    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+    
+    <!-- Feather Icons -->
+    <link rel="stylesheet" href="/assets/css/feather.css">
+    
+    <!-- Iconsax Icons -->
+    <link rel="stylesheet" href="/assets/css/iconsax.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
 <body>
@@ -35,63 +46,109 @@
         <%- include('../partials/header2') %>
         
         <!-- Breadcrumb -->
-        <div class="breadcrumb-bar">
+        <div class="breadcrumb-bar bg-gradient-primary">
             <div class="container">
                 <div class="row align-items-center text-center">
                     <div class="col-md-12 col-12">
-                        <h2 class="breadcrumb-title">Student Project Assessment</h2>
-                        <nav aria-label="breadcrumb" class="page-breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/">Beranda</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Student Project Assessment</li>
-                            </ol>
-                        </nav>
+                        <div class="breadcrumb-content" data-aos="fade-up" data-aos-duration="1000">
+                            <div class="breadcrumb-icon mb-3">
+                                <i class="fas fa-project-diagram fa-3x text-white"></i>
+                            </div>
+                            <h2 class="breadcrumb-title text-white mb-2">Student Project Assessment</h2>
+                            <p class="breadcrumb-subtitle text-white-50 mb-3">Evaluasi Berbasis Proyek untuk Pembelajaran yang Bermakna</p>
+                            <nav aria-label="breadcrumb" class="page-breadcrumb">
+                                <ol class="breadcrumb justify-content-center bg-transparent">
+                                    <li class="breadcrumb-item"><a href="/" class="text-white-75">Beranda</a></li>
+                                    <li class="breadcrumb-item"><a href="#" class="text-white-75">Akademik</a></li>
+                                    <li class="breadcrumb-item active text-white" aria-current="page">Student Project Assessment</li>
+                                </ol>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         
         <!-- Page Content -->
-        <div class="page-content">
+        <section class="page-content assessment-content py-5">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
+                <!-- Assessment Overview -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="assessment-overview text-center" data-aos="fade-up" data-aos-duration="1000">
+                            <div class="section-header mb-4">
+                                <span class="badge bg-primary-light text-primary mb-2">Metode Evaluasi</span>
+                                <h2 class="section-title">Student Project Assessment</h2>
+                                <p class="section-subtitle text-muted">
+                                    Program Student Project Assessment di Baitul Jannah Islamic School adalah metode evaluasi berbasis proyek 
+                                    yang dirancang untuk mengukur kemampuan siswa dalam mengaplikasikan pengetahuan dan keterampilan mereka 
+                                    dalam situasi nyata. Melalui pendekatan ini, siswa tidak hanya dinilai berdasarkan ujian tertulis, 
+                                    tetapi juga berdasarkan kemampuan mereka untuk merencanakan, melaksanakan, dan mempresentasikan proyek yang bermakna.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assessment Objectives -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="card shadow-sm" data-aos="fade-up" data-aos-duration="1000">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-4">
+                                    <div class="icon-box bg-success-light text-success me-3">
+                                        <i class="fas fa-bullseye"></i>
+                                    </div>
+                                    <h3 class="card-title mb-0">Tujuan Assessment</h3>
+                                </div>
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="about-title">
-                                            <h2>Student Project Assessment</h2>
+                                    <div class="col-md-6">
+                                        <div class="objective-item d-flex align-items-start mb-3">
+                                            <div class="objective-icon me-3">
+                                                <i class="fas fa-brain text-success"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Berpikir Kritis</h6>
+                                                <p class="text-muted small mb-0">Mengembangkan kemampuan berpikir kritis dan pemecahan masalah siswa</p>
+                                            </div>
                                         </div>
-                                        <div class="about-content">
-                                            <p class="mb-4">Program Student Project Assessment di Baitul Jannah Islamic School adalah metode evaluasi berbasis proyek yang dirancang untuk mengukur kemampuan siswa dalam mengaplikasikan pengetahuan dan keterampilan mereka dalam situasi nyata. Melalui pendekatan ini, siswa tidak hanya dinilai berdasarkan ujian tertulis, tetapi juga berdasarkan kemampuan mereka untuk merencanakan, melaksanakan, dan mempresentasikan proyek yang bermakna.</p>
+                                        <div class="objective-item d-flex align-items-start mb-3">
+                                            <div class="objective-icon me-3">
+                                                <i class="fas fa-users text-success"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Kolaborasi & Komunikasi</h6>
+                                                <p class="text-muted small mb-0">Meningkatkan keterampilan kolaborasi dan komunikasi</p>
+                                            </div>
                                         </div>
-                                        
-                                        <div class="about-title mt-5">
-                                            <h2>Tujuan Assessment</h2>
+                                        <div class="objective-item d-flex align-items-start mb-3">
+                                            <div class="objective-icon me-3">
+                                                <i class="fas fa-lightbulb text-success"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Kreativitas & Inovasi</h6>
+                                                <p class="text-muted small mb-0">Mendorong kreativitas dan inovasi dalam pembelajaran</p>
+                                            </div>
                                         </div>
-                                        <div class="about-content">
-                                            <ol class="mb-4">
-                                                <li class="mb-3">Mengembangkan kemampuan berpikir kritis dan pemecahan masalah siswa.</li>
-                                                <li class="mb-3">Meningkatkan keterampilan kolaborasi dan komunikasi.</li>
-                                                <li class="mb-3">Mendorong kreativitas dan inovasi dalam pembelajaran.</li>
-                                                <li class="mb-3">Mempersiapkan siswa untuk tantangan dunia nyata.</li>
-                                                <li class="mb-3">Memberikan penilaian yang komprehensif terhadap kemampuan siswa.</li>
-                                            </ol>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="objective-item d-flex align-items-start mb-3">
+                                            <div class="objective-icon me-3">
+                                                <i class="fas fa-globe text-success"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Persiapan Dunia Nyata</h6>
+                                                <p class="text-muted small mb-0">Mempersiapkan siswa untuk tantangan dunia nyata</p>
+                                            </div>
                                         </div>
-                                        
-                                        <div class="about-title mt-5">
-                                            <h2>Komponen Assessment</h2>
-                                        </div>
-                                        <div class="about-content">
-                                            <ol class="mb-4">
-                                                <li class="mb-3">Perencanaan Proyek: Siswa merencanakan proyek mereka dengan menetapkan tujuan, timeline, dan sumber daya yang diperlukan.</li>
-                                                <li class="mb-3">Pelaksanaan Proyek: Siswa melaksanakan proyek sesuai dengan rencana yang telah dibuat.</li>
-                                                <li class="mb-3">Dokumentasi: Siswa mendokumentasikan proses dan hasil proyek mereka.</li>
-                                                <li class="mb-3">Presentasi: Siswa mempresentasikan hasil proyek mereka kepada guru, teman sebaya, dan kadang-kadang kepada masyarakat.</li>
-                                                <li class="mb-3">Refleksi: Siswa merefleksikan pengalaman mereka dan pembelajaran yang diperoleh dari proyek.</li>
-                                                <li class="mb-3">Penilaian Teman Sebaya: Siswa memberikan umpan balik konstruktif terhadap proyek teman sebaya mereka.</li>
-                                            </ol>
+                                        <div class="objective-item d-flex align-items-start mb-3">
+                                            <div class="objective-icon me-3">
+                                                <i class="fas fa-chart-line text-success"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Penilaian Komprehensif</h6>
+                                                <p class="text-muted small mb-0">Memberikan penilaian yang komprehensif terhadap kemampuan siswa</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -99,8 +156,196 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Assessment Components -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="text-center mb-4" data-aos="fade-up" data-aos-duration="1000">
+                            <h3 class="section-title">Komponen Assessment</h3>
+                            <p class="text-muted">Enam tahapan utama dalam proses evaluasi proyek siswa</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Planning Component -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="component-card card shadow-sm h-100" data-aos="fade-up" data-aos-duration="1000">
+                            <div class="card-body p-4 text-center">
+                                <div class="component-icon mb-3">
+                                    <i class="fas fa-clipboard-list fa-3x text-primary"></i>
+                                </div>
+                                <h5 class="card-title mb-3">Perencanaan Proyek</h5>
+                                <p class="text-muted">Siswa merencanakan proyek mereka dengan menetapkan tujuan, timeline, dan sumber daya yang diperlukan.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Implementation Component -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="component-card card shadow-sm h-100" data-aos="fade-up" data-aos-duration="1200">
+                            <div class="card-body p-4 text-center">
+                                <div class="component-icon mb-3">
+                                    <i class="fas fa-cogs fa-3x text-success"></i>
+                                </div>
+                                <h5 class="card-title mb-3">Pelaksanaan Proyek</h5>
+                                <p class="text-muted">Siswa melaksanakan proyek sesuai dengan rencana yang telah dibuat dengan bimbingan guru.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Documentation Component -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="component-card card shadow-sm h-100" data-aos="fade-up" data-aos-duration="1400">
+                            <div class="card-body p-4 text-center">
+                                <div class="component-icon mb-3">
+                                    <i class="fas fa-file-alt fa-3x text-warning"></i>
+                                </div>
+                                <h5 class="card-title mb-3">Dokumentasi</h5>
+                                <p class="text-muted">Siswa mendokumentasikan proses dan hasil proyek mereka secara sistematis dan terstruktur.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Presentation Component -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="component-card card shadow-sm h-100" data-aos="fade-up" data-aos-duration="1600">
+                            <div class="card-body p-4 text-center">
+                                <div class="component-icon mb-3">
+                                    <i class="fas fa-presentation fa-3x text-info"></i>
+                                </div>
+                                <h5 class="card-title mb-3">Presentasi</h5>
+                                <p class="text-muted">Siswa mempresentasikan hasil proyek mereka kepada guru, teman sebaya, dan kadang-kadang kepada masyarakat.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reflection Component -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="component-card card shadow-sm h-100" data-aos="fade-up" data-aos-duration="1800">
+                            <div class="card-body p-4 text-center">
+                                <div class="component-icon mb-3">
+                                    <i class="fas fa-mirror fa-3x text-secondary"></i>
+                                </div>
+                                <h5 class="card-title mb-3">Refleksi</h5>
+                                <p class="text-muted">Siswa merefleksikan pengalaman mereka dan pembelajaran yang diperoleh dari proyek.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Peer Assessment Component -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="component-card card shadow-sm h-100" data-aos="fade-up" data-aos-duration="2000">
+                            <div class="card-body p-4 text-center">
+                                <div class="component-icon mb-3">
+                                    <i class="fas fa-user-friends fa-3x text-danger"></i>
+                                </div>
+                                <h5 class="card-title mb-3">Penilaian Teman Sebaya</h5>
+                                <p class="text-muted">Siswa memberikan umpan balik konstruktif terhadap proyek teman sebaya mereka.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Benefits Section -->
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="card shadow-sm" data-aos="fade-up" data-aos-duration="1000">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-4">
+                                    <div class="icon-box bg-warning-light text-warning me-3">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <h3 class="card-title mb-0">Manfaat Assessment</h3>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="benefit-item d-flex align-items-start mb-3">
+                                            <div class="benefit-icon me-3">
+                                                <i class="fas fa-check-circle text-warning"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Pembelajaran Aktif</h6>
+                                                <p class="text-muted small mb-0">Mendorong siswa untuk terlibat aktif dalam proses pembelajaran</p>
+                                            </div>
+                                        </div>
+                                        <div class="benefit-item d-flex align-items-start mb-3">
+                                            <div class="benefit-icon me-3">
+                                                <i class="fas fa-check-circle text-warning"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Keterampilan Abad 21</h6>
+                                                <p class="text-muted small mb-0">Mengembangkan keterampilan yang dibutuhkan di abad 21</p>
+                                            </div>
+                                        </div>
+                                        <div class="benefit-item d-flex align-items-start mb-3">
+                                            <div class="benefit-icon me-3">
+                                                <i class="fas fa-check-circle text-warning"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Motivasi Belajar</h6>
+                                                <p class="text-muted small mb-0">Meningkatkan motivasi dan minat belajar siswa</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="benefit-item d-flex align-items-start mb-3">
+                                            <div class="benefit-icon me-3">
+                                                <i class="fas fa-check-circle text-warning"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Penilaian Autentik</h6>
+                                                <p class="text-muted small mb-0">Memberikan penilaian yang lebih autentik dan bermakna</p>
+                                            </div>
+                                        </div>
+                                        <div class="benefit-item d-flex align-items-start mb-3">
+                                            <div class="benefit-icon me-3">
+                                                <i class="fas fa-check-circle text-warning"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Karakter Building</h6>
+                                                <p class="text-muted small mb-0">Membangun karakter dan nilai-nilai positif siswa</p>
+                                            </div>
+                                        </div>
+                                        <div class="benefit-item d-flex align-items-start mb-3">
+                                            <div class="benefit-icon me-3">
+                                                <i class="fas fa-check-circle text-warning"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Persiapan Masa Depan</h6>
+                                                <p class="text-muted small mb-0">Mempersiapkan siswa untuk sukses di masa depan</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="cta-section text-center" data-aos="fade-up" data-aos-duration="2000">
+                            <div class="card bg-primary text-white">
+                                <div class="card-body p-5">
+                                    <h3 class="text-white mb-3">Bergabunglah dengan Program Assessment Kami!</h3>
+                                    <p class="text-white-50 mb-4">Rasakan pengalaman pembelajaran yang bermakna melalui Student Project Assessment di Baitul Jannah Islamic School</p>
+                                    <div class="cta-buttons">
+                                        <a href="/akademik/daftarspmb" class="btn btn-light btn-lg me-3">
+                                            <i class="fas fa-user-plus me-2"></i>Daftar Sekarang
+                                        </a>
+                                        <a href="/informasi/kontak" class="btn btn-outline-light btn-lg">
+                                            <i class="fas fa-phone me-2"></i>Hubungi Kami
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
         
         <!-- Footer -->
         <%- include('../partials/footer') %>
@@ -114,5 +359,263 @@
 
     <!-- Custom JS -->
     <script src="assets/js/script.js" type="text/javascript"></script>
+    
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Component card hover effects
+        document.querySelectorAll('.component-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+                this.style.transition = 'all 0.3s ease';
+                this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            });
+        });
+
+        // Objective and benefit item hover effects
+        document.querySelectorAll('.objective-item, .benefit-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = '#f8f9fa';
+                this.style.borderRadius = '8px';
+                this.style.padding = '10px';
+                this.style.transition = 'all 0.3s ease';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = 'transparent';
+                this.style.padding = '0';
+            });
+        });
+
+        // CTA button interactions
+        document.querySelectorAll('.cta-buttons .btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.href.includes('daftarspmb')) {
+                    e.preventDefault();
+                    alert('Terima kasih atas minat Anda! Halaman pendaftaran akan segera tersedia.');
+                } else if (this.href.includes('kontak')) {
+                    e.preventDefault();
+                    alert('Hubungi kami di:\nTelepon: (021) 123-4567\nEmail: info@baituljannahschool.sch.id');
+                }
+            });
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Page loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+    
+    <!-- Custom CSS -->
+    <style>
+        /* Assessment Content Styling */
+        .assessment-content {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        /* Icon Box Styling */
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .bg-primary-light {
+            background-color: rgba(13, 110, 253, 0.1);
+        }
+
+        .bg-success-light {
+            background-color: rgba(25, 135, 84, 0.1);
+        }
+
+        .bg-warning-light {
+            background-color: rgba(255, 193, 7, 0.1);
+        }
+
+        /* Component Cards */
+        .component-card {
+            border: none;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .component-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #007bff, #28a745, #ffc107, #17a2b8, #6c757d, #dc3545);
+        }
+
+        .component-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .component-icon i {
+            transition: all 0.3s ease;
+        }
+
+        .component-card:hover .component-icon i {
+            transform: scale(1.1);
+        }
+
+        /* Section Headers */
+        .section-title {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Objective and Benefit Items */
+        .objective-item, .benefit-item {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .objective-icon, .benefit-icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(25, 135, 84, 0.1);
+        }
+
+        .benefit-icon {
+            background-color: rgba(255, 193, 7, 0.1);
+        }
+
+        /* CTA Section */
+        .cta-section .card {
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.3);
+        }
+
+        .cta-buttons .btn {
+            border-radius: 25px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-buttons .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .icon-box {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .component-icon i {
+                font-size: 2rem !important;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            .cta-buttons .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .cta-buttons .btn.me-3 {
+                margin-right: 0 !important;
+            }
+        }
+
+        /* Color Scheme */
+        .text-primary { color: #007bff !important; }
+        .text-success { color: #28a745 !important; }
+        .text-warning { color: #ffc107 !important; }
+        .text-info { color: #17a2b8 !important; }
+        .text-secondary { color: #6c757d !important; }
+        .text-danger { color: #dc3545 !important; }
+
+        /* Typography */
+        .card-title {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .badge {
+            font-size: 0.875rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        /* Animation Enhancements */
+        [data-aos] {
+            pointer-events: none;
+        }
+
+        [data-aos].aos-animate {
+            pointer-events: auto;
+        }
+
+        /* Loading Animation */
+        body {
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
 </body>
 </html>

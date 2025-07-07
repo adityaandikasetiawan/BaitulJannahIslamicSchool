@@ -40,7 +40,7 @@ app.use(
 
 // Custom Content Security Policy
 app.use((req, res, next) => {
-  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://cdnjs.cloudflare.com; frame-ancestors 'self'");
+  res.setHeader('Content-Security-Policy', "default-src 'self' blob: data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: data: https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: blob: https:; connect-src 'self' https://cdnjs.cloudflare.com; frame-ancestors 'self'; object-src 'none'; base-uri 'self'");
   next();
 });
 
@@ -74,11 +74,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Express session
+const sessionSecret = process.env.SESSION_SECRET || 'baituljannahsecretkey';
+console.log('Using session secret:', sessionSecret ? 'Secret is set' : 'No secret set');
+
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'secret',
+  secret: sessionSecret,
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000 } // 24 hours
+  cookie: { 
+    secure: false, 
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    httpOnly: true
+  }
 }));
 
 // Connect flash
@@ -100,6 +107,18 @@ app.use((req, res, next) => {
   next();
 });
 
+// Debug middleware to log session and authentication status
+app.use((req, res, next) => {
+  console.log('Session ID:', req.sessionID);
+  console.log('Is Authenticated:', req.isAuthenticated());
+  if (req.user) {
+    console.log('User:', req.user.username, 'Role:', req.user.role);
+  } else {
+    console.log('No user in session');
+  }
+  next();
+});
+
 // Import routes
 const pagesRoutes = require('./routes/pages');
 const authRoutes = require('./routes/auth');
@@ -108,6 +127,7 @@ const adminRoutes = require('./routes/admin');
 // Routes
 app.use('/', pagesRoutes);
 app.use('/', authRoutes);
+
 app.use('/admin', adminRoutes);
 
 app.get('/', (req, res) => {
@@ -140,7 +160,32 @@ app.get('/comingsoon', (req, res) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+const PORT = process.env.PORT || 3002;
+const server = app.listen(PORT, (err) => {
+  if (err) {
+    console.error('Error starting server:', err);
+    return;
+  }
   console.log('Server berjalan di port ' + PORT);
+  console.log('Akses server di http://localhost:' + PORT);
 });
+
+// Handle server errors
+server.on('error', (error) => {
+  console.error('Server error:', error);
+  if (error.code === 'EADDRINUSE') {
+    console.error(`Port ${PORT} is already in use. Please use a different port.`);
+  }
+});
+
+// Handle uncaught exceptions
+process.on('uncaughtException', (error) => {
+  console.error('Uncaught Exception:', error);
+});
+
+// Handle unhandled promise rejections
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+// These handlers are already defined above

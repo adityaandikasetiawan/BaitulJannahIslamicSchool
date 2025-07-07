@@ -1,7 +1,7 @@
-<%- include('../../partials/header') %>
+<%- include('../../partials/admin-header') %>
 
 <div class="main-wrapper">
-    <%- include('../../partials/header2') %>
+    <%- include('../../partials/admin-sidebar') %>
 
     <div class="page-wrapper">
         <div class="content container-fluid">
@@ -58,7 +58,7 @@
                             <div class="row">
                                 <div class="col-md-4 text-center mb-4">
                                     <% if(pendaftaran.pas_foto) { %>
-                                        <img src="<%= pendaftaran.pas_foto %>" alt="Pas Foto" class="img-fluid rounded" style="max-height: 250px;">
+                                        <img src="/uploads/<%= pendaftaran.pas_foto %>" alt="Pas Foto" class="img-fluid rounded" style="max-height: 250px;">
                                     <% } else { %>
                                         <div class="alert alert-warning">Pas foto tidak tersedia</div>
                                     <% } %>
@@ -229,7 +229,7 @@
                                 <div class="col-md-6 mb-3">
                                     <h6>Akta Kelahiran</h6>
                                     <% if(pendaftaran.akta_kelahiran) { %>
-                                        <a href="<%= pendaftaran.akta_kelahiran %>" target="_blank" class="btn btn-sm btn-primary">Lihat Dokumen</a>
+                                        <a href="/uploads/<%= pendaftaran.akta_kelahiran %>" target="_blank" class="btn btn-sm btn-primary">Lihat Dokumen</a>
                                     <% } else { %>
                                         <div class="alert alert-warning">Dokumen tidak tersedia</div>
                                     <% } %>
@@ -237,7 +237,7 @@
                                 <div class="col-md-6 mb-3">
                                     <h6>Kartu Keluarga</h6>
                                     <% if(pendaftaran.kartu_keluarga) { %>
-                                        <a href="<%= pendaftaran.kartu_keluarga %>" target="_blank" class="btn btn-sm btn-primary">Lihat Dokumen</a>
+                                        <a href="/uploads/<%= pendaftaran.kartu_keluarga %>" target="_blank" class="btn btn-sm btn-primary">Lihat Dokumen</a>
                                     <% } else { %>
                                         <div class="alert alert-warning">Dokumen tidak tersedia</div>
                                     <% } %>
@@ -245,7 +245,7 @@
                                 <div class="col-md-6">
                                     <h6>Rapor</h6>
                                     <% if(pendaftaran.rapor) { %>
-                                        <a href="<%= pendaftaran.rapor %>" target="_blank" class="btn btn-sm btn-primary">Lihat Dokumen</a>
+                                        <a href="/uploads/<%= pendaftaran.rapor %>" target="_blank" class="btn btn-sm btn-primary">Lihat Dokumen</a>
                                     <% } else { %>
                                         <div class="alert alert-warning">Dokumen tidak tersedia</div>
                                     <% } %>
@@ -293,4 +293,4 @@
     </div>
 </div>
 
-<%- include('../../partials/footer') %>
+<%- include('../../partials/admin-footer') %>

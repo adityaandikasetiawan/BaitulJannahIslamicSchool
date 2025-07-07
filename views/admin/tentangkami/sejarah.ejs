@@ -1,0 +1,29 @@
+<%- include('../../partials/admin-header') %>
+<%- include('../../partials/admin-sidebar') %>
+
+<div class="col-lg-9">
+    <div class="mb-3">
+        <h5>Sejarah</h5>
+    </div>
+    <ul class="settings-nav d-flex align-items-center flex-wrap border bg-light-900 rounded">
+        <li><a href="/admin/tentangkami/sejarah" class="active">Sejarah</a></li>
+        <li><a href="/admin/tentangkami/visimisi">Visi Misi</a></li>
+        <li><a href="/admin/tentangkami/kepengurusan">Kepengurusan</a></li>
+        <li><a href="/admin/tentangkami/fasilitas">Fasilitas</a></li>
+    </ul>
+    <div class="card">
+        <div class="card-body">
+            <form action="/admin/tentangkami/sejarah/update" method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Judul</label>
+                    <input type="text" class="form-control" name="title" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Konten</label>
+                    <textarea class="form-control" rows="6" name="content" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-secondary">Simpan Perubahan</button>
+            </form>
+        </div>
+    </div>
+</div>

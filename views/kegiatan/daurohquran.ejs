@@ -1,31 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="<%= description %>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="<%= description || 'Program Dauroh Qur\'an - Baitul Jannah Islamic School' %>">
+    <meta name="keywords" content="dauroh quran, tahfidz, islamic school, pendidikan islam">
+    <meta name="author" content="Baitul Jannah Islamic School">
     
-    <title><%= title %></title>
+    <title><%= title || 'Dauroh Qur\'an - Baitul Jannah Islamic School' %></title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/img/logo.png">
-    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" href="/assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/img/apple-icon.png">
 
     <!-- Theme Settings Js -->
-    <script src="assets/js/theme-script.js" type="text/javascript"></script>
+    <script src="/assets/js/theme-script.js"></script>
     
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     
     <!-- Fontawesome CSS -->
-    <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
-    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+    
+    <!-- Feather CSS -->
+    <link rel="stylesheet" href="/assets/css/feather.css">
+    
+    <!-- Iconsax CSS -->
+    <link rel="stylesheet" href="/assets/css/iconsax.css">
+    
+    <!-- AOS Animation CSS -->
+    <link rel="stylesheet" href="/assets/plugins/aos/aos.css">
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
 <body>
@@ -35,84 +46,460 @@
         <%- include('../partials/header2') %>
         
         <!-- Breadcrumb -->
-        <div class="breadcrumb-bar">
-            <div class="container">
-                <div class="row align-items-center text-center">
-                    <div class="col-md-12 col-12">
-                        <h2 class="breadcrumb-title">Dauroh Qur'an</h2>
-                        <nav aria-label="breadcrumb" class="page-breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/">Beranda</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Dauroh Qur'an</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Page Content -->
-        <div class="page-content">
+        <div class="breadcrumb-bar text-center">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="about-title">
-                                            <h2>Program Dauroh Qur'an</h2>
-                                        </div>
-                                        <div class="about-content">
-                                            <p class="mb-4">Program Dauroh Qur'an di Baitul Jannah Islamic School adalah program intensif yang dirancang untuk meningkatkan kemampuan siswa dalam membaca, menghafal, dan memahami Al-Qur'an. Program ini merupakan bagian integral dari kurikulum pendidikan kami yang bertujuan untuk membentuk generasi Qur'ani yang mencintai dan mengamalkan Al-Qur'an dalam kehidupan sehari-hari.</p>
-                                        </div>
-                                        
-                                        <div class="about-title mt-5">
-                                            <h2>Tujuan Program</h2>
-                                        </div>
-                                        <div class="about-content">
-                                            <ol class="mb-4">
-                                                <li class="mb-3">Meningkatkan kemampuan membaca Al-Qur'an dengan tajwid yang benar.</li>
-                                                <li class="mb-3">Memfasilitasi siswa dalam menghafal Al-Qur'an dengan metode yang efektif.</li>
-                                                <li class="mb-3">Menanamkan pemahaman tentang makna dan tafsir ayat-ayat Al-Qur'an.</li>
-                                                <li class="mb-3">Membentuk karakter siswa berdasarkan nilai-nilai Al-Qur'an.</li>
-                                                <li class="mb-3">Menciptakan lingkungan yang mendukung untuk belajar dan menghafal Al-Qur'an.</li>
-                                            </ol>
-                                        </div>
-                                        
-                                        <div class="about-title mt-5">
-                                            <h2>Kegiatan Program</h2>
-                                        </div>
-                                        <div class="about-content">
-                                            <ol class="mb-4">
-                                                <li class="mb-3">Tahsin Al-Qur'an: Pembelajaran untuk memperbaiki bacaan Al-Qur'an dengan kaidah tajwid yang benar.</li>
-                                                <li class="mb-3">Tahfidz Al-Qur'an: Program menghafal Al-Qur'an dengan target yang disesuaikan dengan kemampuan siswa.</li>
-                                                <li class="mb-3">Tadabbur Al-Qur'an: Kajian untuk memahami makna dan tafsir ayat-ayat Al-Qur'an.</li>
-                                                <li class="mb-3">Muraja'ah: Kegiatan mengulang hafalan untuk menjaga kualitas hafalan siswa.</li>
-                                                <li class="mb-3">Musabaqah Hifdzil Qur'an: Kompetisi menghafal Al-Qur'an untuk memotivasi siswa.</li>
-                                                <li class="mb-3">Dauroh Intensif: Program intensif selama liburan untuk meningkatkan hafalan Al-Qur'an.</li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="col-md-12 col-12">
+                        <div class="breadcrumb-content" data-aos="fade-up" data-aos-duration="1000">
+                            <div class="breadcrumb-icon mb-3">
+                                <i class="fas fa-quran-quran text-primary" style="font-size: 3rem;"></i>
                             </div>
+                            <h2 class="breadcrumb-title mb-2">Program Dauroh Qur'an</h2>
+                            <p class="breadcrumb-subtitle mb-3">Membentuk Generasi Qur'ani yang Berkarakter</p>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb justify-content-center mb-0">
+                                    <li class="breadcrumb-item"><a href="/"><i class="fas fa-home me-1"></i>Beranda</a></li>
+                                    <li class="breadcrumb-item"><a href="#">Kegiatan</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Dauroh Qur'an</li>
+                                </ol>
+                            </nav>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         
+        <!-- Page Content -->
+        <section class="page-content course-content py-5">
+            <div class="container">
+                <!-- Program Overview -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="program-overview text-center" data-aos="fade-up" data-aos-duration="1000">
+                            <div class="section-header mb-4">
+                                <span class="badge bg-primary-light text-primary mb-2">Program Unggulan</span>
+                                <h2 class="section-title">Program Dauroh Qur'an</h2>
+                                <p class="section-subtitle text-muted">
+                                    Program intensif untuk memperdalam pemahaman dan hafalan Al-Qur'an, 
+                                    membentuk generasi Qur'ani yang berkarakter mulia dan berakhlak karimah.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Main Content -->
+                    <div class="col-lg-8">
+                        <!-- Program Description -->
+                        <div class="card shadow-sm mb-4" data-aos="fade-right" data-aos-duration="1000">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="icon-box bg-primary-light text-primary me-3">
+                                        <i class="fas fa-book-open"></i>
+                                    </div>
+                                    <h3 class="card-title mb-0">Tentang Program</h3>
+                                </div>
+                                <p class="card-text text-muted">
+                                    Program Dauroh Qur'an adalah kegiatan intensif yang dirancang khusus untuk 
+                                    memperdalam hubungan siswa dengan Al-Qur'an. Melalui pendekatan yang komprehensif, 
+                                    program ini menggabungkan aspek tilawah, tahfidz, dan pemahaman makna untuk 
+                                    membentuk generasi yang cinta dan dekat dengan kitab suci.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Program Objectives -->
+                        <div class="card shadow-sm mb-4" data-aos="fade-right" data-aos-duration="1200">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="icon-box bg-success-light text-success me-3">
+                                        <i class="fas fa-bullseye"></i>
+                                    </div>
+                                    <h3 class="card-title mb-0">Tujuan Program</h3>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="objective-item d-flex align-items-start mb-3">
+                                            <div class="objective-icon me-3">
+                                                <i class="fas fa-check-circle text-success"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Tahsin Al-Qur'an</h6>
+                                                <p class="text-muted small mb-0">Meningkatkan kemampuan membaca Al-Qur'an dengan tartil dan tajwid yang benar</p>
+                                            </div>
+                                        </div>
+                                        <div class="objective-item d-flex align-items-start mb-3">
+                                            <div class="objective-icon me-3">
+                                                <i class="fas fa-check-circle text-success"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Tahfidz Al-Qur'an</h6>
+                                                <p class="text-muted small mb-0">Menambah hafalan surat-surat dalam Al-Qur'an dengan metode yang efektif</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="objective-item d-flex align-items-start mb-3">
+                                            <div class="objective-icon me-3">
+                                                <i class="fas fa-check-circle text-success"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Pemahaman Makna</h6>
+                                                <p class="text-muted small mb-0">Memahami makna dan tafsir ayat-ayat Al-Qur'an untuk kehidupan sehari-hari</p>
+                                            </div>
+                                        </div>
+                                        <div class="objective-item d-flex align-items-start mb-3">
+                                            <div class="objective-icon me-3">
+                                                <i class="fas fa-check-circle text-success"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Pembentukan Karakter</h6>
+                                                <p class="text-muted small mb-0">Membentuk karakter Islami yang kuat dan berakhlak mulia</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Program Activities -->
+                        <div class="card shadow-sm mb-4" data-aos="fade-right" data-aos-duration="1400">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="icon-box bg-info-light text-info me-3">
+                                        <i class="fas fa-tasks"></i>
+                                    </div>
+                                    <h3 class="card-title mb-0">Kegiatan Program</h3>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="activity-card border rounded p-3 h-100">
+                                            <div class="activity-icon text-primary mb-2">
+                                                <i class="fas fa-microphone"></i>
+                                            </div>
+                                            <h6 class="activity-title">Tahsin Al-Qur'an</h6>
+                                            <p class="activity-desc text-muted small mb-0">
+                                                Perbaikan bacaan Al-Qur'an dengan bimbingan ustadz/ustadzah berpengalaman
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="activity-card border rounded p-3 h-100">
+                                            <div class="activity-icon text-success mb-2">
+                                                <i class="fas fa-brain"></i>
+                                            </div>
+                                            <h6 class="activity-title">Tahfidz Al-Qur'an</h6>
+                                            <p class="activity-desc text-muted small mb-0">
+                                                Menghafal Al-Qur'an dengan metode yang mudah dan menyenangkan
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="activity-card border rounded p-3 h-100">
+                                            <div class="activity-icon text-warning mb-2">
+                                                <i class="fas fa-book-reader"></i>
+                                            </div>
+                                            <h6 class="activity-title">Tafsir & Tadabbur</h6>
+                                            <p class="activity-desc text-muted small mb-0">
+                                                Memahami makna dan hikmah ayat-ayat Al-Qur'an untuk kehidupan
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="activity-card border rounded p-3 h-100">
+                                            <div class="activity-icon text-info mb-2">
+                                                <i class="fas fa-music"></i>
+                                            </div>
+                                            <h6 class="activity-title">Tilawah Indah</h6>
+                                            <p class="activity-desc text-muted small mb-0">
+                                                Praktik tilawah dengan lagu yang indah dan menyentuh hati
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div class="col-lg-4">
+                        <!-- Program Info -->
+                        <div class="card shadow-sm mb-4" data-aos="fade-left" data-aos-duration="1000">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="card-title mb-0">
+                                    <i class="fas fa-info-circle me-2"></i>Informasi Program
+                                </h5>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="info-item d-flex align-items-center mb-3">
+                                    <div class="info-icon bg-primary-light text-primary me-3">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0">Durasi Program</h6>
+                                        <p class="text-muted small mb-0">2 minggu intensif</p>
+                                    </div>
+                                </div>
+                                <div class="info-item d-flex align-items-center mb-3">
+                                    <div class="info-icon bg-success-light text-success me-3">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0">Jumlah Peserta</h6>
+                                        <p class="text-muted small mb-0">Maksimal 20 siswa per kelas</p>
+                                    </div>
+                                </div>
+                                <div class="info-item d-flex align-items-center mb-3">
+                                    <div class="info-icon bg-warning-light text-warning me-3">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0">Jadwal Pelaksanaan</h6>
+                                        <p class="text-muted small mb-0">Setiap liburan sekolah</p>
+                                    </div>
+                                </div>
+                                <div class="info-item d-flex align-items-center mb-0">
+                                    <div class="info-icon bg-info-light text-info me-3">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0">Lokasi</h6>
+                                        <p class="text-muted small mb-0">Baitul Jannah Islamic School</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Requirements -->
+                        <div class="card shadow-sm mb-4" data-aos="fade-left" data-aos-duration="1200">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="card-title mb-0">
+                                    <i class="fas fa-clipboard-check me-2"></i>Persyaratan
+                                </h5>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="requirement-item d-flex align-items-start mb-3">
+                                    <div class="requirement-icon me-3">
+                                        <i class="fas fa-check text-success"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1">Usia Peserta</h6>
+                                        <p class="text-muted small mb-0">Siswa kelas 3-6 SD (8-12 tahun)</p>
+                                    </div>
+                                </div>
+                                <div class="requirement-item d-flex align-items-start mb-3">
+                                    <div class="requirement-icon me-3">
+                                        <i class="fas fa-check text-success"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1">Kemampuan Dasar</h6>
+                                        <p class="text-muted small mb-0">Sudah bisa membaca Al-Qur'an dengan lancar</p>
+                                    </div>
+                                </div>
+                                <div class="requirement-item d-flex align-items-start mb-3">
+                                    <div class="requirement-icon me-3">
+                                        <i class="fas fa-check text-success"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1">Motivasi</h6>
+                                        <p class="text-muted small mb-0">Memiliki motivasi tinggi untuk belajar Al-Qur'an</p>
+                                    </div>
+                                </div>
+                                <div class="requirement-item d-flex align-items-start mb-0">
+                                    <div class="requirement-icon me-3">
+                                        <i class="fas fa-check text-success"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1">Izin Orang Tua</h6>
+                                        <p class="text-muted small mb-0">Mendapat persetujuan dan dukungan orang tua</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Info -->
+                        <div class="card shadow-sm" data-aos="fade-left" data-aos-duration="1400">
+                            <div class="card-header bg-info text-white">
+                                <h5 class="card-title mb-0">
+                                    <i class="fas fa-phone me-2"></i>Informasi Pendaftaran
+                                </h5>
+                            </div>
+                            <div class="card-body p-4 text-center">
+                                <p class="text-muted mb-3">Untuk informasi lebih lanjut dan pendaftaran, silakan hubungi:</p>
+                                <div class="contact-info">
+                                    <div class="contact-item mb-2">
+                                        <i class="fas fa-phone text-primary me-2"></i>
+                                        <span class="fw-bold">0812-3456-7890</span>
+                                    </div>
+                                    <div class="contact-item mb-2">
+                                        <i class="fas fa-envelope text-primary me-2"></i>
+                                        <span>info@baituljannahschool.com</span>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-primary btn-sm mt-3">
+                                    <i class="fas fa-user-plus me-1"></i>Daftar Sekarang
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         <!-- Footer -->
         <%- include('../partials/footer') %>
     </div>
     
     <!-- jQuery -->
-    <script src="assets/js/jquery-3.7.1.min.js" type="text/javascript"></script>
+    <script src="/assets/js/jquery-3.7.1.min.js" type="text/javascript"></script>
 
     <!-- Bootstrap Core JS -->
-    <script src="assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
+    <!-- AOS Animation JS -->
+    <script src="/assets/plugins/aos/aos.js"></script>
+    
     <!-- Custom JS -->
-    <script src="assets/js/script.js" type="text/javascript"></script>
+    <script src="/assets/js/script.js" type="text/javascript"></script>
+    
+    <!-- Page Specific JS -->
+    <script>
+        $(document).ready(function() {
+            // Initialize AOS Animation
+            AOS.init({
+                duration: 1000,
+                easing: 'ease-in-out',
+                once: true,
+                mirror: false
+            });
+            
+            // Smooth scrolling for anchor links
+            $('a[href^="#"]').on('click', function(event) {
+                var target = $(this.getAttribute('href'));
+                if( target.length ) {
+                    event.preventDefault();
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top - 100
+                    }, 1000);
+                }
+            });
+            
+            // Add hover effects to cards
+            $('.card').hover(
+                function() {
+                    $(this).addClass('shadow-lg').removeClass('shadow-sm');
+                },
+                function() {
+                    $(this).addClass('shadow-sm').removeClass('shadow-lg');
+                }
+            );
+            
+            // Add click effect to activity cards
+            $('.activity-card').on('click', function() {
+                $(this).addClass('border-primary');
+                setTimeout(() => {
+                    $(this).removeClass('border-primary');
+                }, 300);
+            });
+            
+            // Contact button click handler
+            $('.btn[href="#"]').on('click', function(e) {
+                e.preventDefault();
+                alert('Fitur pendaftaran akan segera tersedia. Silakan hubungi nomor telepon yang tertera untuk informasi lebih lanjut.');
+            });
+        });
+    </script>
+    
+    <!-- Custom Styles -->
+    <style>
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .bg-primary-light {
+            background-color: rgba(13, 110, 253, 0.1);
+        }
+        
+        .bg-success-light {
+            background-color: rgba(25, 135, 84, 0.1);
+        }
+        
+        .bg-warning-light {
+            background-color: rgba(255, 193, 7, 0.1);
+        }
+        
+        .bg-info-light {
+            background-color: rgba(13, 202, 240, 0.1);
+        }
+        
+        .activity-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+        
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        
+        .breadcrumb-subtitle {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .card {
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .contact-item {
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .breadcrumb-subtitle {
+                font-size: 1rem;
+            }
+            
+            .icon-box {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+
 </body>
 </html>
