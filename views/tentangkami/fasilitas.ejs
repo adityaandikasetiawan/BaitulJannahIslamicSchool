@@ -26,6 +26,235 @@
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Custom Styles for Fasilitas -->
+    <style>
+        .facility-hero {
+            background: #ffffff;
+            padding: 80px 0;
+            color: #2c5aa0;
+        }
+        
+        .facility-card {
+            border: 1px solid #e8f2ff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(44, 90, 160, 0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            background: white;
+            height: 100%;
+        }
+        
+        .facility-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(44, 90, 160, 0.15);
+            border-color: #2c5aa0;
+        }
+        
+        .facility-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .facility-card .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+        
+        .facility-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(44, 90, 160, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .facility-overlay i {
+            font-size: 3rem;
+            color: white;
+            transform: scale(0.5);
+            transition: transform 0.3s ease;
+        }
+        
+        .facility-card:hover .facility-overlay {
+            opacity: 1;
+        }
+        
+        .facility-card:hover .facility-overlay i {
+            transform: scale(1);
+        }
+        
+        .facility-card:hover .card-img-top {
+            transform: scale(1.1);
+        }
+        
+        .facility-features {
+            margin-top: 15px;
+        }
+        
+        .facility-features .badge {
+            margin-right: 5px;
+            margin-bottom: 5px;
+            padding: 5px 10px;
+            font-size: 0.75rem;
+        }
+        
+        .facility-card .card-body {
+            padding: 25px;
+        }
+        
+        .facility-card .card-title {
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .facility-card .card-text {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h3 {
+            color: #2c5aa0;
+            font-weight: 600;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .section-header h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #2c5aa0;
+            border-radius: 2px;
+        }
+        
+        .section-icon {
+            width: 60px;
+            height: 60px;
+            background: #2c5aa0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 3px 10px rgba(44, 90, 160, 0.2);
+        }
+        
+        .section-icon i {
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .fadeInUp {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .fadeInLeft {
+            animation: fadeInLeft 0.8s ease-out;
+        }
+        
+        .fadeInRight {
+            animation: fadeInRight 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .stats-card {
+            background: white;
+            border: 1px solid #e8f2ff;
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(44, 90, 160, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(44, 90, 160, 0.15);
+            border-color: #2c5aa0;
+        }
+        
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c5aa0;
+            margin-bottom: 10px;
+        }
+        
+        .stats-label {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .facility-hero {
+                padding: 40px 0;
+            }
+            
+            .section-header h3 {
+                font-size: 2rem;
+            }
+            
+            .facility-card {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -34,19 +263,51 @@
         <!-- Header -->
         <%- include('../partials/header2') %>
         
-        <!-- Breadcrumb -->
-        <div class="breadcrumb-bar">
+        <!-- Hero Section -->
+        <div class="facility-hero">
             <div class="container">
                 <div class="row align-items-center text-center">
-                    <div class="col-md-12 col-12">
-                        <h2 class="breadcrumb-title">Fasilitas</h2>
+                    <div class="col-md-12 col-12 fadeInUp">
+                        <div class="section-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h1 class="display-4 fw-bold mb-3">Fasilitas Unggulan</h1>
+                        <p class="lead mb-4">Baitul Jannah Islamic School</p>
                         <nav aria-label="breadcrumb" class="page-breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/">Beranda</a></li>
-                                <li class="breadcrumb-item" aria-current="page">Tentang Kami</li>
-                                <li class="breadcrumb-item active" aria-current="page">Fasilitas</li>
+                            <ol class="breadcrumb justify-content-center bg-transparent">
+                                <li class="breadcrumb-item"><a href="/" class="text-muted">Beranda</a></li>
+                                <li class="breadcrumb-item text-muted" aria-current="page">Tentang Kami</li>
+                                <li class="breadcrumb-item active" style="color: #2c5aa0;" aria-current="page">Fasilitas</li>
                             </ol>
                         </nav>
+                    </div>
+                </div>
+                
+                <!-- Stats Section -->
+                <div class="row mt-5">
+                    <div class="col-md-3 col-6 fadeInLeft" style="animation-delay: 0.2s;">
+                        <div class="stats-card">
+                            <div class="stats-number">50+</div>
+                            <div class="stats-label">Ruang Kelas</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 fadeInUp" style="animation-delay: 0.3s;">
+                        <div class="stats-card">
+                            <div class="stats-number">15</div>
+                            <div class="stats-label">Laboratorium</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 fadeInUp" style="animation-delay: 0.4s;">
+                        <div class="stats-card">
+                            <div class="stats-number">25+</div>
+                            <div class="stats-label">Fasilitas Olahraga</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 fadeInRight" style="animation-delay: 0.5s;">
+                        <div class="stats-card">
+                            <div class="stats-number">100%</div>
+                            <div class="stats-label">Ber-AC</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -69,158 +330,314 @@
                                         </div>
                                         
                                         <!-- Fasilitas Akademik -->
-                                        <div class="about-title mt-4">
-                                            <h3>Fasilitas Akademik</h3>
-                                        </div>
+                        <div class="section-header text-center mb-5 fadeInUp">
+                            <div class="section-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3>Fasilitas Akademik</h3>
+                            <p class="section-description">Ruang belajar modern dengan teknologi terdepan untuk mendukung proses pembelajaran yang optimal</p>
+                        </div>
                                         <div class="row">
-                                            <div class="col-md-4 mb-4">
-                                                <div class="card facility-card">
-                                                    <img src="assets/img/course/course-01.jpg" class="card-img-top" alt="Ruang Kelas">
+                                            <div class="col-md-4 mb-4 fadeInLeft" style="animation-delay: 0.1s;">
+                                                <div class="facility-card h-100">
+                                                    <div class="facility-image">
+                                                        <img src="assets/img/course/course-01.jpg" class="card-img-top" alt="Ruang Kelas">
+                                                        <div class="facility-overlay">
+                                                            <i class="fas fa-chalkboard-teacher"></i>
+                                                        </div>
+                                                    </div>
                                                     <div class="card-body">
                                                         <h4 class="card-title">Ruang Kelas Modern</h4>
                                                         <p class="card-text">Ruang kelas dilengkapi dengan AC, smart board, proyektor, dan perabotan yang nyaman untuk menciptakan lingkungan belajar yang kondusif.</p>
+                                                        <div class="facility-features">
+                                                            <span class="badge bg-primary">AC</span>
+                                                            <span class="badge bg-success">Smart Board</span>
+                                                            <span class="badge bg-info">Proyektor</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4 mb-4">
-                                                <div class="card facility-card">
-                                                    <img src="assets/img/course/course-02.jpg" class="card-img-top" alt="Laboratorium Sains">
+                                            <div class="col-md-4 mb-4 fadeInUp" style="animation-delay: 0.2s;">
+                                                <div class="facility-card h-100">
+                                                    <div class="facility-image">
+                                                        <img src="assets/img/course/course-02.jpg" class="card-img-top" alt="Laboratorium Sains">
+                                                        <div class="facility-overlay">
+                                                            <i class="fas fa-flask"></i>
+                                                        </div>
+                                                    </div>
                                                     <div class="card-body">
                                                         <h4 class="card-title">Laboratorium Sains</h4>
                                                         <p class="card-text">Laboratorium fisika, kimia, dan biologi yang dilengkapi dengan peralatan modern untuk mendukung pembelajaran sains secara praktis.</p>
+                                                        <div class="facility-features">
+                                                            <span class="badge bg-danger">Kimia</span>
+                                                            <span class="badge bg-success">Biologi</span>
+                                                            <span class="badge bg-primary">Fisika</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4 mb-4">
-                                                <div class="card facility-card">
-                                                    <img src="assets/img/course/course-03.jpg" class="card-img-top" alt="Laboratorium Komputer">
+                                            <div class="col-md-4 mb-4 fadeInRight" style="animation-delay: 0.3s;">
+                                                <div class="facility-card h-100">
+                                                    <div class="facility-image">
+                                                        <img src="assets/img/course/course-03.jpg" class="card-img-top" alt="Laboratorium Komputer">
+                                                        <div class="facility-overlay">
+                                                            <i class="fas fa-laptop"></i>
+                                                        </div>
+                                                    </div>
                                                     <div class="card-body">
                                                         <h4 class="card-title">Laboratorium Komputer</h4>
                                                         <p class="card-text">Laboratorium komputer dengan perangkat terbaru dan akses internet cepat untuk mendukung pembelajaran teknologi informasi.</p>
+                                                        <div class="facility-features">
+                                                            <span class="badge bg-primary">30 PC</span>
+                                                            <span class="badge bg-success">High Speed</span>
+                                                            <span class="badge bg-info">Modern</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4 mb-4">
-                                                <div class="card facility-card">
-                                                    <img src="assets/img/course/course-04.jpg" class="card-img-top" alt="Perpustakaan">
+                                            <div class="col-md-4 mb-4 fadeInLeft" style="animation-delay: 0.4s;">
+                                                <div class="facility-card h-100">
+                                                    <div class="facility-image">
+                                                        <img src="assets/img/course/course-04.jpg" class="card-img-top" alt="Perpustakaan">
+                                                        <div class="facility-overlay">
+                                                            <i class="fas fa-book"></i>
+                                                        </div>
+                                                    </div>
                                                     <div class="card-body">
                                                         <h4 class="card-title">Perpustakaan</h4>
                                                         <p class="card-text">Perpustakaan dengan koleksi buku yang lengkap, ruang baca yang nyaman, dan sistem perpustakaan digital.</p>
+                                                        <div class="facility-features">
+                                                            <span class="badge bg-warning">5000+ Buku</span>
+                                                            <span class="badge bg-info">WiFi</span>
+                                                            <span class="badge bg-success">Digital</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4 mb-4">
-                                                <div class="card facility-card">
-                                                    <img src="assets/img/course/course-05.jpg" class="card-img-top" alt="Ruang Multimedia">
+                                            <div class="col-md-4 mb-4 fadeInUp" style="animation-delay: 0.5s;">
+                                                <div class="facility-card h-100">
+                                                    <div class="facility-image">
+                                                        <img src="assets/img/course/course-05.jpg" class="card-img-top" alt="Ruang Multimedia">
+                                                        <div class="facility-overlay">
+                                                            <i class="fas fa-video"></i>
+                                                        </div>
+                                                    </div>
                                                     <div class="card-body">
                                                         <h4 class="card-title">Ruang Multimedia</h4>
                                                         <p class="card-text">Ruang multimedia untuk presentasi, seminar, dan kegiatan pembelajaran interaktif lainnya.</p>
+                                                        <div class="facility-features">
+                                                            <span class="badge bg-info">Audio Visual</span>
+                                                            <span class="badge bg-warning">Interactive</span>
+                                                            <span class="badge bg-success">Modern</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4 mb-4">
-                                                <div class="card facility-card">
-                                                    <img src="assets/img/course/course-06.jpg" class="card-img-top" alt="Ruang Seni">
+                                            <div class="col-md-4 mb-4 fadeInRight" style="animation-delay: 0.6s;">
+                                                <div class="facility-card h-100">
+                                                    <div class="facility-image">
+                                                        <img src="assets/img/course/course-06.jpg" class="card-img-top" alt="Ruang Seni">
+                                                        <div class="facility-overlay">
+                                                            <i class="fas fa-palette"></i>
+                                                        </div>
+                                                    </div>
                                                     <div class="card-body">
                                                         <h4 class="card-title">Ruang Seni dan Keterampilan</h4>
                                                         <p class="card-text">Ruang khusus untuk pengembangan bakat seni dan keterampilan siswa, dilengkapi dengan peralatan seni yang lengkap.</p>
+                                                        <div class="facility-features">
+                                                            <span class="badge bg-primary">Seni</span>
+                                                            <span class="badge bg-success">Keterampilan</span>
+                                                            <span class="badge bg-info">Kreatif</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         
                                         <!-- Fasilitas Ibadah dan Keagamaan -->
-                                        <div class="about-title mt-5">
-                                            <h3>Fasilitas Ibadah dan Keagamaan</h3>
+                        <div class="section-header text-center mb-5 fadeInUp">
+                            <div class="section-icon">
+                                <i class="fas fa-mosque"></i>
+                            </div>
+                            <h3>Fasilitas Ibadah dan Keagamaan</h3>
+                            <p class="section-description">Sarana ibadah yang lengkap untuk memperkuat spiritual dan karakter Islami siswa</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-4 fadeInLeft" style="animation-delay: 0.1s;">
+                                <div class="facility-card h-100">
+                                    <div class="facility-image">
+                                        <img src="assets/img/course/course-07.jpg" class="card-img-top" alt="Masjid">
+                                        <div class="facility-overlay">
+                                            <i class="fas fa-mosque"></i>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6 mb-4">
-                                                <div class="card facility-card">
-                                                    <img src="assets/img/course/course-07.jpg" class="card-img-top" alt="Masjid">
-                                                    <div class="card-body">
-                                                        <h4 class="card-title">Masjid</h4>
-                                                        <p class="card-text">Masjid yang luas dan nyaman untuk kegiatan ibadah dan pembelajaran keagamaan, dilengkapi dengan tempat wudhu yang bersih.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 mb-4">
-                                                <div class="card facility-card">
-                                                    <img src="assets/img/course/course-08.jpg" class="card-img-top" alt="Ruang Tahfidz">
-                                                    <div class="card-body">
-                                                        <h4 class="card-title">Ruang Tahfidz</h4>
-                                                        <p class="card-text">Ruang khusus untuk program tahfidz Al-Qur'an dengan lingkungan yang tenang dan kondusif untuk menghafal Al-Qur'an.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">Masjid Sekolah</h4>
+                                        <p class="card-text">Masjid yang luas dan nyaman untuk kegiatan shalat berjamaah, kajian keislaman, dan kegiatan rohani lainnya.</p>
+                                        <div class="facility-features">
+                                            <span class="badge bg-success">Shalat Berjamaah</span>
+                                            <span class="badge bg-info">Kajian Islam</span>
+                                            <span class="badge bg-warning">AC</span>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4 fadeInRight" style="animation-delay: 0.2s;">
+                                <div class="facility-card h-100">
+                                    <div class="facility-image">
+                                        <img src="assets/img/course/course-08.jpg" class="card-img-top" alt="Ruang Tahfidz">
+                                        <div class="facility-overlay">
+                                            <i class="fas fa-quran"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">Ruang Tahfidz</h4>
+                                        <p class="card-text">Ruang khusus untuk program tahfidz Al-Qur'an dengan suasana yang tenang dan kondusif untuk menghafal.</p>
+                                        <div class="facility-features">
+                                            <span class="badge bg-primary">Tahfidz</span>
+                                            <span class="badge bg-success">Tenang</span>
+                                            <span class="badge bg-info">Kondusif</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                                         
                                         <!-- Fasilitas Olahraga dan Rekreasi -->
-                                        <div class="about-title mt-5">
-                                            <h3>Fasilitas Olahraga dan Rekreasi</h3>
-                                        </div>
+                        <div class="section-header text-center mb-5 fadeInUp">
+                            <div class="section-icon">
+                                <i class="fas fa-running"></i>
+                            </div>
+                            <h3>Fasilitas Olahraga dan Rekreasi</h3>
+                            <p class="section-description">Sarana olahraga lengkap untuk mengembangkan bakat dan menjaga kesehatan siswa</p>
+                        </div>
                                         <div class="row">
-                                            <div class="col-md-4 mb-4">
-                                                <div class="card facility-card">
-                                                    <img src="assets/img/course/course-09.jpg" class="card-img-top" alt="Lapangan Olahraga">
+                                            <div class="col-md-4 mb-4 fadeInLeft" style="animation-delay: 0.1s;">
+                                                <div class="facility-card h-100">
+                                                    <div class="facility-image">
+                                                        <img src="assets/img/course/course-09.jpg" class="card-img-top" alt="Lapangan Olahraga">
+                                                        <div class="facility-overlay">
+                                                            <i class="fas fa-running"></i>
+                                                        </div>
+                                                    </div>
                                                     <div class="card-body">
                                                         <h4 class="card-title">Lapangan Olahraga</h4>
                                                         <p class="card-text">Lapangan olahraga multifungsi untuk berbagai kegiatan olahraga seperti sepak bola, basket, dan voli.</p>
+                                                        <div class="facility-features">
+                                                            <span class="badge bg-primary">Multifungsi</span>
+                                                            <span class="badge bg-success">Luas</span>
+                                                            <span class="badge bg-info">Modern</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4 mb-4">
-                                                <div class="card facility-card">
-                                                    <img src="assets/img/course/course-10.jpg" class="card-img-top" alt="Kolam Renang">
+                                            <div class="col-md-4 mb-4 fadeInUp" style="animation-delay: 0.2s;">
+                                                <div class="facility-card h-100">
+                                                    <div class="facility-image">
+                                                        <img src="assets/img/course/course-10.jpg" class="card-img-top" alt="Kolam Renang">
+                                                        <div class="facility-overlay">
+                                                            <i class="fas fa-swimmer"></i>
+                                                        </div>
+                                                    </div>
                                                     <div class="card-body">
                                                         <h4 class="card-title">Kolam Renang</h4>
                                                         <p class="card-text">Kolam renang dengan standar keamanan tinggi untuk kegiatan olahraga renang dan ekstrakurikuler.</p>
+                                                        <div class="facility-features">
+                                                            <span class="badge bg-info">Standar Tinggi</span>
+                                                            <span class="badge bg-success">Aman</span>
+                                                            <span class="badge bg-primary">Bersih</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4 mb-4">
-                                                <div class="card facility-card">
-                                                    <img src="assets/img/course/course-11.jpg" class="card-img-top" alt="Taman Bermain">
+                                            <div class="col-md-4 mb-4 fadeInRight" style="animation-delay: 0.3s;">
+                                                <div class="facility-card h-100">
+                                                    <div class="facility-image">
+                                                        <img src="assets/img/course/course-11.jpg" class="card-img-top" alt="Taman Bermain">
+                                                        <div class="facility-overlay">
+                                                            <i class="fas fa-child"></i>
+                                                        </div>
+                                                    </div>
                                                     <div class="card-body">
                                                         <h4 class="card-title">Taman Bermain</h4>
                                                         <p class="card-text">Taman bermain yang aman dan nyaman untuk siswa TK dan SD dengan berbagai permainan edukatif.</p>
+                                                        <div class="facility-features">
+                                                            <span class="badge bg-warning">Edukatif</span>
+                                                            <span class="badge bg-success">Aman</span>
+                                                            <span class="badge bg-info">Nyaman</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         
                                         <!-- Fasilitas Penunjang -->
-                                        <div class="about-title mt-5">
-                                            <h3>Fasilitas Penunjang</h3>
-                                        </div>
+                        <div class="section-header text-center mb-5 fadeInUp">
+                            <div class="section-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h3>Fasilitas Penunjang</h3>
+                            <p class="section-description">Fasilitas pendukung yang lengkap untuk kenyamanan dan keamanan seluruh civitas akademika</p>
+                        </div>
                                         <div class="row">
-                                            <div class="col-md-4 mb-4">
-                                                <div class="card facility-card">
-                                                    <img src="assets/img/course/course-12.jpg" class="card-img-top" alt="Kantin Sehat">
-                                                    <div class="card-body">
-                                                        <h4 class="card-title">Kantin Sehat</h4>
-                                                        <p class="card-text">Kantin yang menyediakan makanan sehat dan bergizi dengan standar kebersihan yang tinggi.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 mb-4">
-                                                <div class="card facility-card">
-                                                    <img src="assets/img/course/course-13.jpg" class="card-img-top" alt="UKS">
-                                                    <div class="card-body">
-                                                        <h4 class="card-title">Unit Kesehatan Sekolah</h4>
-                                                        <p class="card-text">UKS yang dilengkapi dengan peralatan medis dasar dan tenaga medis profesional untuk penanganan kesehatan darurat.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 mb-4">
-                                                <div class="card facility-card">
-                                                    <img src="assets/img/course/course-14.jpg" class="card-img-top" alt="Asrama">
-                                                    <div class="card-body">
-                                                        <h4 class="card-title">Asrama</h4>
-                                                        <p class="card-text">Asrama yang nyaman dan aman untuk siswa dengan pengawasan 24 jam oleh pembimbing asrama yang berpengalaman.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                            <div class="col-md-4 mb-4 fadeInLeft" style="animation-delay: 0.1s;">
+                                <div class="facility-card h-100">
+                                    <div class="facility-image">
+                                        <img src="assets/img/course/course-12.jpg" class="card-img-top" alt="Kantin Sehat">
+                                        <div class="facility-overlay">
+                                            <i class="fas fa-utensils"></i>
                                         </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">Kantin Sehat</h4>
+                                        <p class="card-text">Kantin yang menyediakan makanan sehat dan bergizi dengan standar kebersihan yang tinggi.</p>
+                                        <div class="facility-features">
+                                            <span class="badge bg-success">Sehat</span>
+                                            <span class="badge bg-info">Bergizi</span>
+                                            <span class="badge bg-warning">Bersih</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4 fadeInUp" style="animation-delay: 0.2s;">
+                                <div class="facility-card h-100">
+                                    <div class="facility-image">
+                                        <img src="assets/img/course/course-13.jpg" class="card-img-top" alt="UKS">
+                                        <div class="facility-overlay">
+                                            <i class="fas fa-clinic-medical"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">Unit Kesehatan Sekolah</h4>
+                                        <p class="card-text">UKS yang dilengkapi dengan peralatan medis dasar dan tenaga medis profesional untuk penanganan kesehatan darurat.</p>
+                                        <div class="facility-features">
+                                            <span class="badge bg-danger">Medis</span>
+                                            <span class="badge bg-success">Profesional</span>
+                                            <span class="badge bg-info">24/7</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4 fadeInRight" style="animation-delay: 0.3s;">
+                                <div class="facility-card h-100">
+                                    <div class="facility-image">
+                                        <img src="assets/img/course/course-14.jpg" class="card-img-top" alt="Asrama">
+                                        <div class="facility-overlay">
+                                            <i class="fas fa-bed"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">Asrama</h4>
+                                        <p class="card-text">Asrama yang nyaman dan aman untuk siswa dengan pengawasan 24 jam oleh pembimbing asrama yang berpengalaman.</p>
+                                        <div class="facility-features">
+                                            <span class="badge bg-primary">Nyaman</span>
+                                            <span class="badge bg-success">Aman</span>
+                                            <span class="badge bg-info">24 Jam</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                                     </div>
                                 </div>
                             </div>

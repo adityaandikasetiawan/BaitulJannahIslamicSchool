@@ -1,6 +1,6 @@
 <!-- Banner Carousel Section -->
 <section class="banner-carousel-section">
-    <div id="bannerCarousel" class="carousel slide" 
+    <div id="bannerCarousel" class="carousel slide"
         <% if (typeof carouselSettings !== 'undefined' && carouselSettings) { %>
             <% if (carouselSettings.autoplay) { %>data-bs-ride="carousel"<% } %>
             data-bs-interval="<%= carouselSettings.interval || 5000 %>"
@@ -94,15 +94,15 @@
                                         </div>
                                         <div class="col-md-6 d-flex">
                                             <div class="flex-fill">
-                                                <img src="assets/img/hero/hero-3.jpg" alt="img" class="img-fluid h-100 flex-fill img-01 aos" data-aos="fade-bottom">
+                                                <img src="/assets/img/hero/hero-3.jpg" alt="img" class="img-fluid h-100 flex-fill img-01 aos" data-aos="fade-bottom">
                                             </div>
                                         </div>
                                         <div class="col-md-6 d-flex flex-column">
                                             <div class="flex-fill mb-3">
-                                                <img src="assets/img/hero/hero-4.jpg" alt="img" class="img-fluid img-02 aos" data-aos="fade-down">
+                                                <img src="/assets/img/hero/hero-4.jpg" alt="img" class="img-fluid img-02 aos" data-aos="fade-down">
                                             </div>
                                             <div class="flex-fill">
-                                                <img src="assets/img/hero/hero-5.jpg" alt="img" class="img-fluid img-03 aos" data-aos="fade-up">
+                                                <img src="/assets/img/hero/hero-5.jpg" alt="img" class="img-fluid img-03 aos" data-aos="fade-up">
                                             </div>
                                         </div>
                                     </div>
@@ -248,7 +248,7 @@
                                 <div class="banner-image">
                                     <div class="row position-relative">
                                         <div class="logo-cover">
-                                            <img src="assets/img/icons/icon-30.svg" alt="img" class="img-fluid img-05 d-none d-xl-flex aos" data-aos="zoom-in">
+                                            <img src="/assets/img/icons/icon-30.svg" alt="img" class="img-fluid img-05 d-none d-xl-flex aos" data-aos="zoom-in">
                                         </div>
                                         <div class="col-md-6 d-flex">
                                             <div class="flex-fill">
@@ -269,9 +269,9 @@
                         </div>
                         <!-- Shapes -->
                         <div class="shapes">
-                            <img class="shapes-one" src="assets/img/bg/bg-10.png" alt="Img">
-                            <img class="shapes-two" src="assets/img/bg/bg-11.png" alt="Img">
-                            <img class="shapes-middle" src="assets/img/bg/bg-12.png" alt="Img">
+                            <img class="shapes-one" src="/assets/img/bg/bg-10.png" alt="Img">
+                            <img class="shapes-two" src="/assets/img/bg/bg-11.png" alt="Img">
+                            <img class="shapes-middle" src="/assets/img/bg/bg-12.png" alt="Img">
                         </div>
                         <!-- /Shapes -->
                     </div>
@@ -303,7 +303,7 @@
                 <div class="vision-item d-flex flex-column justify-content-between text-center p-3 w-100 border rounded">
                     <div>
                         <span class="vision-icon border d-inline-block mb-3" style="background-color: #ffffff; padding-top: 10px;">
-                            <img src="/assets/img/icon/book.svg" alt="dauroh quran">
+                            <img src="/assets/img/icon/book.svg" alt="Dauroh Qur'an">
                         </span>
                         <p>Dauroh Qur'an</p>
                     </div>
@@ -314,8 +314,7 @@
                 <div class="vision-item d-flex flex-column justify-content-between text-center p-3 w-100 border rounded">
                     <div>
                         <span class="vision-icon border d-inline-block mb-3" style="background-color: #ffffff; padding-top: 10px;">
-                            <img src="\assets\img\icon\user-tick.svg" alt="Dauroh">
-
+                            <img src="/assets/img/icon/user-tick.svg" alt="Student Project Assessment">
                         </span>
                         <p>Student Project Assessment</p>
                     </div>
@@ -337,7 +336,7 @@
                 <div class="vision-item d-flex flex-column justify-content-between text-center p-3 w-100 border rounded">
                     <div>
                         <span class="vision-icon border d-inline-block mb-3" style="background-color: #ffffff; padding-top: 10px;">
-                            <img src="/assets/img/icon/graduation.svg" alt="alumni">
+                            <img src="/assets/img/icon/graduation.svg" alt="Alumni">
                         </span>
                         <p>Alumni</p>
                     </div>
@@ -528,16 +527,18 @@
                     <p>Program Penguasaan Bahasa Arab</p>
                 </div>
             </div>
-
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 d-flex">
-                <div class="categories-item categories-item-four flex-fill" data-aos="fade-up">
+            
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 d-flex" data-aos="fade-down">
+                <div class="categories-item categories-item-four flex-fill">
                     <div class="categories-icon">
                         <img src="/assets/img/icons/category-8.svg" alt="Ekstrakurikuler">
                     </div>
                     <h5 class="title"><a href="/ekstrakurikuler">Ekstrakurikuler</a></h5>
                     <p>Program Pengembangan Bakat</p>
                 </div>
-            </div>	
+            </div>
+
+	
         </div>				
         <!-- View all Category -->
         <div class="more-details text-center" data-aos="fade-down">
@@ -607,7 +608,6 @@
                             <div class="rating">						
                                 <i class="fa-regular fa-calendar me-2"></i>
                                 <span>10 Mei 2024</span>
-                            </div>
                                 <i class="fas fa-star filled"></i>
                                 <i class="fas fa-star filled"></i>
                                 <span class="ms-2">5.0 (22 Reviews)</span>
@@ -769,9 +769,9 @@
         <div class="row">
             <div class="col-lg-7 mx-auto">
                 <div class="section-header text-center">
-                    <span class="fw-medium text-secondary fs-18 fw-bold mb-2 d-inline-block">What’s New</span>
-                    <h2>Master the skills to drive your career</h2>
-                    <p>Get certified, master modern tech skills, and level up your career — whether you’re starting out or a seasoned pro. 95% of eLearning learners report.</p>
+                    <span class="fw-medium text-secondary fs-18 fw-bold mb-2 d-inline-block">Keunggulan Kami</span>
+                    <h2>Pendidikan Berkualitas untuk Masa Depan Cerah</h2>
+                    <p>Baitul Jannah Islamic School menawarkan pendidikan berkualitas yang memadukan nilai-nilai Islam dengan kurikulum modern untuk mempersiapkan generasi Muslim yang unggul.</p>
                 </div>
             </div>
         </div>
@@ -783,24 +783,24 @@
 
                         <!-- Master skills Content -->
                         <div class="col-xl-5 col-lg-6 col-md-12 order-lg-0 order-md-0 order-0" data-aos="fade-up">
-                            <h3>Award Winning Course Management</h3>
-                            <p>An award-winning course management system (CMS) or program is typically recognized for its exceptional quality, innovation, and effectiveness in helping both instructors and students succeed.</p>
+                            <h3>Kurikulum Terpadu Berbasis Islam</h3>
+                            <p>Baitul Jannah Islamic School mengembangkan kurikulum terpadu yang memadukan pendidikan nasional dengan nilai-nilai Islam, menciptakan lingkungan belajar yang seimbang antara ilmu pengetahuan dan akhlak mulia.</p>
                             
                             <ul class="list-unstyled heading-color mb-4">
                                 <li class="d-flex mb-3">
-                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Interactive Tools for Engagement
+                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Pendidikan Karakter Islami
                                 </li>
                                 <li class="d-flex mb-3">
-                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Customizable Course Creation
+                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Tahfidz Al-Qur'an & Bahasa Arab
                                 </li>
                                 <li class="d-flex mb-3 aos-init aos-animate">
-                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Robust Analytics and Reporting
+                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Pembelajaran Berbasis Teknologi
                                 </li>
                                 <li class="d-flex mb-3 aos-init aos-animate">
-                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Collaborative and Peer to Peer Learning
+                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Pengembangan Bakat & Minat
                                 </li>
                                 <li class="d-flex mb-3 aos-init aos-animate">
-                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>The Most World Class Instructors
+                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Guru-Guru Profesional & Berkompeten
                                 </li>
                             </ul>
                         </div>
@@ -838,23 +838,23 @@
                         
                         <!-- Master skills Image -->
                         <div class="col-xl-5 col-lg-5 col-md-12 order-lg-3 order-md-2 order-2" data-aos="fade-up"> 
-                            <h3>Learn anything from anywhere anytime</h3>
-                            <p>In today’s fast-paced, digital world, the ability to learn anything, from anywhere, and at any time is more accessible than ever. Whether you are looking to expand your knowledge, gain new skills.</p>
+                            <h3>Fasilitas Modern & Lingkungan Islami</h3>
+                            <p>Baitul Jannah Islamic School menyediakan fasilitas modern dalam lingkungan yang Islami untuk mendukung proses belajar mengajar yang optimal. Kami menciptakan suasana yang nyaman dan kondusif bagi perkembangan siswa.</p>
                             <ul class="list-unstyled heading-color mb-4">
                                 <li class="d-flex mb-3">
-                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Access to a World of Knowledge
+                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Ruang Kelas Multimedia dan Perpustakaan Digital
                                 </li>
                                 <li class="d-flex mb-3">
-                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Diverse Learning Formats
+                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Laboratorium Sains dan Komputer
                                 </li>
                                 <li class="d-flex mb-3 aos-init">
-                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Learn at Your Own Pace
+                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Masjid dan Ruang Ibadah yang Nyaman
                                 </li>
                                 <li class="d-flex mb-3 aos-init">
-                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Affordable and Flexible Pricing
+                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Area Olahraga dan Taman Bermain
                                 </li>
                                 <li class="d-flex mb-3 aos-init">
-                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>The Most World Class Instructors
+                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Kantin Sehat dan Area Makan
                                 </li>
                             </ul>
                         </div>
@@ -870,23 +870,23 @@
 
                         <!-- Master skills Content -->
                         <div class="col-xl-5 col-lg-7 col-md-12 order-lg-4 order-md-4 order-4" data-aos="fade-up"> 
-                            <h3>Certification for solid development of your Career</h3>
-                            <p>Certifications are a powerful way to enhance your skills, build credibility, and boost your career growth. In today’s competitive job market, a professional certification</p>
+                            <h3>Program Pengembangan Karakter Islami</h3>
+                            <p>Baitul Jannah Islamic School memiliki program pengembangan karakter yang komprehensif untuk membentuk siswa berakhlak mulia dan berprestasi. Kami menanamkan nilai-nilai Islam dalam setiap aspek pendidikan.</p>
                             <ul class="list-unstyled heading-color mb-4">
                                 <li class="d-flex mb-3">
-                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Demonstrates Expertise
+                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Tahfidz Al-Quran dan Hadits
                                 </li>
                                 <li class="d-flex mb-3">
-                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Boosts Your Credibility
+                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Pembinaan Akhlak dan Adab
                                 </li>
                                 <li class="d-flex mb-3 aos-init">
-                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Improves Job Security
+                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Pengembangan Leadership
                                 </li>
                                 <li class="d-flex mb-3 aos-init">
-                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Facilitates Career Advancement
+                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Program Mentoring Islami
                                 </li>
                                 <li class="d-flex mb-3 aos-init">
-                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Fosters Personal Growth
+                                    <i class="isax isax-tick-circle5 text-success fs-24 me-2"></i>Kegiatan Sosial dan Dakwah
                                 </li>
                             </ul>
                         </div>
@@ -923,26 +923,26 @@
             <div class="col-md-12" data-aos="fade-down">						
                 <div class="testimonial-inner">						
                     <div class="section-header text-center">
-                        <h2 data-aos="fade-down">Join over 5 Million Students</h2>
-                        <p>Get certified, master modern tech skills, and level up your career </p>
+                        <h2 data-aos="fade-down">Bergabunglah dengan Keluarga Besar Baitul Jannah</h2>
+                        <p>Raih prestasi gemilang dengan pendidikan Islam yang berkualitas dan berkarakter</p>
                     </div>
                     <div class="row text-center">
                         <div class="col-md-4 col-sm-12" data-aos="fade-up">
                             <div class="course-count-two course-count border">
-                                <h4><span class="counterUp text-secondary">253,085</span></h4>
-                                <p>Students Enrolled</p>
+                                <h4><span class="counterUp text-secondary">1,250</span></h4>
+                                <p>Siswa Aktif</p>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-12" data-aos="fade-up">
                             <div class="course-count-two  course-count border">
-                                <h4><span class="counterUp text-success">1,205</span></h4>
-                                <p>Total Courses</p>
+                                <h4><span class="counterUp text-success">95</span>%</h4>
+                                <p>Tingkat Kelulusan</p>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-12" data-aos="fade-up">
                             <div class="course-count-two  course-count border">
-                                <h4><span class="counterUp text-primary" >253,085</span></h4>
-                                <p>Students Worldwide</p>
+                                <h4><span class="counterUp text-primary" >15</span></h4>
+                                <p>Tahun Berpengalaman</p>
                             </div>
                         </div>
                     </div>
@@ -959,9 +959,9 @@
 <div class="feature-instructors-sec">
     <div class="container">
         <div class="section-header text-center" data-aos="fade-up">
-            <span class="fw-medium text-secondary fs-18 fw-bold mb-2 d-inline-block">New Courses</span>
-            <h2>Featured Instructor</h2>
-            <p>95% of eLearning learners report our hands-on content directly helped their careers.</p>
+            <span class="fw-medium text-secondary fs-18 fw-bold mb-2 d-inline-block">Tim Pengajar</span>
+            <h2>Guru Berpengalaman & Berkualitas</h2>
+            <p>Tenaga pendidik profesional yang berdedikasi tinggi dalam membentuk generasi Islami yang unggul.</p>
         </div>
         <!-- Featured Instructor -->
         <div class="featured-instructor-two">
@@ -1009,11 +1009,11 @@
                         </div>
                         <div class="instructor-content">
                             <h5 class="title">
-                                <a href="instructor-details.html">Gallegos</a>
+                                <a href="instructor-details.html">Ustadz Abdullah</a>
                             </h5>
-                            <span class="designation">Angular Expert</span>
+                            <span class="designation">Guru Tahfidz & Bahasa Arab</span>
                             <div class="student-count">
-                                <i class="fa-solid fa-user-group me-2"></i><span>70 Students</span>
+                                <i class="fa-solid fa-user-group me-2"></i><span>70 Siswa</span>
                             </div>
                         </div>
                     </div>
@@ -1035,11 +1035,11 @@
                         </div>
                         <div class="instructor-content">
                             <h5 class="title">
-                                <a href="instructor-details.html">Kristi</a>
+                                <a href="instructor-details.html">Ustadzah Fatimah</a>
                             </h5>
-                            <span class="designation">Node Js</span>
+                            <span class="designation">Guru Matematika & Sains</span>
                             <div class="student-count">
-                                <i class="fa-solid fa-user-group me-2"></i><span>60 Students</span>
+                                <i class="fa-solid fa-user-group me-2"></i><span>60 Siswa</span>
                             </div>
                         </div>
                     </div>
@@ -1061,11 +1061,11 @@
                         </div>
                         <div class="instructor-content">
                             <h5 class="title">
-                                <a href="instructor-details.html">Pinero</a>
+                                <a href="instructor-details.html">Ustadz Muhammad</a>
                             </h5>
-                            <span class="designation">Python</span>
+                            <span class="designation">Guru Akidah Akhlak & Fiqh</span>
                             <div class="student-count">
-                                <i class="fa-solid fa-user-group me-2"></i><span>40 Students</span>
+                                <i class="fa-solid fa-user-group me-2"></i><span>40 Siswa</span>
                             </div>
                         </div>
                     </div>
@@ -1077,7 +1077,7 @@
         <!-- View all Category -->
         <div class="col-lg-12">
             <div class="more-details text-center" data-aos="fade-up">
-                <a href="instructor-list.html" class="btn btn-secondary btn-xl">View all Instructors</a>
+                <a href="instructor-list.html" class="btn btn-secondary btn-xl">Lihat Semua Guru</a>
             </div>
         </div>
         <!-- /View all Category -->
@@ -1086,12 +1086,12 @@
 <!-- /Feature Instructors -->	
 
 <!-- Leading Companies -->
-<section class="real-reviews-sec">
+<!-- <section class="real-reviews-sec">
     <div class="container">
         <div class="section-header text-center" data-aos="fade-up">
-            <span class="fw-medium text-secondary fs-18 fw-bold mb-2 d-inline-block">Check out these real reviews</span>
-            <h2>Users love us Don't take it from us</h2>
-            <p>95% of eLearning learners report our hands-on content directly helped their careers.</p>
+            <span class="fw-medium text-secondary fs-18 fw-bold mb-2 d-inline-block">Testimoni Nyata</span>
+            <h2>Kepercayaan Orang Tua & Siswa</h2>
+            <p>Lebih dari 95% orang tua merasa puas dengan kualitas pendidikan dan pembentukan karakter di Baitul Jannah.</p>
         </div>
         <div class="real-reviews-group">						
             <div class="row align-items-center">
@@ -1108,13 +1108,13 @@
                         <div class="item">
                             <div class="real-reviews-grid">
                                 <div class="review-content">
-                                    <h3>Helps us to improve our productivity</h3>
-                                    <p>High-definition video is video of higher resolution and quality than standard-definition. While there is no standardized meaning for high-definition, generally any video.High-definition video is video of higher resolution and quality than standard-definition. While there is no standardized meaning for high-definition, generally any video.High-definition video is video of higher resolution and quality than standard-definition.</p>
+                                    <h3>Pendidikan yang Membentuk Karakter Islami</h3>
+                                    <p>Alhamdulillah, anak saya berkembang sangat baik di Baitul Jannah. Tidak hanya prestasi akademiknya yang meningkat, tetapi juga akhlak dan ibadahnya semakin baik. Guru-guru sangat perhatian dan metode pembelajaran yang diterapkan sangat efektif dalam membentuk karakter Islami anak.</p>
                                 </div>
                                 <div class="review-top">
                                     <div class="review-info">
-                                        <h5 data-aos="fade-up">William George</h5>
-                                        <h6 data-aos="fade-up">CEO & Chairman</h6>
+                                        <h5 data-aos="fade-up">Bapak Ahmad Fauzi</h5>
+                                        <h6 data-aos="fade-up">Wali Murid Kelas 5</h6>
                                     </div>
                                 </div>
                             </div>
@@ -1122,13 +1122,13 @@
                         <div class="item">
                             <div class="real-reviews-grid">
                                 <div class="review-content">
-                                    <h3>Helps us to improve our productivity</h3>
-                                    <p>High-definition video is video of higher resolution and quality than standard-definition. While there is no standardized meaning for high-definition, generally any video.High-definition video is video of higher resolution and quality than standard-definition. While there is no standardized meaning for high-definition, generally any video.</p>
+                                    <h3>Fasilitas Lengkap dan Lingkungan Islami</h3>
+                                    <p>Sekolah Baitul Jannah memiliki fasilitas yang sangat lengkap dan modern. Lingkungan sekolah yang Islami membuat anak-anak nyaman dalam belajar. Program tahfidz dan kegiatan keagamaan lainnya sangat membantu dalam pembentukan kepribadian anak yang berkarakter Qur'ani.</p>
                                 </div>
                                 <div class="review-top">
                                     <div class="review-info">
-                                        <h5 data-aos="fade-up">Julian Adrose</h5>
-                                        <h6 data-aos="fade-up">Manager</h6>
+                                        <h5 data-aos="fade-up">Ibu Siti Nurhaliza</h5>
+                                        <h6 data-aos="fade-up">Wali Murid Kelas 3</h6>
                                     </div>
                                 </div>
                             </div>
@@ -1177,9 +1177,23 @@
         </div>
     </div>
     <img src="/assets/img/bg/bg-9.png" alt="img" class="review-bg">
-</section>
+</section> -->
 <!-- /Leading Companies -->
 
 <!-- Latest Blog -->
 
 <!-- /Latest Blog -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+

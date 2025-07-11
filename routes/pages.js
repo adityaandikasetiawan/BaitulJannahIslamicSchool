@@ -270,4 +270,12 @@ router.get('/faq', (req, res) => {
       });
 });
 
+// Karir Route
+router.get('/karir', (req, res) => {
+  res.render('informasi/karir', {
+    title: 'Karir - Baitul Jannah Islamic School',
+    description: 'Informasi Karir dan Lowongan Kerja di Baitul Jannah Islamic School',
+  });
+});
+
 module.exports = router;

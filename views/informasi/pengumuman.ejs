@@ -58,15 +58,15 @@
 <%- include('../partials/header2') %>
 
 			<!-- Breadcrumb -->
-			<div class="breadcrumb-bar text-center">
+			<div class="breadcrumb-bar text-center" style="background-color: #ffffff; border: none; box-shadow: none;">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12 col-12">
-							<h2 class="breadcrumb-title mb-2">Pengumuman</h2>
+							<h2 class="breadcrumb-title mb-2" style="color: #2c5aa0; font-weight: 600;">Pengumuman</h2>
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb justify-content-center mb-0">
-									<li class="breadcrumb-item"><a href="/">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Pengumuman</li>
+									<li class="breadcrumb-item"><a href="/" class="text-muted">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page" style="color: #2c5aa0;">Pengumuman</li>
 								</ol>
 							</nav>
 						</div>
@@ -80,107 +80,170 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h2 class="text-center mb-4">Pengumuman Terbaru</h2>
+                        <div class="card" style="border: none; border-radius: 10px; box-shadow: 0 0 20px rgba(44, 90, 160, 0.05);">
+                            <div class="card-body" style="background-color: #ffffff; padding: 30px;">
+                                <div class="text-center mb-4">
+                                    <div style="display: inline-flex; justify-content: center; align-items: center; width: 60px; height: 60px; background-color: #2c5aa0; border-radius: 50%; margin-bottom: 15px;">
+                                        <i class="fas fa-bullhorn" style="color: #ffffff; font-size: 24px;"></i>
+                                    </div>
+                                    <h2 style="color: #2c5aa0; font-weight: 600; margin-bottom: 10px;">Pengumuman Terbaru</h2>
+                                    <div style="width: 80px; height: 3px; background-color: #2c5aa0; margin: 0 auto;"></div>
+                                </div>
                                 
                                 <div class="announcement-list">
                                     <!-- Pengumuman 1 -->
-                                    <div class="announcement-item mb-4 p-4 border rounded">
+                                    <div class="announcement-item mb-4" style="background-color: #ffffff; border-radius: 10px; box-shadow: 0 5px 15px rgba(44, 90, 160, 0.05); border: 1px solid rgba(44, 90, 160, 0.1); padding: 25px;">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
-                                            <h4 class="text-primary">Hasil Seleksi PPDB Gelombang 2 Tahun Ajaran 2024/2025</h4>
-                                            <span class="badge bg-success">Terbaru</span>
+                                            <h4 style="color: #2c5aa0; font-weight: 600;">Hasil Seleksi PPDB Gelombang 2 Tahun Ajaran 2024/2025</h4>
+                                            <span style="background-color: #e8f1ff; color: #2c5aa0; font-weight: 500; padding: 5px 12px; border-radius: 20px; font-size: 12px;">Terbaru</span>
                                         </div>
-                                        <div class="announcement-date mb-3">
-                                            <i class="fas fa-calendar-alt me-2"></i> 12 Maret 2024
+                                        <div class="announcement-date mb-3" style="color: #6c757d;">
+                                            <i class="fas fa-calendar-alt me-2" style="color: #2c5aa0;"></i> 12 Maret 2024
                                         </div>
-                                        <div class="announcement-content">
+                                        <div class="announcement-content" style="color: #555555;">
                                             <p>Pengumuman hasil seleksi Penerimaan Peserta Didik Baru (PPDB) Gelombang 2 untuk semua jenjang pendidikan di Baitul Jannah Islamic School telah dirilis. Orang tua/wali dapat memeriksa hasil seleksi dengan cara:</p>
-                                            <ol>
-                                                <li>Mengunjungi laman PPDB di website resmi sekolah</li>
-                                                <li>Memasukkan nomor pendaftaran dan tanggal lahir calon siswa</li>
-                                                <li>Melihat pengumuman yang ditampilkan</li>
+                                            <ol style="padding-left: 20px;">
+                                                <li style="margin-bottom: 8px;">Mengunjungi laman PPDB di website resmi sekolah</li>
+                                                <li style="margin-bottom: 8px;">Memasukkan nomor pendaftaran dan tanggal lahir calon siswa</li>
+                                                <li style="margin-bottom: 8px;">Melihat pengumuman yang ditampilkan</li>
                                             </ol>
                                             <p>Bagi calon siswa yang dinyatakan diterima, diharapkan segera melakukan daftar ulang sesuai jadwal yang telah ditentukan.</p>
-                                            <div class="text-end mt-3">
-                                                <a href="#" class="btn btn-sm btn-primary">Lihat Detail</a>
-                                                <a href="#" class="btn btn-sm btn-outline-primary ms-2">Download PDF</a>
+                                            <div class="text-end mt-4">
+                                                <a href="#" class="btn btn-sm" style="background-color: #2c5aa0; color: #ffffff; border-radius: 5px; padding: 8px 16px; font-weight: 500; border: none;">Lihat Detail</a>
+                                                <a href="#" class="btn btn-sm ms-2" style="background-color: #ffffff; color: #2c5aa0; border-radius: 5px; padding: 8px 16px; font-weight: 500; border: 1px solid #2c5aa0;">Download PDF</a>
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <!-- Pengumuman 2 -->
-                                    <div class="announcement-item mb-4 p-4 border rounded">
+                                    <div class="announcement-item mb-4" style="background-color: #ffffff; border-radius: 10px; box-shadow: 0 5px 15px rgba(44, 90, 160, 0.05); border: 1px solid rgba(44, 90, 160, 0.1); padding: 25px;">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
-                                            <h4 class="text-primary">Jadwal Tes Seleksi PPDB Gelombang 3</h4>
-                                            <span class="badge bg-info">Penting</span>
+                                            <h4 style="color: #2c5aa0; font-weight: 600;">Jadwal Tes Seleksi PPDB Gelombang 3</h4>
+                                            <span style="background-color: #e8f1ff; color: #2c5aa0; font-weight: 500; padding: 5px 12px; border-radius: 20px; font-size: 12px;">Penting</span>
                                         </div>
-                                        <div class="announcement-date mb-3">
-                                            <i class="fas fa-calendar-alt me-2"></i> 25 April 2024
+                                        <div class="announcement-date mb-3" style="color: #6c757d;">
+                                            <i class="fas fa-calendar-alt me-2" style="color: #2c5aa0;"></i> 25 April 2024
                                         </div>
-                                        <div class="announcement-content">
+                                        <div class="announcement-content" style="color: #555555;">
                                             <p>Jadwal tes seleksi Penerimaan Peserta Didik Baru (PPDB) Gelombang 3 untuk semua jenjang pendidikan di Baitul Jannah Islamic School akan dilaksanakan pada:</p>
-                                            <ul>
-                                                <li><strong>Tanggal:</strong> 4-5 Mei 2024</li>
-                                                <li><strong>Waktu:</strong> 08.00 - 12.00 WIB</li>
-                                                <li><strong>Tempat:</strong> Kampus Baitul Jannah Islamic School</li>
+                                            <ul style="list-style-type: none; padding-left: 5px;">
+                                                <li style="margin-bottom: 8px; padding-left: 20px; position: relative;">
+                                                    <i class="fas fa-check-circle" style="color: #2c5aa0; position: absolute; left: 0; top: 3px;"></i>
+                                                    <strong style="color: #2c5aa0;">Tanggal:</strong> 4-5 Mei 2024
+                                                </li>
+                                                <li style="margin-bottom: 8px; padding-left: 20px; position: relative;">
+                                                    <i class="fas fa-check-circle" style="color: #2c5aa0; position: absolute; left: 0; top: 3px;"></i>
+                                                    <strong style="color: #2c5aa0;">Waktu:</strong> 08.00 - 12.00 WIB
+                                                </li>
+                                                <li style="margin-bottom: 8px; padding-left: 20px; position: relative;">
+                                                    <i class="fas fa-check-circle" style="color: #2c5aa0; position: absolute; left: 0; top: 3px;"></i>
+                                                    <strong style="color: #2c5aa0;">Tempat:</strong> Kampus Baitul Jannah Islamic School
+                                                </li>
                                             </ul>
                                             <p>Peserta diharapkan hadir 30 menit sebelum tes dimulai dan membawa perlengkapan sebagai berikut:</p>
-                                            <ul>
-                                                <li>Kartu peserta tes</li>
-                                                <li>Alat tulis (pensil 2B, penghapus, rautan)</li>
-                                                <li>Al-Qur'an (untuk tes baca Al-Qur'an)</li>
+                                            <ul style="list-style-type: none; padding-left: 5px;">
+                                                <li style="margin-bottom: 8px; padding-left: 20px; position: relative;">
+                                                    <i class="fas fa-check-circle" style="color: #2c5aa0; position: absolute; left: 0; top: 3px;"></i>
+                                                    Kartu peserta tes
+                                                </li>
+                                                <li style="margin-bottom: 8px; padding-left: 20px; position: relative;">
+                                                    <i class="fas fa-check-circle" style="color: #2c5aa0; position: absolute; left: 0; top: 3px;"></i>
+                                                    Alat tulis (pensil 2B, penghapus, rautan)
+                                                </li>
+                                                <li style="margin-bottom: 8px; padding-left: 20px; position: relative;">
+                                                    <i class="fas fa-check-circle" style="color: #2c5aa0; position: absolute; left: 0; top: 3px;"></i>
+                                                    Al-Qur'an (untuk tes baca Al-Qur'an)
+                                                </li>
                                             </ul>
-                                            <div class="text-end mt-3">
-                                                <a href="#" class="btn btn-sm btn-primary">Lihat Detail</a>
+                                            <div class="text-end mt-4">
+                                                <a href="#" class="btn btn-sm" style="background-color: #2c5aa0; color: #ffffff; border-radius: 5px; padding: 8px 16px; font-weight: 500; border: none;">Lihat Detail</a>
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <!-- Pengumuman 3 -->
-                                    <div class="announcement-item mb-4 p-4 border rounded">
+                                    <div class="announcement-item mb-4" style="background-color: #ffffff; border-radius: 10px; box-shadow: 0 5px 15px rgba(44, 90, 160, 0.05); border: 1px solid rgba(44, 90, 160, 0.1); padding: 25px;">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
-                                            <h4 class="text-primary">Pembukaan PPDB Gelombang 3 Tahun Ajaran 2024/2025</h4>
+                                            <h4 style="color: #2c5aa0; font-weight: 600;">Pembukaan PPDB Gelombang 3 Tahun Ajaran 2024/2025</h4>
                                         </div>
-                                        <div class="announcement-date mb-3">
-                                            <i class="fas fa-calendar-alt me-2"></i> 1 Maret 2024
+                                        <div class="announcement-date mb-3" style="color: #6c757d;">
+                                            <i class="fas fa-calendar-alt me-2" style="color: #2c5aa0;"></i> 1 Maret 2024
                                         </div>
-                                        <div class="announcement-content">
+                                        <div class="announcement-content" style="color: #555555;">
                                             <p>Baitul Jannah Islamic School membuka pendaftaran Penerimaan Peserta Didik Baru (PPDB) Gelombang 3 untuk tahun ajaran 2024/2025 untuk jenjang:</p>
-                                            <ul>
-                                                <li>PGIT-TKIT</li>
-                                                <li>SDIT</li>
-                                                <li>SMPIT</li>
-                                                <li>SMAIT</li>
-                                                <li>SLBIT</li>
-                                            </ul>
-                                            <p><strong>Periode Pendaftaran:</strong> 1 Maret - 30 April 2024</p>
+                                            <div class="row mt-3 mb-3">
+                                                <div class="col-md-4 col-sm-6 mb-2">
+                                                    <div style="background-color: #e8f1ff; border-radius: 5px; padding: 10px; text-align: center;">
+                                                        <span style="color: #2c5aa0; font-weight: 500;">PGIT-TKIT</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-6 mb-2">
+                                                    <div style="background-color: #e8f1ff; border-radius: 5px; padding: 10px; text-align: center;">
+                                                        <span style="color: #2c5aa0; font-weight: 500;">SDIT</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-6 mb-2">
+                                                    <div style="background-color: #e8f1ff; border-radius: 5px; padding: 10px; text-align: center;">
+                                                        <span style="color: #2c5aa0; font-weight: 500;">SMPIT</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-6 mb-2">
+                                                    <div style="background-color: #e8f1ff; border-radius: 5px; padding: 10px; text-align: center;">
+                                                        <span style="color: #2c5aa0; font-weight: 500;">SMAIT</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-6 mb-2">
+                                                    <div style="background-color: #e8f1ff; border-radius: 5px; padding: 10px; text-align: center;">
+                                                        <span style="color: #2c5aa0; font-weight: 500;">SLBIT</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p><strong style="color: #2c5aa0;">Periode Pendaftaran:</strong> 1 Maret - 30 April 2024</p>
                                             <p>Pendaftaran dapat dilakukan secara online melalui website resmi sekolah atau langsung datang ke kantor sekretariat PPDB Baitul Jannah Islamic School.</p>
-                                            <div class="text-end mt-3">
-                                                <a href="/syaratpendaftaran" class="btn btn-sm btn-primary">Lihat Syarat Pendaftaran</a>
+                                            <div class="text-end mt-4">
+                                                <a href="/syaratpendaftaran" class="btn btn-sm" style="background-color: #2c5aa0; color: #ffffff; border-radius: 5px; padding: 8px 16px; font-weight: 500; border: none;">Lihat Syarat Pendaftaran</a>
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <!-- Pengumuman 4 -->
-                                    <div class="announcement-item mb-4 p-4 border rounded">
+                                    <div class="announcement-item mb-4" style="background-color: #ffffff; border-radius: 10px; box-shadow: 0 5px 15px rgba(44, 90, 160, 0.05); border: 1px solid rgba(44, 90, 160, 0.1); padding: 25px;">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
-                                            <h4 class="text-primary">Informasi Biaya Pendidikan Tahun Ajaran 2024/2025</h4>
+                                            <h4 style="color: #2c5aa0; font-weight: 600;">Informasi Biaya Pendidikan Tahun Ajaran 2024/2025</h4>
                                         </div>
-                                        <div class="announcement-date mb-3">
-                                            <i class="fas fa-calendar-alt me-2"></i> 15 Februari 2024
+                                        <div class="announcement-date mb-3" style="color: #6c757d;">
+                                            <i class="fas fa-calendar-alt me-2" style="color: #2c5aa0;"></i> 15 Februari 2024
                                         </div>
-                                        <div class="announcement-content">
-                                            <p>Baitul Jannah Islamic School telah menetapkan biaya pendidikan untuk tahun ajaran 2024/2025. Informasi lengkap mengenai rincian biaya dapat diakses melalui brosur resmi sekolah atau dengan menghubungi bagian administrasi.</p>
+                                        <div class="announcement-content" style="color: #555555;">
+                                            <div style="background-color: #e8f1ff; border-radius: 8px; padding: 15px; margin-bottom: 15px;">
+                                                <p style="margin-bottom: 0;">Baitul Jannah Islamic School telah menetapkan biaya pendidikan untuk tahun ajaran 2024/2025. Informasi lengkap mengenai rincian biaya dapat diakses melalui brosur resmi sekolah atau dengan menghubungi bagian administrasi.</p>
+                                            </div>
                                             <p>Untuk kemudahan orang tua/wali, tersedia beberapa skema pembayaran:</p>
-                                            <ul>
-                                                <li>Pembayaran tunai</li>
-                                                <li>Pembayaran cicilan 3 bulan</li>
-                                                <li>Pembayaran cicilan 6 bulan</li>
-                                            </ul>
-                                            <p>Tersedia juga program beasiswa untuk siswa berprestasi dan tidak mampu.</p>
-                                            <div class="text-end mt-3">
-                                                <a href="#" class="btn btn-sm btn-primary">Download Brosur</a>
+                                            <div class="row">
+                                                <div class="col-md-4 mb-2">
+                                                    <div style="border: 1px solid rgba(44, 90, 160, 0.2); border-radius: 5px; padding: 10px; text-align: center;">
+                                                        <i class="fas fa-money-bill-wave mb-2" style="color: #2c5aa0; font-size: 20px;"></i>
+                                                        <p style="margin-bottom: 0; color: #2c5aa0; font-weight: 500;">Pembayaran Tunai</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-2">
+                                                    <div style="border: 1px solid rgba(44, 90, 160, 0.2); border-radius: 5px; padding: 10px; text-align: center;">
+                                                        <i class="fas fa-calendar-alt mb-2" style="color: #2c5aa0; font-size: 20px;"></i>
+                                                        <p style="margin-bottom: 0; color: #2c5aa0; font-weight: 500;">Cicilan 3 Bulan</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-2">
+                                                    <div style="border: 1px solid rgba(44, 90, 160, 0.2); border-radius: 5px; padding: 10px; text-align: center;">
+                                                        <i class="fas fa-calendar-alt mb-2" style="color: #2c5aa0; font-size: 20px;"></i>
+                                                        <p style="margin-bottom: 0; color: #2c5aa0; font-weight: 500;">Cicilan 6 Bulan</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-3 mb-3" style="background-color: #e8f1ff; border-radius: 8px; padding: 15px; border-left: 4px solid #2c5aa0;">
+                                                <p style="margin-bottom: 0;"><i class="fas fa-info-circle me-2" style="color: #2c5aa0;"></i> Tersedia juga program beasiswa untuk siswa berprestasi dan tidak mampu.</p>
+                                            </div>
+                                            <div class="text-end mt-4">
+                                                <a href="#" class="btn btn-sm" style="background-color: #2c5aa0; color: #ffffff; border-radius: 5px; padding: 8px 16px; font-weight: 500; border: none;">Download Brosur</a>
                                             </div>
                                         </div>
                                     </div>
@@ -188,15 +251,21 @@
                                 
                                 <!-- Pagination -->
                                 <nav aria-label="Page navigation">
-                                    <ul class="pagination justify-content-center mt-4">
+                                    <ul class="pagination justify-content-center mt-5">
                                         <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true" style="border: 1px solid rgba(44, 90, 160, 0.2); color: #6c757d; background-color: #f8f9fa; border-radius: 5px; margin: 0 5px;">Previous</a>
                                         </li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item active">
+                                            <a class="page-link" href="#" style="background-color: #2c5aa0; border-color: #2c5aa0; color: #ffffff; border-radius: 5px; margin: 0 5px; box-shadow: none;">1</a>
+                                        </li>
                                         <li class="page-item">
-                                            <a class="page-link" href="#">Next</a>
+                                            <a class="page-link" href="#" style="border: 1px solid rgba(44, 90, 160, 0.2); color: #2c5aa0; background-color: #ffffff; border-radius: 5px; margin: 0 5px;">2</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" style="border: 1px solid rgba(44, 90, 160, 0.2); color: #2c5aa0; background-color: #ffffff; border-radius: 5px; margin: 0 5px;">3</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" style="border: 1px solid rgba(44, 90, 160, 0.2); color: #2c5aa0; background-color: #ffffff; border-radius: 5px; margin: 0 5px;">Next</a>
                                         </li>
                                     </ul>
                                 </nav>
